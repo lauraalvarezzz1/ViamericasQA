@@ -15,8 +15,8 @@ public class DataGenerators {
 
     public static String generateemails (){
         Random rand = new Random();
-        int cons = rand.nextInt(1)+1;
-        String num = "1"+Integer.toString(cons);
+        int cons = rand.nextInt(900)+1000;
+        String num = "123"+Integer.toString(cons);
         return num;
     }
 
