@@ -32,6 +32,7 @@ public class Send_BankdepositPage {
         Thread.sleep(3000);
     }
 
+    
     public static void goandcontinue() throws Exception {
         Start.driver.findElement(continueButton).click();
         Thread.sleep(5000);
