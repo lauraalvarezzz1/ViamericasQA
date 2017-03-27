@@ -81,6 +81,9 @@ public class SendMoneyFlowAsaGuest {
         Send_FundingPage.selectyear();
         Send_FundingPage.addcvvcode();
         Assert.assertTrue(Start.driver.getCurrentUrl().contains("review"));
+
+
+
     }
 
     @Test (enabled = true, priority = 4)
@@ -94,7 +97,7 @@ public class SendMoneyFlowAsaGuest {
 
     @Test(enabled = true, priority = 5)
     public void gotothefirstform() throws Exception {
-        SignUpPage.addemailaddress("test+54@test.com");
+        SignUpPage.addemailaddress();
         SignUpPage.addpassword("test4echo");
         SignUpPage.clickonsignupbutton();
     }
@@ -130,6 +133,6 @@ public class SendMoneyFlowAsaGuest {
     public void createbutton() throws Exception {
         SignUpPage.acceptTCPP();
         SignUpPage.createbutton();
-        Assert.assertTrue(Start.driver.getCurrentUrl().contains("confirmation"));
+        Assert.assertTrue(Start.driver.getCurrentUrl().contains("sendmoney/review"));
     }
 }

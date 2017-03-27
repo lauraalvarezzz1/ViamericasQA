@@ -58,9 +58,9 @@ public class SignUpPage {
         Thread.sleep(2000);
     }
 
-    public static void addemailaddress(String email) throws Exception {
-        Thread.sleep(1500);
-        Start.driver.findElement(emailaddress).sendKeys(email);
+    public static void addemailaddress() throws Exception {
+        Start.driver.findElement(emailaddress).sendKeys("test+"+ DataGenerators.generateemails()+"@gmail.com");
+        Thread.sleep(2000);
     }
 
     public static void addpassword(String password1) throws Exception {

@@ -62,7 +62,7 @@ public class Send_RecipientPage {
     }
 
     public static void addadressline1() throws Exception {
-        Start.driver.findElement(addressline1).sendKeys("Carrera 65");
+        Start.driver.findElement(addressline1).sendKeys("4525 North Oracle Rd. ");
         Thread.sleep(2000);
     }
 
