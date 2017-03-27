@@ -30,7 +30,7 @@ public class SignUp {
 
     @Test(enabled = true, priority = 1)
     public void gotothefirstform() throws Exception {
-        SignUpPage.addemailaddress("test+1@test.com");
+        SignUpPage.addemailaddress();
         SignUpPage.addpassword("test4echo");
         SignUpPage.clickonsignupbutton();
     }
