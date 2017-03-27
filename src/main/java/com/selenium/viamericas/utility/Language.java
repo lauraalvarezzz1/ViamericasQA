@@ -9,14 +9,13 @@ public class Language {
         select();
     }
 
-    private String logIn;
     private String country;
-    private String state;
     private String city;
     private String day;
     private String month;
     private String year;
     private String money;
+    private String accountType;
 
     public void select(){
         try {
@@ -30,16 +29,9 @@ public class Language {
 
 ;
     }
-    public String getLogIn() {
-        return logIn;
-    }
 
     public String getCountry() {
         return country;
-    }
-
-    public String getState() {
-        return state;
     }
 
     public String getCity() {
@@ -62,11 +54,18 @@ public class Language {
         return money;
     }
 
+    public String getAccountType() {
+        return accountType;
+    }
+
     private void Spanish (){
         this.country = "País";
         this.city = "Ciudad";
+        this.month = "Mes";
         this.day  = "día";
+        this.year = "año";
         this.money  = "¿A dónde envía dinero? (opcional)";
+        this.accountType = "Tipo de cuenta";
     }
 
     private void English(){
@@ -76,6 +75,8 @@ public class Language {
         this.month = "Month";
         this.year = "Year";
         this.money = "Where do you send money? (optional)";
+        this.accountType = "Account Type";
+
 
     }
 

@@ -1,16 +1,15 @@
 package com.selenium.viamericas.pages;
 
+import com.selenium.viamericas.utility.Language;
 import org.openqa.selenium.By;
 import com.selenium.viamericas.utility.Start;
 import org.openqa.selenium.Keys;
 
 
 public class GetaQuotePage {
-
-
-
+    public static Language language = new Language();
     public static By title = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/h1");
-    public static By countrydropdown = By.xpath(".//*[@placeholder='Country']");
+    public static By countrydropdown = By.xpath(".//*[@placeholder='"+ language.getCountry()+"']");
     public static By amountfield = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[1]/div[2]/div[1]/div/input");
     public static By bankdepositbutton = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[1]/div[3]/div[1]/div/div");
     public static By cashpickupbutton = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[1]/div[3]/div[1]/div[2]/div");
