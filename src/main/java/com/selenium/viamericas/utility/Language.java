@@ -11,13 +11,12 @@ public class Language {
 
     private String logIn;
     private String country;
-    private String state;
+    private String accountType;
     private String city;
     private String day;
     private String month;
     private String year;
     private String money;
-
     public void select(){
         try {
             if (Start.driver.findElement(By.linkText("About Us")).isDisplayed()){
@@ -38,8 +37,8 @@ public class Language {
         return country;
     }
 
-    public String getState() {
-        return state;
+    public String getaccountType() {
+        return accountType;
     }
 
     public String getCity() {
@@ -67,6 +66,7 @@ public class Language {
         this.city = "Ciudad";
         this.day  = "Día";
         this.money  = "¿A dónde envía dinero? (opcional)";
+        this.accountType = "Tipo de cuenta";
     }
 
     private void English(){
@@ -76,6 +76,7 @@ public class Language {
         this.month = "Month";
         this.year = "Year";
         this.money = "Where do you send money? (optional)";
+        this.accountType = "Account Type";
 
     }
 
