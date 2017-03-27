@@ -65,7 +65,7 @@ public class Language {
     private void Spanish (){
         this.country = "País";
         this.city = "Ciudad";
-        this.day  = "día";
+        this.day  = "Día";
         this.money  = "¿A dónde envía dinero? (opcional)";
     }
 

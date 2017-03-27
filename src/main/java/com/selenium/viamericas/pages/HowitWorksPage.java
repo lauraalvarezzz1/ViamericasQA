@@ -5,7 +5,7 @@ import com.selenium.viamericas.utility.Start;
 
 public class HowitWorksPage {
 
-    public static By sendmoneyButton = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/div/button");
+    public static By sendmoneyButton = By.xpath("/html/body/div[2]/div/div[1]/div[1]/header/nav-viamericas/nav/div[1]/ul[1]/li[1]/a");
     public static By nextarrrow = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/section[1]/div[2]/span");
     public static By backarrow = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/section[1]/div[2]/span[1]");
 

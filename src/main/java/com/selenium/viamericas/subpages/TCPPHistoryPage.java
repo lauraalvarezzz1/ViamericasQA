@@ -15,7 +15,7 @@ public class TCPPHistoryPage {
 
     public static By nextpageButton = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div[1]/div/div/a[2]");
     public static By previouspageButton = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div[1]/div/div/a[1]");
-    public static By GoBackToSendersListButton = By.xpath("html/body/div[2]/div/div[1]/div[2]/div/div[4]/a");
+    public static By GoBackToSendersListButton = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div[4]/a");
 
     public static void gotoadminlabeloption() throws Exception {
         Start.driver.findElement(ADMINLabeloption).click();
