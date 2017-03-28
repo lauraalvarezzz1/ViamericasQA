@@ -16,6 +16,7 @@ public class LoginPage {
     public static By forgotpassword = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div[2]/div/form/div[5]/a");
     public static By logoutbutton = By.xpath("/html/body/div[2]/div/div[1]/div[1]/nav/div[2]/ul[2]/li[1]/a/i");
     public static By vianexlogo = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/logo-viamericas/div/a/img");
+    public static By wrongcredentials = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div[2]/message-viamericas/div/p");
 
 
     public static void login(String user, String pass){

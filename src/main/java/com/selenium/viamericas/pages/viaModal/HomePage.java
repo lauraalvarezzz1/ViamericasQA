@@ -21,9 +21,11 @@ public class HomePage {
 
         if(page.equals("sendmoney")){
             Start.driver.findElement(SendMoneyButton).click();
+            Thread.sleep(2000);
 
         }else if(page.equals("login")){
             Start.driver.findElement(LoginButton).click();
+            Thread.sleep(3000);
 
         }else if(page.equals("signup")) {
             Start.driver.findElement(SignupButton ).click();
@@ -31,9 +33,11 @@ public class HomePage {
 
         }else if(page.equals("getaquote")) {
             Start.driver.findElement(GetaQuoteLabel).click();
+            Thread.sleep(2000);
 
         }else if(page.equals("findalocation")){
             Start.driver.findElement(FindaLocationLabel).click();
+            Thread.sleep(2000);
 
         }else if(page.equals("intercom")){
             Start.driver.findElement(intercom).click();
