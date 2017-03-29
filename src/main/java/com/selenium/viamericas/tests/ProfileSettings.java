@@ -49,7 +49,7 @@ public class ProfileSettings {
         ProfileSettingsPage.changetheaddressline1();
         ProfileSettingsPage.addtheoptionalfields();
         ProfileSettingsPage.changestate();
-
+        ProfileSettingsPage.changeUnionPlusNameOrId("unionName","unionId");
 
         //ProfileSettingsPage.gotoclosepopup();
         ProfileSettingsPage.changecity();
@@ -74,5 +74,10 @@ public class ProfileSettings {
         Assert.assertTrue(Start.driver.getCurrentUrl().contains("profile"));
     }
 
+    @Test(enabled = true, priority = 4)
+    public void changeUnionPlus() throws Exception {
+        ProfileSettingsPage.changeUnionPlusNameOrId("unionName","unionId");
+
+    }
 }
 
