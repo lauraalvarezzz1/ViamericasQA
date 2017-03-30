@@ -1,8 +1,7 @@
 package com.selenium.viamericas.pages;
 
 import com.selenium.viamericas.utility.DataGenerators;
-import com.selenium.viamericas.tests.UnionTestsSignUp;
-import com.selenium.viamericas.utility.Language;
+import com.selenium.viamericas.utility.Utility;
 import org.openqa.selenium.By;
 import com.selenium.viamericas.utility.Start;
 import org.openqa.selenium.Keys;
@@ -10,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 
 public class SignUpPage {
     WebDriver driver;
-    public static Language language = new Language();
+    public static Utility language = new Utility();
 
     //<---------OBLIGATORY--------->
     public static By emailaddress = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div[2]/div/form/div[1]/input");
