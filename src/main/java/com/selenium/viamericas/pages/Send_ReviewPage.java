@@ -25,6 +25,8 @@ public class Send_ReviewPage {
     public static void sendmoneybutton() throws Exception {
         Thread.sleep(5000);
         Start.driver.findElement(SendmoneyButton).click();
+        Thread.sleep(5000);
+
     }
 
     public static void verifydiscount (String coupon) {
