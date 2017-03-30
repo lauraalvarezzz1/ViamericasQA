@@ -1,11 +1,13 @@
 package com.selenium.viamericas.pages;
 
 import com.selenium.viamericas.utility.DataGenerators;
+import com.selenium.viamericas.utility.Language;
 import com.selenium.viamericas.utility.Start;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
 public class Send_FundingPage {
+    public static Language language = new Language();
 
     public static By bankaccountbutton = By.xpath("html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[1]/div[1]/div/div");
     public static By creditaccountbutton = By.xpath("html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[1]/div[2]/div/div");
@@ -17,14 +19,14 @@ public class Send_FundingPage {
     public static By accountnickname = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[3]/input");
     public static By routingname = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[4]/input");
     public static By accountnumber = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[5]/input");
-    public static By accounttype = By.xpath(".//*[@placeholder='Account Type']");
+    public static By accounttype = By.xpath(".//*[@placeholder='"+ language.getaccountType()+"']");
 
     //<--------CREDIT/DEBIT BUTTON----------->
     public static By cardholdername = By.xpath("html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[3]/input");
     public static By cardnickname = By.xpath("html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[4]/input");
     public static By cardnumber = By.xpath("html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[5]/input");
-    public static By monthdropdown = By.xpath(".//*[@placeholder='Month]");
-    public static By yeardropdown = By.xpath(".//*[@placeholder='Year']");
+    public static By monthdropdown = By.xpath(".//*[@placeholder='"+ language.getMonth()+"']");
+    public static By yeardropdown = By.xpath(".//*[@placeholder='"+ language.getYear()+"']");
     public static By CVVcode = By.xpath("html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[7]/input");
     public static By closepopup = By.xpath("/html/body/div[3]/div[2]/button[1]");
 
@@ -40,12 +42,12 @@ public class Send_FundingPage {
     //Bank Account
     public static void addbankholdername() throws Exception {
         Thread.sleep(3000);
-        Start.driver.findElement(accountholdername).sendKeys("LAURA ALVAREZ");
+        Start.driver.findElement(accountholdername).sendKeys("Test Funding");
     }
 
     public static void addbanknickname() throws Exception {
         Thread.sleep(3000);
-        Start.driver.findElement(accountnickname).sendKeys("LAURA ALVAREZ");
+        Start.driver.findElement(accountnickname).sendKeys("Test funding");
     }
 
     public static void addroutingnumber() throws Exception {
@@ -68,12 +70,12 @@ public class Send_FundingPage {
     //Credit/Debit
     public static void addcardholdername() throws Exception {
         Thread.sleep(3000);
-        Start.driver.findElement(cardholdername).sendKeys("JAYDEN ADRIAN");
+        Start.driver.findElement(cardholdername).sendKeys("JAYDEN ADRIAN TEST");
     }
 
     public static void addcardnickname() throws Exception {
         Thread.sleep(3000);
-        Start.driver.findElement(cardnickname).sendKeys("JAYDEN ADRIAN");
+        Start.driver.findElement(cardnickname).sendKeys("JAYDEN ADRIAN TEST");
     }
 
     public static void addcardnumber() throws Exception {
