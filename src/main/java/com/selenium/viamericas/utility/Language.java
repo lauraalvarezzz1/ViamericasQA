@@ -13,6 +13,7 @@ public class Language {
     private String country;
     private String accountType;
     private String city;
+    private String state;
     private String day;
     private String month;
     private String year;
@@ -46,6 +47,10 @@ public class Language {
         return city;
     }
 
+    public String getState() {
+        return state;
+    }
+
     public String getDay() {
         return day;
     }
@@ -71,6 +76,7 @@ public class Language {
         this.money  = "¿A dónde envía dinero? (opcional)";
         this.accountType = "Tipo de cuenta";
         this.discount = "Seleccione descuento";
+        this.state = "Estado";
     }
 
     private void English(){
@@ -82,6 +88,7 @@ public class Language {
         this.money = "Where do you send money? (optional)";
         this.accountType = "Account Type";
         this.discount = "Select Discount";
+        this.state = "State";
 
     }
 
