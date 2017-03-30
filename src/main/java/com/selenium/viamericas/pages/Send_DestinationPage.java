@@ -1,5 +1,6 @@
 package com.selenium.viamericas.pages;
 
+import com.selenium.viamericas.utility.Language;
 import com.selenium.viamericas.utility.Start;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -9,11 +10,13 @@ import org.openqa.selenium.support.ui.SystemClock;
 
 public class Send_DestinationPage {
 
-    public static By countrydropdown = By.xpath(".//*[@placeholder='Country']");
+    public static Language language = new Language();
+
+    public static By countrydropdown = By.xpath(".//*[@placeholder='"+ language.getCountry()+"']");
     public static By sendAmount = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[5]/div[1]/div/input");
     public static By bankdepositButton = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[2]/div[1]/div[1]/div");
     public static By cashpickupbutton = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[2]/div[1]/div[2]/div");
-    public static By bankdropdown = By.xpath(".//*[@placeholder='Choose a Bank']");
+    public static By bankdropdown = By.xpath(".//*[@placeholder='"+ language.getChoosebank()+"']");
     public static By continueButton = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[2]/button[2]");
     public static By backButton = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[2]/button[1]");
     public static By exchangerate = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[6]/div");
