@@ -144,7 +144,7 @@ public class Coupons {
         Send_FundingPage.addroutingnumber();
         Send_FundingPage.addnumber();
         Send_FundingPage.selecttype();
-        Send_FundingPage.continuebutton();
+        Send_FundingPage.setClosepopup();
         Assert.assertTrue(Start.driver.getCurrentUrl().contains("review"));
         Send_ReviewPage.sendmoneybutton();
         Assert.assertTrue(Start.driver.getCurrentUrl().contains("confirmation"));
