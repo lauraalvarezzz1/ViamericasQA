@@ -19,6 +19,7 @@ public class Language {
     private String year;
     private String money;
     private String discount;
+    private String choosebank;
     public void select(){
         try {
             if (Start.driver.findElement(By.linkText("About Us")).isDisplayed()){
@@ -39,8 +40,10 @@ public class Language {
         return country;
     }
 
-    public String getaccountType() {
-        return accountType;
+    public String getaccountType() {return accountType;}
+
+    public String getChoosebank() {
+        return choosebank;
     }
 
     public String getCity() {
@@ -77,6 +80,7 @@ public class Language {
         this.accountType = "Tipo de cuenta";
         this.discount = "Seleccione descuento";
         this.state = "Estado";
+        this.choosebank = "Escoger un banco";
     }
 
     private void English(){
@@ -89,6 +93,7 @@ public class Language {
         this.accountType = "Account Type";
         this.discount = "Select Discount";
         this.state = "State";
+        this.choosebank = "Choose a Bank";
 
     }
 
