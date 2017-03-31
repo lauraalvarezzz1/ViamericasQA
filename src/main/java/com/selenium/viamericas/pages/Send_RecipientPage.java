@@ -1,7 +1,7 @@
 package com.selenium.viamericas.pages;
 
 import com.selenium.viamericas.utility.DataGenerators;
-import com.selenium.viamericas.utility.Language;
+import com.selenium.viamericas.utility.Utility;
 import com.selenium.viamericas.utility.Start;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -10,7 +10,7 @@ import org.openqa.selenium.Keys;
  * Created by talosdigital on 1/28/17.
  */
 public class Send_RecipientPage {
-    public static Language language = new Language();
+    public static Utility language = new Utility();
     //<---------OBLIGATORY--------->
     public static By firstname = By.xpath("html/body/div[2]/div/div[1]/div[2]/div[1]/div/div/form/div[1]/div[2]/div[2]/input");
     public static By lastname = By.xpath("html/body/div[2]/div/div[1]/div[2]/div[1]/div/div/form/div[1]/div[2]/div[4]/input");

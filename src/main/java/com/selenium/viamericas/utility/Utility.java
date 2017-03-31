@@ -22,64 +22,35 @@ public class Utility {
     private String money;
     private String selectProgamUnionPlus;
     private String selectNameUnionPlus;
-
     private String discount;
     private String choosebank;
+
+
+    //----------------Getters------------------------------
+    public String getSelectProgamUnionPlus() {return selectProgamUnionPlus;}
+    public String getSelectNameUnionPlus() {return selectNameUnionPlus;}
+    public String getCountry() {return country;}
+    public String getDiscount(){ return discount; }
+    public String getaccountType() {return accountType;}
+    public String getChoosebank() {return choosebank;}
+    public String getCity() {return city;}
+    public String getState() {return state;}
+    public String getDay() {return day;}
+    public String getMonth() {return month;}
+    public String getYear() {return year;}
+    public String getMoney() {return money;}
+    //-------------------------------------------------
 
     public void select(){
         try {
             if (Start.driver.findElement(By.linkText("About Us")).isDisplayed()){
-               English();
+                English();
             }
         }catch (Exception e)
         {
             Spanish();
         }
-
-;
     }
-    public String getSelectProgamUnionPlus() {
-        return logIn;
-    }
-
-    public String getSelectNameUnionPlus() {
-        return logIn;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public String getaccountType() {return accountType;}
-
-    public String getChoosebank() {
-        return choosebank;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public String getDay() {
-        return day;
-    }
-
-    public String getMonth() {
-        return month;
-    }
-
-    public String getYear() {
-        return year;
-    }
-
-    public String getMoney() {
-        return money;
-    }
-
     private void Spanish (){
         this.country = "País";
         this.city = "Ciudad";
@@ -91,7 +62,6 @@ public class Utility {
         this.choosebank = "Escoger un banco";
 
     }
-    public String getDiscount(){ return discount; }
 
     private void English(){
         this.country = "Country";
