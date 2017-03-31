@@ -1,13 +1,13 @@
 package com.selenium.viamericas.pages;
 
 
-import com.selenium.viamericas.utility.Language;
 import com.selenium.viamericas.utility.Start;
+import com.selenium.viamericas.utility.Utility;
 import org.openqa.selenium.By;
 
 public class Send_ReviewPage {
 
-    public static Language language = new Language();
+    public static Utility language = new Utility();
     public static By verifyname = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[2]/label");
     public static By verifylastname = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[4]/label");
     public static By verifynumberphone = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[6]/label");

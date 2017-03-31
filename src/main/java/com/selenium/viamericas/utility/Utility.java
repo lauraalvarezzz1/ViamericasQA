@@ -22,7 +22,7 @@ public class Utility {
     private String money;
     private String discount;
     private String choosebank;
-    
+
     public void select(){
         try {
             if (Start.driver.findElement(By.linkText("About Us")).isDisplayed()){
