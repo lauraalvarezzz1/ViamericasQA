@@ -26,7 +26,7 @@ public class Start {
 
             driver = new FirefoxDriver();
             driver.manage().window().maximize();
-            driver.navigate().to("https://test.govianex.com/#/");
+            driver.navigate().to("https://dev.govianex.com/#/");
             driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
             /** }else if(Server.equals("phantomjs")){

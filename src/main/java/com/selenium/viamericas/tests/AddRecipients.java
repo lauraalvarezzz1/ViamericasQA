@@ -5,6 +5,7 @@ import com.selenium.viamericas.pages.LoginPage;
 import com.selenium.viamericas.pages.MyAccount;
 import com.selenium.viamericas.subpages.Recipients;
 import com.selenium.viamericas.utility.Start;
+import com.selenium.viamericas.utility.Utility;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -16,7 +17,7 @@ public class AddRecipients {
     public void start() throws Exception {
         Start.initiate("test");
         HomePage.Goto("login");
-        LoginPage.login("laura.alvarez@talosdigital.com", "Laura123");
+        LoginPage.login(Utility.getProperty("test.acc2"), Utility.getProperty("test.pass2"));
         HomePage.Goto("recipients");
     }
 

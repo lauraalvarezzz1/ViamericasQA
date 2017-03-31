@@ -1,6 +1,7 @@
 package com.selenium.viamericas.tests;
 
 import com.selenium.viamericas.pages.*;
+import com.selenium.viamericas.utility.Utility;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -13,7 +14,7 @@ public class SendMoneyFlow {
         public void start() throws Exception {
             Start.initiate("test");
             HomePage.Goto("login");
-            LoginPage.login("laura.alvarez@talosdigital.com", "Laura123");
+            LoginPage.login(Utility.getProperty("test.acc2"), Utility.getProperty("test.pass2"));
             HomePage.Goto("sendmoney");
         }
 
@@ -88,6 +89,6 @@ public class SendMoneyFlow {
        public void ReviewPage() throws Exception {
             Send_FundingPage.setClosepopup();
             Send_ReviewPage.sendmoneybutton();
-            //Assert.assertTrue(Start.driver.getCurrentUrl().contains("confirmation"));
+            Assert.assertTrue(Start.driver.getCurrentUrl().contains("review"));
     }
 }

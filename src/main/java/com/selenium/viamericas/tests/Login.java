@@ -2,6 +2,7 @@ package com.selenium.viamericas.tests;
 
 import com.selenium.viamericas.pages.HomePage;
 import com.selenium.viamericas.pages.LoginPage;
+import com.selenium.viamericas.utility.Utility;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -42,8 +43,8 @@ public class Login {
     @Test(enabled = true, priority = 3)
     public void verifywrongpassword() throws Exception {
         LoginPage.clearfields();
-        LoginPage.typeemail("laura.alvarez@talosdigital.com");
-        LoginPage.typepassword("Laura123123");
+        LoginPage.typeemail(Utility.getProperty("test.acc2"));
+        LoginPage.typepassword(Utility.getProperty("test.pass2"));
         LoginPage.clicklogin();
         Assert.assertNotNull(LoginPage.wrongcredentials);
     }
@@ -51,8 +52,8 @@ public class Login {
     @Test(enabled = true, priority = 4)
     public void validationpassword() throws Exception {
         LoginPage.clearfields();
-        LoginPage.typeemail("laura.alvarez@talosdigital.com");
-        LoginPage.typepassword("1234567");
+        LoginPage.typeemail(Utility.getProperty("test.acc2"));
+        LoginPage.typepassword(Utility.getProperty("test.pass2"));
         LoginPage.clicklogin();
         Assert.assertNotNull(LoginPage.wrongcredentials);
     }
@@ -60,8 +61,8 @@ public class Login {
     @Test(enabled = true, priority = 5)
     public void correctlogin() throws Exception{
         LoginPage.clearfields();
-        LoginPage.typeemail("laura.alvarez@talosdigital.com");
-        LoginPage.typepassword("Test4echo");
+        LoginPage.typeemail(Utility.getProperty("test.acc2"));
+        LoginPage.typepassword(Utility.getProperty("test.pass2"));
         LoginPage.clicklogin();
         Thread.sleep(2000);
         Assert.assertFalse(Start.driver.getCurrentUrl().contains("account/login"));
