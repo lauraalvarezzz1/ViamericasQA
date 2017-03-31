@@ -68,7 +68,11 @@ public class HomePage {
         }else if(page.equalsIgnoreCase("main")){
             Start.driver.findElement(logoIcon).click();
             Thread.sleep(2000);
-        }
+        }else if(page.equalsIgnoreCase("myaccount")){
+        Start.driver.findElement(myaccountlabel).click();
+        Thread.sleep(2000);
+    }
+
 
     }
 

@@ -1,12 +1,14 @@
 package com.selenium.viamericas.subpages;
 
 import com.selenium.viamericas.utility.Start;
+import com.selenium.viamericas.utility.Utility;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 public class ProfileSettingsPage {
+	public static Utility language = new Utility();
 
 	
 	//<------------FORM------------>
@@ -27,9 +29,10 @@ public class ProfileSettingsPage {
 	public static By ZipCode = By
 			.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/div[2]/div/div/form/div[13]/div/div[2]/input");
 	// -------------Union Plus -----------------
-	public static By accountUnionPlusName = By.xpath("");
-	public static By accountUnionPlusId = By.xpath("");
 
+	public static By selectUnionPlusProgram = By.xpath(".//*[@placeholder='"+ language.getSelectProgamUnionPlus()+"']");
+	public static By selectUnionPlusName = By.xpath(".//*[@placeholder='"+ language.getSelectNameUnionPlus()+"']");
+	public static By accountUnionPlusId = By.xpath("//*[@id=\"edit-affiliate\"]/div[3]/input");
 
 
 	//<-----------------BUTTONS--------------->
@@ -142,10 +145,16 @@ public class ProfileSettingsPage {
 			Thread.sleep(2000);
 	}
 
-	public static void changeUnionPlusNameOrId(String unionName, String unionId) throws InterruptedException{
+	public static void changeUnionPlusId(String unionId) throws InterruptedException{
 
-		Start.driver.findElement(accountUnionPlusName).sendKeys(unionName);
 		Start.driver.findElement(accountUnionPlusId).sendKeys(unionId);
+
+	}
+	public static void addUnionPlusAffiliate(String unionPlusProgram, String unionPlusName, String unionPlusId) throws InterruptedException{
+
+		Start.driver.findElement(selectUnionPlusProgram).sendKeys(unionPlusProgram);
+		Start.driver.findElement(selectUnionPlusName).sendKeys(unionPlusName);
+		Start.driver.findElement(accountUnionPlusId).sendKeys(unionPlusId);
 
 	}
 }
