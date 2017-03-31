@@ -72,17 +72,6 @@ public class Language {
 
     public String getDiscount(){ return discount; }
 
-    private void Spanish (){
-        this.country = "País";
-        this.city = "Ciudad";
-        this.day  = "Día";
-        this.money  = "¿A dónde envía dinero? (opcional)";
-        this.accountType = "Tipo de cuenta";
-        this.discount = "Seleccione descuento";
-        this.state = "Estado";
-        this.choosebank = "Escoger un banco";
-    }
-
     private void English(){
         this.country = "Country";
         this.city = "City";
@@ -96,6 +85,19 @@ public class Language {
         this.choosebank = "Choose a Bank";
 
     }
+
+    private void Spanish (){
+        this.country = "Country";
+        this.city = "Ciudad";
+        this.day  = "Día";
+        this.money  = "¿A dónde envía dinero? (opcional)";
+        this.accountType = "Tipo de cuenta";
+        this.discount = "Seleccione descuento";
+        this.state = "Estado";
+        this.choosebank = "Escoger un banco";
+    }
+
+
 
 }
 

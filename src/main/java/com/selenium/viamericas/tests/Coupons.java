@@ -102,7 +102,7 @@ public class Coupons {
         Send_FundingPage.addnumber();
         Send_FundingPage.selecttype();
         //Send_FundingPage.continuebutton();
-        Assert.assertTrue(Start.driver.getCurrentUrl().contains("fast-send-money/account/pre-register"));
+        Assert.assertTrue(Start.driver.getCurrentUrl().contains("account/pre-register"));
 
 }
 
