@@ -3,6 +3,7 @@ package com.selenium.viamericas.tests;
 import com.selenium.viamericas.pages.HomePage;
 import com.selenium.viamericas.pages.LoginPage;
 import com.selenium.viamericas.pages.TransactionHistoryPage;
+import com.selenium.viamericas.utility.Utility;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -15,7 +16,7 @@ public class TransactionHistory {
     public void start() throws Exception {
         Start.initiate("test");
         HomePage.Goto("login");
-        LoginPage.login("cristhian.preciado@talosdigital.com", "Test4echo");
+        LoginPage.login(Utility.getProperty("test.acc2"), Utility.getProperty("test.pass2"));
         HomePage.Goto("transaction");
     }
 

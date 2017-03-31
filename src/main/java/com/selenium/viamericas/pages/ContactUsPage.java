@@ -2,6 +2,7 @@ package com.selenium.viamericas.pages;
 
 
 import com.selenium.viamericas.utility.Start;
+import com.selenium.viamericas.utility.Utility;
 import org.openqa.selenium.By;
 
 public class ContactUsPage {
@@ -24,7 +25,7 @@ public class ContactUsPage {
     }
 
     public static void setYouremailaddress() throws Exception {
-        Start.driver.findElement(youremailaddress).sendKeys("laura.alvarez@talosdigital.com");
+        Start.driver.findElement(youremailaddress).sendKeys(Utility.getProperty("test.acc2"));
         Thread.sleep(5000);
     }
 

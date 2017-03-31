@@ -26,7 +26,12 @@ public class ProfileSettingsPage {
 			.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/div[2]/div/div/form/div[11]/input"); //OPTIONAL
 	public static By ZipCode = By
 			.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/div[2]/div/div/form/div[13]/div/div[2]/input");
-	
+	// -------------Union Plus -----------------
+	public static By accountUnionPlusName = By.xpath("");
+	public static By accountUnionPlusId = By.xpath("");
+
+
+
 	//<-----------------BUTTONS--------------->
 	public static By UpdateButton = By
 			.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/div[2]/div/div/form/div[17]/button[1]");
@@ -135,5 +140,12 @@ public class ProfileSettingsPage {
 			Start.driver.findElement(City).sendKeys(Keys.DOWN);
 			Start.driver.findElement(City).sendKeys(Keys.ENTER);
 			Thread.sleep(2000);
+	}
+
+	public static void changeUnionPlusNameOrId(String unionName, String unionId) throws InterruptedException{
+
+		Start.driver.findElement(accountUnionPlusName).sendKeys(unionName);
+		Start.driver.findElement(accountUnionPlusId).sendKeys(unionId);
+
 	}
 }
