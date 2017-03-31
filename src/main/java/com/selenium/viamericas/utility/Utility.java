@@ -19,6 +19,9 @@ public class Utility {
     private String month;
     private String year;
     private String money;
+    private String selectProgamUnionPlus;
+    private String selectNameUnionPlus;
+
     public void select(){
         try {
             if (Start.driver.findElement(By.linkText("About Us")).isDisplayed()){
@@ -31,7 +34,11 @@ public class Utility {
 
 ;
     }
-    public String getLogIn() {
+    public String getSelectProgamUnionPlus() {
+        return logIn;
+    }
+
+    public String getSelectNameUnionPlus() {
         return logIn;
     }
 
@@ -69,6 +76,9 @@ public class Utility {
         this.day  = "Día";
         this.money  = "¿A dónde envía dinero? (opcional)";
         this.accountType = "Tipo de cuenta";
+        this.selectProgamUnionPlus = "Seleccione el programa";
+        this.selectNameUnionPlus = "Nombre de sindicato";
+
     }
 
     private void English(){
@@ -79,6 +89,8 @@ public class Utility {
         this.year = "Year";
         this.money = "Where do you send money? (optional)";
         this.accountType = "Account Type";
+        this.selectProgamUnionPlus = "Select Program";
+        this.selectNameUnionPlus = "Union Name";
 
     }
     public static String getProperty(String property)

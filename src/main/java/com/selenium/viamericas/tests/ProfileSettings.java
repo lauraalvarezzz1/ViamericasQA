@@ -11,6 +11,8 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import java.util.Random;
+
 
 public class ProfileSettings {
 
@@ -50,7 +52,7 @@ public class ProfileSettings {
         ProfileSettingsPage.changetheaddressline1();
         ProfileSettingsPage.addtheoptionalfields();
         ProfileSettingsPage.changestate();
-        ProfileSettingsPage.changeUnionPlusNameOrId("unionName","unionId");
+        ProfileSettingsPage.changeUnionPlusId("unionId");
 
         //ProfileSettingsPage.gotoclosepopup();
         ProfileSettingsPage.changecity();
@@ -81,8 +83,18 @@ public class ProfileSettings {
         HomePage.Goto("login");
         LoginPage.login(Utility.getProperty("test.acc2"), Utility.getProperty("test.pass2"));
         HomePage.Goto("myaccount");
-        ProfileSettingsPage.changeUnionPlusNameOrId("unionName","unionId");
+        ProfileSettingsPage.changeUnionPlusId("unionId");
+    }
 
+    @Test(enabled = true, priority = 4)
+    public void addUnionPlusAffiliate() throws Exception {
+        Start.initiate("test");
+        HomePage.Goto("login");
+        LoginPage.login(Utility.getProperty("test.acc2"), Utility.getProperty("test.pass2"));
+        HomePage.Goto("myaccount");
+        ProfileSettingsPage.addUnionPlusAffiliate(Utility.getProperty("test.test.UnionPlusProgram.1"),
+                Utility.getProperty("test.UnionPlusName."+Random.class.newInstance().nextInt((1 - 5) + 1) + 1),
+                Utility.getProperty("111111"));
     }
 }
 
