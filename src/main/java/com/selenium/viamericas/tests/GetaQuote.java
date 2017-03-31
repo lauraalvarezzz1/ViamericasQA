@@ -3,6 +3,7 @@ package com.selenium.viamericas.tests;
 import com.selenium.viamericas.pages.GetaQuotePage;
 import com.selenium.viamericas.pages.HomePage;
 import com.selenium.viamericas.pages.LoginPage;
+import com.selenium.viamericas.utility.Utility;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -16,7 +17,7 @@ public class GetaQuote {
 
         Start.initiate("dev");
         HomePage.Goto("login");
-        LoginPage.login("laura.alvarez@talosdigital.com", "Laura123");
+        LoginPage.login(Utility.getProperty("test.acc2"), Utility.getProperty("test.pass2"));
         HomePage.Goto("getaquote");
 
     }

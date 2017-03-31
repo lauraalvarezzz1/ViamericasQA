@@ -2,10 +2,8 @@ package com.selenium.viamericas.tests;
 
 import com.selenium.viamericas.pages.LoginPage;
 import com.selenium.viamericas.pages.SignUpPage;
-import com.selenium.viamericas.utility.DataGenerators;
 import com.selenium.viamericas.utility.Start;
-import com.selenium.viamericas.utility.Language;
-import org.openqa.selenium.By;
+import com.selenium.viamericas.utility.Utility;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -14,7 +12,7 @@ import org.testng.annotations.Test;
 
 public class UnionTestsSignUp {
 
-    public Language language;
+    public Utility language;
 
     @BeforeClass
     public void start() throws Exception {

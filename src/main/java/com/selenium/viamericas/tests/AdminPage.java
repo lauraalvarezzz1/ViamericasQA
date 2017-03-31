@@ -6,6 +6,7 @@ import com.selenium.viamericas.subpages.PrivacyPolicyPage;
 import com.selenium.viamericas.subpages.TCPPHistoryPage;
 import com.selenium.viamericas.subpages.Terms_and_ConditionsPage;
 import com.selenium.viamericas.utility.Start;
+import com.selenium.viamericas.utility.Utility;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -17,7 +18,7 @@ public class AdminPage {
     public void start() throws Exception {
         Start.initiate("test");
         HomePage.Goto("login");
-        LoginPage.login("viamericas@gmail.com", "admin123");
+        LoginPage.login(Utility.getProperty("test.acc2"), Utility.getProperty("test.pass2"));
         HomePage.Goto("adminpage");
     }
 

@@ -6,6 +6,7 @@ import com.selenium.viamericas.pages.LoginPage;
 import com.selenium.viamericas.pages.MyAccount;
 import com.selenium.viamericas.subpages.ProfileSettingsPage;
 import com.selenium.viamericas.utility.Start;
+import com.selenium.viamericas.utility.Utility;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -17,7 +18,7 @@ public class ProfileSettings {
     public void start() throws Exception {
         Start.initiate("test");
         HomePage.Goto("login");
-        LoginPage.login("laura.alvarez@talosdigital.com", "Laura123");
+        LoginPage.login(Utility.getProperty("test.acc2"), Utility.getProperty("test.pass2"));
         HomePage.Goto("myaccount");
     }
 
@@ -49,7 +50,7 @@ public class ProfileSettings {
         ProfileSettingsPage.changetheaddressline1();
         ProfileSettingsPage.addtheoptionalfields();
         ProfileSettingsPage.changestate();
-
+        ProfileSettingsPage.changeUnionPlusNameOrId("unionName","unionId");
 
         //ProfileSettingsPage.gotoclosepopup();
         ProfileSettingsPage.changecity();
@@ -74,5 +75,14 @@ public class ProfileSettings {
         Assert.assertTrue(Start.driver.getCurrentUrl().contains("profile"));
     }
 
+    @Test(enabled = true, priority = 4)
+    public void changeUnionPlus() throws Exception {
+        Start.initiate("test");
+        HomePage.Goto("login");
+        LoginPage.login(Utility.getProperty("test.acc2"), Utility.getProperty("test.pass2"));
+        HomePage.Goto("myaccount");
+        ProfileSettingsPage.changeUnionPlusNameOrId("unionName","unionId");
+
+    }
 }
 
