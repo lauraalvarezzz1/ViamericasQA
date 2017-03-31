@@ -19,7 +19,7 @@ public class Send_BankdepositPage {
 
     public static void Completeaccountname() throws Exception {
         Thread.sleep(3000);
-        Start.driver.findElement(accountholdername).sendKeys("Laura Cristina A");
+        Start.driver.findElement(accountholdername).sendKeys("Test Bank Deposit");
     }
 
     public static void Completeaccountnumber() throws Exception {

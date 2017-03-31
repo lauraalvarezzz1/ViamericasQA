@@ -15,10 +15,14 @@ public class Utility {
     private String country;
     private String accountType;
     private String city;
+    private String state;
     private String day;
     private String month;
     private String year;
     private String money;
+    private String discount;
+    private String choosebank;
+    
     public void select(){
         try {
             if (Start.driver.findElement(By.linkText("About Us")).isDisplayed()){
@@ -39,12 +43,18 @@ public class Utility {
         return country;
     }
 
-    public String getaccountType() {
-        return accountType;
+    public String getaccountType() {return accountType;}
+
+    public String getChoosebank() {
+        return choosebank;
     }
 
     public String getCity() {
         return city;
+    }
+
+    public String getState() {
+        return state;
     }
 
     public String getDay() {
@@ -63,13 +73,7 @@ public class Utility {
         return money;
     }
 
-    private void Spanish (){
-        this.country = "País";
-        this.city = "Ciudad";
-        this.day  = "Día";
-        this.money  = "¿A dónde envía dinero? (opcional)";
-        this.accountType = "Tipo de cuenta";
-    }
+    public String getDiscount(){ return discount; }
 
     private void English(){
         this.country = "Country";
@@ -79,7 +83,21 @@ public class Utility {
         this.year = "Year";
         this.money = "Where do you send money? (optional)";
         this.accountType = "Account Type";
+        this.discount = "Select Discount";
+        this.state = "State";
+        this.choosebank = "Choose a Bank";
 
+    }
+
+    private void Spanish (){
+        this.country = "Country";
+        this.city = "Ciudad";
+        this.day  = "Día";
+        this.money  = "¿A dónde envía dinero? (opcional)";
+        this.accountType = "Tipo de cuenta";
+        this.discount = "Seleccione descuento";
+        this.state = "Estado";
+        this.choosebank = "Escoger un banco";
     }
     public static String getProperty(String property)
     {
@@ -98,7 +116,6 @@ public class Utility {
 
             //load a properties file from class path, inside static method
             prop.load(input);
-
             //get the property value and print it out
             gotProp = prop.getProperty(property);
 
