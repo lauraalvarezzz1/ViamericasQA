@@ -89,6 +89,6 @@ public class SendMoneyFlow {
        public void ReviewPage() throws Exception {
             Send_FundingPage.setClosepopup();
             Send_ReviewPage.sendmoneybutton();
-            //Assert.assertTrue(Start.driver.getCurrentUrl().contains("confirmation"));
+            Assert.assertTrue(Start.driver.getCurrentUrl().contains("review"));
     }
 }

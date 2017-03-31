@@ -15,12 +15,16 @@ public class Utility {
     private String country;
     private String accountType;
     private String city;
+    private String state;
     private String day;
     private String month;
     private String year;
     private String money;
     private String selectProgamUnionPlus;
     private String selectNameUnionPlus;
+
+    private String discount;
+    private String choosebank;
 
     public void select(){
         try {
@@ -46,12 +50,18 @@ public class Utility {
         return country;
     }
 
-    public String getaccountType() {
-        return accountType;
+    public String getaccountType() {return accountType;}
+
+    public String getChoosebank() {
+        return choosebank;
     }
 
     public String getCity() {
         return city;
+    }
+
+    public String getState() {
+        return state;
     }
 
     public String getDay() {
@@ -78,8 +88,10 @@ public class Utility {
         this.accountType = "Tipo de cuenta";
         this.selectProgamUnionPlus = "Seleccione el programa";
         this.selectNameUnionPlus = "Nombre de sindicato";
+        this.choosebank = "Escoger un banco";
 
     }
+    public String getDiscount(){ return discount; }
 
     private void English(){
         this.country = "Country";
@@ -91,8 +103,12 @@ public class Utility {
         this.accountType = "Account Type";
         this.selectProgamUnionPlus = "Select Program";
         this.selectNameUnionPlus = "Union Name";
+        this.discount = "Select Discount";
+        this.state = "State";
+        this.choosebank = "Choose a Bank";
 
     }
+
     public static String getProperty(String property)
     {
         Properties prop = new Properties();
@@ -110,7 +126,6 @@ public class Utility {
 
             //load a properties file from class path, inside static method
             prop.load(input);
-
             //get the property value and print it out
             gotProp = prop.getProperty(property);
 

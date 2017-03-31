@@ -27,8 +27,8 @@ public class SendMoneyFlowAsaGuest {
         Send_DestinationPage.chooseBank();
         Assert.assertNotNull(Send_DestinationPage.exchangerate);
         Send_DestinationPage.selectamounttoSendGuest();
-        Send_DestinationPage.setOklahoma();
-        Send_DestinationPage.selectamounttoSend();
+        //Send_DestinationPage.setOklahoma();
+        //Send_DestinationPage.selectamounttoSend();
         Send_DestinationPage.goandcontinue();
         Assert.assertTrue(Start.driver.getCurrentUrl().contains("recipient"));
     }
@@ -80,29 +80,19 @@ public class SendMoneyFlowAsaGuest {
         Send_FundingPage.selectmonth();
         Send_FundingPage.selectyear();
         Send_FundingPage.addcvvcode();
-        Assert.assertTrue(Start.driver.getCurrentUrl().contains("review"));
-
-
+        Assert.assertTrue(Start.driver.getCurrentUrl().contains("account/pre-register"));
 
     }
 
-    @Test (enabled = true, priority = 4)
-    public void ReviewPage() throws Exception {
 
-        Send_ReviewPage.sendmoneybutton();
-        //Assert.assertTrue(Start.driver.getCurrentUrl().contains("account/pre-register"));
-        //Send_FundingPage.setClosepopup();
-        Assert.assertTrue(Start.driver.getCurrentUrl().contains("review"));
-    }
-
-    @Test(enabled = true, priority = 5)
+    @Test(enabled = true, priority = 4)
     public void gotothefirstform() throws Exception {
         SignUpPage.addemailaddress();
         SignUpPage.addpassword("test4echo");
         SignUpPage.clickonsignupbutton();
     }
 
-    @Test(enabled = true, priority = 6)
+    @Test(enabled = true, priority = 5)
     public void completestringfields() throws Exception {
         SignUpPage.addfirstname("LAURA");
         SignUpPage.addlastname("ALVAREZ");
@@ -115,24 +105,34 @@ public class SendMoneyFlowAsaGuest {
 
     }
 
-    @Test(enabled = true, priority = 7)
+    @Test(enabled = true, priority = 6)
     public void selectcity() throws Exception {
         Thread.sleep(2000);
         SignUpPage.selectcity("LOS ANGELES");
         Assert.assertNotNull(SignUpPage.cityDropdown);
     }
 
-    @Test(enabled = true, priority = 8)
+    @Test(enabled = true, priority = 7)
     public void closepopupandwheredoyousendmoney() throws Exception {
-        SignUpPage.setclosepupo();
+        //SignUpPage.setclosepupo();
         SignUpPage.setWheredoyousendmoney("COLOMBIA");
         //Assert.assertTrue(Start.driver.getCurrentUrl().contains("confirmation"));
     }
 
-    @Test(enabled = true, priority = 9)
+    @Test(enabled = true, priority = 8)
     public void createbutton() throws Exception {
         SignUpPage.acceptTCPP();
         SignUpPage.createbutton();
-        Assert.assertTrue(Start.driver.getCurrentUrl().contains("sendmoney/review"));
+        Assert.assertTrue(Start.driver.getCurrentUrl().contains("review"));
+    }
+
+
+    @Test (enabled = true, priority = 9)
+    public void ReviewPage() throws Exception {
+
+        Send_ReviewPage.sendmoneybutton();
+        //Assert.assertTrue(Start.driver.getCurrentUrl().contains("account/pre-register"));
+        //Send_FundingPage.setClosepopup();
+        Assert.assertTrue(Start.driver.getCurrentUrl().contains("revie"));
     }
 }

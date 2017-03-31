@@ -26,7 +26,7 @@ public class HomePage {
     //Buttons
     public static By getaQuoteButton = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/section[2]/div/div[2]/a[1]");
     public static By SignUpButton = By.xpath("/html/body/div[2]/div/div[1]/div[1]/header/div/ul/li[3]/button[1]");
-    public static By SendMoneybutton = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div[1]/section[4]/div[3]/div[1]");
+    public static By SendMoneybutton = By.xpath("/html/body/div[2]/div/div[1]/div[1]/header/nav-viamericas/nav/div[1]/ul[1]/li[1]/a");
 
     //Home Page Links
     public static By logoIcon = By.xpath("/html/body/div[2]/div/div[1]/div[1]/header/logo-viamericas/div/a/img");
