@@ -11,7 +11,7 @@ public class Send_FundingPage {
     public static Utility language = new Utility();
 
     public static By bankaccountbutton = By.xpath("html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[1]/div[1]/div/div");
-    public static By creditaccountbutton = By.xpath("html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[1]/div[2]/div/div");
+    public static By creditaccountbutton = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[1]/div[2]/div/div");
     public static By continueButton = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[2]/button[2]");
     public static By backButton = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[2]/button[1]");
 
@@ -30,9 +30,10 @@ public class Send_FundingPage {
     public static By yeardropdown = By.xpath(".//*[@placeholder='"+ language.getYear()+"']");
     public static By CVVcode = By.xpath("html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[7]/input");
     public static By closepopup = By.xpath("/html/body/div[3]/div[2]/button[1]");
+    public static By cardtype = By.xpath(".//*[@placeholder='Card Type'");
 
     public static void selectaccount(String selectaccountoption) throws Exception {
-        Thread.sleep(3000);
+        Thread.sleep(5000);
         if (selectaccountoption.equalsIgnoreCase("bankaccount")) {
             Start.driver.findElement(bankaccountbutton).click();
         } else if (selectaccountoption.equalsIgnoreCase("creditdebitbutton")) {
@@ -69,6 +70,13 @@ public class Send_FundingPage {
     }
 
     //Credit/Debit
+    public static void selectcreditordebit() throws Exception {
+        Start.driver.findElement(cardtype).sendKeys("DEBIT CARD");
+        Start.driver.findElement(cardtype).sendKeys(Keys.DOWN);
+        Start.driver.findElement(cardtype).sendKeys(Keys.ENTER);
+        Thread.sleep(1000);
+    }
+
     public static void addcardholdername() throws Exception {
         Thread.sleep(3000);
         Start.driver.findElement(cardholdername).sendKeys("JAYDEN ADRIAN TEST");

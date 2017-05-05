@@ -18,7 +18,7 @@ public class Start {
 
             System.setProperty("webdriver.chrome.driver", "src/chromedriver");
             driver = new ChromeDriver();
-            driver.manage().window().maximize();
+            //driver.manage().window().maximize();
             driver.navigate().to(baseurl);
             driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
 

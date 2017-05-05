@@ -24,6 +24,7 @@ public class Utility {
     private String selectNameUnionPlus;
     private String discount;
     private String choosebank;
+    private String cardtype;
 
 
     //----------------Getters------------------------------
@@ -39,6 +40,7 @@ public class Utility {
     public String getMonth() {return month;}
     public String getYear() {return year;}
     public String getMoney() {return money;}
+    public String getCardType() {return cardtype;}
     //-------------------------------------------------
 
     public void select(){
@@ -59,7 +61,9 @@ public class Utility {
         this.accountType = "Tipo de cuenta";
         this.selectProgamUnionPlus = "Seleccione el programa";
         this.selectNameUnionPlus = "Nombre de sindicato";
-        this.choosebank = "Escoger un banco";
+        this.choosebank = "Choose a Bank";
+        this.cardtype = "Tipo de tarjeta";
+
 
     }
 
@@ -76,6 +80,7 @@ public class Utility {
         this.discount = "Select Discount";
         this.state = "State";
         this.choosebank = "Choose a Bank";
+        this.cardtype = "Choose a Bank";
 
     }
 

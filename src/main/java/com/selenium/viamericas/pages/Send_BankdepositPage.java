@@ -41,4 +41,8 @@ public class Send_BankdepositPage {
         Thread.sleep(5000);
 
     }
+
+    public static void setBankDeposit(){
+
+    }
 }
