@@ -31,6 +31,14 @@ public class PaymentPage {
 			.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div[1]/div/div[2]/div/div/div[3]/div[1]/div[2]/div/div[1]");
 	public static By CreateButton = By
 			.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div[1]/div/div[2]/div/div/div[3]/div[2]/button");
+	public static By ContinueButton = By
+			.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div[1]/div/div[2]/div/div/div[2]/form/div[3]/button");
+	public static By ConfirmRemoveCard = By
+			.xpath("/html/body/div[3]/div[2]/button[1]");
+	public static By EditButton = By
+			.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div[1]/div/div[2]/div/div/div[1]/div[2]/div/div[2]/div/button[1]");
+	public static By SaveChangesButton = By
+			.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div[1]/div/div[2]/div/div/div[3]/div[3]/button[1]");
 
 
 	// CREATE BANK ACCOUNT
@@ -65,6 +73,8 @@ public class PaymentPage {
 			.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div[1]/div/div[2]/div/div/div[3]/form[2]/div[6]/input");
 	public static By WhatIsCVVCodeIcon = By
 			.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div[1]/div/div[2]/div/div/div[3]/form[2]/div[6]/a/i");
+	public static By ClosePopupCVV = By
+			.xpath("/html/body/div[3]/div[2]/span");
 
 
 	public static void clickoncreatebutton() throws Exception {
@@ -144,4 +154,93 @@ public class PaymentPage {
 		Thread.sleep(2000);
 	}
 
+	public static void createNewBankAccount() throws Exception {
+		Thread.sleep(2000);
+		Start.driver.findElement(AddNewAccountButton).click();
+		Start.driver.findElement(BankAccountButton).click();
+		Start.driver.findElement(BankAccountHolderName).sendKeys("Testing Bank Account");
+		Start.driver.findElement(BankAccountNickname).sendKeys("Testing Bank Account");
+		Start.driver.findElement(BankRoutingNumber).sendKeys("074900783");
+		Start.driver.findElement(BankAccountNumber).sendKeys(DataGenerators.generateAccountnumber());
+		Start.driver.findElement(BankAccountType).sendKeys("SAVINGS");
+		Start.driver.findElement(BankAccountType).sendKeys(Keys.DOWN);
+		Start.driver.findElement(BankAccountType).sendKeys(Keys.ENTER);
+		Start.driver.findElement(CreateButton).click();
+		Start.driver.findElement(closepopup).click();
+	}
+
+	public static void createNewCreditCard() throws Exception {
+		Thread.sleep(2000);
+		Start.driver.findElement(AddNewAccountButton).click();
+		Start.driver.findElement(CreditDebitButton).click();
+		Start.driver.findElement(CardTypes).sendKeys("Credit Card");
+		Start.driver.findElement(CardTypes).sendKeys(Keys.DOWN);
+		Start.driver.findElement(CardTypes).sendKeys(Keys.ENTER);
+		Start.driver.findElement(CardHolderName).sendKeys("TESTING CREDIT CARD");
+		Start.driver.findElement(CardNickname).sendKeys("TESTING CREDIT CARD");
+		Start.driver.findElement(CardNumber).sendKeys("5405980000000094");
+		Start.driver.findElement(MonthDropdown).sendKeys("12");
+		Start.driver.findElement(MonthDropdown).sendKeys(Keys.DOWN);
+		Start.driver.findElement(MonthDropdown).sendKeys(Keys.ENTER);
+		Start.driver.findElement(YearDropdown).sendKeys("2020");
+		Start.driver.findElement(YearDropdown).sendKeys(Keys.DOWN);
+		Start.driver.findElement(YearDropdown).sendKeys(Keys.ENTER);
+		Start.driver.findElement(CVVCode).sendKeys("918");
+		Start.driver.findElement(CreateButton).click();
+
+	}
+
+	public static void createNewDebitCard() throws Exception {
+		Thread.sleep(2000);
+		Start.driver.findElement(AddNewAccountButton).click();
+		Start.driver.findElement(CreditDebitButton).click();
+		Start.driver.findElement(CardTypes).sendKeys("Debit Card");
+		Start.driver.findElement(CardTypes).sendKeys(Keys.DOWN);
+		Start.driver.findElement(CardTypes).sendKeys(Keys.ENTER);
+		Start.driver.findElement(CardHolderName).sendKeys("TESTING DEBIT CARD");
+		Start.driver.findElement(CardNickname).sendKeys("TESTING DEBIT CARD");
+		Start.driver.findElement(CardNumber).sendKeys("5405980000000094");
+		Start.driver.findElement(MonthDropdown).sendKeys("12");
+		Start.driver.findElement(MonthDropdown).sendKeys(Keys.DOWN);
+		Start.driver.findElement(MonthDropdown).sendKeys(Keys.ENTER);
+		Start.driver.findElement(YearDropdown).sendKeys("2020");
+		Start.driver.findElement(YearDropdown).sendKeys(Keys.DOWN);
+		Start.driver.findElement(YearDropdown).sendKeys(Keys.ENTER);
+		Start.driver.findElement(CVVCode).sendKeys("919");
+		Start.driver.findElement(CreateButton).click();
+	}
+
+	public static void setVerifyAccount() throws Exception{
+		Thread.sleep(2000);
+		Start.driver.findElement(VerifyAccountButton).click();
+		Start.driver.findElement(VerifyAmount1Field).sendKeys("0.01");
+		Start.driver.findElement(VerifyAmount2Field).sendKeys("0.19");
+		Start.driver.findElement(VerifyButton).click();
+		Start.driver.findElement(ContinueButton).click();
+	}
+
+	public static void setDeleteCreditDebitCard() throws Exception{
+		Thread.sleep(2000);
+		Start.driver.findElement(DeleteCardButton).click();
+		Start.driver.findElement(ConfirmRemoveCard).click();
+	}
+
+	public static void setEditBankAccount() throws Exception{
+		Thread.sleep(2000);
+		Start.driver.findElement(EditButton).click();
+		Start.driver.findElement(BankAccountHolderName).sendKeys("Editing Bank Account");
+		Start.driver.findElement(BankAccountNickname).sendKeys("Editing Bank Account");
+		Start.driver.findElement(BankRoutingNumber).sendKeys("021000021");
+		Start.driver.findElement(BankAccountNumber).sendKeys(DataGenerators.generateAccountnumber());
+		Start.driver.findElement(BankAccountType).sendKeys("Checking Account");
+		Start.driver.findElement(SaveChangesButton).click();
+
+	}
+
+	public static void setChecktheCVVIcon() throws Exception{
+		Thread.sleep(2000);
+		Start.driver.findElement(AddNewAccountButton).click();
+		Start.driver.findElement(CreditDebitButton).click();
+		Start.driver.findElement(ClosePopupCVV).click();
+	}
 }
