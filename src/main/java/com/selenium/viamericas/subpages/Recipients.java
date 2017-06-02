@@ -1,9 +1,12 @@
 package com.selenium.viamericas.subpages;
 
 import com.selenium.viamericas.utility.Start;
+import com.selenium.viamericas.utility.Utility;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+
+import javax.rmi.CORBA.Util;
 
 public class Recipients {
 
@@ -19,7 +22,7 @@ public class Recipients {
 			.xpath("html/body/div[2]/div/div[1]/div[2]/div/div/div[2]/div/form/div[4]/button");
 	public static By MyAccountLabel = 
 			By.xpath("html/body/div[2]/div/div[1]/div[1]/header/div/ul/li[4]/a");
-	
+
 	// <-----------RECIPIENT------------->
 	public static By RecipientsLabel = By
 			.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/div[1]/ul/li[2]/a");
@@ -63,6 +66,13 @@ public class Recipients {
 	public static By accountType = By.xpath(".//*[@placeholder='Account Type']");
 	public static By createbuttonwithintheform = By
 			.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/div[2]/div/div/div[3]/div/div/button");
+
+	public static By editRecipientButton = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div[1]/div/div[2]/div/div/div[1]/div["+Utility.readRecipient()+"]/div[8]/button[1]");
+
+	public void editRecipient(String recipient){
+		Utility.saveRecipient();
+		System.out.println(Utility.readRecipient());
+	}
 
 	public static void GotoRecipients() throws InterruptedException {
 		Start.driver.findElement(RecipientsLabel).click();

@@ -1,13 +1,13 @@
 package com.selenium.viamericas.pages;
 
 import com.selenium.viamericas.utility.DataGenerators;
-import com.selenium.viamericas.utility.Language;
+import com.selenium.viamericas.utility.Utility;
 import com.selenium.viamericas.utility.Start;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
 public class Send_FundingPage {
-    public static Language language = new Language();
+    public static Utility language = new Utility();
 
     public static By bankaccountbutton = By.xpath("html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[1]/div[1]/div/div");
     public static By creditaccountbutton = By.xpath("html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[1]/div[2]/div/div");
