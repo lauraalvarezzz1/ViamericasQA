@@ -10,6 +10,7 @@
 
 # Mac
 .DS_Store
+*.class
 
 # Maven
 log/
@@ -17,3 +18,5 @@ target/
 
 # Dont ignore
 !chromedriver.exe
+phantomjsdriver.log
+0

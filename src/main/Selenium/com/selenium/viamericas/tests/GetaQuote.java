@@ -10,16 +10,17 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import com.selenium.viamericas.utility.Start;
 
+import java.util.Random;
+
 public class GetaQuote {
 
     @BeforeClass
     public void start() throws Exception {
 
-        Start.initiate("dev");
+        Start.initiate("test");
         HomePage.Goto("login");
         LoginPage.login(Utility.getProperty("test.acc2"), Utility.getProperty("test.pass2"));
         HomePage.Goto("getaquote");
-
     }
 
     @AfterClass
@@ -84,4 +85,15 @@ public class GetaQuote {
     public void verifyTitLe() throws Exception{
         Assert.assertEquals(GetaQuotePage.gettitle(),"Get A Quote");
     }
+
+    @Test(enabled = true, priority = 6)
+    public void verifyFullGetaQuotePage() throws Exception{
+        Random rand = new Random();
+        int randomNum = rand.nextInt(2-1)+1;
+        GetaQuotePage.getElementsinDropdown();
+        GetaQuotePage.setGetaQuiteFullPageBankAccount("COLOMBIA", "10", Utility.getProperty("test.receivingMethod."+randomNum));
+        Assert.assertNotNull(GetaQuotePage.bestexhangeratetitle);
+    }
+
+
 }

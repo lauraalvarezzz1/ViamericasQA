@@ -19,8 +19,8 @@ public class PaymentTests {
     public void start() throws Exception {
         Start.initiate("test");
         HomePage.Goto("login");
-        LoginPage.login(Utility.getProperty("test.acc2"), Utility.getProperty("test.pass2"));
-        HomePage.Goto("accounts");
+        LoginPage.login(Utility.getProperty("test.acc"), Utility.getProperty("test.pass"));
+        HomePage.Goto("myaccount");
     }
 
     @AfterClass
