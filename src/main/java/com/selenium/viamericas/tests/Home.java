@@ -40,7 +40,6 @@ public class Home {
     }
     @Test(enabled = true, priority = 2)
     public void checkAboutUsPage() throws Exception {
-        Start.driver.get(Start.baseurl);
         Thread.sleep(3000);
         HomePage.footerGoto("aboutus");
         Assert.assertTrue(Start.driver.getCurrentUrl().contains("about-us"));

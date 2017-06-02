@@ -1,6 +1,6 @@
 package com.selenium.viamericas.pages;
 
-import com.selenium.viamericas.utility.Language;
+import com.selenium.viamericas.utility.Utility;
 import com.selenium.viamericas.utility.Start;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.SystemClock;
 
 public class Send_DestinationPage {
 
-    public static Language language = new Language();
+    public static Utility language = new Utility();
 
     public static By countrydropdown = By.xpath(".//*[@placeholder='"+ language.getCountry()+"']");
     public static By sendAmount = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[5]/div[1]/div/input");
