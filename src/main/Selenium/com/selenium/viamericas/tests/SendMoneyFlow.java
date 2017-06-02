@@ -27,7 +27,7 @@ public class SendMoneyFlow {
         public void FillDestinationInformation() throws Exception {
             Send_DestinationPage.selectCountry();
             Send_DestinationPage.howMoneyRecieved("BankDeposit");
-            Send_DestinationPage.chooseBank();
+            //Send_DestinationPage.chooseBank();
             Assert.assertNotNull(Send_DestinationPage.exchangerate);
             Send_DestinationPage.selectamounttoSend();
             Send_DestinationPage.goandcontinue();
@@ -41,27 +41,27 @@ public class SendMoneyFlow {
             Send_RecipientPage.completephonenumber();
             Send_RecipientPage.addadressline1();
             Send_RecipientPage.emailaddress();
-            Send_RecipientPage.selectmonth();
-            Send_RecipientPage.selectday();
-            Send_RecipientPage.selectyear();
+            //Send_RecipientPage.selectmonth();
+            //Send_RecipientPage.selectday();
+            //Send_RecipientPage.selectyear();
             Send_RecipientPage.selectstate();
             Send_RecipientPage.selectcity();
             Send_RecipientPage.continuebutton();
             Assert.assertTrue(Start.driver.getCurrentUrl().contains("bankdeposit"));
          }
 
-       @Test (enabled = true, priority = 2)
+      /* @Test (enabled = true, priority = 2)
         public void RecipientBankDeposit() throws Exception {
             Send_BankdepositPage.Completeaccountname();
             Send_BankdepositPage.Completeaccountnumber();
             Send_BankdepositPage.selectaccounttype();
             Send_BankdepositPage.goandcontinue();
             Assert.assertTrue(Start.driver.getCurrentUrl().contains("funding"));
-    }
+    }*/
 
         @Test (enabled = true, priority = 3)
         public void FundingPagewithBankAccount() throws Exception {
-            Send_FundingPage.selectaccount("bankaccount");
+            Send_FundingPage.selectaccount("cashpickup");
             Send_FundingPage.continuebutton();
             Send_FundingPage.addbankholdername();
             Send_FundingPage.addbanknickname();

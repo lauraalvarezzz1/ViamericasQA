@@ -1,11 +1,11 @@
 package com.selenium.viamericas.tests;
 
 import com.selenium.viamericas.pages.*;
+import com.selenium.viamericas.utility.Start;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import com.selenium.viamericas.utility.Start;
 
 public class SendMoneyFlowAsaGuest {
 
@@ -24,7 +24,7 @@ public class SendMoneyFlowAsaGuest {
     public void FillDestinationInformation() throws Exception {
         Send_DestinationPage.selectCountry();
         Send_DestinationPage.howMoneyRecieved("BankDeposit");
-        Send_DestinationPage.chooseBank();
+        //Send_DestinationPage.chooseBank();
         Assert.assertNotNull(Send_DestinationPage.exchangerate);
         Send_DestinationPage.selectamounttoSendGuest();
         //Send_DestinationPage.setOklahoma();
@@ -46,10 +46,10 @@ public class SendMoneyFlowAsaGuest {
         Send_RecipientPage.selectstate();
         Send_RecipientPage.selectcity();
         Send_RecipientPage.continuebutton();
-        Assert.assertTrue(Start.driver.getCurrentUrl().contains("bankdeposit"));
+        //Assert.assertTrue(Start.driver.getCurrentUrl().contains("bankdeposit"));
     }
 
-    @Test (enabled = true, priority = 2)
+    @Test (enabled = false, priority = 2)
     public void RecipientBankDeposit() throws Exception {
         Send_BankdepositPage.Completeaccountname();
         Send_BankdepositPage.Completeaccountnumber();
@@ -75,12 +75,13 @@ public class SendMoneyFlowAsaGuest {
     public void FundingPagewithCardAccount() throws Exception {
         Send_FundingPage.selectaccount("creditdebitbutton");
         Send_FundingPage.continuebutton();
+        Send_FundingPage.selectcreditordebit();
         Send_FundingPage.addcardholdername();
         Send_FundingPage.addcardnumber();
         Send_FundingPage.selectmonth();
         Send_FundingPage.selectyear();
         Send_FundingPage.addcvvcode();
-        Assert.assertTrue(Start.driver.getCurrentUrl().contains("account/pre-register"));
+        Assert.assertTrue(Start.driver.getCurrentUrl().contains("review"));
 
     }
 

@@ -22,8 +22,8 @@ public class Send_RecipientPage {
     public static By day = By.xpath(".//*[@placeholder='"+ language.getDay()+"']");
     public static By year = By.xpath(".//*[@placeholder='"+ language.getYear()+"']");
 
-    public static By state = By.xpath(".//*[@placeholder='"+ language.getState()+"']");
-    public static By city = By.xpath(".//*[@placeholder='"+ language.getCity()+"']");
+    public static By state = By.xpath(".//*[@placeholder='State']");
+    public static By city = By.xpath(".//*[@placeholder='City']");
 
     public static By continueButton = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[2]/button[2]");
 
@@ -74,14 +74,14 @@ public class Send_RecipientPage {
     }
 
     public static void selectstate() throws Exception {
-        Start.driver.findElement(state).sendKeys("ANTIOQUIA");
+        Start.driver.findElement(state).sendKeys("AHUACHAPAN");
         Start.driver.findElement(state).sendKeys(Keys.DOWN);
         Start.driver.findElement(state).sendKeys(Keys.ENTER);
         Thread.sleep(1000);
     }
 
     public static void selectcity() throws Exception {
-        Start.driver.findElement(city).sendKeys("MEDELLIN");
+        Start.driver.findElement(city).sendKeys("AHUACHAPAN");
         Start.driver.findElement(city).sendKeys(Keys.DOWN);
         Start.driver.findElement(city).sendKeys(Keys.ENTER);
         Thread.sleep(2000);

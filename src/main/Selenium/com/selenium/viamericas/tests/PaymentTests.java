@@ -3,15 +3,17 @@ package com.selenium.viamericas.tests;
 import com.selenium.viamericas.pages.HomePage;
 import com.selenium.viamericas.pages.LoginPage;
 import com.selenium.viamericas.pages.MyAccount;
-import com.selenium.viamericas.subpages.Accounts;
+import com.selenium.viamericas.subpages.PaymentPage;
 import com.selenium.viamericas.utility.Start;
 import com.selenium.viamericas.utility.Utility;
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class AddAccounts {
+public class PaymentTests {
+    WebDriver driver;
 
     @BeforeClass
     public void start() throws Exception {
@@ -33,29 +35,22 @@ public class AddAccounts {
         Assert.assertTrue(Start.driver.getCurrentUrl().contains("accounts"));
     }
 
-    @Test(enabled = true, priority = 2)
-    public void Createcardaccount() throws Exception {
-        Accounts.clickoncreatebutton();
-        Accounts.clickoncardAccount();
-        Accounts.addthecardholdername();
-        Accounts.addcardnumber();
-        Accounts.selectmonth();
-        Accounts.selectyear();
-        Accounts.addcvvcode();
-        Accounts.clickoncreateaccount();
-        Assert.assertTrue(Start.driver.getCurrentUrl().contains("accounts"));
+    @Test(enabled = true, priority = 1)
+    public void CreateBankAccount() throws Exception {
+        PaymentPage.createNewBankAccount();
+        Assert.assertTrue(Start.driver.getCurrentUrl().contains("settings/accounts"));
     }
 
     @Test(enabled = true, priority = 1)
-    public void bankaccount() throws Exception {
-        Accounts.clickoncreatebutton();
-        Accounts.addbankholdername();
-        Accounts.addbanknickname();
-        Accounts.addroutingnumber();
-        Accounts.addaccountnumber();
-        Accounts.selecttype();
-        Accounts.clickoncreateaccount();
-        Accounts.clickonclosepopup();
-        Assert.assertTrue(Start.driver.getCurrentUrl().contains("accounts"));
+    public void CreateCreditCard() throws Exception {
+        PaymentPage.createNewCreditCard();
+        Assert.assertTrue(Start.driver.getCurrentUrl().contains("settings/accounts"));
+
+    }
+
+    @Test(enabled = true, priority = 1)
+    public void CreateDebitCard() throws Exception {
+        PaymentPage.createNewDebitCard();
+        Assert.assertTrue(Start.driver.getCurrentUrl().contains("settings/accounts"));
     }
 }
