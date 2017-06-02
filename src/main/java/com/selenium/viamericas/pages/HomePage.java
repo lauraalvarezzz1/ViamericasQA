@@ -71,9 +71,7 @@ public class HomePage {
         }else if(page.equalsIgnoreCase("myaccount")){
         Start.driver.findElement(myaccountlabel).click();
         Thread.sleep(2000);
-    }
-
-
+        }
     }
 
     public static void footerGoto(String pag) throws Exception {

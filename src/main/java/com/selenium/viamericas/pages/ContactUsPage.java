@@ -43,6 +43,16 @@ public class ContactUsPage {
         Start.driver.findElement(sendMessageButton).click();
         Thread.sleep(5000);
     }
+    public static void setContactUsFullPage() throws  Exception{
+
+        Start.driver.findElement(ContactLabel).click();
+        Start.driver.findElement(yourname).sendKeys("Laura Alvarez");
+        Start.driver.findElement(youremailaddress).sendKeys(Utility.getProperty("test.acc2"));
+        Start.driver.findElement(message).sendKeys("It's a test, please don't answer");
+        Start.driver.findElement(nosoyrobot).click();
+        Start.driver.findElement(sendMessageButton).click();
+
+    }
 
 
 }

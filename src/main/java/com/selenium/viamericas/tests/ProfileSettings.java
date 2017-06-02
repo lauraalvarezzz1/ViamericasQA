@@ -5,12 +5,15 @@ import com.selenium.viamericas.pages.HomePage;
 import com.selenium.viamericas.pages.LoginPage;
 import com.selenium.viamericas.pages.MyAccount;
 import com.selenium.viamericas.subpages.ProfileSettingsPage;
+import com.selenium.viamericas.subpages.Recipients;
 import com.selenium.viamericas.utility.Start;
 import com.selenium.viamericas.utility.Utility;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
+import javax.rmi.CORBA.Util;
 import java.util.Random;
 
 
@@ -31,6 +34,9 @@ public class ProfileSettings {
     @Test(enabled = true, priority = 0)
     public void gotoMyaccount() throws Exception {
         MyAccount.goMyAccountlabel();
+        System.out.println(Recipients.editRecipientButton);
+        Utility.saveRecipient();
+        System.out.println(Recipients.editRecipientButton);
         Assert.assertTrue(Start.driver.getCurrentUrl().contains("profile"));
     }
 
@@ -42,7 +48,7 @@ public class ProfileSettings {
 
     @Test(enabled = true, priority = 2)
     public void EditProfileSettings() throws Exception {
-
+        MyAccount.goMyAccountlabel();
         ProfileSettingsPage.cleandropdowns();
 
         ProfileSettingsPage.changethefisrtname();
@@ -88,11 +94,9 @@ public class ProfileSettings {
     @Test(enabled = true, priority = 4)
     public void addUnionPlusAffiliate() throws Exception {
         Random rand = new Random();
-        int numRandom =rand.nextInt(5-1)+1;
+        int randomNum = rand.nextInt(5-1)+1;
         HomePage.Goto("myaccount");
-        String test1 =Utility.getProperty("test.UnionPlusProgram.1");
-        String unionName =Utility.getProperty("test.UnionPlusName."+ numRandom);
-
+        String unionName =Utility.getProperty("test.UnionPlusName."+ randomNum);
         ProfileSettingsPage.addUnionPlusAffiliate(Utility.getProperty("test.UnionPlusProgram.1"),
                 unionName,
                 Utility.getProperty("111111"));

@@ -1,6 +1,12 @@
 package com.selenium.viamericas.utility;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.io.InterruptedIOException;
+import java.util.StringTokenizer;
+import java.util.prefs.*;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -24,6 +30,7 @@ public class Utility {
     private String selectNameUnionPlus;
     private String discount;
     private String choosebank;
+    private static final String RECIPIENT = "1";
 
 
     //----------------Getters------------------------------
@@ -78,6 +85,33 @@ public class Utility {
         this.choosebank = "Choose a Bank";
 
     }
+    public static void waitForSomethingClickable(By in)
+    {
+        WebDriverWait wait = new WebDriverWait(Start.driver, 15);
+        wait.until(ExpectedConditions.elementToBeClickable(in));
+    }
+    public static Boolean isSomethingClickable(By in)
+    {
+        WebDriverWait wait = new WebDriverWait(Start.driver, 5);
+        Boolean isPresent = Start.driver.findElements(in).size() > 0;
+        return isPresent;
+    }
+
+    public static void saveRecipient() {
+
+        int recipientNumber = Integer.parseInt(readRecipient()) + 1;
+        //int recipientNumber = 1;
+        System.out.printf(String.valueOf(recipientNumber));
+        Preferences prefs = Preferences.userNodeForPackage(Utility.class);
+        prefs.put(RECIPIENT, String.valueOf(recipientNumber));
+    }
+
+    public static String readRecipient() {
+        Preferences prefs = Preferences.userNodeForPackage(Utility.class);
+        return prefs.get(RECIPIENT, "1");
+    }
+
+
 
     public static String getProperty(String property)
     {
