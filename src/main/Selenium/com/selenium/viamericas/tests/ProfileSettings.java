@@ -5,7 +5,7 @@ import com.selenium.viamericas.pages.HomePage;
 import com.selenium.viamericas.pages.LoginPage;
 import com.selenium.viamericas.pages.MyAccount;
 import com.selenium.viamericas.subpages.ProfileSettingsPage;
-import com.selenium.viamericas.subpages.Recipients;
+import com.selenium.viamericas.subpages.RecipientsPage;
 import com.selenium.viamericas.utility.Start;
 import com.selenium.viamericas.utility.Utility;
 import org.testng.Assert;
@@ -34,9 +34,9 @@ public class ProfileSettings {
     @Test(enabled = true, priority = 0)
     public void gotoMyaccount() throws Exception {
         MyAccount.goMyAccountlabel();
-        System.out.println(Recipients.editRecipientButton);
+        System.out.println(RecipientsPage.editRecipientButton);
         Utility.saveRecipient();
-        System.out.println(Recipients.editRecipientButton);
+        System.out.println(RecipientsPage.editRecipientButton);
         Assert.assertTrue(Start.driver.getCurrentUrl().contains("profile"));
     }
 

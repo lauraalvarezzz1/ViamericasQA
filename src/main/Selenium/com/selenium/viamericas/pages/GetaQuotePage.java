@@ -15,8 +15,10 @@ public class GetaQuotePage {
     public static By amountfield = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[1]/div[2]/div[1]/div/input");
     public static By bankdepositbutton = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[1]/div[3]/div[1]/div[1]/div");
     public static By cashpickupbutton = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[1]/div[3]/div[1]/div[2]/div");
+    public static By FeesandRatesButton = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[4]/button");
+
     public static By cashOrBankAloneButton = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[1]/div[3]/div[1]/div/div");
-    public static By getaquoteButton = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[4]/button");
+
     public static By bestexhangeratetitle = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[2]/div/h4");
     public static By sendmoneyButton = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[4]/button");
     public static By clearSelectedCountry = By.xpath("//*[@id=\"dropdown-clear\"]");
@@ -48,7 +50,7 @@ public class GetaQuotePage {
     }
 
     public static void getaquote() throws Exception {
-        Start.driver.findElement(getaquoteButton).click();
+        Start.driver.findElement(FeesandRatesButton).click();
         Thread.sleep(3000);
     }
 
