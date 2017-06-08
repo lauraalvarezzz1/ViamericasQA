@@ -17,10 +17,12 @@ exports.config = {
 
   // Spec patterns are relative to the current working directory when
   // protractor is called.
-  specs: ['spec.js'],
+  specs: ['addPayment.js'],
 
   // Options to be passed to Jasmine.
   jasmineNodeOpts: {
     defaultTimeoutInterval: 30000
-  }
+  },
+  allScriptsTimeout: 30000
+
 };
