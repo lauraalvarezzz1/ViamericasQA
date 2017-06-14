@@ -4,14 +4,18 @@ import com.selenium.viamericas.utility.Utility;
 import com.selenium.viamericas.utility.Start;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.SystemClock;
+import org.openqa.selenium.support.ui.Select;
+
 
 
 public class Send_DestinationPage {
+    WebDriver driver;
 
     public static Utility language = new Utility();
-    public static By countrydropdown = By.xpath(".//*[@placeholder='Country']");
+    public static By countrydropdown = By.xpath(".//*[@placeholder='"+ language.getCountry()+"']");
     public static By sendAmount = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[5]/div[1]/div/input");
     public static By firstButton = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[2]/div[1]/div[1]/div");
     public static By secondButton = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[2]/div[1]/div[2]/div");
@@ -23,6 +27,8 @@ public class Send_DestinationPage {
     public static By oklahomaState = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[4]/label/div/ins");
     public static By oklahoma = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[4]/label/div/ins");
 
+    /*WebElement mySelectElement = driver.findElement(By.xpath(".//*[@placeholder='"+ language.getCountry()+"']"));
+    Select countrydropdown= new Select(mySelectElement);*/
 
     public static void selectCountry() throws Exception {
         Thread.sleep(3000);
@@ -70,5 +76,6 @@ public class Send_DestinationPage {
 
 
 }
+
 
 

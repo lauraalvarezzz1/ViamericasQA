@@ -7,11 +7,11 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class SendMoneyFlowAsaGuest {
+public class FastSendMoneyFlow {
 
     @BeforeClass
     public void start() throws Exception {
-        Start.initiate("test");
+        Start.initiate("stage");
         HomePage.Goto("sendmoney");
     }
 
@@ -21,7 +21,7 @@ public class SendMoneyFlowAsaGuest {
     }
 
     @Test (enabled = true, priority = 0)
-    public void FillDestinationInformation() throws Exception {
+    public void FillTransactionInformation() throws Exception {
         Send_DestinationPage.selectCountry();
         Send_DestinationPage.howMoneyRecieved("BankDeposit");
         //Send_DestinationPage.chooseBank();
