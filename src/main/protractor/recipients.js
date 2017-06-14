@@ -2,6 +2,7 @@
  * Created by lauraalvarez on 5/06/17.
  */
 describe('Recipients Testing - Viamericas Web App', function() {
+
     //Login Form
     var LoginHomePage = browser.element(by.partialButtonText('Log In'));
     var LoginForm = browser.element(by.partialButtonText('Log In'));
@@ -13,67 +14,99 @@ describe('Recipients Testing - Viamericas Web App', function() {
     var gorecipients = browser.element(by.linkText('Recipients'));
     var createbutton = browser.element(by.id('create-recipient-2'));
 
-    //Recipient page fields
-    var recipientFirstName = browser.element(by.id('first-name'));
-    var recipientLastName = browser.element(by.id('last-name'));
-    var recipientMiddleName = browser.element(by.id('middle-name'));
-    var recipientSecondLastName = browser.element(by.id('second-last-name'));
-    var recipientPhone = browser.element(by.id('mobile-phone'));
-    var recipientEmail = browser.element(by.id('email'));
-    var month = browser.element(".//*[@placeholder='Month']"));
-    var day = browser.element(by.xpath(".//*[@placeholder='Day']"));
-    var year = browser.element(by.xpath(".//*[@placeholder='Year']"));
-    var recipientAddressOne = browser.element(by.id('address-1'));
-    var recipientAddressTwo = browser.element(by.id('address-2'));
-    var recipientCountry = browser.element(by.xpath(".//*[@placeholder='Country']"));
-    var recipientState = browser.element(by.xpath(".//*[@placeholder='State']"));
-    var recipientZipcode = browser.element(by.id("zipcode"));
-    var recipientCity = browser.element(by.xpath(".//*[@placeholder='City']"));
+    //Recipient information page
+    var first_name = browser.element(by.id('first-name'));
+    var middle_name_optional = browser.element(by.id('middle-name'));
+    var last_name = browser.element(by.id('last-name'));
+    var secondlast_name_optional = browser.element(by.id('second-last-name'));
+    var mobile_phone_optional = browser.element(by.id('mobile-phone'));
+    var email_optional = browser.element(by.id('email'));
+    var address_line1 = browser.element(by.id('address-1'));
+    var Month = browser.element(by.xpath(".//*[@placeholder='Month']"));
+    var Day = browser.element(by.xpath(".//*[@placeholder='Day']"));
+    var Year = browser.element(by.xpath(".//*[@placeholder='Year']"));
+
+    var option_list = browser.element(by.id("dropdown-list"));
 
 
 
-
-    //var dropdowncountry = element(by.model('dropdown.selectedText'));
     beforeEach(function() {
         browser.get('https://dev.govianex.com/#/account/login');
     });
 
     it('Creating a new Recipient', function() {
 
+        //Login
         Username.sendKeys("viamericas.testing@gmail.com");
         password.sendKeys("Viamericas123");
         LoginHomePage.click();
+        browser.sleep(7000);
 
-
+        //Wait for angular
         browser.ignoreSynchronization = true;
         browser.waitForAngular();
         browser.sleep(5000);
 
+        //Go to recipients
         gomyaccount.click();
         gorecipients.click();
+        browser.sleep(6000);
         createbutton.click();
 
-        recipientFirstName.sendKeys("Testing First");
-        recipientLastName.sendKeys("Testing last");
-        recipientMiddleName.sendKeys("Testing middle");
-        recipientSecondLastName.sendKeys("Testing second last");
-        recipientPhone.sendKeys("2013340044");
-        recipientEmail.sendKeys("protractor@testing.com");
-        month.sendKeys("2");
-        day.sendKeys("2");
-        year.sendKeys("1986");
-        recipientAddressOne.sendKeys("address one");
-        recipientAddressTwo.sendKeys("address two");
-        recipientCountry.sendKeys("COLOMBIA");
-        recipientState.sendKeys("ANTIOQUIA");
-        recipientZipcode.sendKeys("00057");
-        recipientCity.sendKeys("MEDELLIN");
+        //Complete the fields
+
+        first_name.sendKeys("Testing");
+        middle_name_optional.sendKeys("Testing");
+        last_name.sendKeys("Testing");
+        secondlast_name_optional.sendKeys("Testing");
+        mobile_phone_optional.sendKeys(numbergenerator(312000000, 312999999));
+        email_optional.sendKeys("Testing"+numbergenerator(1,9999)+"@gmail.com");
+        address_line1.sendKeys("Street 5 - Testing Address Line1");
+
+        Month.click();
+        Month.sendKeys(numbergenerator(0,1));
+        if (Month >= 1){
+            Month.sendKeys(numbergenerator(1,3));
+        } else{
+            Month.sendKeys(numbergenerator(1,9));
+        }
+        option_list.click();
+        browser.sleep(6000);
+
+        Year.click();
+        Year.sendKeys(numbergenerator(1900,1998));
+        option_list.click();
+        browser.sleep(6000);
+
+
+        Day.click();
+        if (Month >= 02){
+            Day.sendKeys(numbergenerator(0,2));
+            if (Day >= 0 || Day >= 1){
+                Day.sendKeys(numbergenerator(1,9));
+            }else{
+                Day.sendKeys(numbergenerator(0,8));
+            }
+        } else{
+            Day.sendKeys(numbergenerator(0,3));
+            if (Month==04 || Month==06 || Month==09 || Month==11 && Day==3){
+                Day.sendKeys(numbergenerator(0,0));
+            }else{
+            Day.sendKeys(numbergenerator(1,9));
+            }
+            browser.sleep(6000);
+        }
+        option_list.click();
+
 
         browser.pause();
-
         browser.ignoreSynchronization = false;
+
+
     });
 
 });
 
-
+numbergenerator = function(min, max){
+    return parseInt(Math.random() * (max - min) + min);
+};
