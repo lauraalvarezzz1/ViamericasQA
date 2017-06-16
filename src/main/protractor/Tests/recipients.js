@@ -1,6 +1,8 @@
 /**
  * Created by lauraalvarez on 5/06/17.
  */
+
+
 describe('Recipients Testing - Viamericas Web App', function() {
 
     //Login Form
@@ -25,14 +27,19 @@ describe('Recipients Testing - Viamericas Web App', function() {
     var Month = browser.element(by.xpath(".//*[@placeholder='Month']"));
     var Day = browser.element(by.xpath(".//*[@placeholder='Day']"));
     var Year = browser.element(by.xpath(".//*[@placeholder='Year']"));
-
-    var option_list = browser.element(by.id("dropdown-list"));
+    //var Country = browser.element(by.xpath(".//*[@placeholder='Country']"));
+    //var option_list = Country.children().length;
+    var Country = browser.element(by.id("country-select"));
+    var memory =
+        element.all(by.repeater('item in dropdown.list | filter : dropdown.filterElementsCriteria(dropdown.selectedText) | orderBy : dropdown.alphabeticalOrder : false : dropdown.orderElementsCriteria as filteredList'));
 
 
 
     beforeEach(function() {
         browser.get('https://dev.govianex.com/#/account/login');
+
     });
+
 
     it('Creating a new Recipient', function() {
 
@@ -63,23 +70,18 @@ describe('Recipients Testing - Viamericas Web App', function() {
         email_optional.sendKeys("Testing"+numbergenerator(1,9999)+"@gmail.com");
         address_line1.sendKeys("Street 5 - Testing Address Line1");
 
-        Month.click();
         Month.sendKeys(numbergenerator(0,1));
         if (Month >= 1){
-            Month.sendKeys(numbergenerator(1,3));
+            Month.sendKeys(numbergenerator(0,2));
         } else{
             Month.sendKeys(numbergenerator(1,9));
         }
-        option_list.click();
         browser.sleep(6000);
 
-        Year.click();
         Year.sendKeys(numbergenerator(1900,1998));
-        option_list.click();
         browser.sleep(6000);
 
 
-        Day.click();
         if (Month >= 02){
             Day.sendKeys(numbergenerator(0,2));
             if (Day >= 0 || Day >= 1){
@@ -96,17 +98,15 @@ describe('Recipients Testing - Viamericas Web App', function() {
             }
             browser.sleep(6000);
         }
-        option_list.click();
 
-
-        browser.pause();
         browser.ignoreSynchronization = false;
-
-
+        browser.pause();
     });
+
 
 });
 
 numbergenerator = function(min, max){
     return parseInt(Math.random() * (max - min) + min);
 };
+
