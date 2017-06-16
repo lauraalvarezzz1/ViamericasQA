@@ -8,11 +8,11 @@
 
 'use strict';
 
-var FeesandRatesPage = function() {
+var loginPage = function() {
       //Fees and Rates
       this.loginButton = element(by.partialButtonText('Log In'));
-      this.userName = element(by.model('login.user.username'));
-      this.password = element(by.model('login.user.password'));
+      this.userName = element(by.id('username'));
+      this.password = element(by.id('password'));
 };
 
-module.exports = new FeesandRatesPage();
+module.exports = new loginPage();
