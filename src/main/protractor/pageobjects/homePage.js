@@ -10,7 +10,8 @@
 
 var loginPage = function() {
     //Login Form
-    var goLoginHomePage = browser.element(by.partialButtonText('Log In'));
+    var go
+    LoginHomePage = browser.element(by.partialButtonText('Log In'));
     var LoginForm = browser.element(by.partialButtonText('Log In'));
     var Username = browser.element(by.model('login.user.username'));
     var password = browser.element(by.model('login.user.password'));
