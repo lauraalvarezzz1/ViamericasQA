@@ -31,6 +31,7 @@ describe('Fast send money Testing - Viamericas Web App', function() {
         element(by.css('.intercom-launcher-frame')).click();
 
         element(by.css('.intercom-launcher-frame')).click();
+
         var selectcountry =
             element.all(by.css('dropdown-viamericas#country-select ul.dropdown-viam-list li'))
                 .count().then(function(count) {
@@ -40,10 +41,10 @@ describe('Fast send money Testing - Viamericas Web App', function() {
                 console.log(ran);
                 browser.pause();
 
-            });
+            }, 3000);
 
         browser.sleep(2000);
-
+/*
         var Currency =
             element(by.id('dropdown-input'))
                 .isDisplayed().then(function (isVisible) {
@@ -52,7 +53,7 @@ describe('Fast send money Testing - Viamericas Web App', function() {
             } else {
                 console.log("no lo muestra");
             }
-        });
+        });*/
 
     });
 
