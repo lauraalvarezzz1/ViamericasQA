@@ -8,14 +8,14 @@
 
 'use strict';
 
-var loginPage = function() {
+var homePage = function() {
     //Login Form
-    var go
-    LoginHomePage = browser.element(by.partialButtonText('Log In'));
-    var LoginForm = browser.element(by.partialButtonText('Log In'));
-    var Username = browser.element(by.model('login.user.username'));
-    var password = browser.element(by.model('login.user.password'));
+    this.sendMoneyButton = element(by.linkText('Send Money'));
+    this.feesAndRatesButton = element(by.linkText('Fees and Rates'));
+    this.howItWorksButton = element(by.linkText('How it Works'));
+    this.locationsButton = element(by.linkText('Locations'));
+    this.signUpButton = element(by.buttonText('Sign up For Free'));
 
 };
 
-module.exports = new loginPage();
+module.exports = new homePage();

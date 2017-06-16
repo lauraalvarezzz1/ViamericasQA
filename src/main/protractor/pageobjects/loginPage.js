@@ -10,13 +10,9 @@
 
 var FeesandRatesPage = function() {
       //Fees and Rates
-      this.country = browser.element(by.xpath(".//*[@placeholder='Country']"));
-      this.amount = browser.element(by.id('amount'));
-      this.bankDepositButton = browser.element(by.xpath('/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[1]/div[3]/div[1]/div[1]/div'));
-      this.cashPickupButton = browser.element(by.xpath('Cash Pickup'));
-      this.feesAndRatesButton = browser.element(by.id('send-money'));
-      this.comparePrices = element(by.css('compare-prices-viam'));
-
+      this.loginButton = element(by.partialButtonText('Log In'));
+      this.userName = element(by.model('login.user.username'));
+      this.password = element(by.model('login.user.password'));
 };
 
 module.exports = new FeesandRatesPage();
