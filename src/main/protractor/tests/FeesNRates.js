@@ -4,78 +4,27 @@
 
 describe('Fees and Rates Testing - Viamericas Web App', function() {
 
-    //Login Form
-    var goLoginHomePage = browser.element(by.partialButtonText('Log In'));
-    var LoginForm = browser.element(by.partialButtonText('Log In'));
-    var Username = browser.element(by.model('login.user.username'));
-    var password = browser.element(by.model('login.user.password'));
-
-    //Fees and Rates
-    var goToFeesAndRates = browser.element(by.linkText('Fees and Rates'));
-    var country = browser.element(by.xpath(".//*[@placeholder='Country']"));
-    var amount = browser.element(by.id('amount'));
-    var bankDepositButton = browser.element(by.xpath('/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[1]/div[3]/div[1]/div[1]/div'));
-    var cashPickupButton = browser.element(by.xpath('Cash Pickup'));
-    var feesAndRatesButton = browser.element(by.id('send-money'));
-    var comparePrices = element(by.css('compare-prices-viam'));
-
     beforeEach(function() {
         browser.get('https://dev.govianex.com/');
-        feesAndRatesPage = require('./feesandRatesPage');
+        homePage = require('../pageobjects/homePage');
+        feesAndRatesPage = require('../pageobjects/feesandRatesPage');
+        loginPage = require('../pageobjects/loginPage');
     });
 
 
   it('Not logged in', function() {
-    goToFeesAndRates.click();
-    //Wait for angular
-    browser.ignoreSynchronization = true;
-    browser.waitForAngular();
-    browser.sleep(2000);
-    country.sendKeys("COLOMBIA");
-    amount.sendKeys("180");
-    browser.sleep(5000);
-    bankDepositButton.click();
-    browser.sleep(5000);
-    feesAndRatesButton.click();
+    homePage.feesAndRatesButton.click();
 
-    browser.ignoreSynchronization = false;
+    feesAndRatesPage.country.count().then(function(count) {
+       var ran = Math.floor((Math.random() * count) + 1);
+      feesAndRatesPage.countries.element(by.css('input#country-select')).click();
+      feesAndRatesPage.countries.element(by.css('ul.dropdown-viam-list li:nth-child('+ran+')')).click();
+       console.log(ran);
+       });
+
+    feesAndRatesPage.amount.sendKeys("180");
+    feesAndRatesPage.bankDepositButton.click();
+    homePage.feesAndRatesButton.click();
   });
 
-
-/*  it('Logged in', function() {
-
-        //Login
-        goLoginHomePage.click();
-        Username.sendKeys("viamericas.testing@gmail.com");
-        password.sendKeys("Viamericas123");
-        LoginForm.click();
-        browser.sleep(2000);
-
-        //Wait for angular
-        browser.ignoreSynchronization = true;
-        browser.waitForAngular();
-        browser.sleep(2000);
-        goToFeesAndRates.click();
-        browser.sleep(2000);
-        country.sendKeys("COLOMBIA");
-        amount.sendKeys("180");
-        browser.sleep(2000);
-
-        bankDepositButton.click();
-        feesAndRatesButton.click();
-
-        browser.pause();
-        browser.ignoreSynchronization = false;
-
-    });
-
-*/
-
-
-var memory =
-         element.all(by.repeater('item in dropdown.list'));
-
-       expect(memory.count()).toEqual(0);
-
-       console.log(memory);
-});
+ });
