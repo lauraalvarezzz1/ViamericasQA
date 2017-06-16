@@ -5,15 +5,15 @@
 
 describe('Fast send money Testing - Viamericas Web App', function() {
     var Country = browser.element(by.css("dropdown-viamericas#country-select"));
-    var Currency= browser.element(by.css("dropdown-viamericas#dropdown-input"));
+    var Currency= browser.element(by.css("dropdown-viamericas#recipient-currency-select"));
 
     beforeEach(function() {
 
         browser.get('https://dev.govianex.com/#/fast-send/destination');
-        browser.wait(function() {
+        /*browser.wait(function() {
             browser.executeScript('window.scrollTo(0,200);').then(function () {
             })
-        }, 3000);
+        }, 3000);*/
 
     });
 
@@ -38,21 +38,23 @@ describe('Fast send money Testing - Viamericas Web App', function() {
                 Country.element(by.css('input#country-select')).click();
                 Country.element(by.css('ul.dropdown-viam-list li:nth-child('+ran+')')).click();
                 console.log(ran);
-                browser.pause();
 
             });
 
         browser.sleep(2000);
 
         var Currency =
-            element(by.id('dropdown-input'))
+            element.all(by.css('dropdown-viamericas#recipient-currency-select ul.dropdown-viam-list li'))
                 .isDisplayed().then(function (isVisible) {
             if (isVisible) {
+                //Currency.element(by.css('input#recipient-currency-select')).click();
                 console.log("lo muestra");
             } else {
                 console.log("no lo muestra");
             }
-        });
+        }, 3000);
+
+
 
     });
 
