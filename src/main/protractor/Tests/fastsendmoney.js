@@ -5,7 +5,7 @@
 
 describe('Fast send money Testing - Viamericas Web App', function() {
     var Country = browser.element(by.css("dropdown-viamericas#country-select"));
-    var Currency= browser.element(by.css("dropdown-viamericas#recipient-currency-select"));
+    var Currency= browser.element(by.xpath(".//*[@placeholder='Currency']"));
 
     beforeEach(function() {
 
@@ -18,8 +18,7 @@ describe('Fast send money Testing - Viamericas Web App', function() {
     });
 
     it('should start out with an empty memory', function () {
-        browser.sleep(2000);
-
+        browser.sleep(4000);
         var plot0 = element(by.css('body'));
         browser.actions()
             .mouseMove(plot0, {x: 100, y: 100})
@@ -27,10 +26,10 @@ describe('Fast send money Testing - Viamericas Web App', function() {
             .mouseMove({x: 400, y: 0}) // 400px to the right of current location
             .perform();
         browser.sleep(2000);
-
         element(by.css('.intercom-launcher-frame')).click();
-
         element(by.css('.intercom-launcher-frame')).click();
+        browser.sleep(2000);
+
         var selectcountry =
             element.all(by.css('dropdown-viamericas#country-select ul.dropdown-viam-list li'))
                 .count().then(function(count) {
@@ -39,20 +38,31 @@ describe('Fast send money Testing - Viamericas Web App', function() {
                 Country.element(by.css('ul.dropdown-viam-list li:nth-child('+ran+')')).click();
                 console.log(ran);
 
+                browser.sleep(5000);
+
+
+                if(Currency.isPresent()){
+                    console.log("super bien");
+                } else  {
+                    console.log("noo");
+                }
+
             });
 
-        browser.sleep(2000);
 
-        var Currency =
-            element.all(by.css('dropdown-viamericas#recipient-currency-select ul.dropdown-viam-list li'))
+
+        /*var Currency =
+            element(by.css('dropdown-viamericas#recipient-currency-select'))
                 .isDisplayed().then(function (isVisible) {
+                    console.log(isVisible);
+
             if (isVisible) {
-                //Currency.element(by.css('input#recipient-currency-select')).click();
                 console.log("lo muestra");
             } else {
                 console.log("no lo muestra");
             }
-        }, 3000);
+        }, 3000);*/
+
 
 
 
