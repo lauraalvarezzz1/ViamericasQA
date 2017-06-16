@@ -15,7 +15,14 @@ var homePage = function() {
     this.howItWorksButton = element(by.linkText('How it Works'));
     this.locationsButton = element(by.linkText('Locations'));
     this.signUpButton = element(by.buttonText('Sign up For Free'));
+    this.logInButton = element(by.partialButtonText('Log In'));
+    this.signUpButtonXpath = element(by.xpath('/html/body/div[2]/div/div[1]/div[1]/header/div/ul/li[3]/button[1]'));
+    this.logInButtonXpath = element(by.xpath('/html/body/div[2]/div/div[1]/div[1]/header/div/ul/li[3]/button[2]'));
 
+    //Logged in
+    this.gomyaccount = element(by.xpath('/html/body/div[2]/div/div[1]/div[2]/div/div[1]/div/div[1]/ul/li[1]/a'));
+    this.gorecipients = element(by.xpath('/html/body/div[2]/div/div[1]/div[2]/div/div[1]/div/div[1]/ul/li[2]/a'));
+    this.goToPayments = element(by.xpath('/html/body/div[2]/div/div[1]/div[2]/div/div[1]/div/div[1]/ul/li[3]/a'));
 };
 
 module.exports = new homePage();
