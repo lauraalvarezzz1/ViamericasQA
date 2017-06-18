@@ -5,15 +5,11 @@
 
 describe('Fast send money Testing - Viamericas Web App', function() {
     var Country = browser.element(by.css("dropdown-viamericas#country-select"));
-    var Currency= browser.element(by.xpath(".//*[@placeholder='Currency']"));
+    var Currency = browser.element(by.css("dropdown-viamericas#recipient-currency-select"));
 
     beforeEach(function() {
 
         browser.get('https://dev.govianex.com/#/fast-send/destination');
-        /*browser.wait(function() {
-            browser.executeScript('window.scrollTo(0,200);').then(function () {
-            })
-        }, 3000);*/
 
     });
 
@@ -32,39 +28,36 @@ describe('Fast send money Testing - Viamericas Web App', function() {
 
         var selectcountry =
             element.all(by.css('dropdown-viamericas#country-select ul.dropdown-viam-list li'))
-                .count().then(function(count) {
-                var ran = Math.floor((Math.random() * count) + 1);
+                .count().then(function(countCountries) {
+                var ran = Math.floor((Math.random() * countCountries) + 1);
                 Country.element(by.css('input#country-select')).click();
                 Country.element(by.css('ul.dropdown-viam-list li:nth-child('+ran+')')).click();
                 console.log(ran);
 
-                browser.sleep(5000);
-
-
-                if(Currency.isPresent()){
-                    console.log("super bien");
-                } else  {
-                    console.log("noo");
-                }
-
             });
 
+        browser.sleep(5000);
 
-
-        /*var Currency =
-            element(by.css('dropdown-viamericas#recipient-currency-select'))
-                .isDisplayed().then(function (isVisible) {
-                    console.log(isVisible);
-
-            if (isVisible) {
-                console.log("lo muestra");
-            } else {
-                console.log("no lo muestra");
+        element(by.css('dropdown-viamericas#recipient-currency-select')).isDisplayed().then(function(rs){
+            console.log(rs);
+            if(rs){
+                console.log("This have more than 1 currency available");
+                var selectcurrency =
+                    element.all(by.css('dropdown-viamericas#recipient-currency-select ul.dropdown-viam-list li'))
+                        .count().then(function(countCurrencies) {
+                        browser.sleep(5000);
+                        var ran = Math.floor((Math.random() * countCurrencies) + 1);
+                        Currency.element(by.css('input#recipient-currency-select')).click();
+                        Currency.element(by.css('ul.dropdown-viam-list li:nth-child('+ran+')')).click();
+                        console.log(ran);
+                    });
+            }else{
+                console.log("The actual country only has one currency available");
             }
-        }, 3000);*/
+            browser.sleep(5000);
+        });
 
-
-
+        
 
     });
 
