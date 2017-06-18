@@ -20,7 +20,7 @@ var homePage = function() {
     this.logInButtonXpath = element(by.xpath('/html/body/div[2]/div/div[1]/div[1]/header/div/ul/li[3]/button[2]'));
 
     //Logged in
-    this.gomyaccount = element(by.xpath('/html/body/div[2]/div/div[1]/div[2]/div/div[1]/div/div[1]/ul/li[1]/a'));
+    this.gomyaccount = element(by.xpath('/html/body/div[2]/div/div[1]/div[1]/header/div/ul/li[4]/a'));
     this.gorecipients = element(by.xpath('/html/body/div[2]/div/div[1]/div[2]/div/div[1]/div/div[1]/ul/li[2]/a'));
     this.goToPayments = element(by.xpath('/html/body/div[2]/div/div[1]/div[2]/div/div[1]/div/div[1]/ul/li[3]/a'));
 };
