@@ -67,9 +67,40 @@ describe('Recipients Testing - Viamericas Web App', function() {
             }else{
             recipientsPage.day.sendKeys(numbergenerator(1,9));
             }
-            browser.sleep(6000);
         }
+        browser.sleep(3000);
 
+        var selectcountry =
+            recipientsPage.countryLI.count().then(function(countCountries) {
+                var ran = Math.floor((Math.random() * countCountries) + 1);
+                recipientsPage.country.element(by.css('input#country-select')).click();
+                recipientsPage.country.element(by.css('ul.dropdown-viam-list li:nth-child('+ran+')')).click();
+                console.log("Countries available:" +ran);
+
+            });
+        browser.sleep(3000);
+
+        var selectstate =
+            recipientsPage.stateLI.count().then(function(countstates) {
+                var ran = Math.floor((Math.random() * countstates) + 1);
+                recipientsPage.state.element(by.css('input#state-select')).click();
+                recipientsPage.state.element(by.css('ul.dropdown-viam-list li:nth-child('+ran+')')).click();
+                console.log("States available"+ ran);
+
+            });
+
+        browser.sleep(3000);
+
+        var selectcity =
+            recipientsPage.cityLI.count().then(function(countcities) {
+                var ran = Math.floor((Math.random() * countcities) + 1);
+                recipientsPage.city.element(by.css('input#city-select')).click();
+                recipientsPage.city.element(by.css('ul.dropdown-viam-list li:nth-child('+ran+')')).click();
+                console.log("Cities available" +ran);
+
+            });
+
+        browser.pause();
     });
 
 
