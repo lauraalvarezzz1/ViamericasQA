@@ -39,6 +39,7 @@ var sendMoneyFlowPage = function() {
 
     this.amount = element(by.id('amount'));
     this.continueButton = element(by.id('continue'));
+    this.url = browser.getCurrentUrl('https://dev.govianex.com/#/fast-send/bankdeposit');
 };
 
 module.exports = new sendMoneyFlowPage();

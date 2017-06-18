@@ -23,6 +23,8 @@ var recipientsPage = function() {
       this.month = element(by.xpath(".//*[@placeholder='Month']"));
       this.day = element(by.xpath(".//*[@placeholder='Day']"));
       this.year = element(by.xpath(".//*[@placeholder='Year']"));
+      this.zipcode = element(by.id('zipcode'));
+      this.cpfbrazil = element(by.id('number-id-bra'));
 
       this.countryLI = element.all(by.css('dropdown-viamericas#country-select ul.dropdown-viam-list li'));
       this.country = element(by.css('dropdown-viamericas#country-select'));

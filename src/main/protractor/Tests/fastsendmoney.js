@@ -9,6 +9,7 @@ describe('Fast send money Testing - Viamericas Web App', function() {
         browser.get('https://dev.govianex.com/');
         homePage = require('../po/homePage');
         sendmoneyFlowPage = require('../po/sendMoneyFlowPage');
+        recipientsPage = require('../po/recipientsPage');
     });
 
     it('should start out with an empty memory', function () {
@@ -26,15 +27,16 @@ describe('Fast send money Testing - Viamericas Web App', function() {
 
         homePage.sendMoneyButton.click();
 
+        //<--------- SELECT COUNTRY/TRANSACTION INFORMATION PAGE ----------------->
         var selectcountry =
             sendmoneyFlowPage.countryLI.count().then(function(countCountries) {
-                var ran = Math.floor((Math.random() * countCountries) + 1);
+                var countryselected = Math.floor((Math.random() * countCountries) + 1);
                 sendmoneyFlowPage.country.element(by.css('input#country-select')).click();
-                sendmoneyFlowPage.country.element(by.css('ul.dropdown-viam-list li:nth-child('+ran+')')).click();
-            });
-
+                sendmoneyFlowPage.country.element(by.css('ul.dropdown-viam-list li:nth-child('+countryselected+')')).click();
+        console.log(countryselected);
         browser.sleep(2000);
 
+        //<--------- SELECT CURRENCY/TRANSACTION INFORMATION PAGE ----------------->
         sendmoneyFlowPage.currency.isDisplayed().then(function(rs){
             if(rs){
                 console.log("This have more than 1 currency available");
@@ -47,30 +49,22 @@ describe('Fast send money Testing - Viamericas Web App', function() {
                     });
             }else{
                 console.log("The actual country only has one currency available");
-            }
-            browser.sleep(2000);
+            }browser.sleep(2000);
         });
 
+        //<--------- SELECT CASH PICKUP OR BANK DEPOSIT/TRANSACTION INFORMATION PAGE ----------------->
         sendmoneyFlowPage.secondButton.isPresent().then(function(rs){
             if(rs) {
                 var button = Math.floor((Math.random() * 2) + 1);
                 if(button==1){
                     sendmoneyFlowPage.firstButton.click();
                 }else{
-                    sendmoneyFlowPage.secondButton.click();
-                }
+                    sendmoneyFlowPage.secondButton.click();}
             }else{
                 sendmoneyFlowPage.firstButton.click();
-            }
+            }browser.sleep(2000);
 
-           /* if (sendmoneyFlowPage.firstButton==element(by.partialButtonText('Bank Deposit'))||
-                sendmoneyFlowPage.firstButton== element(by.partialButtonText('Banco'))){
-                console.log("si es");
-            }else{
-                console.log("no es");
-            }*/
-            browser.sleep(2000);
-
+            //<--------- SELECT BANK OR REGIONAL NETWORK/TRANSACTION INFORMATION PAGE ----------------->
             sendmoneyFlowPage.state.isPresent().then(function(rs){
                 if(rs) {
                     var selectstate =
@@ -78,9 +72,8 @@ describe('Fast send money Testing - Viamericas Web App', function() {
                             var ran = Math.floor((Math.random() * countstates) + 1);
                             sendmoneyFlowPage.state.element(by.css('input#states-select')).click();
                             sendmoneyFlowPage.state.element(by.css('ul.dropdown-viam-list li:nth-child('+ran+')')).click();
-                            console.log("States available"+ ran);
+                            console.log("States available "+ ran);
                         });
-
                     browser.sleep(2000);
 
                     var selectcity =
@@ -88,10 +81,8 @@ describe('Fast send money Testing - Viamericas Web App', function() {
                             var ran = Math.floor((Math.random() * countcities) + 1);
                             sendmoneyFlowPage.city.element(by.css('input#cities-select')).click();
                             sendmoneyFlowPage.city.element(by.css('ul.dropdown-viam-list li:nth-child('+ran+')')).click();
-                            console.log("Cities available" +ran);
-
+                            console.log("Cities available " +ran);
                         });
-
                     browser.sleep(2000);
 
                     var selectregionalnetwork =
@@ -99,7 +90,7 @@ describe('Fast send money Testing - Viamericas Web App', function() {
                             var ran = Math.floor((Math.random() * countregional) + 1);
                             sendmoneyFlowPage.regional.element(by.css('input#regional-networks-select')).click();
                             sendmoneyFlowPage.regional.element(by.css('ul.dropdown-viam-list li:nth-child('+ran+')')).click();
-                            console.log("Regional Networks available" +ran);
+                            console.log("Regional Networks available " +ran);
                         });
                 }else{
                     sendmoneyFlowPage.firstbankintopfive.isPresent().then(function(rs){
@@ -114,6 +105,56 @@ describe('Fast send money Testing - Viamericas Web App', function() {
             browser.sleep(2000);
             sendmoneyFlowPage.amount.sendKeys(numbergenerator(1, 3000));
             sendmoneyFlowPage.continueButton.click();
+
+            //<--------- GO TO RECIPIENT PAGE PAGE ----------------->
+            expect(browser.getCurrentUrl()).toEqual('https://dev.govianex.com/#/fast-send/recipient');
+
+            //COMPLETE RECIPIENT PAGE
+            recipientsPage.first_name.sendKeys("Testing");
+            recipientsPage.middle_name_optional.sendKeys("Testing");
+            recipientsPage.last_name.sendKeys("Testing");
+            recipientsPage.secondlast_name_optional.sendKeys("Testing");
+            recipientsPage.mobile_phone_optional.sendKeys(numbergenerator(312000000, 312999999));
+            recipientsPage.email_optional.sendKeys("Testing"+numbergenerator(1,9999)+"@gmail.com");
+            recipientsPage.address_line1.sendKeys("Street 5 - Testing Address Line1");
+
+            //<--------- SELECT STATE/RECIPIENT PAGE ----------------->
+            var selectstateRecipient =
+                sendmoneyFlowPage.stateLI.count().then(function(countstates) {
+                    var ran = Math.floor((Math.random() * countstates) + 1);
+                    sendmoneyFlowPage.state.element(by.css('input#states-select')).click();
+                    sendmoneyFlowPage.state.element(by.css('ul.dropdown-viam-list li:nth-child('+ran+')')).click();
+                    console.log("States available "+ ran);
+
+                    if (countryselected== 32){
+                        recipientsPage.zipcode.sendKeys("33233");
+                    }else if(countryselected==5){
+                        recipientsPage.cpfbrazil.sendKeys(numbergenerator(10000000000, 99999999999));
+                    }else{
+                        console.log("Continue to payment options");
+                        console.log(countryselected);
+                    }}); //Aqui cierra select country de transaction informationcc
+                });
+            browser.sleep(2000);
+
+            //<--------- SELECT CITY/RECIPIENT PAGE ----------------->
+            var selectcityRecipient =
+                sendmoneyFlowPage.cityLI.count().then(function(countcities) {
+                    var ran = Math.floor((Math.random() * countcities) + 1);
+                    sendmoneyFlowPage.city.element(by.css('input#cities-select')).click();
+                    sendmoneyFlowPage.city.element(by.css('ul.dropdown-viam-list li:nth-child('+ran+')')).click();
+                    console.log("Cities available " +ran);
+
+                    browser.sleep(2000);
+                });
+
+
+            sendmoneyFlowPage.continueButton.click();
+
+
+            //<--------- GO TO RECIPIENT BANK ACCOUNT PAGE OR PAYMENT OPTIONS----------------->
+           
+
         });
 
         browser.pause();
