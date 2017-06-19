@@ -133,7 +133,7 @@ describe('Fast send money Testing - Viamericas Web App', function() {
                     }else{
                         console.log("Continue to payment options");
                         console.log(countryselected);
-                    }}); //Aqui cierra select country de transaction informationcc
+                    }
                 });
             browser.sleep(2000);
 
@@ -148,17 +148,40 @@ describe('Fast send money Testing - Viamericas Web App', function() {
                     browser.sleep(2000);
                 });
 
+            sendmoneyFlowPage.continueButton.click();
+
+            //<--------- GO TO RECIPIENT BANK ACCOUNT PAGE OR PAYMENT OPTIONS----------------->
+                browser.getCurrentUrl().then(function(url) {
+                    if(url=="https://dev.govianex.com/#/fast-send/bankdeposit"){
+                        recipientsPage.accountnumber.sendKeys(numbergenerator(10000000000, 99999999999));
+                        var selectaccounttype =
+                            recipientsPage.accounttypeLI.count().then(function(countcities) {
+                                var ran = Math.floor((Math.random() * countcities) + 1);
+                                recipientsPage.accounttype.element(by.css('input#account-type-select')).click();
+                                recipientsPage.accounttype.element(by.css('ul.dropdown-viam-list li:nth-child('+ran+')')).click();
+                                browser.sleep(2000);
+                            });
+
+                        //IF THERE IS ANY OF THIS COUNTRIES:- Australia, Brazil, Canada, Hong Kong, India, Switzerland, United States
+                        if(countryselected== 2 || countryselected== 6 || countryselected== 17 || countryselected== 29) {
+                            recipientsPage.aditionalfieldAUS_CA_HG_SW.sendKeys(numbergenerator(000000000, 99999999999));
+                        } else if(countryselected== 32){
+                            recipientsPage.aditionalfieldUS.sendKeys("021000021");
+                        }else if(countryselected==18){
+                            recipientsPage.aditionalfieldIND.sendKeys("ABCD1234567");
+                        }else if(countryselected==5){
+                            recipientsPage.aditionalfieldBRA.sendKeys(numbergenerator(0000, 99999999999));
+                        }
+
+                    }else{
+                        console.log("Go to Payment options");
+                    }}); //Aqui cierra select country de transaction information
 
             sendmoneyFlowPage.continueButton.click();
 
-
-            //<--------- GO TO RECIPIENT BANK ACCOUNT PAGE OR PAYMENT OPTIONS----------------->
-           
-
-        });
-
+             });
+            });
         browser.pause();
-
     }, 120000);
 
 });

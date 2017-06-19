@@ -35,6 +35,15 @@ var recipientsPage = function() {
       this.cityLI = element.all(by.css('dropdown-viamericas#city-select ul.dropdown-viam-list li'));
       this.city = element(by.css('dropdown-viamericas#city-select'));
 
+      //Recipient Bank Account page
+      this.accountnumber = element(by.id('account-number'));
+      this.aditionalfieldAUS_CA_HG_SW = element(by.id('aux-code-other'));
+      this.aditionalfieldBRA = element(by.id('aux-code-bra'));
+      this.aditionalfieldIND = element(by.id('aux-code-ind'));
+      this.aditionalfieldUS = element(by.id('routing-number'));
+      this.accounttypeLI = element.all(by.css('dropdown-viamericas#account-type-select ul.dropdown-viam-list li'));
+      this.accounttype = element(by.css('dropdown-viamericas#account-type-select'));
+
 };
 
 module.exports = new recipientsPage();
