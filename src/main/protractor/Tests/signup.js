@@ -100,7 +100,6 @@ describe('Sign up testing Web App', function() {
                 console.log("Go to fast send money flow");
             }
 
-            browser.pause();
         }});
 });
 

@@ -13,6 +13,7 @@ exports.config = {
     // Capabilities to be passed to the webdriver instance.
     capabilities: {
       'browserName': 'chrome',
+
         chromeOptions: {
             args: [
                 '--start-maximized'
@@ -21,7 +22,7 @@ exports.config = {
   },
 
     // Framework to use. Jasmine is recommended.
-    framework: 'jasmine',
+    framework: 'jasmine2',
 
     // Spec patterns are relative to the current working directory when
     // protractor is called.
@@ -39,9 +40,12 @@ exports.config = {
         isVerbose: true
     },
     onPrepare: function() {
-        browser.manage().timeouts().setScriptTimeout(60000);
-        browser.manage().timeouts().pageLoadTimeout(40000);
-        browser.manage().timeouts().implicitlyWait(25000);
+        var jasmineReporters = require('jasmine-reporters');
+        jasmine.getEnv().addReporter(new jasmineReporters.JUnitXmlReporter({
+            consolidateAll: true,
+            savePath: 'testresults',
+            filePrefix: 'xmloutput'
+        }));
     },
 };
 
