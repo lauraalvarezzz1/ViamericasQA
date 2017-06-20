@@ -23,6 +23,26 @@ var recipientsPage = function() {
       this.month = element(by.xpath(".//*[@placeholder='Month']"));
       this.day = element(by.xpath(".//*[@placeholder='Day']"));
       this.year = element(by.xpath(".//*[@placeholder='Year']"));
+      this.zipcode = element(by.id('zipcode'));
+      this.cpfbrazil = element(by.id('number-id-bra'));
+
+      this.countryLI = element.all(by.css('dropdown-viamericas#country-select ul.dropdown-viam-list li'));
+      this.country = element(by.css('dropdown-viamericas#country-select'));
+
+      this.stateLI = element.all(by.css('dropdown-viamericas#state-select ul.dropdown-viam-list li'));
+      this.state = element(by.css('dropdown-viamericas#state-select'));
+
+      this.cityLI = element.all(by.css('dropdown-viamericas#city-select ul.dropdown-viam-list li'));
+      this.city = element(by.css('dropdown-viamericas#city-select'));
+
+      //Recipient Bank Account page
+      this.accountnumber = element(by.id('account-number'));
+      this.aditionalfieldAUS_CA_HG_SW = element(by.id('aux-code-other'));
+      this.aditionalfieldBRA = element(by.id('aux-code-bra'));
+      this.aditionalfieldIND = element(by.id('aux-code-ind'));
+      this.aditionalfieldUS = element(by.id('routing-number'));
+      this.accounttypeLI = element.all(by.css('dropdown-viamericas#account-type-select ul.dropdown-viam-list li'));
+      this.accounttype = element(by.css('dropdown-viamericas#account-type-select'));
 
 };
 

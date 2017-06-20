@@ -37,7 +37,22 @@ describe('Fees and Rates Testing - Viamericas Web App', function() {
         });
 
       feesAndRatesPage.amount.sendKeys("180");
-      feesAndRatesPage.bankDepositButton.click();
+
+      feesAndRatesPage.secondButton.isPresent().then(function(rs){
+          console.log(rs);
+          if(rs) {
+              var button = Math.floor((Math.random() * 2) + 1);
+              if(button==1){
+                  feesAndRatesPage.firstButton.click();
+              }else{
+                  feesAndRatesPage.secondButton.click();
+              }
+          }else{
+              console.log("solo hay uno");
+              feesAndRatesPage.firstButton.click();
+          }
+      });
+
       homePage.feesAndRatesButton.click();
   });
 

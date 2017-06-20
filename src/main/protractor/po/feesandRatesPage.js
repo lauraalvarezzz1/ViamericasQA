@@ -6,7 +6,8 @@
 
 var feesandRatesPage = function() {
     //Login Form
-    this.bankDepositButton = element(by.xpath('/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[1]/div[3]/div[1]/div[1]/div'));
+    this.firstButton = element(by.xpath('/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[1]/div[3]/div[1]/div[1]/div'));
+    this.secondButton = element(by.xpath('/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[1]/div[3]/div[1]/div[2]/div'));
     this.amount = element(by.id('amount'));
     this.cashPickupButton = element(by.xpath('Cash Pickup'));
     this.feesAndRatesButton = element(by.id('send-money'));
