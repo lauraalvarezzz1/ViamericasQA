@@ -16,7 +16,6 @@ describe('Recipients Testing - Viamericas Web App', function() {
 
     it('Creating a new Recipient', function() {
 
-
         homePage.logInButtonXpath.click();
         //Login
         loginPage.userName.sendKeys("viamericas.testing@gmail.com");
