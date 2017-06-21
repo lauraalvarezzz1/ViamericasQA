@@ -3,13 +3,13 @@
  */
 
 
-describe('Recipients Testing - Viamericas Web App', function() {
+describe('Recipients Testing - Creating a new recipient', function() {
 
     beforeEach(function() {
         browser.get('https://dev.govianex.com/#/');
-        homePage = require('../po/homePage');
-        recipientsPage = require('../po/recipientsPage');
-        loginPage = require('../po/loginPage');
+        homePage = require('../../po/homePage');
+        recipientsPage = require('../../po/recipientsPage');
+        loginPage = require('../../po/loginPage');
 
     });
 
@@ -76,19 +76,20 @@ describe('Recipients Testing - Viamericas Web App', function() {
                 recipientsPage.country.element(by.css('ul.dropdown-viam-list li:nth-child('+ran+')')).click();
                 console.log("Countries available:" +ran);
 
+                if (ran==32){
+                    recipientsPage.zipcode.sendKeys("33233");
+                }
+
             });
-        browser.sleep(3000);
 
         var selectstate =
-            recipientsPage.stateLI.count().then(function(countstates) {
+            recipientsPage.staterLI.count().then(function(countstates) {
                 var ran = Math.floor((Math.random() * countstates) + 1);
-                recipientsPage.state.element(by.css('input#state-select')).click();
-                recipientsPage.state.element(by.css('ul.dropdown-viam-list li:nth-child('+ran+')')).click();
+                recipientsPage.stater.element(by.css('input#state-select')).click();
+                recipientsPage.stater.element(by.css('ul.dropdown-viam-list li:nth-child('+ran+')')).click();
                 console.log("States available"+ ran);
 
             });
-
-        browser.sleep(3000);
 
         var selectcity =
             recipientsPage.cityLI.count().then(function(countcities) {
@@ -99,7 +100,11 @@ describe('Recipients Testing - Viamericas Web App', function() {
 
             });
 
-        browser.pause();
+        recipientsPage.createRecipientButton.click();
+        browser.sleep(2000);
+        recipientsPage.closepopup.click();
+
+        console.log("<----------The recipient was created----------------->");
     });
 
 
