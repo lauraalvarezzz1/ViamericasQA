@@ -29,11 +29,24 @@ var recipientsPage = function() {
       this.countryLI = element.all(by.css('dropdown-viamericas#country-select ul.dropdown-viam-list li'));
       this.country = element(by.css('dropdown-viamericas#country-select'));
 
-      this.stateLI = element.all(by.css('dropdown-viamericas#state-select ul.dropdown-viam-list li'));
-      this.state = element(by.css('dropdown-viamericas#state-select'));
+      this.staterLI = element.all(by.css('dropdown-viamericas#state-select ul.dropdown-viam-list li'));
+      this.stater = element(by.css('dropdown-viamericas#state-select'));
 
       this.cityLI = element.all(by.css('dropdown-viamericas#city-select ul.dropdown-viam-list li'));
       this.city = element(by.css('dropdown-viamericas#city-select'));
+
+      this.currencyLI = element.all(by.css('dropdown-viamericas#currency-1-select ul.dropdown-viam-list li'));
+      this.currency = element(by.css('dropdown-viamericas#currency-1-select'));
+
+      this.chooseabankLI = element.all(by.css('dropdown-viamericas#bank-1-select ul.dropdown-viam-list li'));
+      this.chooseabank = element(by.css('dropdown-viamericas#bank-1-select'));
+
+      this.accounttypeLI2 = element.all(by.css('dropdown-viamericas#account-type-1-select ul.dropdown-viam-list li'));
+      this.accounttype2 = element(by.css('dropdown-viamericas#account-type-1-select'));
+
+      this.accountnumber2 = element(by.id('account-number-2'));
+      this.createRecipientButton = element(by.id('create-recipient'));
+      this.closepopup = element(by.xpath("/html/body/div[3]/div[2]/span"));
 
       //Recipient Bank Account page
       this.accountnumber = element(by.id('account-number'));
