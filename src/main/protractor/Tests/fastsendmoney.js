@@ -155,8 +155,8 @@ describe('Fast send money Testing - Viamericas Web App', function() {
                     if(url=="https://dev.govianex.com/#/fast-send/bankdeposit"){
                         recipientsPage.accountnumber.sendKeys(numbergenerator(10000000000, 99999999999));
                         var selectaccounttype =
-                            recipientsPage.accounttypeLI.count().then(function(countcities) {
-                                var ran = Math.floor((Math.random() * countcities) + 1);
+                            recipientsPage.accounttypeLI.count().then(function(countaccounttype) {
+                                var ran = Math.floor((Math.random() * countaccounttype) + 1);
                                 recipientsPage.accounttype.element(by.css('input#account-type-select')).click();
                                 recipientsPage.accounttype.element(by.css('ul.dropdown-viam-list li:nth-child('+ran+')')).click();
                                 browser.sleep(2000);
