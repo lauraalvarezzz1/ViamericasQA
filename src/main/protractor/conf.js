@@ -12,15 +12,26 @@ exports.config = {
 
     // Capabilities to be passed to the webdriver instance.
     capabilities: {
-      'browserName': 'chrome'
+      'browserName': 'chrome',
+
+        chromeOptions: {
+            args: [
+                '--start-maximized'
+            ]
+        }
   },
 
     // Framework to use. Jasmine is recommended.
-    framework: 'jasmine',
+    framework: 'jasmine2',
 
     // Spec patterns are relative to the current working directory when
     // protractor is called.
-    specs: ['recipients.js'],
+
+    //specs: ['tests/FeesNRates.js'],
+    //specs: ['tests/recipients.js'],
+    specs: ['tests/fastsendmoney.js'],
+    //specs: ['tests/signup.js'],
+
 
     // Options to be passed to Jasmine.
     jasmineNodeOpts: {
@@ -32,16 +43,12 @@ exports.config = {
         browser.manage().timeouts().setScriptTimeout(60000);
         browser.manage().timeouts().pageLoadTimeout(40000);
         browser.manage().timeouts().implicitlyWait(25000);
-
-        browser._selectDropdownbyNum = function (element, optionNum) {
-            /* A helper function to select in a dropdown control an option
-             * with specified number.
-             */
-            return element.all(by.tagName('option')).then(
-                function(options) {
-                    options[optionNum].click();
-                });
-        };
+/*        var jasmineReporters = require('jasmine-reporters');
+        jasmine.getEnv().addReporter(new jasmineReporters.JUnitXmlReporter({
+            consolidateAll: true,
+            savePath: 'testresults',
+            filePrefix: 'xmloutput'
+        }));*/
     },
 };
 
