@@ -29,8 +29,8 @@ exports.config = {
 
     //specs: ['tests/FeesNRates.js'],
     //specs: ['tests/recipients.js'],
-    //specs: ['tests/fastsendmoney.js'],
-    specs: ['tests/signup.js'],
+    specs: ['tests/fastsendmoney.js'],
+    //specs: ['tests/signup.js'],
 
 
     // Options to be passed to Jasmine.
@@ -40,12 +40,15 @@ exports.config = {
         isVerbose: true
     },
     onPrepare: function() {
-        var jasmineReporters = require('jasmine-reporters');
+        browser.manage().timeouts().setScriptTimeout(60000);
+        browser.manage().timeouts().pageLoadTimeout(40000);
+        browser.manage().timeouts().implicitlyWait(25000);
+/*        var jasmineReporters = require('jasmine-reporters');
         jasmine.getEnv().addReporter(new jasmineReporters.JUnitXmlReporter({
             consolidateAll: true,
             savePath: 'testresults',
             filePrefix: 'xmloutput'
-        }));
+        }));*/
     },
 };
 

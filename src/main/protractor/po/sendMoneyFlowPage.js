@@ -19,7 +19,7 @@ var sendMoneyFlowPage = function() {
     this.currency = element(by.css('dropdown-viamericas#recipient-currency-select'));
 
     //Buttons in Destination Information screen
-    this.firstButton = element(by.xpath('/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[3]/div[1]/div[1]/div'));
+    this.firstButton = element(by.xpath('/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[4]/div[1]/div[1]/div'));
     this.secondButton = element(by.xpath('/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[3]/div[1]/div[2]/div'));
     this.amount = element(by.id('amount'));
 
@@ -28,7 +28,7 @@ var sendMoneyFlowPage = function() {
     this.banks = element(by.css('dropdown-viamericas#undefined'));
 
     //First Bank in the list
-    this.firstbankintopfive = element(by.xpath('/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[4]/div/ul/li[1]/label'));
+    this.firstbankintopfive = element(by.xpath('/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[5]/div/ul/li[1]/label'));
 
     this.stateLI = element.all(by.css('dropdown-viamericas#states-select ul.dropdown-viam-list li'));
     this.state = element(by.css('dropdown-viamericas#states-select'));
