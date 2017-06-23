@@ -5,12 +5,16 @@
 
 describe('Fast send money Testing - Viamericas Web App', function() {
 
-    beforeEach(function() {
+    beforeAll(function() {
         browser.get('https://test.govianex.com/');
+    });
+
+    beforeEach(function() {
         homePage = require('../po/homePage');
         sendmoneyFlowPage = require('../po/sendMoneyFlowPage');
         recipientsPage = require('../po/recipientsPage');
         paymentOptionsPage = require('../po/paymentOptionsPage');
+        signUpPage = require('../po/signupPage');
     });
 
     it('should start out with an empty memory', function () {
@@ -59,7 +63,7 @@ describe('Fast send money Testing - Viamericas Web App', function() {
             }else{
                 sendmoneyFlowPage.firstButton.click();
             }
-
+         });
             //<--------- SELECT BANK OR REGIONAL NETWORK/TRANSACTION INFORMATION PAGE ----------------->
             sendmoneyFlowPage.state.isPresent().then(function(rs){
                 if(rs) {
@@ -70,7 +74,7 @@ describe('Fast send money Testing - Viamericas Web App', function() {
                             sendmoneyFlowPage.state.element(by.css('ul.dropdown-viam-list li:nth-child('+ran+')')).click();
                             console.log("States available "+ ran);
                         });
-                    browser.sleep(2000);
+
 
                     var selectcity =
                         sendmoneyFlowPage.cityLI.count().then(function(countcities) {
@@ -79,7 +83,7 @@ describe('Fast send money Testing - Viamericas Web App', function() {
                             sendmoneyFlowPage.city.element(by.css('ul.dropdown-viam-list li:nth-child('+ran+')')).click();
                             console.log("Cities available " +ran);
                         });
-                    browser.sleep(2000);
+
 
                     var selectregionalnetwork =
                         sendmoneyFlowPage.regionalLI.count().then(function(countregional) {
@@ -98,7 +102,6 @@ describe('Fast send money Testing - Viamericas Web App', function() {
                     });
                 }
             });
-            browser.sleep(2000);
             sendmoneyFlowPage.amount.sendKeys(numbergenerator(1, 2000));
             sendmoneyFlowPage.continueButton.click();
 
@@ -159,8 +162,8 @@ describe('Fast send money Testing - Viamericas Web App', function() {
                             });
 
                         //IF THERE IS ANY OF THIS COUNTRIES:- Australia, Brazil, Canada, Hong Kong, India, Switzerland, United States
-                        if(countryselected== 2 || countryselected== 6 || countryselected== 17 || countryselected== 29) {
-                            recipientsPage.aditionalfieldAUS_CA_HG_SW.sendKeys(numbergenerator(000000000, 99999999999));
+                        if(countryselected== 2 || countryselected== 6 || countryselected== 17 || countryselected== 29 || countryselected== 31) {
+                            recipientsPage.aditionalfieldAUS_CA_HG_SW_UK.sendKeys(numbergenerator(000000000, 99999999999));
                         } else if(countryselected== 32){
                             recipientsPage.aditionalfieldUS.sendKeys("021000021");
                         }else if(countryselected==18){
@@ -171,24 +174,126 @@ describe('Fast send money Testing - Viamericas Web App', function() {
 
                     }else{
                         console.log("Go to Payment options");
-                    }}); //Aqui cierra select country de transaction information
-
-            sendmoneyFlowPage.continueButton.click();
+                    }});
+            });
+          sendmoneyFlowPage.continueButton.click();
             browser.sleep(5000);
 
-            // PAYMENT OPTIONS
-            var ranPayment = Math.floor((Math.random() * 3) + 1);
-            if(element(by.id('method')).isDisplayed()){
-                paymentOptionsPage.paymentMethod.element(by.xpath('/html/body/div[2]/div/div[1]/div[2]/div/div/div/div[1]/div[2]/div[1]/table/tbody/tr['+ranPayment+']/td[1]/div')).click();
+            var selectPaymentMethod =
+                paymentOptionsPage.paymentMethod.isDisplayed().then(function() {
+                    var ranPayment = Math.floor((Math.random() * 3) + 1);
+                    paymentOptionsPage.paymentMethod.element(by.xpath('/html/body/div[2]/div/div[1]/div[2]/div/div/div/div[1]/div[2]/div[1]/table/tbody/tr['+ranPayment+']/td[1]/div')).click();
+
+                    browser.sleep(2000);
+                });
+
+            //<--------- GO TO REVIEW PAGE ----------------->
+            browser.getCurrentUrl().then(function(url) {
+                var d = new Date();
+                if(url=="https://test.govianex.com/#/fast-send/funding/bank"){
+                    console.log("------------------BANK ACCOUNT-------------------");
+                    paymentOptionsPage.bankAccountName.sendKeys("Testing");
+                    paymentOptionsPage.accountNickname.sendKeys("Testing Nickname");
+                    paymentOptionsPage.routingNumber.sendKeys("002100021");
+                    paymentOptionsPage.accountNumber.sendKeys("342465432");
+
+                var selectFundingType =
+                    paymentOptionsPage.accounttypeLI.count().then(function(countaccounttype) {
+                        var ran = Math.floor((Math.random() * countaccounttype) + 1);
+                        paymentOptionsPage.accounttype.element(by.css('input#account-types-select')).click();
+                        paymentOptionsPage.accounttype.element(by.css('ul.dropdown-viam-list li:nth-child('+2+')')).click();
+                        browser.sleep(2000);
+                    });
+                }
+                else{
+                    paymentOptionsPage.creditCardName.sendKeys("Testing");
+                    paymentOptionsPage.cardNickName.sendKeys("Testing Nickname");
+                    paymentOptionsPage.cardNumber.sendKeys("5405980000000094");
+                    paymentOptionsPage.cvvNumber.sendKeys("234");
+                    paymentOptionsPage.month.sendKeys(numbergenerator(0,1));
+                    if (paymentOptionsPage.month >= 1){
+                        paymentOptionsPage.month.sendKeys(numbergenerator(0,2));
+                    } else{
+                        paymentOptionsPage.month.sendKeys(numbergenerator(1,9));
+                    }
+                    var expYear = numbergenerator(parseInt(d.getFullYear()), parseInt(d.getFullYear())+ 5);
+                    paymentOptionsPage.year.sendKeys(expYear);
+                }
+                paymentOptionsPage.continueButton.click();
+            }); //closes funding
+
+        var signupRan =  numbergenerator(1, 2000);
+        signUpPage.email.sendKeys("viamericas"+signupRan+".testing@gmail.com");
+        signUpPage.password.sendKeys("Viamericas123");
+        signUpPage.signupButton.click();
+        //Complete sign up form
+        signUpPage.first_name.sendKeys("Testing");
+        signUpPage.middle_name_optional.sendKeys("Testing");
+        signUpPage.last_name.sendKeys("Testing");
+        signUpPage.secondlast_name_optional.sendKeys("Testing");
+        signUpPage.mobile_phone_optional.sendKeys(numbergenerator(312000000, 312999999));
+        signUpPage.address_line1.sendKeys("Street 5 - Testing Address Line1");
+
+        signUpPage.month.sendKeys(numbergenerator(0,1));
+        if (signUpPage.month >= 1){
+            signUpPage.month.sendKeys(numbergenerator(0,2));
+        } else{
+            signUpPage.month.sendKeys(numbergenerator(1,9));
+        }
+
+        signUpPage.year.sendKeys(numbergenerator(1900,1998));
+
+        if (signUpPage.month >= 02){
+            signUpPage.day.sendKeys(numbergenerator(0,2));
+            if (signUpPage.day >= 0 || Day >= 1){
+                signUpPage.day.sendKeys(numbergenerator(1,9));
+            }else{
+                signUpPage.day.sendKeys(numbergenerator(0,8));
             }
-            else{
-                console.log("No lo encontro");
+        } else{
+            signUpPage.day.sendKeys(numbergenerator(0,3));
+            if (signUpPage.month==04 || signUpPage.month==06 || signUpPage.month==09 || signUpPage.month==11 && signUpPage.day==3){
+                signUpPage.day.sendKeys(numbergenerator(0,0));
+            }else{
+                signUpPage.day.sendKeys(numbergenerator(1,9));
             }
+        }
+        browser.sleep(3000);
 
+        signUpPage.zipcode.sendKeys("90001"); //Pending for send aleatory zip codes
+        var selectcity =
+            signUpPage.cityLI.count().then(function(countcities) {
+                var ran = Math.floor((Math.random() * countcities) + 1);
+                signUpPage.city.element(by.css('input#city-select')).click();
+                signUpPage.city.element(by.css('ul.dropdown-viam-list li:nth-child('+ran+')')).click();
+                console.log("Cities available" +ran);
 
-
-             });
             });
+
+        //Register the user with/without program
+        var programornot = Math.floor((Math.random() * 2) + 1);
+        if(programornot==1) {
+            var selectprogram =
+                signUpPage.programLI.count().then(function(countprograms) {
+                    var ran = Math.floor((Math.random() * countprograms) + 1);
+                    signUpPage.program.element(by.css('input#partner-id-select')).click();
+                    signUpPage.program.element(by.css('ul.dropdown-viam-list li:nth-child('+ran+')')).click();
+                    console.log("Programs available" +ran);
+
+                });
+            browser.sleep(2000);
+
+            var selectunion =
+                signUpPage.unionNameLI.count().then(function(countunions) {
+                    var ran = Math.floor((Math.random() * countunions) + 1);
+                    signUpPage.unionName.element(by.css('input#affiliate-name-select')).click();
+                    signUpPage.unionName.element(by.css('ul.dropdown-viam-list li:nth-child('+ran+')')).click();
+                    console.log("Unions available" +ran);
+
+                });}
+        signUpPage.createAccountButton.click();
+        //expect(browser.getCurrentUrl()).toEqual('https://test.govianex.com/#/sendmoney/review');
+
         browser.pause();
     }, 120000);
 
