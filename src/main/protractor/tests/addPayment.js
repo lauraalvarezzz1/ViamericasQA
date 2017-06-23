@@ -22,37 +22,16 @@ describe('Recipients Testing - Creating a new recipient with bank account', func
         loginPage.userName.sendKeys("viamericas.testing@gmail.com");
         loginPage.password.sendKeys("Viamericas123");
         loginPage.loginButton.click();
-//        browser.sleep(5000);
-
-//    promiseExpected(element(by.linkText('Log Out'))).then(function() {
-//
-//
-//    return promiseExpected(1);
-//        browser.pause();
-//        });
 
     });
 
     it('click', function() {
         homePage.gomyaccount.click();
         homePage.goToPayments.click();
-    });
 
+    });
 });
 
-function promiseExpected(elements){
-    return new Promise(function (fulfill, reject){
-            var counter = 0;
-            var flag = false;
-            while(!flag && counter < 10){
-                if(expect(elements.isDisplayed())){
-                    fulfill("esta bueno!!");
-                }
-                counter ++;
-                browser.sleep(2000);
-          }
-    });
-}
 
 
 numbergenerator = function(min, max){
