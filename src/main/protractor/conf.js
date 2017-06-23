@@ -28,10 +28,13 @@ exports.config = {
     // protractor is called.
 
     //specs: ['tests/FeesNRates.js'],
-    //specs: ['tests/recipients/recipients_bankaccount.js'],
+    //specs: ['tests/recipients_create.js'],
     //specs: ['tests/fastsendmoney.js'],
+    //specs: ['tests/recipients/recipients_bankaccount.js'],
     specs: ['tests/addPayment.js'],
     //specs: ['tests/signup.js'],
+    //specs: ['tests/recipients/recipients_bankaccount.js'],
+    //specs: ['tests/recipients/recipients_delete.js'],
 
 
     // Options to be passed to Jasmine.
