@@ -40,10 +40,8 @@ describe('Sign up testing Web App', function() {
                 } else{
                     signUpPage.month.sendKeys(numbergenerator(1,9));
                 }
-                browser.sleep(6000);
 
                 signUpPage.year.sendKeys(numbergenerator(1900,1998));
-                browser.sleep(6000);
 
                 if (signUpPage.month >= 02){
                     signUpPage.day.sendKeys(numbergenerator(0,2));
@@ -60,7 +58,6 @@ describe('Sign up testing Web App', function() {
                         signUpPage.day.sendKeys(numbergenerator(1,9));
                     }
                 }
-                browser.sleep(3000);
 
                 signUpPage.zipcode.sendKeys("90001"); //Pending for send aleatory zip codes
                 var selectcity =

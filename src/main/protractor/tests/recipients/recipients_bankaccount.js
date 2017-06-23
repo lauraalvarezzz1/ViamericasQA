@@ -6,7 +6,7 @@
 describe('Recipients Testing - Creating a new recipient with bank account', function() {
 
     beforeEach(function() {
-        browser.get('https://dev.govianex.com/#/');
+        browser.get('https://test.govianex.com/#/');
         homePage = require('../../po/homePage');
         recipientsPage = require('../../po/recipientsPage');
         loginPage = require('../../po/loginPage');
@@ -17,6 +17,7 @@ describe('Recipients Testing - Creating a new recipient with bank account', func
     it('Creating a new Recipient', function() {
 
         homePage.logInButtonXpath.click();
+
         //Login
         loginPage.userName.sendKeys("viamericas.testing@gmail.com");
         loginPage.password.sendKeys("Viamericas123");
@@ -73,9 +74,25 @@ describe('Recipients Testing - Creating a new recipient with bank account', func
                 recipientsPage.country.element(by.css('input#country-select')).click();
                 recipientsPage.country.element(by.css('ul.dropdown-viam-list li:nth-child('+countryselected+')')).click();
 
-                if (countryselected==32){
+                if (countryselected== 32){
                     recipientsPage.zipcode.sendKeys("33233");
+                }else if(countryselected==5){
+                    recipientsPage.cpfbrazil.sendKeys(numbergenerator(10000000000, 99999999999));
+                }else{
+                    console.log(countryselected);
                 }
+
+                if(countryselected== 2 || countryselected== 6 || countryselected== 17 || countryselected== 29) {
+                    recipientsPage.aditionalfieldAUS_CA_HG_SW.sendKeys(numbergenerator(000000000, 99999999999));
+                } else if(countryselected== 32){
+                    recipientsPage.aditionalfieldUS.sendKeys("021000021");
+                }else if(countryselected==18){
+                    recipientsPage.aditionalfieldIND.sendKeys("ABCD1234567");
+                }else if(countryselected==5){
+                    recipientsPage.aditionalfieldBRA.sendKeys(numbergenerator(0000, 99999999999));
+                }
+
+            });
                 browser.sleep(2000);
 
         var selectstate =
@@ -98,50 +115,37 @@ describe('Recipients Testing - Creating a new recipient with bank account', func
 
         browser.executeScript('window.scrollTo(0,1000);').then(function () {
 
-        recipientsPage.accountnumber2.sendKeys(numbergenerator(1, 3000));
-
         var selectcurrency =
             recipientsPage.currencyLI.count().then(function(countcurrencies) {
-                var ran = Math.floor((Math.random() * countcurrencies) + 1);
-                recipientsPage.currency.element(by.css('input#currency-1-select')).click();
-                recipientsPage.currency.element(by.css('ul.dropdown-viam-list li:nth-child('+ran+')')).click();
-
-
+                var currency = Math.floor((Math.random() * countcurrencies) + 1);
+                recipientsPage.currency.element(by.css('input#currency-select')).click();
+                recipientsPage.currency.element(by.css('ul.dropdown-viam-list li:nth-child('+currency+')')).click();
             });
+
+        });
+
+        var countbanks =
+            recipientsPage.chooseabankLI.count().then(function(count) {
+                var bank1 = Math.floor((Math.random() * count) + 1);
+                recipientsPage.chooseabank.element(by.css('input#bank-select')).click();
+                recipientsPage.chooseabank.element(by.css('ul.dropdown-viam-list li:nth-child('+bank1+')')).click();
          });
 
-        var selectbank =
-            recipientsPage.chooseabankLI.count().then(function(countbanks) {
-                var ran = Math.floor((Math.random() * countbanks) + 1);
-                recipientsPage.chooseabank.element(by.css('input#bank-1-select')).click();
-                recipientsPage.chooseabank.element(by.css('ul.dropdown-viam-list li:nth-child('+ran+')')).click();
-
-            });
+        recipientsPage.accountnumber.sendKeys(numbergenerator(1, 3000));
+        recipientsPage.accountholdername.sendKeys("Testing");
 
         var selectaccounttype2 =
-            recipientsPage.accounttypeLI2.count().then(function(countaccounttype) {
+            recipientsPage.accounttypeLI.count().then(function (countaccounttype) {
                 var ran = Math.floor((Math.random() * countaccounttype) + 1);
-                recipientsPage.accounttype2.element(by.css('input#account-type-1-select')).click();
-                recipientsPage.accounttype2.element(by.css('ul.dropdown-viam-list li:nth-child('+ran+')')).click();
-                browser.sleep(2000);
-            });
-
-        if(countryselected== 2 || countryselected== 6 || countryselected== 17 || countryselected== 29) {
-            recipientsPage.aditionalfieldAUS_CA_HG_SW.sendKeys(numbergenerator(000000000, 99999999999));
-        } else if(countryselected== 32){
-            recipientsPage.aditionalfieldUS.sendKeys("021000021");
-        }else if(countryselected==18){
-            recipientsPage.aditionalfieldIND.sendKeys("ABCD1234567");
-        }else if(countryselected==5){
-            recipientsPage.aditionalfieldBRA.sendKeys(numbergenerator(0000, 99999999999));
-        }
-
-            });
+                recipientsPage.accounttype.element(by.css('input#account-type-select')).click();
+                recipientsPage.accounttype.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
+                    });
 
         recipientsPage.createRecipientButton.click();
+        browser.sleep(5000);
         recipientsPage.closepopup.click();
 
-        console.log("<----------The recipient was created----------------->");
+
     });
 
 
