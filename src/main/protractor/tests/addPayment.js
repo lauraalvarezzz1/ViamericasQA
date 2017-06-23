@@ -3,7 +3,7 @@
  */
 
 
-describe('Recipients Testing - Creating a new recipient with bank account', function() {
+describe('Recipients Testing - Creating a new Payment Method with bank account', function() {
 
     beforeAll(function() {
         browser.get('https://test.govianex.com/');
@@ -16,7 +16,7 @@ describe('Recipients Testing - Creating a new recipient with bank account', func
     });
 
 
-    it('Creating a new Recipient', function() {
+    it('Loggin in', function() {
         homePage.logInButtonXpath.click();
         //Login
         loginPage.userName.sendKeys("viamericas.testing@gmail.com");
@@ -26,7 +26,11 @@ describe('Recipients Testing - Creating a new recipient with bank account', func
     });
 
     it('click', function() {
-        homePage.gomyaccount.click();
+        browser.ignoreSynchronization = true;
+        homePage.gomyaccount.isPresent().then(function(){
+             homePage.gomyaccount.click();
+        });
+
         homePage.goToPayments.click();
 
     });
