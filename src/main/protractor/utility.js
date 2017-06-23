@@ -10,6 +10,6 @@ var utility = function() {
 
 };
 
-if
+
 
 module.exports = new utility();
