@@ -10,5 +10,4 @@ var utility = function() {
 
 };
 
-
 module.exports = new utility();
