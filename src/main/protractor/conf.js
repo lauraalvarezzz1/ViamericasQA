@@ -28,12 +28,12 @@ exports.config = {
     // protractor is called.
 
     //specs: ['tests/FeesNRates.js'],
-    //specs: ['tests/recipients_create.js'],
-    //specs: ['tests/fastsendmoney.js'],
-    //specs: ['tests/recipients/recipients_bankaccount.js'],
-    specs: ['tests/addPayment.js'],
+    //specs: ['tests/recipients_createRecipient.js'],
+    specs: ['tests/sendMoneyFlow/completeFastSendMoney.js'],
+    //specs: ['tests/recipients/recipients_createBankAccount.js'],
+    //specs: ['tests/recipients/recipients_deleteAccount.js'],
     //specs: ['tests/signup.js'],
-    //specs: ['tests/recipients/recipients_bankaccount.js'],
+    //specs: ['tests/recipients/recipients_createBankAccount.js'],
     //specs: ['tests/recipients/recipients_delete.js'],
 
 
