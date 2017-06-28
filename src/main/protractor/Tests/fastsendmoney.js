@@ -201,7 +201,7 @@ describe('Fast send money Testing - Viamericas Web App', function() {
                     paymentOptionsPage.accounttypeLI.count().then(function(countaccounttype) {
                         var ran = Math.floor((Math.random() * countaccounttype) + 1);
                         paymentOptionsPage.accounttype.element(by.css('input#account-types-select')).click();
-                        paymentOptionsPage.accounttype.element(by.css('ul.dropdown-viam-list li:nth-child('+2+')')).click();
+                        paymentOptionsPage.accounttype.element(by.css('ul.dropdown-viam-list li:nth-child('+ran+')')).click();
                         browser.sleep(2000);
                     });
                 }

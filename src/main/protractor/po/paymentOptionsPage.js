@@ -27,6 +27,15 @@ var paymentOptionsPage = function() {
     //continue button
     this.continueButton = element(by.id("continue"));
 
+    //My account payment
+    this.addNewAccountButton = element(by.id("add-new-account"));
+    this.bankAccountButton = element(by.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div[1]/div/div[2]/div/div/div[3]/div[1]/div[1]/div/div[1]"));
+    this.creditDebitButton = element(by.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div[1]/div/div[2]/div/div/div[3]/div[1]/div[2]/div/div[1]"));
+    this.bankAccountNickName = element(by.id("nickname"));
+    this.createAccountButton = element(by.id("create-account"));
+    this.typeLiMyAccount = element.all(by.css('dropdown-viam#account-type-select ul.dropdown-viam-list li'));
+    this.typeAccount = element(by.css('dropdown-viam#account-type-select'));
+
 };
 
 module.exports = new paymentOptionsPage();
