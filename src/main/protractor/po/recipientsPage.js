@@ -12,7 +12,8 @@ var recipientsPage = function() {
 
       this.createButton = element(by.id('create-recipient-2'));
       this.editButton = element(by.id('edit'));
-      this.deleteButton = element(by.id('delete'));
+      this.deleteRecipientButton = element(by.id('delete'));
+      this.deleteAccountButton = element(by.id('delete_account'));
 
       //Recipient information page
       this.first_name = element(by.id('first-name'));
@@ -42,9 +43,6 @@ var recipientsPage = function() {
 
       this.chooseabankLI = element.all(by.css('dropdown-viamericas#bank-select ul.dropdown-viam-list li'));
       this.chooseabank = element(by.css('dropdown-viamericas#bank-select'));
-
-      this.accounttypeLI2 = element.all(by.css('dropdown-viamericas#account-type-1-select ul.dropdown-viam-list li'));
-      this.accounttype2 = element(by.css('dropdown-viamericas#account-type-1-select'));
 
       this.createRecipientButton = element(by.id('create-recipient'));
       this.closepopup = element(by.xpath("/html/body/div[3]/div[2]/span"));
