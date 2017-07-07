@@ -284,7 +284,6 @@ describe('Fast send money Testing - Viamericas Web App', function () {
 });
 
 numbergenerator = function (min, max) {
-
     return parseInt(Math.random() * (max - min) + min);
 };
 
