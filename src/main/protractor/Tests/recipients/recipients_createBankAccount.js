@@ -5,35 +5,36 @@
 
 describe('Recipients Testing - Creating a new recipient with bank account', function () {
 
+    beforeAll(function () {
+        browser.get('https://test.govianex.com/');
+    });
+
     beforeEach(function () {
-        browser.get('https://test.govianex.com/#/');
         homePage = require('../../po/homePage');
         recipientsPage = require('../../po/recipientsPage');
         loginPage = require('../../po/loginPage');
-
     });
 
-
-    it('Creating a new Recipient', function () {
-
+    it('Log in', function () {
         homePage.logInButtonXpath.click();
-
-        //Login
         loginPage.userName.sendKeys("viamericas.testing@gmail.com");
         loginPage.password.sendKeys("Viamericas123");
         loginPage.loginButton.click();
-        browser.sleep(5000);
-        browser.ignoreSynchronization = true;
-        browser.waitForAngular();
+    });
 
-        //Go to recipients
-        homePage.gomyaccount.click();
-        browser.sleep(6000);
+    it('Go to Recipients', function () {
+        browser.ignoreSynchronization = true;
+        homePage.gomyaccount.isPresent().then(function () {
+            homePage.gomyaccount.click();
+        });
         homePage.gorecipients.click();
-        recipientsPage.createButton.click();
+    });
+    it('Creating a new Recipient', function () {
+        recipientsPage.createButton.isPresent().then(function () {
+            recipientsPage.createButton.click();
+        });
 
         //Complete the fields
-
         recipientsPage.first_name.sendKeys("Testing");
         recipientsPage.middle_name_optional.sendKeys("Testing");
         recipientsPage.last_name.sendKeys("Testing");
@@ -92,7 +93,6 @@ describe('Recipients Testing - Creating a new recipient with bank account', func
                     recipientsPage.aditionalfieldBRA.sendKeys(numbergenerator(0000, 99999999999));
                 }
             });
-        browser.sleep(2000);
 
         var selectstate =
             recipientsPage.staterLI.count().then(function (countstates) {
@@ -136,9 +136,13 @@ describe('Recipients Testing - Creating a new recipient with bank account', func
                 recipientsPage.accounttype.element(by.css('input#account-type-select')).click();
                 recipientsPage.accounttype.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
             });
+    });
 
-        recipientsPage.createRecipientButton.click();
-        browser.sleep(5000);
+    it('Click on create recipient and close popup', function () {
+        recipientsPage.createRecipientButton.isPresent().then(function () {
+            recipientsPage.createRecipientButton.click();
+        });
+
         recipientsPage.closepopup.click();
     });
 });
