@@ -13,8 +13,8 @@ var paymentOptionsPage = function() {
     this.accountNickname = element(by.id("account-nickname"));
     this.routingNumber = element(by.id("routing-number"));
     this.accountNumber = element(by.id("account-number"));
-    this.accounttypeLI = element.all(by.css('dropdown-viamericas#account-types-select ul.dropdown-viam-list li'));
-    this.accounttype = element(by.css('dropdown-viamericas#account-types-select'));
+    this.accounttypeLI = element.all(by.css('dropdown-viamericas#account-type-select ul.dropdown-viam-list li'));
+    this.accounttype = element(by.css('dropdown-viamericas#account-type-select'));
 
     //funding with credit or debit cards
     this.creditCardName = element(by.id("cardholder-name"));
@@ -26,6 +26,16 @@ var paymentOptionsPage = function() {
 
     //continue button
     this.continueButton = element(by.id("continue"));
+
+    //My account payment
+    this.addNewAccountButton = element(by.id("add-new-account"));
+    this.bankAccountButton = element(by.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div[1]/div/div[2]/div/div/div[3]/div[1]/div[1]/div/div[1]"));
+    this.creditDebitButton = element(by.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div[1]/div/div[2]/div/div/div[3]/div[1]/div[2]/div/div[1]"));
+    this.bankAccountNickName = element(by.id("nickname"));
+    this.createAccountButton = element(by.id("create-account"));
+    this.popUpOkButton = element(by.partialButtonText("OK"));
+    this.cardHolderName = element(by.id("card-holder-name"));
+    this.extraAddressCheckBox = element(by.css("icheckbox_square-blue"));
 
 };
 
