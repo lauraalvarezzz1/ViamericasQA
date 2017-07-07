@@ -193,7 +193,7 @@ describe('Fast send money Testing - Viamericas Web App', function () {
                 var selectFundingType = paymentOptionsPage.accounttypeLI.count().then(function (countaccounttype) {
                     var ran = Math.floor((Math.random() * countaccounttype) + 1);
                     paymentOptionsPage.accounttype.element(by.css('input#account-types-select,#dropdown-input')).click();
-                    paymentOptionsPage.accounttype.element(by.css('ul.dropdown-viam-list li:nth-child(' + 2 + ')')).click();
+                    paymentOptionsPage.accounttype.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
                 });
             } else {
                 paymentOptionsPage.creditCardName.sendKeys("Testing");
@@ -206,7 +206,7 @@ describe('Fast send money Testing - Viamericas Web App', function () {
                 } else {
                     paymentOptionsPage.month.sendKeys(numbergenerator(1, 9));
                 }
-                var expYear = numbergenerator(parseInt(d.getFullYear()), parseInt(d.getFullYear()) + 5);
+                var expYear = numbergenerator(parseInt(d.getFullYear() + 1), parseInt(d.getFullYear()) + 5);
                 paymentOptionsPage.year.sendKeys(expYear);
             }
             paymentOptionsPage.continueButton.click();
