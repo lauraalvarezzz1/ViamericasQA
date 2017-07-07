@@ -147,6 +147,7 @@ describe('Recipients Testing - Creating a new recipient with bank account', func
     });
 });
 
+
 numbergenerator = function (min, max) {
     return parseInt(Math.random() * (max - min) + min);
 };
