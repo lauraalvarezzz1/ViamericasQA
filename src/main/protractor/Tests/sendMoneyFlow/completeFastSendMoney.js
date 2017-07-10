@@ -6,7 +6,7 @@
 describe('Fast send money Testing - Viamericas Web App', function () {
 
     beforeAll(function () {
-        browser.get('https://test.govianex.com/');
+        browser.get('https://stage.govianex.com/');
     });
 
     beforeEach(function () {
@@ -101,7 +101,7 @@ describe('Fast send money Testing - Viamericas Web App', function () {
                     });
                 }
             });
-            sendmoneyFlowPage.amount.sendKeys(numbergenerator(1, 2000));
+            sendmoneyFlowPage.amount.sendKeys(numbergenerator(1, 500));
             sendmoneyFlowPage.continueButton.click();
 
             //<--------- GO TO RECIPIENT PAGE PAGE ----------------->
