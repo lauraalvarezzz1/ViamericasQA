@@ -12,14 +12,14 @@ exports.config = {
 
     // Capabilities to be passed to the webdriver instance.
     capabilities: {
-      'browserName': 'chrome',
+        'browserName': 'chrome',
 
         chromeOptions: {
             args: [
                 '--start-maximized'
             ]
         }
-  },
+    },
 
     // Framework to use. Jasmine is recommended.
     framework: 'jasmine2',
@@ -30,14 +30,14 @@ exports.config = {
     //specs: ['tests/recipients/recipients_createRecipient.js'],
     //specs: ['tests/addPayment.js'],
     //specs: ['tests/recipients_createRecipient.js'],
-    specs: ['tests/sendMoneyFlow/completeFastSendMoney.js'],
+    //specs: ['tests/sendMoneyFlow/completeFastSendMoney.js'],
     //specs: ['tests/addPayment.js'],
     //specs: ['tests/recipients_createRecipient.js'],
     //specs: ['tests/recipients/recipients_createRecipient.js'],
     //specs: ['tests/sendMoneyFlow/completeFastSendMoney.js'],
     //specs: ['tests/recipients/recipients_createBankAccount.js'],
     //specs: ['tests/recipients/recipients_deleteAccount.js'],
-    //specs: ['tests/signup.js'],
+    specs: ['tests/signup.js'],
     //specs: ['tests/recipients/recipients_createBankAccount.js'],
     //specs: ['tests/recipients/recipients_deleteAccount.js'],
 
@@ -52,12 +52,11 @@ exports.config = {
         browser.manage().timeouts().setScriptTimeout(60000);
         browser.manage().timeouts().pageLoadTimeout(40000);
         browser.manage().timeouts().implicitlyWait(25000);
-/*        var jasmineReporters = require('jasmine-reporters');
-        jasmine.getEnv().addReporter(new jasmineReporters.JUnitXmlReporter({
-            consolidateAll: true,
-            savePath: 'testresults',
-            filePrefix: 'xmloutput'
-        }));*/
+        /*        var jasmineReporters = require('jasmine-reporters');
+                jasmine.getEnv().addReporter(new jasmineReporters.JUnitXmlReporter({
+                    consolidateAll: true,
+                    savePath: 'testresults',
+                    filePrefix: 'xmloutput'
+                }));*/
     },
 };
-
