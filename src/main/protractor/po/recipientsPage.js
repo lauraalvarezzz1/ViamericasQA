@@ -11,6 +11,9 @@
 var recipientsPage = function() {
 
       this.createButton = element(by.id('create-recipient-2'));
+      this.editButton = element(by.id('edit'));
+      this.deleteRecipientButton = element(by.id('delete'));
+      this.deleteAccountButton = element(by.id('delete_account'));
 
       //Recipient information page
       this.first_name = element(by.id('first-name'));
@@ -35,22 +38,19 @@ var recipientsPage = function() {
       this.cityLI = element.all(by.css('dropdown-viamericas#city-select ul.dropdown-viam-list li'));
       this.city = element(by.css('dropdown-viamericas#city-select'));
 
-      this.currencyLI = element.all(by.css('dropdown-viamericas#currency-1-select ul.dropdown-viam-list li'));
-      this.currency = element(by.css('dropdown-viamericas#currency-1-select'));
+      this.currencyLI = element.all(by.css('dropdown-viamericas#currency-select ul.dropdown-viam-list li'));
+      this.currency = element(by.css('dropdown-viamericas#currency-select'));
 
-      this.chooseabankLI = element.all(by.css('dropdown-viamericas#bank-1-select ul.dropdown-viam-list li'));
-      this.chooseabank = element(by.css('dropdown-viamericas#bank-1-select'));
+      this.chooseabankLI = element.all(by.css('dropdown-viamericas#bank-select ul.dropdown-viam-list li'));
+      this.chooseabank = element(by.css('dropdown-viamericas#bank-select'));
 
-      this.accounttypeLI2 = element.all(by.css('dropdown-viamericas#account-type-1-select ul.dropdown-viam-list li'));
-      this.accounttype2 = element(by.css('dropdown-viamericas#account-type-1-select'));
-
-      this.accountnumber2 = element(by.id('account-number-2'));
       this.createRecipientButton = element(by.id('create-recipient'));
       this.closepopup = element(by.xpath("/html/body/div[3]/div[2]/span"));
 
       //Recipient Bank Account page
       this.accountnumber = element(by.id('account-number'));
-      this.aditionalfieldAUS_CA_HG_SW = element(by.id('aux-code-other'));
+      this.accountholdername=element(by.id('holder-name'));
+      this.aditionalfieldAUS_CA_HG_SW_UK = element(by.id('aux-code-other'));
       this.aditionalfieldBRA = element(by.id('aux-code-bra'));
       this.aditionalfieldIND = element(by.id('aux-code-ind'));
       this.aditionalfieldUS = element(by.id('routing-number'));
