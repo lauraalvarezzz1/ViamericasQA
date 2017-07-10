@@ -18,6 +18,7 @@ var homePage = function() {
     this.logInButton = element(by.partialButtonText('Log In'));
     this.signUpButtonXpath = element(by.xpath('/html/body/div[2]/div/div[1]/div[1]/header/div/ul/li[3]/button[1]'));
     this.logInButtonXpath = element(by.xpath('/html/body/div[2]/div/div[1]/div[1]/header/div/ul/li[3]/button[2]'));
+    this.customerServiceButton = element(by.xpath('/html/body/div[2]/div/div[1]/div[1]/header/div/ul/li[2]/a'));
 
     //Logged in
     this.gomyaccount = element(by.xpath('/html/body/div[2]/div/div[1]/div[1]/header/div/ul/li[4]/a'));
