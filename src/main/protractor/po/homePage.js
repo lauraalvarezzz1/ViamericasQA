@@ -10,10 +10,10 @@
 
 var homePage = function() {
     //Login Form
-    this.sendMoneyButton = element(by.linkText('Send Money'));
-    this.feesAndRatesButton = element(by.linkText('Fees and Rates'));
-    this.howItWorksButton = element(by.linkText('How it Works'));
-    this.locationsButton = element(by.linkText('Locations'));
+    this.sendMoneyButton = element(by.xpath('/html/body/div[2]/div/div[1]/div[1]/header/nav-viamericas/nav/div/ul/li[1]/a'));
+    this.feesAndRatesButton = element(by.xpath('/html/body/div[2]/div/div[1]/div[1]/header/nav-viamericas/nav/div/ul/li[3]/a'));
+    this.howItWorksButton = element(by.xpath('/html/body/div[2]/div/div[1]/div[1]/header/nav-viamericas/nav/div/ul/li[4]/a'));
+    this.locationsButton = element(by.xpath('/html/body/div[2]/div/div[1]/div[1]/header/nav-viamericas/nav/div/ul/li[5]/a'));
     this.signUpButton = element(by.buttonText('Sign up For Free'));
     this.logInButton = element(by.partialButtonText('Log In'));
     this.signUpButtonXpath = element(by.xpath('/html/body/div[2]/div/div[1]/div[1]/header/div/ul/li[3]/button[1]'));
