@@ -37,7 +37,8 @@ exports.config = {
     //specs: ['tests/sendMoneyFlow/completeFastSendMoney.js'],
     //specs: ['tests/recipients/recipients_createBankAccount.js'],
     //specs: ['tests/recipients/recipients_deleteAccount.js'],
-    specs: ['tests/signup.js'],
+    //specs: ['tests/signup.js'],
+    specs: ['tests/profileSettings.js'],
     //specs: ['tests/recipients/recipients_createBankAccount.js'],
     //specs: ['tests/recipients/recipients_deleteAccount.js'],
 
