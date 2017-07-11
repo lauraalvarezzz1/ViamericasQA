@@ -17,7 +17,6 @@ describe('Profile settings testing Web App', function() {
         loginPage.userName.sendKeys("viamericas.testing@gmail.com");
         loginPage.password.sendKeys("Viamericas123");
         loginPage.loginButton.click();
-        //expect(browser.getCurrentUrl()).toEqual('https://test.govianex.com/#/sendmoney/destination');
     });
 
     it('Updating profile settings', function() {
@@ -26,6 +25,7 @@ describe('Profile settings testing Web App', function() {
 
         homePage.gomyaccount.isPresent().then(function() {
             homePage.gomyaccount.click();
+            //Profile settings
             profileSettingsPage.middleName.clear().then(function() {
                 profileSettingsPage.middleName.sendKeys("Testing");
             });
@@ -46,6 +46,7 @@ describe('Profile settings testing Web App', function() {
                 profileSettingsPage.address2.sendKeys("Testing address 2");
             });
 
+            //Determine if it will select a Country or not
             var countryOrNot = Math.floor((Math.random() * 2) + 1);
             console.log("countryOrNot: " + countryOrNot);
 
@@ -59,6 +60,7 @@ describe('Profile settings testing Web App', function() {
                     });
             }
 
+            //Determine if it will select a program or not
             var programOrNot = Math.floor((Math.random() * 2) + 1);
             console.log("programOrNot: " + programOrNot);
 
@@ -80,11 +82,9 @@ describe('Profile settings testing Web App', function() {
                     });
             }
 
-
-            browser.sleep(2000);
             profileSettingsPage.updateButton.click();
+            //Waiting for the success notice
             browser.sleep(2000);
-            //expect(browser.getCurrentUrl()).toEqual('https://test.govianex.com/#/settings/profile');
         });
 
     });
