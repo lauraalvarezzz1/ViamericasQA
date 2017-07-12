@@ -8,7 +8,7 @@
 
 'use strict';
 
-var contactUs = function() {
+var profileSettings = function() {
     //Contact us form
     this.firstName = element(by.id('first-name'));
     this.middleName = element(by.id('middle-name'));
@@ -30,4 +30,4 @@ var contactUs = function() {
     this.updateButton = element(by.xpath('/html/body/div[2]/div/div[1]/div[2]/div/div/div/div[2]/div/div/form/div[18]/button[1]'));
 };
 
-module.exports = new contactUs();
+module.exports = new profileSettings();

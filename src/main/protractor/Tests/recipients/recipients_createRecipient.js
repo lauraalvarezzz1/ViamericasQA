@@ -3,36 +3,35 @@
  */
 
 
-describe('Recipients Testing - Creating a new recipient', function () {
+describe('Recipients Testing - Creating a new recipient', function() {
 
-    beforeAll(function () {
+    beforeAll(function() {
         browser.get('https://test.govianex.com/');
     });
 
-    beforeEach(function () {
-        browser.get('https://dev.govianex.com/#/');
+    beforeEach(function() {
         homePage = require('../../po/homePage');
         recipientsPage = require('../../po/recipientsPage');
         loginPage = require('../../po/loginPage');
     });
 
-    it('Log in', function () {
+    it('Log in', function() {
         homePage.logInButtonXpath.click();
         loginPage.userName.sendKeys("viamericas.testing@gmail.com");
         loginPage.password.sendKeys("Viamericas123");
         loginPage.loginButton.click();
     });
 
-    it('Go to Recipients', function () {
+    it('Go to Recipients', function() {
         browser.ignoreSynchronization = true;
-        homePage.gomyaccount.isPresent().then(function () {
+        homePage.gomyaccount.isPresent().then(function() {
             homePage.gomyaccount.click();
         });
         homePage.gorecipients.click();
     });
 
-    it('Go to create a new recipient', function () {
-        recipientsPage.createButton.isPresent().then(function () {
+    it('Go to create a new recipient', function() {
+        recipientsPage.createButton.isPresent().then(function() {
             recipientsPage.createButton.click();
         });
 
@@ -71,7 +70,7 @@ describe('Recipients Testing - Creating a new recipient', function () {
         }
 
         var selectcountry =
-            recipientsPage.countryLI.count().then(function (countCountries) {
+            recipientsPage.countryLI.count().then(function(countCountries) {
                 var ran = Math.floor((Math.random() * countCountries) + 1);
                 recipientsPage.country.element(by.css('input#country-select,#dropdown-input')).click();
                 recipientsPage.country.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
@@ -81,7 +80,7 @@ describe('Recipients Testing - Creating a new recipient', function () {
             });
 
         var selectstate =
-            recipientsPage.staterLI.count().then(function (countstates) {
+            recipientsPage.staterLI.count().then(function(countstates) {
                 var ran = Math.floor((Math.random() * countstates) + 1);
                 recipientsPage.stater.element(by.css('input#state-select,#dropdown-input')).click();
                 recipientsPage.stater.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
@@ -89,23 +88,23 @@ describe('Recipients Testing - Creating a new recipient', function () {
             });
 
         var selectcity =
-            recipientsPage.cityLI.count().then(function (countcities) {
+            recipientsPage.cityLI.count().then(function(countcities) {
                 var ran = Math.floor((Math.random() * countcities) + 1);
                 recipientsPage.city.element(by.css('input#city-select,#dropdown-input')).click();
                 recipientsPage.city.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
             });
     });
 
-    it('Click on create recipient and close popup', function () {
-        recipientsPage.createRecipientButton.isPresent().then(function () {
+    it('Click on create recipient and close popup', function() {
+        recipientsPage.createRecipientButton.isPresent().then(function() {
             recipientsPage.createRecipientButton.click();
         });
 
         recipientsPage.closepopup.click();
     });
 
-    it('Click on create recipient and close popup', function () {
-        recipientsPage.createRecipientButton.isPresent().then(function () {
+    it('Click on create recipient and close popup', function() {
+        recipientsPage.createRecipientButton.isPresent().then(function() {
             recipientsPage.createRecipientButton.click();
         });
 
@@ -113,7 +112,6 @@ describe('Recipients Testing - Creating a new recipient', function () {
     });
 });
 
-numbergenerator = function (min, max) {
+numbergenerator = function(min, max) {
     return parseInt(Math.random() * (max - min) + min);
 };
-
