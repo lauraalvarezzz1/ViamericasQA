@@ -105,7 +105,7 @@ describe('Fast send money Testing - Viamericas Web App', function () {
             sendmoneyFlowPage.continueButton.click();
 
             //<--------- GO TO RECIPIENT PAGE PAGE ----------------->
-            expect(browser.getCurrentUrl()).toEqual('https://test.govianex.com/#/fast-send/recipient');
+            expect(browser.getCurrentUrl()).toEqual('https://stage.govianex.com/#/fast-send/recipient');
 
             //COMPLETE RECIPIENT PAGE
             recipientsPage.first_name.sendKeys("Testing");
@@ -142,7 +142,7 @@ describe('Fast send money Testing - Viamericas Web App', function () {
 
             //<--------- GO TO RECIPIENT BANK ACCOUNT PAGE OR PAYMENT OPTIONS----------------->
             browser.getCurrentUrl().then(function (url) {
-                if (url == "https://test.govianex.com/#/fast-send/bankdeposit") {
+                if (url == "https://stage.govianex.com/#/fast-send/bankdeposit") {
                     recipientsPage.accountnumber.sendKeys(numbergenerator(10000000000, 99999999999));
                     var selectaccounttype =
                         recipientsPage.accounttypeLI.count().then(function (countaccounttype) {
@@ -183,7 +183,7 @@ describe('Fast send money Testing - Viamericas Web App', function () {
     it('<----Go to review page---->', function () {
         browser.getCurrentUrl().then(function (url) {
             var d = new Date();
-            if (url == "https://test.govianex.com/#/fast-send/funding/bank") {
+            if (url == "https://stage.govianex.com/#/fast-send/funding/bank") {
                 console.log("------------------BANK ACCOUNT-------------------");
                 paymentOptionsPage.bankAccountName.sendKeys("Testing");
                 paymentOptionsPage.accountNickname.sendKeys("Testing Nickname");
