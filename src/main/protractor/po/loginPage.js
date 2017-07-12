@@ -10,7 +10,7 @@
 
 var loginPage = function() {
       //Fees and Rates
-      this.loginButton = element(by.partialButtonText('Log In'));
+      this.loginButton = element(by.xpath('/html/body/div[2]/div/div[1]/div[1]/header/div/ul/li[3]/button[2]'));
       this.userName = element(by.id('username'));
       this.password = element(by.id('password'));
 };
