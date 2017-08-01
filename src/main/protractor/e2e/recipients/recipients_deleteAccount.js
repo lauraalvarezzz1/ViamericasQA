@@ -6,7 +6,7 @@
 describe('Recipients Testing - Removing the recipient bank account', function () {
 
     beforeAll(function () {
-        browser.get('https://test.govianex.com/');
+        browser.get('https://govianex.com/');
     });
 
     beforeEach(function () {
@@ -26,6 +26,8 @@ describe('Recipients Testing - Removing the recipient bank account', function ()
     it('Go to Recipients', function () {
         browser.ignoreSynchronization = true;
         homePage.gomyaccount.isPresent().then(function () {
+            var EC = protractor.ExpectedConditions;
+            browser.wait(EC.elementToBeClickable(homePage.loading), 10000);
             homePage.gomyaccount.click();
         });
         homePage.gorecipients.click();

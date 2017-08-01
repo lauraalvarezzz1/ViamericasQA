@@ -6,7 +6,7 @@
 describe('Recipients Testing - Creating a new recipient', function () {
 
     beforeAll(function () {
-        browser.get('https://test.govianex.com/');
+        browser.get('https://govianex.com/');
     });
 
     beforeEach(function () {
@@ -34,6 +34,7 @@ describe('Recipients Testing - Creating a new recipient', function () {
     it('Go to Recipients', function () {
         browser.sleep(2000);
         browser.ignoreSynchronization = true;
+        browser.sleep(5000);
         homePage.gomyaccount.isPresent().then(function () {
             homePage.gomyaccount.click();
         });

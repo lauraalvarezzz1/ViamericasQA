@@ -49,7 +49,7 @@ var recipientsPage = function() {
 
       //Recipient Bank Account page
       this.accountnumber = element(by.id('account-number'));
-      this.accountholdername=element(by.id('holder-name'));
+      this.accountnickname=element(by.id('account-nickname'));
       this.aditionalfieldAUS_CA_HG_SW_UK = element(by.id('aux-code-other'));
       this.aditionalfieldBRA = element(by.id('aux-code-bra'));
       this.aditionalfieldIND = element(by.id('aux-code-ind'));
