@@ -10,7 +10,6 @@ describe('Recipients Testing - Creating a new recipient', function () {
     });
 
     beforeEach(function () {
-        browser.get('https://dev.govianex.com/#/');
         homePage = require('../../po/homePage');
         recipientsPage = require('../../po/recipientsPage');
         loginPage = require('../../po/loginPage');
@@ -23,7 +22,17 @@ describe('Recipients Testing - Creating a new recipient', function () {
         loginPage.loginButton.click();
     });
 
+/*    it('Go to Recipients', function () {
+        browser.ignoreSynchronization = true;
+
+        homePage.gomyaccount.isPresent().then(function () {
+            homePage.gomyaccount.click();
+        });
+        homePage.gorecipients.click();
+    });*/
+
     it('Go to Recipients', function () {
+        browser.sleep(2000);
         browser.ignoreSynchronization = true;
         homePage.gomyaccount.isPresent().then(function () {
             homePage.gomyaccount.click();
@@ -31,7 +40,10 @@ describe('Recipients Testing - Creating a new recipient', function () {
         homePage.gorecipients.click();
     });
 
-    it('Go to create a new recipient', function () {
+
+
+
+/*    it('Go to create a new recipient', function () {
         recipientsPage.createButton.isPresent().then(function () {
             recipientsPage.createButton.click();
         });
@@ -110,7 +122,7 @@ describe('Recipients Testing - Creating a new recipient', function () {
         });
 
         recipientsPage.closepopup.click();
-    });
+    });*/
 });
 
 numbergenerator = function (min, max) {
