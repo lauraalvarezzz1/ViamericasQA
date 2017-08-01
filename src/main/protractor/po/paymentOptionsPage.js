@@ -10,6 +10,14 @@ var paymentOptionsPage = function() {
 
     //funding with bank accounts
     this.bankAccountName = element(by.id("holder-name"));
+
+    //Plaid
+    this.addaccountplaid =element(by.id("plaid-link"));
+    this.bankwithplaid = element (by.xpath('//*[@id="plaid-link-container"]/div/div[1]/div/div/div[2]/div[2]/div/li[1]/div'));
+    this.usernameplaid = element (by.id("username"));
+    this.passwordplaid = element (by.id("password"));
+
+    //Bank Account information
     this.accountNickname = element(by.id("account-nickname"));
     this.routingNumber = element(by.id("routing-number"));
     this.accountNumber = element(by.id("account-number"));
