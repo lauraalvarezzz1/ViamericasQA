@@ -6,11 +6,10 @@
 describe('Recipients Testing - Creating a new recipient', function () {
 
     beforeAll(function () {
-        browser.get('https://test.govianex.com/');
+        browser.get('https://govianex.com/');
     });
 
     beforeEach(function () {
-        browser.get('https://dev.govianex.com/#/');
         homePage = require('../../po/homePage');
         recipientsPage = require('../../po/recipientsPage');
         loginPage = require('../../po/loginPage');
@@ -25,6 +24,7 @@ describe('Recipients Testing - Creating a new recipient', function () {
 
     it('Go to Recipients', function () {
         browser.ignoreSynchronization = true;
+        browser.sleep(5000);
         homePage.gomyaccount.isPresent().then(function () {
             homePage.gomyaccount.click();
         });
