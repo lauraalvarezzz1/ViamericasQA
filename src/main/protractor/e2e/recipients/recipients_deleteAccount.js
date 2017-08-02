@@ -11,7 +11,7 @@ describe('Recipients Testing - Removing the recipient bank account', function ()
 
     beforeEach(function () {
         homePage = require('../../po/homePage');
-        recipientsPage = require('../../po/recipientsPage');
+        recipientPage = require('../../po/recipientsPage');
         loginPage = require('../../po/loginPage');
     });
 
@@ -34,15 +34,15 @@ describe('Recipients Testing - Removing the recipient bank account', function ()
     });
 
     it('Go to recipient information', function () {
-        recipientsPage.editButton.isPresent().then(function () {
-            recipientsPage.editButton.click();
+        recipientPage.editButton.isPresent().then(function () {
+            recipientPage.editButton.click();
         });
     });
 
     it('Remove the recipient bank account', function () {
-        recipientsPage.deleteAccountButton.isPresent().then(function (account) {
+        recipientPage.deleteAccountButton.isPresent().then(function (account) {
             if (account) {
-                recipientsPage.deleteAccountButton.click();
+                recipientPage.deleteAccountButton.click();
             } else {
                 console.log("The recipient already select doesn't have bank accounts created");
             }

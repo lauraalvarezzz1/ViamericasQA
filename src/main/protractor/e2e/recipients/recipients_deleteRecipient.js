@@ -12,7 +12,7 @@ describe('Recipients Testing - Removing the recipient', function () {
 
     beforeEach(function () {
         homePage = require('../../po/homePage');
-        recipientsPage = require('../../po/recipientsPage');
+        recipientPage = require('../../po/recipientsPage');
         loginPage = require('../../po/loginPage');
     });
 
@@ -33,10 +33,10 @@ describe('Recipients Testing - Removing the recipient', function () {
     });
 
     it('Remove the complete recipient', function () {
-        recipientsPage.editButton.isPresent().then(function () {
-            recipientsPage.editButton.click();
+        recipientPage.editButton.isPresent().then(function () {
+            recipientPage.editButton.click();
         });
-        recipientsPage.deleteRecipientButton.click();
+        recipientPage.deleteRecipientButton.click();
         expect(browser.getCurrentUrl()).toEqual('https://test.govianex.com/#/settings/recipients');
         browser.pause();
     });

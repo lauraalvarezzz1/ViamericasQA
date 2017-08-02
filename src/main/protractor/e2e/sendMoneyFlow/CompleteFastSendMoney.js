@@ -108,13 +108,13 @@ describe('Fast send money Testing - Viamericas Web App', function () {
             expect(browser.getCurrentUrl()).toEqual('https://test.govianex.com/#/fast-send/recipient');
 
             //COMPLETE RECIPIENT PAGE
-            recipientsPage.first_name.sendKeys("Testing");
-            recipientsPage.middle_name_optional.sendKeys("Testing");
-            recipientsPage.last_name.sendKeys("Testing");
-            recipientsPage.secondlast_name_optional.sendKeys("Testing");
-            recipientsPage.mobile_phone_optional.sendKeys(numbergenerator(312000000, 312999999));
-            recipientsPage.email_optional.sendKeys("Testing" + numbergenerator(1, 9999) + "@gmail.com");
-            recipientsPage.address_line1.sendKeys("Street 5 - Testing Address Line1");
+            recipientsPage.first_nameRecipient.sendKeys("Testing");
+            recipientsPage.middle_name_optionalRecipient.sendKeys("Testing");
+            recipientsPage.last_nameRecipient.sendKeys("Testing");
+            recipientsPage.secondlast_name_optionalRecipient.sendKeys("Testing");
+            recipientsPage.mobile_phone_optionalRecipient.sendKeys(numbergenerator(312000000, 312999999));
+            recipientsPage.email_optionalRecipient.sendKeys("Testing" + numbergenerator(1, 9999) + "@gmail.com");
+            recipientsPage.address_line1Recipient.sendKeys("Street 5 - Testing Address Line1");
 
             //<--------- SELECT STATE/RECIPIENT PAGE ----------------->
             var selectstateRecipient = recipientsPage.stateLI.count().then(function (countstates) {
