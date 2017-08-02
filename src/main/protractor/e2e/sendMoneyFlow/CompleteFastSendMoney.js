@@ -117,10 +117,10 @@ describe('Fast send money Testing - Viamericas Web App', function () {
             recipientsPage.address_line1.sendKeys("Street 5 - Testing Address Line1");
 
             //<--------- SELECT STATE/RECIPIENT PAGE ----------------->
-            var selectstateRecipient = sendmoneyFlowPage.stateLI.count().then(function (countstates) {
+            var selectstateRecipient = recipientsPage.stateLI.count().then(function (countstates) {
                 var ran = Math.floor((Math.random() * countstates) + 1);
-                sendmoneyFlowPage.state.element(by.css('input#state-select,#dropdown-input ')).click();
-                sendmoneyFlowPage.state.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
+                recipientsPage.state.element(by.css('input#state-select,#dropdown-input ')).click();
+                recipientsPage.state.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
 
                 if (countryselected == 32) {
                     recipientsPage.zipcode.sendKeys("33233");
@@ -132,10 +132,10 @@ describe('Fast send money Testing - Viamericas Web App', function () {
             });
 
             //<--------- SELECT CITY/RECIPIENT PAGE ----------------->
-            var selectcityRecipient = sendmoneyFlowPage.cityLI.count().then(function (countcities) {
+            var selectcityRecipient = recipientsPage.cityLI.count().then(function (countcities) {
                 var ran = Math.floor((Math.random() * countcities) + 1);
-                sendmoneyFlowPage.city.element(by.css('input#city-select,#dropdown-input')).click();
-                sendmoneyFlowPage.city.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
+                recipientsPage.city.element(by.css('input#city-select,#dropdown-input')).click();
+                recipientsPage.city.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
             });
 
             sendmoneyFlowPage.continueButton.click();
@@ -175,8 +175,14 @@ describe('Fast send money Testing - Viamericas Web App', function () {
         paymentOptionsPage.paymentMethod.isPresent().then(function () {
             var selectPaymentMethod = paymentOptionsPage.paymentMethod.isDisplayed().then(function () {
                 var ranPayment = Math.floor((Math.random() * 3) + 1);
+                if (ranPayment==1){
+                    variable= ranPayment+1;
+                    paymentOptionsPage.paymentMethod.element(
+                        by.xpath('/html/body/div[2]/div/div[1]/div[2]/div/div/div/div[1]/div[2]/div[1]/table/tbody/tr[' + variable + ']/td[1]/div')).click();
+                }else{
                 paymentOptionsPage.paymentMethod.element(
-                    by.xpath('/html/body/div[2]/div/div[1]/div[2]/div/div/div/div[1]/div[2]/div[1]/table/tbody/tr[' + 1 + ']/td[1]/div')).click();
+                    by.xpath('/html/body/div[2]/div/div[1]/div[2]/div/div/div/div[1]/div[2]/div[1]/table/tbody/tr[' + ranPayment + ']/td[1]/div')).click();
+                }
             });
         });
     });
@@ -186,12 +192,13 @@ describe('Fast send money Testing - Viamericas Web App', function () {
             var d = new Date();
             if (url == "https://test.govianex.com/#/fast-send/funding/bank") {
                 console.log("------------------BANK ACCOUNT-------------------");
-                paymentOptionsPage.addaccountplaid.click();
+                //PLAID
+                /*paymentOptionsPage.addaccountplaid.click();
                 paymentOptionsPage.bankwithplaid.click();
                 paymentOptionsPage.usernameplaid.sendKeys("user_good");
-                paymentOptionsPage.passwordplaid.sendKeys("pass_good");
+                paymentOptionsPage.passwordplaid.sendKeys("pass_good");*/
 
-                /*paymentOptionsPage.bankAccountName.sendKeys("Testing");
+                paymentOptionsPage.bankAccountName.sendKeys("Testing");
                  paymentOptionsPage.accountNickname.sendKeys("Testing Nickname");
                  paymentOptionsPage.routingNumber.sendKeys("002100021");
                  paymentOptionsPage.accountNumber.sendKeys("342465432");
@@ -200,7 +207,8 @@ describe('Fast send money Testing - Viamericas Web App', function () {
                  var ran = Math.floor((Math.random() * countaccounttype) + 1);
                  paymentOptionsPage.accounttype.element(by.css('input#account-types-select,#dropdown-input')).click();
                  paymentOptionsPage.accounttype.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
-                 });*/
+                 });
+
             } else {
                 paymentOptionsPage.creditCardName.sendKeys("Testing Card");
                 paymentOptionsPage.cardNickName.sendKeys("Testing Nickname");
