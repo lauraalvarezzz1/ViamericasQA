@@ -13,7 +13,8 @@ var paymentOptionsPage = function() {
 
     //Plaid
     this.addaccountplaid =element(by.id("plaid-link"));
-    this.bankwithplaid = element (by.xpath('//*[@id="plaid-link-container"]/div/div[1]/div/div/div[2]/div[2]/div/li[1]/div'));
+    this.bankwithplaid = element (by.css('#plaid-link-container .Overlay .App__content .Pane.InstitutionSelectPane .Pane__content li[data-institution="wells"]'));
+
     this.usernameplaid = element (by.id("username"));
     this.passwordplaid = element (by.id("password"));
 
