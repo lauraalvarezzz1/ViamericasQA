@@ -32,8 +32,8 @@ var recipientsPage = function() {
       this.countryLI = element.all(by.css('dropdown-viamericas#country-select ul.dropdown-viam-list li'));
       this.country = element(by.css('dropdown-viamericas#country-select'));
 
-      this.staterLI = element.all(by.css('dropdown-viamericas#state-select ul.dropdown-viam-list li'));
-      this.stater = element(by.css('dropdown-viamericas#state-select'));
+      this.stateLI = element.all(by.css('dropdown-viamericas#state-select ul.dropdown-viam-list li'));
+      this.state = element(by.css('dropdown-viamericas#state-select'));
 
       this.cityLI = element.all(by.css('dropdown-viamericas#city-select ul.dropdown-viam-list li'));
       this.city = element(by.css('dropdown-viamericas#city-select'));
