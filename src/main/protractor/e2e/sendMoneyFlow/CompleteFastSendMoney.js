@@ -187,6 +187,7 @@ describe('Fast send money Testing - Viamericas Web App', function () {
             if (url == "https://test.govianex.com/#/fast-send/funding/bank") {
                 console.log("------------------BANK ACCOUNT-------------------");
                 paymentOptionsPage.addaccountplaid.click();
+                browser.sleep(2000);
                 paymentOptionsPage.bankwithplaid.click();
                 paymentOptionsPage.usernameplaid.sendKeys("user_good");
                 paymentOptionsPage.passwordplaid.sendKeys("pass_good");
