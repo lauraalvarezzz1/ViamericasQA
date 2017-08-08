@@ -11,31 +11,32 @@ describe('Recipients Testing - Removing the recipient', function () {
     });
 
     beforeEach(function () {
-        homePage = require('../../po/homePage');
+        homepage = require('../../po/homePage');
         recipientPage = require('../../po/recipientsPage');
-        loginPage = require('../../po/loginPage');
+        loginpage = require('../../po/loginPage');
     });
 
-
     it('Log in', function () {
-        homePage.logInButtonXpath.click();
-        loginPage.userName.sendKeys("viamericas.testing@gmail.com");
-        loginPage.password.sendKeys("Viamericas123");
-        loginPage.loginButton.click();
+        homepage.logInButtonXpath.click();
+        loginpage.userName.sendKeys("viamericas.testing@gmail.com");
+        loginpage.password.sendKeys("Viamericas123");
+        loginpage.loginButton.click();
     });
 
     it('Go to Recipients', function () {
         browser.ignoreSynchronization = true;
-        homePage.gomyaccount.isPresent().then(function () {
-            homePage.gomyaccount.click();
+        homepage.gomyaccount.isPresent().then(function () {
+            browser.sleep(2000);
+            homepage.gomyaccount.click();
         });
-        homePage.gorecipients.click();
+        homepage.gorecipients.click();
     });
 
     it('Remove the complete recipient', function () {
         recipientPage.editButton.isPresent().then(function () {
             recipientPage.editButton.click();
         });
+
         recipientPage.deleteRecipientButton.click();
         expect(browser.getCurrentUrl()).toEqual('https://test.govianex.com/#/settings/recipients');
         browser.pause();

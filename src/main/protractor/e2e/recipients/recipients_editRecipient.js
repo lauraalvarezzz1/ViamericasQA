@@ -10,40 +10,37 @@ describe('Recipients Testing - Creating a new recipient', function () {
     });
 
     beforeEach(function () {
-        browser.get('https://dev.govianex.com/#/');
-        homePage = require('../../po/homePage');
+        homepage = require('../../po/homePage');
         recipientPage = require('../../po/recipientsPage');
-        loginPage = require('../../po/loginPage');
+        loginpage = require('../../po/loginPage');
     });
 
     it('Log in', function () {
-        homePage.logInButtonXpath.click();
-        loginPage.userName.sendKeys("viamericas.testing@gmail.com");
-        loginPage.password.sendKeys("Viamericas123");
-        loginPage.loginButton.click();
+        homepage.logInButtonXpath.click();
+        loginpage.userName.sendKeys("viamericas.testing@gmail.com");
+        loginpage.password.sendKeys("Viamericas123");
+        loginpage.loginButton.click();
     });
 
     it('Go to Recipients', function () {
         browser.ignoreSynchronization = true;
-        homePage.gomyaccount.isPresent().then(function () {
-            homePage.gomyaccount.click();
+        homepage.gomyaccount.isPresent().then(function () {
+            browser.sleep(2000);
+            homepage.gomyaccount.click();
         });
-        homePage.gorecipients.click();
+        homepage.gorecipients.click();
     });
+    it('Updating an existing recipient', function () {
+        recipientPage.editButton.isPresent().then(function () {
+            recipientPage.editButton.click();
 
-    it('Go to create a new recipient', function () {
-        recipientPage.createButton.isPresent().then(function () {
-            recipientPage.createButton.click();
         });
 
         //Complete the fields
-        recipientPage.first_name.sendKeys("Testing");
-        recipientPage.middle_name_optional.sendKeys("Testing");
-        recipientPage.last_name.sendKeys("Testing");
-        recipientPage.secondlast_name_optional.sendKeys("Testing");
-        recipientPage.mobile_phone_optional.sendKeys(numbergenerator(312000000, 312999999));
-        recipientPage.email_optional.sendKeys("Testing" + numbergenerator(1, 9999) + "@gmail.com");
-        recipientPage.address_line1.sendKeys("Street 5 - Testing Address Line1");
+        recipientPage.first_name.sendKeys(" Updating");
+        recipientPage.middle_name_optional.sendKeys(" Updating");
+        recipientPage.last_name.sendKeys(" Updating");
+        recipientPage.secondlast_name_optional.sendKeys(" Updating");
 
         recipientPage.month.sendKeys(numbergenerator(0, 1));
         if (recipientPage.month >= 1) {
@@ -81,12 +78,11 @@ describe('Recipients Testing - Creating a new recipient', function () {
             });
 
         var selectstate =
-            recipientPage.staterLI.count().then(function (countstates) {
+            recipientPage.stateLI.count().then(function (countstates) {
                 var ran = Math.floor((Math.random() * countstates) + 1);
-                recipientPage.stater.element(by.css('input#state-select,#dropdown-input')).click();
-                recipientPage.stater.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
-
-            });
+                recipientPage.state.element(by.css('input#state-select,#dropdown-input ')).click();
+                recipientPage.state.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
+            }, 3000);
 
         var selectcity =
             recipientPage.cityLI.count().then(function (countcities) {
@@ -96,21 +92,14 @@ describe('Recipients Testing - Creating a new recipient', function () {
             });
     });
 
-    it('Click on create recipient and close popup', function () {
-        recipientPage.createRecipientButton.isPresent().then(function () {
-            recipientPage.createRecipientButton.click();
+    it('Click on update recipient', function () {
+        recipientPage.updateRecipientButton.isPresent().then(function () {
+            recipientPage.updateRecipientButton.click();
         });
 
-        recipientPage.closepopup.click();
+        browser.pause();
     });
 
-    it('Click on create recipient and close popup', function () {
-        recipientPage.createRecipientButton.isPresent().then(function () {
-            recipientPage.createRecipientButton.click();
-        });
-
-        recipientPage.closepopup.click();
-    });
 });
 
 numbergenerator = function (min, max) {

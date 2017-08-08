@@ -10,28 +10,27 @@ describe('Recipients Testing - Removing the recipient bank account', function ()
     });
 
     beforeEach(function () {
-        homePage = require('../../po/homePage');
+        homepage = require('../../po/homePage');
         recipientPage = require('../../po/recipientsPage');
-        loginPage = require('../../po/loginPage');
+        loginpage = require('../../po/loginPage');
     });
 
-
     it('Log in', function () {
-        homePage.logInButtonXpath.click();
-        loginPage.userName.sendKeys("viamericas.testing@gmail.com");
-        loginPage.password.sendKeys("Viamericas123");
-        loginPage.loginButton.click();
+        homepage.logInButtonXpath.click();
+        loginpage.userName.sendKeys("viamericas.testing@gmail.com");
+        loginpage.password.sendKeys("Viamericas123");
+        loginpage.loginButton.click();
     });
 
     it('Go to Recipients', function () {
         browser.ignoreSynchronization = true;
-        homePage.gomyaccount.isPresent().then(function () {
-            var EC = protractor.ExpectedConditions;
-            browser.wait(EC.elementToBeClickable(homePage.loading), 10000);
-            homePage.gomyaccount.click();
+        homepage.gomyaccount.isPresent().then(function () {
+            browser.sleep(2000);
+            homepage.gomyaccount.click();
         });
-        homePage.gorecipients.click();
+        homepage.gorecipients.click();
     });
+
 
     it('Go to recipient information', function () {
         recipientPage.editButton.isPresent().then(function () {
@@ -45,6 +44,7 @@ describe('Recipients Testing - Removing the recipient bank account', function ()
                 recipientPage.deleteAccountButton.click();
             } else {
                 console.log("The recipient already select doesn't have bank accounts created");
+                browser.pause();
             }
         });
     });

@@ -101,7 +101,7 @@ describe('Recipients Testing - Creating a new recipient with bank account', func
                 recipientPage.state.element(by.css('input#state-select,#dropdown-input ')).click();
                 recipientPage.state.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
                 console.log("States available: " + ran);
-            });
+            }, 3000);
 
         var selectcity =
             recipientPage.cityLI.count().then(function (countcities) {
@@ -109,19 +109,15 @@ describe('Recipients Testing - Creating a new recipient with bank account', func
                 recipientPage.city.element(by.css('input#city-select,#dropdown-input ')).click();
                 recipientPage.city.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
                 console.log("Cities available: " + ran);
-            });
+            }, 4000);
 
-        browser.executeScript('window.scrollTo(0,1000);').then(function () {
+        var selectcurrency =
+            recipientPage.currencyLI.count().then(function (countcurrencies) {
+                var currency = Math.floor((Math.random() * countcurrencies) + 1);
+                recipientPage.currency.element(by.css('input#currency-select,#dropdown-input ')).click();
+                recipientPage.currency.element(by.css('ul.dropdown-viam-list li:nth-child(' + currency + ')')).click();
+            }, 2000);
 
-            var selectcurrency =
-                recipientPage.currencyLI.count().then(function (countcurrencies) {
-                    var currency = Math.floor((Math.random() * countcurrencies) + 1);
-                    recipientPage.currency.element(by.css('input#currency-select,#dropdown-input ')).click();
-                    recipientPage.currency.element(by.css('ul.dropdown-viam-list li:nth-child(' + currency + ')')).click();
-                });
-        });
-
-        browser.sleep(2000);
         var countbanks =
             recipientPage.chooseabankLI.count().then(function (count) {
                 var bank1 = Math.floor((Math.random() * count) + 1);
@@ -145,7 +141,8 @@ describe('Recipients Testing - Creating a new recipient with bank account', func
             recipientPage.createRecipientButton.click();
         });
 
-        recipientPage.closepopup.click();
+        //recipientPage.closepopup.click();
+        browser.pause();
     });
 });
 

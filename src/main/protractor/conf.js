@@ -26,20 +26,16 @@ exports.config = {
 
     // Spec patterns are relative to the current working directory when
     // protractor is called.
-    //specs: ['e2e/FeesNRates.js'],
     //specs: ['e2e/recipients/recipients_createRecipient.js'],
-    //specs: ['e2e/addPayment.js'],
     //specs: ['e2e/recipients_createRecipient.js'],
     //specs: ['e2e/sendMoneyFlow/completeFastSendMoney.js'],
-    //specs: ['e2e/addPayment.js'],
     //specs: ['e2e/recipients_createRecipient.js'],
     //specs: ['e2e/recipients/recipients_createRecipient.js'],
     //specs: ['e2e/sendMoneyFlow/completeFastSendMoney.js'],
-    specs: ['e2e/recipients/recipients_createBankAccount.js'],
-    //specs: ['e2e/recipients/recipients_deleteAccount.js'],
-    //specs: ['e2e/signup.js'],
     //specs: ['e2e/recipients/recipients_createBankAccount.js'],
     //specs: ['e2e/recipients/recipients_deleteAccount.js'],
+    //specs: ['e2e/recipients/recipients_deleteRecipient.js'],
+    specs: ['e2e/recipients/recipients_editRecipient.js'],
 
 
     // Options to be passed to Jasmine.
