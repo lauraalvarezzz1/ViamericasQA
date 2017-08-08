@@ -41,14 +41,14 @@ var recipientsPage = function() {
       this.currencyLI = element.all(by.css('dropdown-viamericas#currency-select ul.dropdown-viam-list li'));
       this.currency = element(by.css('dropdown-viamericas#currency-select'));
 
-      this.chooseabankLI = element.all(by.css('dropdown-viamericas#bank-1-select ul.dropdown-viam-list li'));
-      this.chooseabank = element(by.css('dropdown-viamericas#bank-1-select'));
+      this.chooseabankLI = element.all(by.css('dropdown-viamericas#bbank-select ul.dropdown-viam-list li'));
+      this.chooseabank = element(by.css('dropdown-viamericas#bank-select'));
 
       this.createRecipientButton = element(by.id('create-recipient'));
       this.closepopup = element(by.xpath("/html/body/div[3]/div[2]/span"));
 
       //Recipient Bank Account page
-      this.accountnumber = element(by.id('account-number-2'));
+      this.accountnumber = element(by.id('account-number'));
       this.accountnickname=element(by.id('account-nickname'));
       this.aditionalfieldAUS_CA_HG_SW_UK = element(by.id('aux-code-other'));
       this.aditionalfieldBRA = element(by.id('aux-code-bra'));

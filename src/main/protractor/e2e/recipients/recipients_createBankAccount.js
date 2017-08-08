@@ -125,7 +125,7 @@ describe('Recipients Testing - Creating a new recipient with bank account', func
         var countbanks =
             recipientPage.chooseabankLI.count().then(function (count) {
                 var bank1 = Math.floor((Math.random() * count) + 1);
-                recipientPage.chooseabank.element(by.css('input#bank-1-select,#dropdown-input ')).click();
+                recipientPage.chooseabank.element(by.css('input#bank-select,#dropdown-input ')).click();
                 recipientPage.chooseabank.element(by.css('ul.dropdown-viam-list li:nth-child(' + bank1 + ')')).click();
             });
 

@@ -12,7 +12,7 @@ describe('Fast send money Testing - Viamericas Web App', function () {
     beforeEach(function () {
         homePage = require('../../po/homePage');
         sendmoneyFlowPage = require('../../po/sendMoneyFlowPage');
-        recipientsPage = require('../../po/recipientsPage');
+        recipientPage = require('../../po/recipientsPage');
         paymentOptionsPage = require('../../po/paymentOptionsPage');
         signUpPage = require('../../po/signupPage');
     });
@@ -108,34 +108,34 @@ describe('Fast send money Testing - Viamericas Web App', function () {
             expect(browser.getCurrentUrl()).toEqual('https://test.govianex.com/#/fast-send/recipient');
 
             //COMPLETE RECIPIENT PAGE
-            recipientsPage.first_nameRecipient.sendKeys("Testing");
-            recipientsPage.middle_name_optionalRecipient.sendKeys("Testing");
-            recipientsPage.last_nameRecipient.sendKeys("Testing");
-            recipientsPage.secondlast_name_optionalRecipient.sendKeys("Testing");
-            recipientsPage.mobile_phone_optionalRecipient.sendKeys(numbergenerator(312000000, 312999999));
-            recipientsPage.email_optionalRecipient.sendKeys("Testing" + numbergenerator(1, 9999) + "@gmail.com");
-            recipientsPage.address_line1Recipient.sendKeys("Street 5 - Testing Address Line1");
+            recipientPage.first_name.sendKeys("Testing");
+            recipientPage.middle_name_optional.sendKeys("Testing");
+            recipientPage.last_name.sendKeys("Testing");
+            recipientPage.secondlast_name_optional.sendKeys("Testing");
+            recipientPage.mobile_phone_optional.sendKeys(numbergenerator(312000000, 312999999));
+            recipientPage.email_optional.sendKeys("Testing" + numbergenerator(1, 9999) + "@gmail.com");
+            recipientPage.address_line1.sendKeys("Street 5 - Testing Address Line1");
 
             //<--------- SELECT STATE/RECIPIENT PAGE ----------------->
-            var selectstateRecipient = recipientsPage.stateLI.count().then(function (countstates) {
+            var selectstateRecipient = recipientPage.stateLI.count().then(function (countstates) {
                 var ran = Math.floor((Math.random() * countstates) + 1);
-                recipientsPage.state.element(by.css('input#state-select,#dropdown-input ')).click();
-                recipientsPage.state.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
+                recipientPage.state.element(by.css('input#state-select,#dropdown-input ')).click();
+                recipientPage.state.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
 
                 if (countryselected == 32) {
-                    recipientsPage.zipcode.sendKeys("33233");
+                    recipientPage.zipcode.sendKeys("33233");
                 } else if (countryselected == 5) {
-                    recipientsPage.cpfbrazil.sendKeys(numbergenerator(10000000000, 99999999999));
+                    recipientPage.cpfbrazil.sendKeys(numbergenerator(10000000000, 99999999999));
                 } else {
                     console.log("Continue to payment options");
                 }
             });
 
             //<--------- SELECT CITY/RECIPIENT PAGE ----------------->
-            var selectcityRecipient = recipientsPage.cityLI.count().then(function (countcities) {
+            var selectcityRecipient = recipientPage.cityLI.count().then(function (countcities) {
                 var ran = Math.floor((Math.random() * countcities) + 1);
-                recipientsPage.city.element(by.css('input#city-select,#dropdown-input')).click();
-                recipientsPage.city.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
+                recipientPage.city.element(by.css('input#city-select,#dropdown-input')).click();
+                recipientPage.city.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
             });
 
             sendmoneyFlowPage.continueButton.click();
@@ -143,24 +143,24 @@ describe('Fast send money Testing - Viamericas Web App', function () {
             //<--------- GO TO RECIPIENT BANK ACCOUNT PAGE OR PAYMENT OPTIONS----------------->
             browser.getCurrentUrl().then(function (url) {
                 if (url == "https://test.govianex.com/#/fast-send/bankdeposit") {
-                    recipientsPage.accountnickname.sendKeys("Testing");
-                    recipientsPage.accountnumber.sendKeys(numbergenerator(10000000000, 99999999999));
+                    recipientPage.accountnickname.sendKeys("Testing");
+                    recipientPage.accountnumber.sendKeys(numbergenerator(10000000000, 99999999999));
                     var selectaccounttype =
-                        recipientsPage.accounttypeLI.count().then(function (countaccounttype) {
+                        recipientPage.accounttypeLI.count().then(function (countaccounttype) {
                             var ran = Math.floor((Math.random() * countaccounttype) + 1);
-                            recipientsPage.accounttype.element(by.css('input#account-type-select,#dropdown-input')).click();
-                            recipientsPage.accounttype.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
+                            recipientPage.accounttype.element(by.css('input#account-type-select,#dropdown-input')).click();
+                            recipientPage.accounttype.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
                         });
 
                     //IF THERE IS ANY OF THIS COUNTRIES:- Australia, Brazil, Canada, Hong Kong, India, Switzerland, United States
                     if (countryselected == 2 || countryselected == 6 || countryselected == 17 || countryselected == 29 || countryselected == 31) {
-                        recipientsPage.aditionalfieldAUS_CA_HG_SW_UK.sendKeys(numbergenerator(000000000, 99999999999));
+                        recipientPage.aditionalfieldAUS_CA_HG_SW_UK.sendKeys(numbergenerator(000000000, 99999999999));
                     } else if (countryselected == 32) {
-                        recipientsPage.aditionalfieldUS.sendKeys("021000021");
+                        recipientPage.aditionalfieldUS.sendKeys("021000021");
                     } else if (countryselected == 18) {
-                        recipientsPage.aditionalfieldIND.sendKeys("ABCD1234567");
+                        recipientPage.aditionalfieldIND.sendKeys("ABCD1234567");
                     } else if (countryselected == 5) {
-                        recipientsPage.aditionalfieldBRA.sendKeys(numbergenerator(0000, 99999999999));
+                        recipientPage.aditionalfieldBRA.sendKeys(numbergenerator(0000, 99999999999));
                     }
 
                 } else {

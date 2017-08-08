@@ -2,8 +2,8 @@ describe('Sign up testing Web App', function() {
 
     beforeEach(function() {
         browser.get('https://dev.govianex.com/#/');
-        signUpPage = require('../po/signupPage');
-        homePage = require('../po/homePage');
+        signUpPage = require('../../po/signupPage');
+        homePage = require('../../po/homePage');
 
     });
 
