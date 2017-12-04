@@ -19,6 +19,10 @@ var homePage = function() {
     this.signUpButtonXpath = element(by.xpath('/html/body/div[2]/div/div[1]/div[1]/header/div/ul/li[3]/button[1]'));
     this.logInButtonXpath = element(by.xpath('/html/body/div[2]/div/div[1]/div[1]/header/div/ul/li[3]/button[2]'));
     this.customerServiceButton = element(by.xpath('/html/body/div[2]/div/div[1]/div[1]/header/div/ul/li[2]/a'));
+    this.aboutUs = element(by.xpath('/html/body/div[2]/div/div[2]/div[1]/footer/div/nav/ul[1]/li[1]/a'));
+    this.Compliance = element(by.xpath('/html/body/div[2]/div/div[2]/div[1]/footer/div/nav/ul[1]/li[6]/a'));
+    this.fileComplaint = element(by.xpath('/html/body/div[2]/div/div[2]/div[1]/footer/div/nav/ul[2]/li[1]/a'));
+    this.payerNetwork = element(by.xpath('/html/body/div[2]/div/div[2]/div[1]/footer/div/nav/ul[1]/li[5]/a'));
 
     //Logged in
     this.gomyaccount = element(by.linkText('My Account'));

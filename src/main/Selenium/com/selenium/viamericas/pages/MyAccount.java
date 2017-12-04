@@ -1,7 +1,6 @@
 package com.selenium.viamericas.pages;
 
 import com.selenium.viamericas.utility.Start;
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
