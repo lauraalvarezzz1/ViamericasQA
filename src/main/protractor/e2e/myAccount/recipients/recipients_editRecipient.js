@@ -10,9 +10,9 @@ describe('Recipients Testing - Creating a new recipient', function () {
     });
 
     beforeEach(function () {
-        homepage = require('../../po/homePage');
-        recipientPage = require('../../po/recipientsPage');
-        loginpage = require('../../po/loginPage');
+        homepage = require('../../../po/homePage');
+        recipientPage = require('../../../po/recipientsPage');
+        loginpage = require('../../../po/loginPage');
     });
 
     it('Log in', function () {
