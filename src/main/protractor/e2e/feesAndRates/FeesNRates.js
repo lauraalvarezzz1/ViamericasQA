@@ -6,9 +6,9 @@ describe('Fees and Rates Testing - Viamericas Web App', function() {
 
     beforeEach(function() {
         browser.get('https://dev.govianex.com/');
-        homePage = require('../po/homePage');
-        feesAndRatesPage = require('../po/feesandRatesPage');
-        loginPage = require('../po/loginPage');
+        homePage = require('../../po/homePage');
+        feesAndRatesPage = require('../../po/feesandRatesPage');
+        loginPage = require('../../po/loginPage');
     });
 
 

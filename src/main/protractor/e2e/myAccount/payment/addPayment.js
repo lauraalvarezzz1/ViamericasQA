@@ -12,9 +12,9 @@ describe('Recipients Testing - Creating a new Payment Method with bank account',
 
     beforeEach(function() {
        // browser.get('https://test.govianex.com/');
-        homePage = require('../../po/homePage');
-        loginPage = require('../../po/loginPage');
-        paymentOptionsPage = require('../../po/paymentOptionsPage');
+        homePage = require('../../../po/homePage');
+        loginPage = require('../../../po/loginPage');
+        paymentOptionsPage = require('../../../po/paymentOptionsPage');
     });
 
 
