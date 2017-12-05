@@ -48,7 +48,6 @@ public class Start
             PhantomJsDriverManager.getInstance().version(phantomjsversion).arch64().setup();
             driver = new PhantomJSDriver(desiredCapabilities);
 
-            driver.manage().window().maximize();
             switch (Server)
             {
                 case "dev":
