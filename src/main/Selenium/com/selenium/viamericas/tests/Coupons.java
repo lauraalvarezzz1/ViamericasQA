@@ -1,5 +1,6 @@
 package com.selenium.viamericas.tests;
 import com.selenium.viamericas.pages.*;
+import com.selenium.viamericas.utility.Utility;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -70,7 +71,8 @@ public class Coupons {
     @Test (enabled = true, priority = 0)
     public void FillSendMoneyAsaGuest() throws Exception {
         HomePage.Goto("sendmoney");
-        Send_DestinationPage.selectCountry();
+        String randomCountry = Utility.getDestinationCountry();
+        Send_DestinationPage.selectCountry(randomCountry);
         Send_DestinationPage.howMoneyRecieved("BankDeposit");
         Send_DestinationPage.chooseBank();
         Assert.assertNotNull(Send_DestinationPage.exchangerate);
@@ -113,7 +115,8 @@ public class Coupons {
         LoginPage.typepassword("Laura123");
         LoginPage.clicklogin();
         HomePage.Goto("sendmoney");
-        Send_DestinationPage.selectCountry();
+        String randomCountry = Utility.getDestinationCountry();
+        Send_DestinationPage.selectCountry(randomCountry);
         Send_DestinationPage.howMoneyRecieved("BankDeposit");
         Send_DestinationPage.chooseBank();
         Assert.assertNotNull(Send_DestinationPage.exchangerate);

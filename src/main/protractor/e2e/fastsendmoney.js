@@ -35,6 +35,7 @@ describe('Fast send money Testing - Viamericas Web App', function() {
                 var countryselected = Math.floor((Math.random() * countCountries) + 1);
                 sendmoneyFlowPage.country.element(by.css('input#country-select')).click();
                 sendmoneyFlowPage.country.element(by.css('ul.dropdown-viam-list li:nth-child('+countryselected+')')).click();
+
         console.log(countryselected);
 
         //<--------- SELECT CURRENCY/TRANSACTION INFORMATION PAGE ----------------->

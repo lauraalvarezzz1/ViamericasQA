@@ -36,19 +36,18 @@ public class Start
 			Comment or uncomment when testing individual methods with ChromeDriver or PhantomJS
 			 */
 
-/*            ChromeOptions chromeOptions = new ChromeOptions();
+            ChromeOptions chromeOptions = new ChromeOptions();
             chromeOptions.addArguments("--ignore-certificate-errors");
             String chromedriverversion = Utility.getProperty("chromedriver.version");
             ChromeDriverManager.getInstance().version(chromedriverversion).arch64().setup();
-            driver = new ChromeDriver(chromeOptions);*/
+            driver = new ChromeDriver(chromeOptions);
 
-            DesiredCapabilities desiredCapabilities = DesiredCapabilities.phantomjs();
+/*            DesiredCapabilities desiredCapabilities = DesiredCapabilities.phantomjs();
             desiredCapabilities.setCapability("phantomjs.cli.args", Collections.singletonList("--ignore-ssl-errors=true"));
             String phantomjsversion = Utility.getProperty("phantomjs.version");
             PhantomJsDriverManager.getInstance().version(phantomjsversion).arch64().setup();
-            driver = new PhantomJSDriver(desiredCapabilities);
+            driver = new PhantomJSDriver(desiredCapabilities);*/
 
-            driver.manage().window().maximize();
             switch (Server)
             {
                 case "dev":

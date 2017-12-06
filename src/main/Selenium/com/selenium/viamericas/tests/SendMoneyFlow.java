@@ -25,7 +25,8 @@ public class SendMoneyFlow {
 
         @Test (enabled = true, priority = 0)
         public void FillDestinationInformation() throws Exception {
-            Send_DestinationPage.selectCountry();
+            String randomCountry = Utility.getDestinationCountry();
+            Send_DestinationPage.selectCountry(randomCountry);
             Send_DestinationPage.howMoneyRecieved("BankDeposit");
             //Send_DestinationPage.chooseBank();
             Assert.assertNotNull(Send_DestinationPage.exchangerate);

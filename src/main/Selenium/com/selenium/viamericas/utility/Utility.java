@@ -90,6 +90,52 @@ public class Utility {
         this.cardtype = "Choose a Bank";
 
     }
+
+    public static String getDestinationCountry(){
+        String countries[]= new String[31];
+        countries[0]="ARGENTINA";
+        countries[1]="AUSTRALIA";
+        countries[2]="BANGLADESH";
+        countries[3]="BOLIVIA";
+        countries[4]="BRAZIL";
+        countries[5]="CANADA";
+        countries[6]="CHILE";
+        countries[7]="COLOMBIA";
+        countries[8]="COSTA RICA";
+        countries[9]="DOMINICAN REPUBLIC";
+        countries[10]="ECUADOR";
+        countries[11]="EL SALVADOR";
+        countries[12]="GUATEMALA";
+        countries[13]="GUYANA";
+        countries[14]="HONDURAS";
+        countries[15]="HONG KONG";
+        countries[16]="INDIA";
+        countries[17]="INDONESIA";
+        countries[18]="KOREA, SOUTH";
+        countries[19]="MALAYSIA";
+        countries[20]="MEXICO";
+        countries[21]="NEPAL";
+        countries[22]="NEW ZEALAND";
+        countries[23]="NICARAGUA";
+        countries[24]="PERU";
+        countries[25]="PHILIPPINES";
+        countries[26]="SPAIN";
+        countries[27]="SWITZERLAND";
+        countries[28]="TRINIDAD AND TOBAGO";
+        countries[29]="UNITED KINGDOM";
+        countries[30]="VIETNAM";
+        int country = (int) (Math.random() * (31 - 1)) + 1;
+        return countries[country];
+    }
+    public static String getDestinationPaymentMethod(){
+        String paymentMethods[]= new String[2];
+        paymentMethods[0]="BANK DEPOSIT";
+        paymentMethods[1]="CASH PICKUP";
+        int method = (int) (Math.random() * (2 - 1)) + 1;
+        return paymentMethods[method];
+    }
+
+
     public static void waitForSomethingClickable(By in)
     {
         WebDriverWait wait = new WebDriverWait(Start.driver, 15);
