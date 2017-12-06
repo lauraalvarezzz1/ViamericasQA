@@ -44,3 +44,4 @@ var sendMoneyFlowPage = function() {
 };
 
 module.exports = new sendMoneyFlowPage();
+
