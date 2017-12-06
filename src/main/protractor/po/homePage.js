@@ -9,26 +9,23 @@
 'use strict';
 
 var homePage = function() {
-    //Login Form
-    this.sendMoneyButton = element(by.xpath('/html/body/div[2]/div/div[1]/div[1]/header/nav-viamericas/nav/div/ul/li[1]/a'));
-    this.feesAndRatesButton = element(by.xpath('/html/body/div[2]/div/div[1]/div[1]/header/nav-viamericas/nav/div/ul/li[3]/a'));
-    this.howItWorksButton = element(by.xpath('/html/body/div[2]/div/div[1]/div[1]/header/nav-viamericas/nav/div/ul/li[4]/a'));
-    this.locationsButton = element(by.xpath('/html/body/div[2]/div/div[1]/div[1]/header/nav-viamericas/nav/div/ul/li[5]/a'));
-    this.signUpButton = element(by.xpath('/html/body/div[2]/div/div[1]/div[1]/header/div/ul/li[3]/button[1]'));
-    this.logInButton = element(by.xpath('/html/body/div[2]/div/div[1]/div[1]/header/div/ul/li[3]/button[2]'));
-    this.signUpButtonXpath = element(by.xpath('/html/body/div[2]/div/div[1]/div[1]/header/div/ul/li[3]/button[1]'));
-    this.logInButtonXpath = element(by.xpath('/html/body/div[2]/div/div[1]/div[1]/header/div/ul/li[3]/button[2]'));
-    this.customerServiceButton = element(by.xpath('/html/body/div[2]/div/div[1]/div[1]/header/div/ul/li[2]/a'));
-    this.aboutUs = element(by.xpath('/html/body/div[2]/div/div[2]/div[1]/footer/div/nav/ul[1]/li[1]/a'));
-    this.Compliance = element(by.xpath('/html/body/div[2]/div/div[2]/div[1]/footer/div/nav/ul[1]/li[6]/a'));
-    this.fileComplaint = element(by.xpath('/html/body/div[2]/div/div[2]/div[1]/footer/div/nav/ul[2]/li[1]/a'));
-    this.payerNetwork = element(by.xpath('/html/body/div[2]/div/div[2]/div[1]/footer/div/nav/ul[1]/li[5]/a'));
+    //Header
+    this.signUpHeader = element(by.id('sign-up-header'));
+    this.loginHeader = element(by.id('login-button-header'));
+    this.customerServiceButton = element(by.id('contact-us-header'));
+    this.myaccountheader = element (by.id('my-account-header'));
 
-    //Logged in
-    this.gomyaccount = element(by.linkText('My Account'));
-    this.gorecipients = element(by.xpath('/html/body/div[2]/div/div[1]/div[2]/div/div[1]/div/div[1]/ul/li[2]/a'));
-    this.goToPayments = element(by.xpath('/html/body/div[2]/div/div[1]/div[2]/div/div[1]/div/div[1]/ul/li[3]/a'));
-    this.loading = element(by.xpath('/html/body/loading-viamericas/div/iframe'));
+    //Banner
+    this.signUpBanner = element(by.xpath('/html/body/div[3]/div/div[1]/div[2]/div/div/section[1]/ul/li[3]/div/div[2]/div/div/a[1]'));
+    this.sendmoneyBanner = element(by.xpath('/html/body/div[3]/div/div[1]/div[2]/div/div/section[1]/ul/li[3]/div/div[2]/div/div/a[2]'));
+
+    //Nav Bar
+    this.sendmoneyNav = element(by.id('send-money-button-nav-bar'));
+    this.feesandratesNav = element(by.id('get-a-quote-button-nav-bar'));
+    this.howitworksNav = element(by.id('how-it-works-button-nav-bar'));
+    this.locationsNav = element(by.id('locations-button-nav-bar'));
+    this.mytransactionsNav = element(by.id('transaction-history-button-nav-bar'));
 };
 
 module.exports = new homePage();
+

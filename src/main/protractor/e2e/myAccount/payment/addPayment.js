@@ -14,43 +14,41 @@ describe('Recipients Testing - Creating a new Payment Method with bank account',
        // browser.get('https://test.govianex.com/');
         homePage = require('../../../po/homePage');
         loginPage = require('../../../po/loginPage');
-        paymentOptionsPage = require('../../../po/paymentOptionsPage');
+        paymentPage = require('../../../po/paymentPage');
     });
 
 
     it('Loggin in', function() {
-        homePage.logInButtonXpath.click();
-        //Login
-        loginPage.userName.sendKeys("viamericas.testing@gmail.com");
-        loginPage.password.sendKeys("Viamericas123");
+        homePage.loginHeader.click();
+        loginPage.userName.sendKeys("laura.alvarez+11@talosdigital.com");
+        loginPage.password.sendKeys("Laura123");
         loginPage.loginButton.click();
 
     });
 
-    it('Adding new Bank Account', function() {
-        browser.sleep(2000);
+    it('Adding new Bank Account',  function() {
         browser.ignoreSynchronization = true;
 
-       homePage.gomyaccount.isPresent().then(function () {
-            homePage.gomyaccount.click();
+       homePage.myaccountheader.isPresent().then(function () {
+            homePage.myaccountheader.click();
             var ran = numbergenerator(0, 9999999);
 
-            homePage.goToPayments.click();
-            paymentOptionsPage.addNewAccountButton.click();
-            paymentOptionsPage.bankAccountButton.click();
-            paymentOptionsPage.bankAccountNickName.sendKeys("Testing Nickname");
-            paymentOptionsPage.routingNumber.sendKeys("002100021");
-            paymentOptionsPage.accountNumber.sendKeys(ran);
+           paymentPage.paymentButton.click();
+            paymentPage.addNewAccountButton.click();
+            paymentPage.bankAccountButton.click();
+            paymentPage.bankAccountNickName.sendKeys("Testing Nickname");
+            paymenPage.routingNumber.sendKeys("002100021");
+           paymentPage.accountNumber.sendKeys(ran);
 
-            var selectFundingType = paymentOptionsPage.accounttypeLI.count().then(function (countaccounttype) {
+            var selectFundingType = paymentPage.accounttypeLI.count().then(function (countaccounttype) {
                 var ran = Math.floor((Math.random() * countaccounttype) + 1);
-                paymentOptionsPage.accounttype.element(by.css('input#account-type-select,#dropdown-input')).click();
-                paymentOptionsPage.accounttype.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
+                paymentPage.accounttype.element(by.css('input#account-type-select,#dropdown-input')).click();
+                paymentPage.accounttype.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
             });
-            paymentOptionsPage.createAccountButton.click();
+           paymentPage.createAccountButton.click();
             browser.sleep(2000);
 
-            paymentOptionsPage.popUpOkButton.click();
+           paymentPage.popUpOkButton.click();
         });
 
     });
@@ -59,21 +57,21 @@ describe('Recipients Testing - Creating a new Payment Method with bank account',
         browser.sleep(2000);
         homePage.gomyaccount.isPresent().then(function () {
             var d = new Date();
-            paymentOptionsPage.addNewAccountButton.click();
-            paymentOptionsPage.creditDebitButton.click();
-            paymentOptionsPage.cardHolderName.sendKeys("Testing");
-            paymentOptionsPage.cardNickName.sendKeys("Testing Nickname");
-            paymentOptionsPage.cardNumber.sendKeys("5405980000000094");
-            paymentOptionsPage.cvvNumber.sendKeys("234");
-            paymentOptionsPage.month.sendKeys(numbergenerator(0, 1));
-            if (paymentOptionsPage.month >= 1) {
-                paymentOptionsPage.month.sendKeys(numbergenerator(0, 2));
+            paymentPage.addNewAccountButton.click();
+            paymentPage.creditDebitButton.click();
+            paymentPage.cardHolderName.sendKeys("Testing");
+            paymentPage.cardNickName.sendKeys("Testing Nickname");
+            paymentPage.cardNumber.sendKeys("5405980000000094");
+            paymentPage.cvvNumber.sendKeys("234");
+            paymentPage.month.sendKeys(numbergenerator(0, 1));
+            if (paymentPage.month >= 1) {
+                paymentPage.month.sendKeys(numbergenerator(0, 2));
             } else {
-                paymentOptionsPage.month.sendKeys(numbergenerator(1, 9));
+                paymentPage.month.sendKeys(numbergenerator(1, 9));
             }
             var expYear = numbergenerator(parseInt(d.getFullYear() + 1), parseInt(d.getFullYear()) + 5);
-            paymentOptionsPage.year.sendKeys(expYear);
-            paymentOptionsPage.createAccountButton.click();
+            paymentPage.year.sendKeys(expYear);
+            paymentPage.createAccountButton.click();
         });
     });
 });

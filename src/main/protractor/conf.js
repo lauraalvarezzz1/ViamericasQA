@@ -14,11 +14,6 @@ exports.config = {
     capabilities: {
         'browserName': 'chrome',
 
-        chromeOptions: {
-            args: [
-                '--start-maximized'
-            ]
-        }
     },
 
     // Framework to use. Jasmine is recommended.
@@ -31,7 +26,8 @@ exports.config = {
     //specs: ['e2e/sendMoneyFlow/completeFastSendMoney.js'],
     //specs: ['e2e/recipients_createRecipient.js'],
     //specs: ['e2e/recipients/recipients_createRecipient.js'],
-    specs: ['e2e/myAccount/payment/addPayment.js'],
+    //specs: ['e2e/myAccount/payment/addPayment.js'],
+    specs: ['e2e/fastsendmoney.js'],
     //specs: ['e2e/recipients/recipients_createBankAccount.js'],
     //specs: ['e2e/recipients/recipients_deleteAccount.js'],
     //specs: ['e2e/recipients/recipients_deleteRecipient.js'],

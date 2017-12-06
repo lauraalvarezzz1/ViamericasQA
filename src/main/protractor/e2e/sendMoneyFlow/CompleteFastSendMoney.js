@@ -13,7 +13,7 @@ describe('Fast send money Testing - Viamericas Web App', function () {
         homePage = require('../../po/homePage');
         sendmoneyFlowPage = require('../../po/sendMoneyFlowPage');
         recipientPage = require('../../po/recipientsPage');
-        paymentOptionsPage = require('../../po/paymentOptionsPage');
+        paymentPage = require('../../po/paymentPage');
         signUpPage = require('../../po/signupPage');
     });
 
