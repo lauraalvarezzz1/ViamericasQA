@@ -14,11 +14,6 @@ exports.config = {
     capabilities: {
         'browserName': 'chrome',
 
-        chromeOptions: {
-            args: [
-                '--start-maximized'
-            ]
-        }
     },
 
     // Framework to use. Jasmine is recommended.
@@ -26,19 +21,17 @@ exports.config = {
 
     // Spec patterns are relative to the current working directory when
     // protractor is called.
-    //specs: ['e2e/FeesNRates.js'],
-    //specs: ['te2eests/recipients/recipients_createRecipient.js'],
-    //specs: ['e2e/addPayment.js'],
-    //specs: ['tee2ests/recipients_createRecipient.js'],
-    specs: ['e2e/sendMoneyFlow/CompleteFastSendMoney.js'],
-    //specs: ['e2e/addPayment.js'],
+    //specs: ['e2e/recipients/recipients_createRecipient.js'],
+    //specs: ['e2e/recipients_createRecipient.js'],
+    //specs: ['e2e/sendMoneyFlow/completeFastSendMoney.js'],
     //specs: ['e2e/recipients_createRecipient.js'],
     //specs: ['e2e/recipients/recipients_createRecipient.js'],
+    //specs: ['e2e/myAccount/payment/addPayment.js'],
+    specs: ['e2e/fastsendmoney.js'],
     //specs: ['e2e/recipients/recipients_createBankAccount.js'],
     //specs: ['e2e/recipients/recipients_deleteAccount.js'],
-    //specs: ['e2e/signup.js'],
-    //specs: ['e2e/recipients/recipients_createBankAccount.js'],
-    //specs: ['e2e/recipients/recipients_deleteAccount.js'],
+    //specs: ['e2e/recipients/recipients_deleteRecipient.js'],
+    //specs: ['e2e/recipients/recipients_editRecipient.js'],
 
 
     // Options to be passed to Jasmine.

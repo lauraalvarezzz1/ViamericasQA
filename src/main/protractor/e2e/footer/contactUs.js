@@ -6,8 +6,8 @@ describe('Contact us testing Web App', function() {
 
     beforeAll(function() {
         browser.get('https://test.govianex.com/');
-        contactUsPage = require('../po/contactUsPage');
-        homePage = require('../po/homePage');
+        footerPages = require('../../po/footerPages');
+        homePage = require('../../po/homePage');
 
     });
 

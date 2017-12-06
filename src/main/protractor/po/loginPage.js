@@ -9,10 +9,19 @@
 'use strict';
 
 var loginPage = function() {
-      //Fees and Rates
-      this.loginButton = element(by.id('login'));
+
+      //Login section
+      this.loginHeader = element(by.id('login-button-header'));
       this.userName = element(by.id('username'));
       this.password = element(by.id('password'));
+      this.loginButton = element(by.id('login'));
+
+      //Additional things
+      this.eyeicon = element(by.css('[ng-click="logInModal.showPassword()"]'));
+      this.forgotPassword = element(by.id('forgot-password'));
+      this.loginFacebook = element(by.css('[ng-click="logInModal.loginFB()"]'));
+      this.SignUpButton = element(by.id('sign-up-free'));
+
 };
 
 module.exports = new loginPage();

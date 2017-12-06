@@ -19,8 +19,8 @@ var sendMoneyFlowPage = function() {
     this.currency = element(by.css('dropdown-viamericas#recipient-currency-select'));
 
     //Buttons in Destination Information screen
-    this.firstButton = element(by.xpath('/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[4]/div[1]/div[1]/div'));
-    this.secondButton = element(by.xpath('/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[3]/div[1]/div[2]/div'));
+    this.firstButton = element(by.css('#payment-mode'));
+    this.secondButton = element(by.css('#payment-mode'));
     this.amount = element(by.id('amount'));
 
     //Choose a different bank - Dropdown
@@ -44,3 +44,4 @@ var sendMoneyFlowPage = function() {
 };
 
 module.exports = new sendMoneyFlowPage();
+
