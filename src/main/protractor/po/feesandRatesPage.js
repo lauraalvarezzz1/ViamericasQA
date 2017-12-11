@@ -11,8 +11,8 @@ var feesandRatesPage = function() {
     this.receive = element(by.id('receive-amount'));
     this.cashPickupButton = element(by.xpath('Cash Pickup'));
     this.sendmoneyButton = element(by.id('send-money'));
-    this.countryLI = element.all(by.css('dropdown-viamericas#countries-select ul.dropdown-viam-list li'));
-    this.country = element(by.css('dropdown-viamericas#countries-select'));
+    this.countryLI = element.all(by.css('section#country-amount dropdown-viamericas#countries-select ul.dropdown-viam-list li'));
+    this.country = element(by.css('section#country-amount dropdown-viamericas#countries-select'));
 };
 
 module.exports = new feesandRatesPage();

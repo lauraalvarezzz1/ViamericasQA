@@ -5,7 +5,7 @@
 describe('Fees and Rates Testing - Viamericas Web App', function() {
 
     beforeEach(function() {
-        browser.get('https://dev.govianex.com/');
+        browser.get('https://test.govianex.com/#/fees-and-rates');
         homePage = require('../../po/homePage');
         feesAndRatesPage = require('../../po/feesandRatesPage');
         loginPage = require('../../po/loginPage');
@@ -14,29 +14,25 @@ describe('Fees and Rates Testing - Viamericas Web App', function() {
 
   it('Not logged in', function() {
 
-      var plot0 = element(by.css('body'));
-      browser.actions()
-          .mouseMove(plot0, {x: 100, y: 100})
-          .mouseDown()
-          .mouseMove({x: 400, y: 0}) // 400px to the right of current location
-          .perform();
-      browser.sleep(2000);
-
-      element(by.css('.intercom-launcher-frame')).click();
-      element(by.css('.intercom-launcher-frame')).click();
-
-      homePage.feesAndRatesButton.click();
+     // browser.sleep(2000);
 
       var selectcountry =
             feesAndRatesPage.countryLI.count().then(function(count) {
             var ran = Math.floor((Math.random() * count) + 1);
-            feesAndRatesPage.country.element(by.css('input#countries-select')).click();
+            feesAndRatesPage.country.element(by.css('input#dropdown-input')).click();
+            browser.executeScript('window.scrollTo(0,250);');
             feesAndRatesPage.country.element(by.css('ul.dropdown-viam-list li:nth-child('+ran+')')).click();
             console.log(ran);
 
         });
 
-      feesAndRatesPage.amount.sendKeys("180");
+      var randomamount = Math.floor((Math.random() * 2) + 1);
+      if (randomamount== 1){
+          feesAndRatesPage.amount.sendKeys(numbergenerator(0,8000));
+
+      }else{
+          feesAndRatesPage.receive.sendKeys(numbergenerator(0,10000));
+      }
 
       feesAndRatesPage.secondButton.isPresent().then(function(rs){
           console.log(rs);
@@ -48,12 +44,17 @@ describe('Fees and Rates Testing - Viamericas Web App', function() {
                   feesAndRatesPage.secondButton.click();
               }
           }else{
-              console.log("solo hay uno");
+              console.log("Only one button is available");
               feesAndRatesPage.firstButton.click();
           }
       });
 
-      homePage.feesAndRatesButton.click();
+      //homePage.feesAndRatesButton.click();
   });
 
  });
+
+numbergenerator = function(min, max){
+
+    return parseInt(Math.random() * (max - min) + min);
+};
