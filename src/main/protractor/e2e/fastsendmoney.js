@@ -33,7 +33,7 @@ describe('Fast send money Testing - Viamericas Web App', function() {
                 sendmoneyFlowPage.country.element(by.css('ul.dropdown-viam-list li:nth-child('+countryselected+')')).click();
         console.log(countryselected);
             })
-        browser.sleep(10000);
+
       //<--------- SELECT CURRENCY/TRANSACTION INFORMATION PAGE ----------------->
         sendmoneyFlowPage.currency.isDisplayed().then(function(rs){
             if(rs){
@@ -49,7 +49,6 @@ describe('Fast send money Testing - Viamericas Web App', function() {
             }
         });
 
-        browser.sleep(10000);
         //<--------- SELECT CASH PICKUP OR BANK DEPOSIT/TRANSACTION INFORMATION PAGE ----------------->
         sendmoneyFlowPage.secondButton.isPresent().then(function(rs){
             if(rs) {
