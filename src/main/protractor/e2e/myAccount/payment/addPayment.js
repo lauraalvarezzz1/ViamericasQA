@@ -20,6 +20,7 @@ describe('Recipients Testing - Creating a new Payment Method with bank account',
 
     it('Loggin in', function() {
         homePage.loginHeader.click();
+        browser.sleep(10000);
         loginPage.userName.sendKeys("laura.alvarez+11@talosdigital.com");
         loginPage.password.sendKeys("Laura123");
         loginPage.loginButton.click();
