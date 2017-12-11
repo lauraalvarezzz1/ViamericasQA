@@ -23,20 +23,19 @@ describe('Fast send money Testing - Viamericas Web App', function() {
         //homePage.sendmoneyNav.click();
         //<--------- SELECT COUNTRY/TRANSACTION INFORMATION PAGE ----------------->
 
-        browser.sleep(10000);
-        browser.executeScript('window.scrollTo(0,50);').then(function () {
+        browser.executeScript('window.scrollTo(0,250);');
+
 
        var selectcountry =
             sendmoneyFlowPage.countryLI.count().then(function(countCountries) {
                 var countryselected = Math.floor((Math.random() * countCountries) + 1);
-                sendmoneyFlowPage.country.element(by.css('input#dropdown-input')).click().last();
+                sendmoneyFlowPage.country.element(by.css('input#dropdown-input')).click();
                 sendmoneyFlowPage.country.element(by.css('ul.dropdown-viam-list li:nth-child('+countryselected+')')).click();
 
         console.log(countryselected);
             })
-        browser.pause();
 
-      /*  //<--------- SELECT CURRENCY/TRANSACTION INFORMATION PAGE ----------------->
+      //<--------- SELECT CURRENCY/TRANSACTION INFORMATION PAGE ----------------->
         sendmoneyFlowPage.currency.isDisplayed().then(function(rs){
             if(rs){
                 console.log("This have more than 1 currency available");
@@ -294,11 +293,7 @@ describe('Fast send money Testing - Viamericas Web App', function() {
         //expect(browser.getCurrentUrl()).toEqual('https://test.govianex.com/#/sendmoney/review');
 
         browser.pause();
-    }, 120000);*/
-
-});
-    });
-});
+    }, 120000);
 
 numbergenerator = function(min, max){
 

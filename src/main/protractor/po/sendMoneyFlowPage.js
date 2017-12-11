@@ -11,16 +11,19 @@
 var sendMoneyFlowPage = function() {
 
     //Country
-    this.countryLI = element.all(by.css('dropdown-viamericas#country-select ul.dropdown-viam-list li'));
-    this.country = element(by.css('dropdown-viamericas#country-select'));
+    this.countryLIfees = element.all(by.css('section#country-reception dropdown-viamericas#country-select ul.dropdown-viam-list li'))[0];
+    this.countryfees = element(by.css('dropdown-viamericas#country-select'))[0];
+
+    this.countryLI = element.all(by.css('section#country-reception dropdown-viamericas#country-select ul.dropdown-viam-list li'));
+    this.country = element(by.css('section#country-reception dropdown-viamericas#country-select'));
 
     //Currency
     this.currencyLI = element.all(by.css('dropdown-viamericas#recipient-currency-select ul.dropdown-viam-list li'));
     this.currency = element(by.css('dropdown-viamericas#recipient-currency-select'));
 
     //Buttons in Destination Information screen
-    this.firstButton = element(by.css('#payment-mode'));
-    this.secondButton = element(by.css('#payment-mode'));
+    this.firstButton = element(by.css('//*[@id="payment-mode-destination"]/button'));
+    this.secondButton = element(by.css("#payment-mode-destination button[value=1]"));
     this.amount = element(by.id('amount'));
 
     //Choose a different bank - Dropdown

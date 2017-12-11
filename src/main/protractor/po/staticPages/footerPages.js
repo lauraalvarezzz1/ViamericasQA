@@ -24,7 +24,7 @@ var staticPages = function() {
 
     //Compliance
     this.compliancelink = element(by.id('compliance-footer'));
-    this.stateCom = element.all(by.css('dropdown-viamericas#state ul.dropdown-viam-list li'));
+    this.stateComLI = element.all(by.css('dropdown-viamericas#state ul.dropdown-viam-list li'));
     this.stateCom = element(by.css('dropdown-viamericas#state'));
 
     //File Complaint
