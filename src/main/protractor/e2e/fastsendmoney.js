@@ -20,7 +20,6 @@ describe('Fast send money Testing - Viamericas Web App', function() {
     it('should start out with an empty memory', function () {
 
 
-        //homePage.sendmoneyNav.click();
         //<--------- SELECT COUNTRY/TRANSACTION INFORMATION PAGE ----------------->
 
         browser.executeScript('window.scrollTo(0,250);');
