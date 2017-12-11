@@ -28,25 +28,19 @@ public class Send_DestinationPage {
     public static By oklahoma = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[4]/label/div/ins");
 
     //Country random selector
-    public static By countryLI = By.cssSelector("dropdown-viamericas#country-select ul.dropdown-viam-list li");
-    public static By countryJS = By.cssSelector("dropdown-viamericas#country-select");
+    public static By countryLI = By.cssSelector("section#country-reception dropdown-viamericas#country-select input#dropdown-input");
+    public static By countryJS = By.cssSelector("section#country-reception dropdown-viamericas#country-select");
 
-    /*WebElement mySelectElement = driver.findElement(By.xpath(".//*[@placeholder='"+ language.getCountry()+"']"));
-    Select countrydropdown= new Select(mySelectElement);*/
 
     public static void selectCountry(String country) throws Exception {
         Thread.sleep(3000);
-        //List<WebElement> elements = Start.driver.findElement(countrydropdown);
-        List<WebElement> elements = Start.driver.findElements(By.xpath("//*[@placeholder='"+ language.getCountry()+"']"));
 
-        elements.get(1).clear();
-        elements.get(1).sendKeys(country);
-        elements.get(1).sendKeys(Keys.DOWN);
-        elements.get(1).sendKeys(Keys.ENTER);
-        //Start.driver.findElement(countrydropdown).clear();
-        /*Start.driver.findElement(countrydropdown).sendKeys(country);
-        Start.driver.findElement(countrydropdown).sendKeys(Keys.DOWN);
-        Start.driver.findElement(countrydropdown).sendKeys(Keys.ENTER);*/
+        //Start.driver.findElement(countryJS).clear();
+        Start.driver.findElement(countryJS).click();
+        Thread.sleep(3000);
+        Start.driver.findElement(countryLI).sendKeys("COLOMBIA");
+        Start.driver.findElement(countryJS).sendKeys(Keys.DOWN);
+        Start.driver.findElement(countryJS).sendKeys(Keys.ENTER);
         Thread.sleep(3000);}
 
     public static void howMoneyRecieved(String mode) throws Exception {

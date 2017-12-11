@@ -3,6 +3,7 @@ package com.selenium.viamericas.pages;
 
 import org.openqa.selenium.By;
 import com.selenium.viamericas.utility.Start;
+import org.openqa.selenium.JavascriptExecutor;
 
 public class HomePage {
 
@@ -28,22 +29,25 @@ public class HomePage {
     public static By SignUpButton = By.xpath("/html/body/div[2]/div/div[1]/div[1]/header/div/ul/li[3]/button[1]");
     public static By SendMoneybutton = By.xpath("/html/body/div[3]/div/div[1]/div[2]/div/div/section[1]/ul/li[1]/div/div[2]/div/div/a[2]");
 
+    //intercom
+    public static By intercomChat = By.cssSelector("intercom-launcher");
+
+
 
     //Home Page Links
     public static By logoIcon = By.xpath("/html/body/div[2]/div/div[1]/div[1]/header/logo-viamericas/div/a/img");
 
     //Footer links
-    public static By aboutus = By.xpath("/html/body/div[2]/div/div[2]/footer/div/nav/ul[1]/li[1]/a");
-    public static By leadership = By.xpath("/html/body/div[2]/div/div[2]/footer/div/nav/ul[1]/li[2]/a");
-    public static By careers = By.xpath("/html/body/div[2]/div/div[2]/footer/div/nav/ul[1]/li[3]/a");
-    public static By news = By.xpath("/html/body/div[2]/div/div[2]/footer/div/nav/ul[1]/li[4]/a");
-    public static By payernetwork = By.xpath("/html/body/div[2]/div/div[2]/footer/div/nav/ul[1]/li[5]/a");
-    public static By compliance = By.xpath("/html/body/div[2]/div/div[2]/footer/div/nav/ul[1]/li[6]/a");
-    public static By fileaCompliance = By.xpath("/html/body/div[2]/div/div[2]/footer/div/nav/ul[2]/li[1]/a");
-    public static By FAQ = By.xpath("/html/body/div[2]/div/div[2]/footer/div/nav/ul[2]/li[2]/a");
-    public static By contactUs = By.xpath("/html/body/div[2]/div/div[2]/footer/div/nav/ul[2]/li[3]/a");
-    public static By privacyPolicy = By.xpath("/html/body/div[2]/div/div[2]/footer/div/nav/ul[2]/li[4]/a");
-    public static By termsandConditions = By.xpath("/html/body/div[2]/div/div[2]/footer/div/nav/ul[2]/li[5]/a");
+    public static By aboutus = By.id("about-us-footer");
+    public static By leadership = By.id("leadership-footer");
+    public static By careers = By.id("careers-footer");
+    public static By news = By.id("news-footer");
+    public static By compliance = By.id("compliance-footer");
+    public static By fileaComplaint = By.id("file-a-complaint-footer");
+    public static By FAQ = By.id("faq-footer");
+    public static By contactUs = By.id("contact-us-footer");
+    public static By privacyPolicy = By.id("privacy-policy-footer");
+    public static By termsandConditions = By.id("terms-and-conditions-footer");
 
     public static void Goto(String page) throws Exception {
 
@@ -76,39 +80,52 @@ public class HomePage {
     }
 
     public static void footerGoto(String pag) throws Exception {
+        Thread.sleep(5000);
+        JavascriptExecutor jse = (JavascriptExecutor)Start.driver;
+        jse.executeScript("window.scrollBy(0,document.body.scrollHeight)", "");
+
+        Start.driver.findElement(intercomChat).click();
+        Start.driver.findElement(intercomChat).click();
+
         if(pag.equalsIgnoreCase("aboutus")){
+            Thread.sleep(2000);
             Start.driver.findElement(aboutus).click();
-            Thread.sleep(2000);
+
         }else if(pag.equalsIgnoreCase("leadership")){
+            Thread.sleep(2000);
             Start.driver.findElement(leadership).click();
-            Thread.sleep(2000);
+
         }else if(pag.equalsIgnoreCase("careers")){
+            Thread.sleep(2000);
             Start.driver.findElement(careers).click();
-            Thread.sleep(2000);
+
         }else if(pag.equalsIgnoreCase("news")){
+            Thread.sleep(2000);
             Start.driver.findElement(news).click();
-           Thread.sleep(2000);
-        }else if(pag.equalsIgnoreCase("payernetwork")){
-            Start.driver.findElement(payernetwork).click();
-            Thread.sleep(3000);
+
         }else if(pag.equalsIgnoreCase("compliance")){
+            Thread.sleep(2000);
             Start.driver.findElement(compliance).click();
-            Thread.sleep(3000);
-        }else if(pag.equalsIgnoreCase("fileacompliance")){
-            Start.driver.findElement(fileaCompliance).click();
-            Thread.sleep(3000);
+
+        }else if(pag.equalsIgnoreCase("fileAComplaint")){
+            Thread.sleep(2000);
+            Start.driver.findElement(fileaComplaint).click();
+
         }else if(pag.equalsIgnoreCase("faq")){
+            Thread.sleep(2000);
             Start.driver.findElement(FAQ).click();
-            Thread.sleep(3000);
+
         }else if(pag.equalsIgnoreCase("contactus")){
+            Thread.sleep(2000);
             Start.driver.findElement(contactUs).click();
-            Thread.sleep(3000);
+
         }else if(pag.equalsIgnoreCase("privacypolicy")){
+            Thread.sleep(2000);
             Start.driver.findElement(privacyPolicy).click();
-            Thread.sleep(2000);
+
         }else if(pag.equalsIgnoreCase("termsandconditions")){
-            Start.driver.findElement(termsandConditions).click();
             Thread.sleep(2000);
+            Start.driver.findElement(termsandConditions).click();
         }
     }
 

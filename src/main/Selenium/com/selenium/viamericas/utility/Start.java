@@ -63,6 +63,7 @@ public class Start
                     driver.navigate().to(Utility.getProperty("server.stage"));
                     break;
             }
+
             driver.manage().timeouts().implicitlyWait(20000, TimeUnit.MILLISECONDS);
             driver.manage().timeouts().pageLoadTimeout(25000, TimeUnit.MILLISECONDS);
 
