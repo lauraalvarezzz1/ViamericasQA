@@ -9,11 +9,12 @@ describe('Sign up testing Web App', function() {
 
     it('Sign Up form', function() {
 
-        homePage.signUpButtonXpath.click();
+        homePage.signUpHeader.click();
         signUpPage.email.sendKeys("viamericas.testing+" + numbergenerator(0000000000, 9999999999) + "@gmail.com");
         signUpPage.password.sendKeys("wHNLK096YHM");
 
         //Go to LOGIN FORM or SIGN UP FLOW
+
         var gotoanyflow = Math.floor((Math.random() * 2) + 1);
         if (gotoanyflow == 1) {
             signUpPage.loginbutton.click();

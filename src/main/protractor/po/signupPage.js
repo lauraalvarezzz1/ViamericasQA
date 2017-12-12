@@ -10,6 +10,9 @@
 
 var signupPage = function() {
     //Sign up email/password
+    this.firstname = element(by.id('firstName'));
+    this.lastname = element(by.id('lastName'));
+    this.mobilephone = element(by.id('cellphone'));
     this.email = element(by.id('email'));
     this.password = element(by.id('password'));
     this.signupButton = element(by.id('sign-up'));
