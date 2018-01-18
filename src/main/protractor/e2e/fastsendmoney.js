@@ -6,11 +6,12 @@
 describe('Fast send money Testing - Viamericas Web App', function() {
 
     beforeAll(function() {
-        browser.get('https://test.govianex.com/#/fast-send/destination/');
+        browser.get('https://dev.govianex.com/#/fast-send/destination/');
     });
 
     beforeEach(function() {
         homePage = require('../po/homePage');
+
         sendmoneyFlowPage = require('../po/sendMoneyFlowPage');
         recipientsPage = require('../po/recipientsPage');
         paymentPage = require('../po/paymentPage');
@@ -49,7 +50,7 @@ describe('Fast send money Testing - Viamericas Web App', function() {
         });
 
         //<--------- SELECT CASH PICKUP OR BANK DEPOSIT/TRANSACTION INFORMATION PAGE ----------------->
-        sendmoneyFlowPage.secondButton.isPresent().then(function(rs){
+        sendmoneyFlowPage.cashpickupButton.isPresent().then(function(rs){
             if(rs) {
                 var button = Math.floor((Math.random() * 2) + 1);
                 if(button==1){

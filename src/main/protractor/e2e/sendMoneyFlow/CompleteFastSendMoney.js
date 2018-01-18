@@ -6,7 +6,7 @@
 describe('Fast send money Testing - Viamericas Web App', function () {
 
     beforeAll(function () {
-        browser.get('https://test.govianex.com/');
+        browser.get('https://dev.govianex.com/');
     });
 
     beforeEach(function () {
@@ -17,7 +17,7 @@ describe('Fast send money Testing - Viamericas Web App', function () {
         signUpPage = require('../../po/signupPage');
     });
 
-    it('<----Actions with the mouse for the intercom chat---->', function () {
+    /*it('<----Actions with the mouse for the intercom chat---->', function () {
         var plot0 = element(by.css('body'));
         browser.actions()
             .mouseMove(plot0, {x: 100, y: 100})
@@ -26,14 +26,20 @@ describe('Fast send money Testing - Viamericas Web App', function () {
             .perform();
         element(by.css('.intercom-launcher-frame')).click();
         element(by.css('.intercom-launcher-frame')).click();
-    }, 120000);
+    }, 120000); */
 
-    it('<----Go to send money flow---->', function () {
+
+    browser.executeScript('window.scrollTo(0,500);');
+
+   it('<----Go to send money flow---->', function () {
         homePage.sendMoneyButton.isPresent().then(function () {
             homePage.sendMoneyButton.click();
+            browser.pause();
         });
     });
 
+
+/*
     it('<----Complete Destination information/Recipients Information/Recipient Bank Account---->', function () {
         //<--------- SELECT COUNTRY/TRANSACTION INFORMATION PAGE ----------------->
         var selectCountry = sendmoneyFlowPage.countryLI.count().then(function (countCountries) {
@@ -196,7 +202,7 @@ describe('Fast send money Testing - Viamericas Web App', function () {
                 /*paymentOptionsPage.addaccountplaid.click();
                 paymentOptionsPage.bankwithplaid.click();
                 paymentOptionsPage.usernameplaid.sendKeys("user_good");
-                paymentOptionsPage.passwordplaid.sendKeys("pass_good");*/
+                paymentOptionsPage.passwordplaid.sendKeys("pass_good");
 
                 paymentOptionsPage.bankAccountName.sendKeys("Testing");
                  paymentOptionsPage.accountNickname.sendKeys("Testing Nickname");
@@ -296,7 +302,7 @@ describe('Fast send money Testing - Viamericas Web App', function () {
         sendmoneyFlowPage.sendmoneyReview.click();
 
         browser.pause();
-    });
+    });*/
 
 });
 

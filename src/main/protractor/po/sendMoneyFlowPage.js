@@ -11,19 +11,19 @@
 var sendMoneyFlowPage = function() {
 
     //Country
-    this.countryLIfees = element.all(by.css('section#country-reception dropdown-viamericas#country-select ul.dropdown-viam-list li'))[0];
-    this.countryfees = element(by.css('dropdown-viamericas#country-select'))[0];
+    this.countryLIfees = element.all(by.css('section#country-reception dropdown-viamericas#country-select ul.dropdown-viam-list li'));
+    this.countryfees = element(by.css('dropdown-viamericas#country-select'));
 
-    this.countryLI = element.all(by.css('section#country-reception dropdown-viamericas#country-select ul.dropdown-viam-list li'));
-    this.country = element(by.css('section#country-reception dropdown-viamericas#country-select'));
+    this.countryLI = element.all(by.css('section#country-reception dropdown-viamericas#country-select-destination ul.dropdown-viam-list li'));
+    this.country = element(by.css('section#country-reception dropdown-viamericas#country-select-destination'));
 
     //Currency
     this.currencyLI = element.all(by.css('dropdown-viamericas#recipient-currency-select ul.dropdown-viam-list li'));
     this.currency = element(by.css('dropdown-viamericas#recipient-currency-select'));
 
     //Buttons in Destination Information screen
-    this.firstButton = element(by.css('//*[@id="payment-mode-destination"]/button'));
-    this.secondButton = element(by.css("#payment-mode-destination button[value=1]"));
+    this.bankdepositButton = element(by.id('payment-mode-C-destination'));
+    this.cashpickupButton = element(by.id('payment-mode-P-destination'));
     this.amount = element(by.id('amount'));
 
     //Choose a different bank - Dropdown
@@ -43,7 +43,6 @@ var sendMoneyFlowPage = function() {
     this.amount = element(by.id('amount'));
     this.continueButton = element(by.id('continue'));
     this.sendmoneyReview = element(by.id('send-money'));
-    this.url = browser.getCurrentUrl('https://dev.govianex.com/#/fast-send/bankdeposit');
 };
 
 module.exports = new sendMoneyFlowPage();

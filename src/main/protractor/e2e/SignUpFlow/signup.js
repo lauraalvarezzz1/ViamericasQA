@@ -1,7 +1,7 @@
 describe('Sign up testing Web App', function() {
 
     beforeEach(function() {
-        browser.get('https://dev.govianex.com/#/');
+        browser.get('https://test.govianex.com/#/');
         signUpPage = require('../../po/signupPage');
         homePage = require('../../po/homePage');
 
@@ -10,8 +10,15 @@ describe('Sign up testing Web App', function() {
     it('Sign Up form', function() {
 
         homePage.signUpHeader.click();
-        signUpPage.email.sendKeys("viamericas.testing+" + numbergenerator(0000000000, 9999999999) + "@gmail.com");
-        signUpPage.password.sendKeys("wHNLK096YHM");
+        browser.sleep(5000);
+
+        signUpPage.firstname.isPresent().then(function () {
+            signUpPage.firstname.sendKeys("Viamericas");
+            signUpPage.lastname.sendKeys("Testing");
+            signUpPage.mobilephone.sendKeys("5158380290");
+            signUpPage.email.sendKeys("viamericas.testing+" + numbergenerator(0000000000, 9999999999) + "@gmail.com");
+            signUpPage.password.sendKeys("Viamericas123");
+        });
 
         //Go to LOGIN FORM or SIGN UP FLOW
 
@@ -69,7 +76,7 @@ describe('Sign up testing Web App', function() {
                 }
 
                 signUpPage.zipcode.sendKeys("90001"); //Pending for send aleatory zip codes
-                var selectcity =
+                var selectcity =>
                     signUpPage.cityLI.count().then(function(countcities) {
                         var ran = Math.floor((Math.random() * countcities) + 1);
                         signUpPage.city.element(by.css('input#city-select')).click();

@@ -23,11 +23,12 @@ exports.config = {
     // protractor is called.
     //specs: ['e2e/recipients/recipients_createRecipient.js'],
     //specs: ['e2e/recipients_createRecipient.js'],
-    //specs: ['e2e/sendMoneyFlow/completeFastSendMoney.js'],
+    specs: ['e2e/fastsendmoney.js'],
     //specs: ['e2e/recipients_createRecipient.js'],
     //specs: ['e2e/recipients/recipients_createRecipient.js'],
     //specs: ['e2e/myAccount/payment/addPayment.js'],
-    specs: ['e2e/feesAndRates/FeesNRates.js'],
+    //specs: ['e2e/staticPages/Locations.js'],
+    //specs: ['e2e/SignUpFlow/signup.js'],
     //specs: ['e2e/fastsendmoney.js'],
     //specs: ['e2e/recipients/recipients_createBankAccount.js'],
     //specs: ['e2e/recipients/recipients_deleteAccount.js'],
@@ -42,6 +43,7 @@ exports.config = {
         isVerbose: true
     },
     onPrepare: function() {
+        global.EC = protractor.ExpectedConditions;
         browser.manage().timeouts().setScriptTimeout(60000);
         browser.manage().timeouts().pageLoadTimeout(40000);
         browser.manage().timeouts().implicitlyWait(25000);

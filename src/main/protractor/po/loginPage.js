@@ -19,7 +19,7 @@ var loginPage = function() {
       //Additional things
       this.eyeicon = element(by.css('[ng-click="logInModal.showPassword()"]'));
       this.forgotPassword = element(by.id('forgot-password'));
-      this.loginFacebook = element(by.css('[ng-click="logInModal.loginFB()"]'));
+      this.loginFacebook = element(by.id('facebook-login'));
       this.SignUpButton = element(by.id('sign-up-free'));
 
 };
