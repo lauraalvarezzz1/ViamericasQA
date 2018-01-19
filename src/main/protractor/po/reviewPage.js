@@ -7,7 +7,7 @@
 
 var reviewPage = function() {
     //Login Form
-    this.sendMoneyButton = element(by.id('finish-transaction-review'));
+    this.sendMoneyBuoktton = element(by.id('finish-transaction-review'));
     this.editRecipient = element(by.id('edit-recipient-review'));
     this.editReceiveMethod = element(by.id('edit-receive-method-review'));
     this.editSender = element(by.id('edit-sender-review'));
