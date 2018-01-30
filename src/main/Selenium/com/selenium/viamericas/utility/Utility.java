@@ -3,14 +3,11 @@ package com.selenium.viamericas.utility;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.io.InterruptedIOException;
-import java.util.StringTokenizer;
 import java.util.prefs.*;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+import java.util.Random;
 
 public class Utility {
     public Utility() {
@@ -127,14 +124,6 @@ public class Utility {
         int country = (int) (Math.random() * (31 - 1)) + 1;
         return countries[country];
     }
-    public static String getDestinationPaymentMethod(){
-        String paymentMethods[]= new String[2];
-        paymentMethods[0]="BANK DEPOSIT";
-        paymentMethods[1]="CASH PICKUP";
-        int method = (int) (Math.random() * (2 - 1)) + 1;
-        return paymentMethods[method];
-    }
-
 
     public static void waitForSomethingClickable(By in)
     {
@@ -146,6 +135,29 @@ public class Utility {
         WebDriverWait wait = new WebDriverWait(Start.driver, 5);
         Boolean isPresent = Start.driver.findElements(in).size() > 0;
         return isPresent;
+    }
+
+    public static Boolean isSomethingDisplayed(By in)
+    {
+        Boolean isPresent = false;
+        WebDriverWait wait = new WebDriverWait(Start.driver, 5);
+        try {
+            isPresent = Start.driver.findElement(in).isDisplayed();
+            return isPresent;
+        }
+        catch (Exception e) {
+            throw new RuntimeException("This is where you put the message");
+        }
+
+    }
+
+    public static int  getRandomNumber(){
+
+        Random rand = new Random();
+        int  n = rand.nextInt(10) + 1;
+
+        return n;
+
     }
 
     public static void saveRecipient() {

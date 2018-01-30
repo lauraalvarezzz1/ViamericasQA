@@ -12,22 +12,22 @@ public class SendMoneyTests {
 
     @BeforeClass
     public void start() throws Exception {
-        Start.initiate("test");
+        Start.initiate("dev");
         Thread.sleep(3000);
         HomePage.Goto("sendmoney");
     }
 
     @AfterClass
     public void finish() {
-        //Start.driver.quit();
+        Start.driver.quit();
     }
 
     @Test (enabled = true, priority = 0)
     public void fillDestinationInformation() throws Exception {
         String randomCountry = Utility.getDestinationCountry();
         Send_DestinationPage.selectCountry(randomCountry);
-        Send_DestinationPage.howMoneyRecieved("cashpickup");
-        //Send_DestinationPage.chooseBank();
+        Send_DestinationPage.howMoneyRecieved();
+        Send_DestinationPage.chooseBank(Utility.getRandomNumber());
         Assert.assertNotNull(Send_DestinationPage.exchangerate);
         Send_DestinationPage.selectamounttoSendGuest();
         //Send_DestinationPage.setOklahoma();

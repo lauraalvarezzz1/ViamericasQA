@@ -40,7 +40,7 @@ public class Start
             chromeOptions.addArguments("--ignore-certificate-errors");
             String chromedriverversion = Utility.getProperty("chromedriver.version");
             ChromeDriverManager.getInstance().version(chromedriverversion).arch64().setup();
-            driver = new ChromeDriver(chromeOptions);
+            driver = new ChromeDriver();
 
 /*            DesiredCapabilities desiredCapabilities = DesiredCapabilities.phantomjs();
             desiredCapabilities.setCapability("phantomjs.cli.args", Collections.singletonList("--ignore-ssl-errors=true"));
@@ -66,6 +66,7 @@ public class Start
 
             driver.manage().timeouts().implicitlyWait(20000, TimeUnit.MILLISECONDS);
             driver.manage().timeouts().pageLoadTimeout(25000, TimeUnit.MILLISECONDS);
+
 
         }
         else
@@ -96,10 +97,10 @@ public class Start
                     case "chrome":
                         ChromeOptions chromeOptions = new ChromeOptions();
                         chromeOptions.addArguments("--ignore-certificate-errors");
-                        String chromedriverversion = Utility.getProperty("chromedriver.version");
+                        String chromeDriverVersion = Utility.getProperty("chromedriver.version");
                         ChromeDriverManager.
                                 getInstance().
-                                version(chromedriverversion).
+                                version(chromeDriverVersion).
                                 arch64().
                                 setup();
                         driver = new ChromeDriver(chromeOptions);

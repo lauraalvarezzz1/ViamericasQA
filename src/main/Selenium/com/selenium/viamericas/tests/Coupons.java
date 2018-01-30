@@ -38,7 +38,7 @@ public class Coupons {
         -Complete the transaction
 
     2. As a user already registered and already created an identifier
-        -Login
+        -LoginTest
         -Go to destination information (Test with cash pickup and bank deposit)
         -Go to Recipient information
         -Go to Recipient bank Account
@@ -47,7 +47,7 @@ public class Coupons {
         -Complete the transaction
 
      3. As a user already registered but without create the identifier
-        -Login
+        -LoginTest
         -Go to profile settings
         -Create a new identifier
         -Go to destination screen (Test with cash pickup and bank deposit)
@@ -73,8 +73,8 @@ public class Coupons {
         HomePage.Goto("sendmoney");
         String randomCountry = Utility.getDestinationCountry();
         Send_DestinationPage.selectCountry(randomCountry);
-        Send_DestinationPage.howMoneyRecieved("BankDeposit");
-        Send_DestinationPage.chooseBank();
+        Send_DestinationPage.howMoneyRecieved();
+        Send_DestinationPage.chooseBank(Utility.getRandomNumber());
         Assert.assertNotNull(Send_DestinationPage.exchangerate);
         Send_DestinationPage.selectamounttoSend();
         Send_DestinationPage.goandcontinue();
@@ -117,8 +117,8 @@ public class Coupons {
         HomePage.Goto("sendmoney");
         String randomCountry = Utility.getDestinationCountry();
         Send_DestinationPage.selectCountry(randomCountry);
-        Send_DestinationPage.howMoneyRecieved("BankDeposit");
-        Send_DestinationPage.chooseBank();
+        Send_DestinationPage.howMoneyRecieved();
+        Send_DestinationPage.chooseBank(Utility.getRandomNumber());
         Assert.assertNotNull(Send_DestinationPage.exchangerate);
         Send_DestinationPage.selectamounttoSend();
         Send_DestinationPage.goandcontinue();

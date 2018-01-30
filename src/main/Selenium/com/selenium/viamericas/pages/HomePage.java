@@ -8,31 +8,29 @@ import org.openqa.selenium.JavascriptExecutor;
 public class HomePage {
 
     // Navigation menu elements
-    public static By sendMoneylabel = By.xpath("/html/body/div[2]/div/div[1]/div[1]/header/nav-viamericas/nav/div[1]/ul[1]/li[1]/a");
-    public static By transactionHistory = By.xpath("/html/body/div[2]/div/div[1]/div[1]/header/nav-viamericas/nav/div[1]/ul[1]/li[2]/a");
-    public static By getaquotelabel = By.xpath("/html/body/div[2]/div/div[1]/div[1]/header/nav-viamericas/nav/div[1]/ul[1]/li[3]/a");
-    public static By howitworkslabel = By.xpath("/html/body/div[2]/div/div[1]/div[1]/header/nav-viamericas/nav/div[1]/ul[1]/li[4]/a");
-    public static By locationlabel = By.xpath("/html/body/div[2]/div/div[1]/div[1]/header/nav-viamericas/nav/div[1]/ul[1]/li[5]/a");
-    public static By loginbutton = By.xpath("/html/body/div[2]/div/div[1]/div[1]/header/div/ul/li[3]/button[2]");
+    public static By sendMoneylabel = By.id("send-money-button-nav-bar");
+    public static By transactionHistory = By.id("transaction-history-button-nav-bar");
+    public static By getaquotelabel = By.id("get-a-quote-button-nav-bar");
+    public static By howitworkslabel = By.id("how-it-works-button-nav-bar");
+    public static By locationlabel = By.id("locations-button-nav-bar");
+    public static By loginbutton = By.id("login-button-header");
     public static By signuplabel = By.xpath("/html/body/div[2]/div/div[1]/div[1]/header/div/ul/li[3]/button[1]");
 
     //Header menu elements
-    public static By languagedropdown = By.xpath("/html/body/div[2]/div/div[1]/div[1]/header/div/ul/li[1]/a");
-    public static By englishoption = By.xpath("/html/body/div[2]/div/div[1]/div[1]/header/div/ul/li[1]/ul/li[1]");
-    public static By spanishoption = By.xpath("/html/body/div[2]/div/div[1]/div[1]/header/div/ul/li[1]/ul/li[2]");
-    public static By customerservicelabel = By.xpath("/html/body/div[2]/div/div[1]/div[1]/header/div/ul/li[2]/a");
-    public static By myaccountlabel = By.xpath("/html/body/div[2]/div/div[1]/div[1]/header/div/ul/li[4]/a");
-    public static By logoutlabel = By.xpath("/html/body/div[2]/div/div[1]/div[1]/header/div/ul/li[7]/a");
+    public static By languagedropdown = By.id("language-header");
+    public static By englishoption = By.id("english-lang-header");
+    public static By spanishoption = By.id("spanish-lang-header");
+    public static By customerservicelabel = By.id("contact-us-header");
+    public static By myaccountlabel = By.id("my-account-header");
+    public static By logoutlabel = By.id("logout-header");
 
     //Buttons
-    public static By getaQuoteButton = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/section[2]/div/div[2]/a[1]");
-    public static By SignUpButton = By.xpath("/html/body/div[2]/div/div[1]/div[1]/header/div/ul/li[3]/button[1]");
-    public static By SendMoneybutton = By.xpath("/html/body/div[3]/div/div[1]/div[2]/div/div/section[1]/ul/li[1]/div/div[2]/div/div/a[2]");
+    public static By getaQuoteButton = By.id("get-quote-desktop-home");
+    public static By SignUpButtonBanner = By.id("sign-up-banner-home");
+    public static By SendMoneybuttonBanner = By.id("send-money-banner-home");
 
     //intercom
     public static By intercomChat = By.cssSelector("intercom-launcher");
-
-
 
     //Home Page Links
     public static By logoIcon = By.xpath("/html/body/div[2]/div/div[1]/div[1]/header/logo-viamericas/div/a/img");
@@ -50,9 +48,9 @@ public class HomePage {
     public static By termsandConditions = By.id("terms-and-conditions-footer");
 
     public static void Goto(String page) throws Exception {
-
+        Thread.sleep(5000);
         if(page.equals("sendmoney")){
-            Start.driver.findElement(SendMoneybutton).click();
+            Start.driver.findElement(SendMoneybuttonBanner).click();
 
         }else if(page.equals("transaction")){
             Start.driver.findElement(transactionHistory).click();
@@ -144,12 +142,12 @@ public class HomePage {
     }
 
     public static void clickSignUp() throws Exception {
-        Start.driver.findElement(SignUpButton).click();
+        Start.driver.findElement(SignUpButtonBanner).click();
         Thread.sleep(3000);
     }
 
     public static void clickSendMoney() throws Exception {
-        Start.driver.findElement(SendMoneybutton).click();
+        Start.driver.findElement(SendMoneybuttonBanner).click();
         Thread.sleep(2000);
     }
 
