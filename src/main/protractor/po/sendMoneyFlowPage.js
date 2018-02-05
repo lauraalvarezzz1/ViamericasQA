@@ -11,11 +11,9 @@
 var sendMoneyFlowPage = function() {
 
     //Country
-    this.countryLIfees = element.all(by.css('section#country-reception dropdown-viamericas#country-select ul.dropdown-viam-list li'));
-    this.countryfees = element(by.css('dropdown-viamericas#country-select'));
 
-    this.countryLI = element.all(by.css('section#country-reception dropdown-viamericas#country-select-destination ul.dropdown-viam-list li'));
-    this.country = element(by.css('section#country-reception dropdown-viamericas#country-select-destination'));
+    this.countryLI = element.all(by.css('dropdown-viamericas#country-select-destination ul.dropdown-viam-list li'));
+    this.country = element(by.css('dropdown-viamericas#country-select-destination'));
 
     //Currency
     this.currencyLI = element.all(by.css('dropdown-viamericas#recipient-currency-select ul.dropdown-viam-list li'));

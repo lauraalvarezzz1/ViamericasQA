@@ -11,7 +11,6 @@ describe('Fast send money Testing - Viamericas Web App', function() {
 
     beforeEach(function() {
         homePage = require('../po/homePage');
-
         sendmoneyFlowPage = require('../po/sendMoneyFlowPage');
         recipientsPage = require('../po/recipientsPage');
         paymentPage = require('../po/paymentPage');
@@ -20,13 +19,9 @@ describe('Fast send money Testing - Viamericas Web App', function() {
 
     it('should start out with an empty memory', function () {
 
-
         //<--------- SELECT COUNTRY/TRANSACTION INFORMATION PAGE ----------------->
-
-        browser.executeScript('window.scrollTo(0,250);');
-
-
        var selectcountry =
+           browser.sleep(5000);
             sendmoneyFlowPage.countryLI.count().then(function(countCountries) {
                 var countryselected = Math.floor((Math.random() * countCountries) + 1);
                 sendmoneyFlowPage.country.element(by.css('input#dropdown-input')).click();
