@@ -16,8 +16,8 @@ var homePage = function() {
     this.myaccountheader = element (by.id('my-account-header'));
 
     //Banner
-    this.signUpBanner = element(by.xpath('/html/body/div[3]/div/div[1]/div[2]/div/div/section[1]/ul/li[3]/div/div[2]/div/div/a[1]'));
-    this.sendmoneyBanner = element(by.xpath('/html/body/div[3]/div/div[1]/div[2]/div/div/section[1]/ul/li[3]/div/div[2]/div/div/a[2]'));
+    this.signUpBanner = element(by.id('sign-up-banner-home'));
+    this.sendmoneyBanner = element(by.id('send-money-2-banner-home'));
 
     //Nav Bar
     this.sendmoneyNav = element(by.id('send-money-button-nav-bar'));
@@ -25,6 +25,20 @@ var homePage = function() {
     this.howitworksNav = element(by.id('how-it-works-button-nav-bar'));
     this.locationsNav = element(by.id('locations-button-nav-bar'));
     this.mytransactionsNav = element(by.id('transaction-history-button-nav-bar'));
+
+    //Buttons in the main home page
+    this.feesandratesButton = element(by.id('get-quote-desktop-home'));
+
+    this.signUpsecondsection = element(by.id('sign-up-home'));
+    this.sendmoneysecondsection= element(by.id('send-money-home'));
+
+    this.signUpthirdsection = element(by.id('sign-up-middle-home'));
+    this.sendmoneythirdsection= element(by.id('send-money-middle-home'));
+
+    //Download vianex app links
+    this.applelogo = element(by.id('app-store-home'));
+    this.applelogo = element(by.id('play-store-home'));
+
 };
 
 module.exports = new homePage();

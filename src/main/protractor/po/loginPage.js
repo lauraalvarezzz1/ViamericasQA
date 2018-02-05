@@ -12,15 +12,15 @@ var loginPage = function() {
 
       //Login section
       this.loginHeader = element(by.id('login-button-header'));
-      this.userName = element(by.id('username'));
-      this.password = element(by.id('password'));
-      this.loginButton = element(by.id('login'));
+      this.userName = element(by.id('username-login'));
+      this.password = element(by.id('password-login'));
+      this.loginButton = element(by.id('login-login'));
 
       //Additional things
-      this.eyeicon = element(by.css('[ng-click="logInModal.showPassword()"]'));
-      this.forgotPassword = element(by.id('forgot-password'));
-      this.loginFacebook = element(by.css('[ng-click="logInModal.loginFB()"]'));
-      this.SignUpButton = element(by.id('sign-up-free'));
+      this.eyeicon = element(by.id('show-password-login'));
+      this.forgotPassword = element(by.id('forgot-password-login'));
+      this.loginFacebook = element(by.id('facebook-login'));
+      this.SignUpButton = element(by.id('sign-up-free-login'));
 
 };
 

@@ -6,7 +6,8 @@
 describe('Recipients Testing - Creating a new Payment Method with bank account', function() {
 
     beforeAll(function() {
-        browser.get('https://test.govianex.com/');
+        browser.get('https://dev.govianex.com/');
+        browser.waitForAngular();
 
     });
 
@@ -26,7 +27,7 @@ describe('Recipients Testing - Creating a new Payment Method with bank account',
 
     });
 
-    it('Adding new Bank Account',  function() {
+    /*it('Adding new Bank Account',  function() {
         browser.ignoreSynchronization = true;
 
        homePage.myaccountheader.isPresent().then(function () {
@@ -73,7 +74,7 @@ describe('Recipients Testing - Creating a new Payment Method with bank account',
             paymentPage.year.sendKeys(expYear);
             paymentPage.createAccountButton.click();
         });
-    });
+    });*/
 });
 
 numbergenerator = function(min, max){
