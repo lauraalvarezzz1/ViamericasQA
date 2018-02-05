@@ -23,18 +23,70 @@ public class FooterTests {
     }
 
     @Test(enabled = true, priority = 0)
-    public void Gotocontactus() throws Exception {
-        ContactUsPage.gotocontact();
-        Assert.assertTrue(Start.driver.getCurrentUrl().contains("contact-us"));
+    public void goToAboutUs() throws Exception {
+        Thread.sleep(2000);
+        HomePage.footerGoto("aboutus");
+        Assert.assertTrue(Start.driver.getPageSource().contains("About Us"));
     }
 
-    @Test(enabled = false, priority = 1)
-    public void Completecontactform() throws Exception {
-        ContactUsPage.setyourname();
-        ContactUsPage.setYouremailaddress();
-        ContactUsPage.setMessage();
-       // ContactUsPage.setNosoyrobot();
-        ContactUsPage.setSendMessageButton();
-        Assert.assertTrue(Start.driver.getCurrentUrl().contains("contact-us"));
+    @Test(enabled = true, priority = 1)
+    public void goToLeadership() throws Exception {
+        Thread.sleep(2000);
+        HomePage.footerGoto("leadership");
+        Assert.assertTrue(Start.driver.getPageSource().contains("Management"));
+
+    }
+    @Test(enabled = true, priority = 2)
+    public void goToNews() throws Exception {
+        Thread.sleep(2000);
+        HomePage.footerGoto("news");
+        Assert.assertTrue(Start.driver.getPageSource().contains("News"));
+
+    }
+    @Test(enabled = true, priority = 3)
+    public void goToCompliance() throws Exception {
+        Thread.sleep(2000);
+        HomePage.footerGoto("compliance");
+        Assert.assertTrue(Start.driver.getPageSource().contains("Compliance"));
+
+    }
+    @Test(enabled = true, priority = 4)
+    public void goToFileAComplaint() throws Exception {
+        Thread.sleep(2000);
+        HomePage.footerGoto("fileAComplaint");
+        Assert.assertTrue(Start.driver.getPageSource().contains("File a Complaint"));
+
+    }
+    @Test(enabled = true, priority = 5)
+    public void goToFAQ() throws Exception {
+        Thread.sleep(2000);
+        HomePage.footerGoto("faq");
+        Assert.assertTrue(Start.driver.getPageSource().contains("Frequently Asked Questions"));
+
+    }
+    @Test(enabled = true, priority = 6)
+    public void goToContactUs() throws Exception {
+        Thread.sleep(2000);
+        HomePage.footerGoto("contactus");
+        Assert.assertTrue(Start.driver.getPageSource().contains("Contact Us"));
+
+    }
+    @Test(enabled = true, priority = 7)
+    public void goToCareers() throws Exception {
+        Thread.sleep(2000);
+        HomePage.footerGoto("careers");
+
+    }
+    @Test(enabled = true, priority = 8)
+    public void goToPrivacyPolicy() throws Exception {
+        Thread.sleep(2000);
+        HomePage.footerGoto("privacypolicy");
+
+    }
+    @Test(enabled = true, priority = 9)
+    public void goToTermsAndConditions() throws Exception {
+        Thread.sleep(2000);
+        HomePage.footerGoto("termsandconditions");
+
     }
 }

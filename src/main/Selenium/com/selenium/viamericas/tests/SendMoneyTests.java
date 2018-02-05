@@ -2,29 +2,32 @@ package com.selenium.viamericas.tests;
 
 import com.selenium.viamericas.pages.*;
 import com.selenium.viamericas.utility.Start;
+import com.selenium.viamericas.utility.Utility;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class FastSendMoneyFlow {
+public class SendMoneyTests {
 
     @BeforeClass
     public void start() throws Exception {
-        Start.initiate("stage");
+        Start.initiate("dev");
+        Thread.sleep(3000);
         HomePage.Goto("sendmoney");
     }
 
     @AfterClass
     public void finish() {
-        //Start.driver.quit();
+        Start.driver.quit();
     }
 
     @Test (enabled = true, priority = 0)
-    public void FillTransactionInformation() throws Exception {
-        Send_DestinationPage.selectCountry();
-        Send_DestinationPage.howMoneyRecieved("BankDeposit");
-        //Send_DestinationPage.chooseBank();
+    public void fillDestinationInformation() throws Exception {
+        String randomCountry = Utility.getDestinationCountry();
+        Send_DestinationPage.selectCountry(randomCountry);
+        Send_DestinationPage.howMoneyRecieved();
+        Send_DestinationPage.chooseBank(Utility.getRandomNumber());
         Assert.assertNotNull(Send_DestinationPage.exchangerate);
         Send_DestinationPage.selectamounttoSendGuest();
         //Send_DestinationPage.setOklahoma();

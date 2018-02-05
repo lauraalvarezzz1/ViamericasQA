@@ -1,5 +1,6 @@
 package com.selenium.viamericas.tests;
 import com.selenium.viamericas.pages.*;
+import com.selenium.viamericas.utility.Utility;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -37,7 +38,7 @@ public class Coupons {
         -Complete the transaction
 
     2. As a user already registered and already created an identifier
-        -Login
+        -LoginTest
         -Go to destination information (Test with cash pickup and bank deposit)
         -Go to Recipient information
         -Go to Recipient bank Account
@@ -46,7 +47,7 @@ public class Coupons {
         -Complete the transaction
 
      3. As a user already registered but without create the identifier
-        -Login
+        -LoginTest
         -Go to profile settings
         -Create a new identifier
         -Go to destination screen (Test with cash pickup and bank deposit)
@@ -70,9 +71,10 @@ public class Coupons {
     @Test (enabled = true, priority = 0)
     public void FillSendMoneyAsaGuest() throws Exception {
         HomePage.Goto("sendmoney");
-        Send_DestinationPage.selectCountry();
-        Send_DestinationPage.howMoneyRecieved("BankDeposit");
-        Send_DestinationPage.chooseBank();
+        String randomCountry = Utility.getDestinationCountry();
+        Send_DestinationPage.selectCountry(randomCountry);
+        Send_DestinationPage.howMoneyRecieved();
+        Send_DestinationPage.chooseBank(Utility.getRandomNumber());
         Assert.assertNotNull(Send_DestinationPage.exchangerate);
         Send_DestinationPage.selectamounttoSend();
         Send_DestinationPage.goandcontinue();
@@ -113,9 +115,10 @@ public class Coupons {
         LoginPage.typepassword("Laura123");
         LoginPage.clicklogin();
         HomePage.Goto("sendmoney");
-        Send_DestinationPage.selectCountry();
-        Send_DestinationPage.howMoneyRecieved("BankDeposit");
-        Send_DestinationPage.chooseBank();
+        String randomCountry = Utility.getDestinationCountry();
+        Send_DestinationPage.selectCountry(randomCountry);
+        Send_DestinationPage.howMoneyRecieved();
+        Send_DestinationPage.chooseBank(Utility.getRandomNumber());
         Assert.assertNotNull(Send_DestinationPage.exchangerate);
         Send_DestinationPage.selectamounttoSend();
         Send_DestinationPage.goandcontinue();

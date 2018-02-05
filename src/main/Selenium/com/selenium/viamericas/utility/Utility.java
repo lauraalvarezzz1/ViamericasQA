@@ -3,14 +3,11 @@ package com.selenium.viamericas.utility;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.io.InterruptedIOException;
-import java.util.StringTokenizer;
 import java.util.prefs.*;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+import java.util.Random;
 
 public class Utility {
     public Utility() {
@@ -90,6 +87,44 @@ public class Utility {
         this.cardtype = "Choose a Bank";
 
     }
+
+    public static String getDestinationCountry(){
+        String countries[]= new String[31];
+        countries[0]="ARGENTINA";
+        countries[1]="AUSTRALIA";
+        countries[2]="BANGLADESH";
+        countries[3]="BOLIVIA";
+        countries[4]="BRAZIL";
+        countries[5]="CANADA";
+        countries[6]="CHILE";
+        countries[7]="COLOMBIA";
+        countries[8]="COSTA RICA";
+        countries[9]="DOMINICAN REPUBLIC";
+        countries[10]="ECUADOR";
+        countries[11]="EL SALVADOR";
+        countries[12]="GUATEMALA";
+        countries[13]="GUYANA";
+        countries[14]="HONDURAS";
+        countries[15]="HONG KONG";
+        countries[16]="INDIA";
+        countries[17]="INDONESIA";
+        countries[18]="KOREA, SOUTH";
+        countries[19]="MALAYSIA";
+        countries[20]="MEXICO";
+        countries[21]="NEPAL";
+        countries[22]="NEW ZEALAND";
+        countries[23]="NICARAGUA";
+        countries[24]="PERU";
+        countries[25]="PHILIPPINES";
+        countries[26]="SPAIN";
+        countries[27]="SWITZERLAND";
+        countries[28]="TRINIDAD AND TOBAGO";
+        countries[29]="UNITED KINGDOM";
+        countries[30]="VIETNAM";
+        int country = (int) (Math.random() * (31 - 1)) + 1;
+        return countries[country];
+    }
+
     public static void waitForSomethingClickable(By in)
     {
         WebDriverWait wait = new WebDriverWait(Start.driver, 15);
@@ -100,6 +135,29 @@ public class Utility {
         WebDriverWait wait = new WebDriverWait(Start.driver, 5);
         Boolean isPresent = Start.driver.findElements(in).size() > 0;
         return isPresent;
+    }
+
+    public static Boolean isSomethingDisplayed(By in)
+    {
+        Boolean isPresent = false;
+        WebDriverWait wait = new WebDriverWait(Start.driver, 5);
+        try {
+            isPresent = Start.driver.findElement(in).isDisplayed();
+            return isPresent;
+        }
+        catch (Exception e) {
+            throw new RuntimeException("This is where you put the message");
+        }
+
+    }
+
+    public static int  getRandomNumber(){
+
+        Random rand = new Random();
+        int  n = rand.nextInt(10) + 1;
+
+        return n;
+
     }
 
     public static void saveRecipient() {
