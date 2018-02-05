@@ -1,6 +1,7 @@
 package com.selenium.viamericas.tests;
 
 import com.selenium.viamericas.pages.*;
+import com.selenium.viamericas.tests.viaModalTests.Login;
 import com.selenium.viamericas.utility.Start;
 import com.selenium.viamericas.utility.Utility;
 import org.testng.Assert;
@@ -14,7 +15,6 @@ public class SendMoneyTests {
     public void start() throws Exception {
         Start.initiate("dev");
         Thread.sleep(3000);
-        HomePage.Goto("sendmoney");
     }
 
     @AfterClass
@@ -23,20 +23,28 @@ public class SendMoneyTests {
     }
 
     @Test (enabled = true, priority = 0)
+    public void login() throws Exception {
+        LoginPage.clicklogin();
+        LoginPage.login(Utility.getProperty("test.acc"), Utility.getProperty("test.pass"));
+
+    }
+
+    @Test (enabled = true, priority = 1)
     public void fillDestinationInformation() throws Exception {
+        Thread.sleep(3000);
+        HomePage.Goto("sendmoney");
         String randomCountry = Utility.getDestinationCountry();
         Send_DestinationPage.selectCountry(randomCountry);
         Send_DestinationPage.howMoneyRecieved();
         Send_DestinationPage.chooseBank(Utility.getRandomNumber());
         Assert.assertNotNull(Send_DestinationPage.exchangerate);
-        Send_DestinationPage.selectamounttoSendGuest();
-        //Send_DestinationPage.setOklahoma();
-        //Send_DestinationPage.selectamounttoSend();
+        Send_DestinationPage.selectAmountToSend();
         Send_DestinationPage.goandcontinue();
+        //Assert.assertTrue(Start.driver.getPageSource().contains("By clicking on Log In or Sign Up you agree to Viamericas"));
         Assert.assertTrue(Start.driver.getCurrentUrl().contains("recipient"));
     }
 
-    @Test (enabled = true, priority = 1)
+    @Test (enabled = true, priority = 2)
     public void RecipientInformation() throws Exception {
         Send_RecipientPage.completename();
         Send_RecipientPage.completelastname();
@@ -51,6 +59,8 @@ public class SendMoneyTests {
         Send_RecipientPage.continuebutton();
         //Assert.assertTrue(Start.driver.getCurrentUrl().contains("bankdeposit"));
     }
+    /*
+
 
     @Test (enabled = false, priority = 2)
     public void RecipientBankDeposit() throws Exception {
@@ -139,4 +149,5 @@ public class SendMoneyTests {
         //Send_FundingPage.setClosepopup();
         Assert.assertTrue(Start.driver.getCurrentUrl().contains("revie"));
     }
+    */
 }

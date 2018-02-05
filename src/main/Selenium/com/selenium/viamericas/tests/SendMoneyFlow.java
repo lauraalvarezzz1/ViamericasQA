@@ -30,7 +30,7 @@ public class SendMoneyFlow {
             Send_DestinationPage.howMoneyRecieved();
             //Send_DestinationPage.chooseBank();
             Assert.assertNotNull(Send_DestinationPage.exchangerate);
-            Send_DestinationPage.selectamounttoSend();
+            Send_DestinationPage.selectAmountToSend();
             Send_DestinationPage.goandcontinue();
             Assert.assertTrue(Start.driver.getCurrentUrl().contains("recipient"));
         }

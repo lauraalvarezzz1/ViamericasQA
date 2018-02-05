@@ -50,7 +50,7 @@ public class HomePage {
     public static void Goto(String page) throws Exception {
         Thread.sleep(5000);
         if(page.equals("sendmoney")){
-            Start.driver.findElement(SendMoneybuttonBanner).click();
+            Start.driver.findElement(sendMoneylabel).click();
 
         }else if(page.equals("transaction")){
             Start.driver.findElement(transactionHistory).click();

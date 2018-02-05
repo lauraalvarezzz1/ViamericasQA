@@ -12,15 +12,16 @@ import org.openqa.selenium.Keys;
 public class Send_RecipientPage {
     public static Utility language = new Utility();
     //<---------OBLIGATORY--------->
-    public static By firstname = By.xpath("html/body/div[2]/div/div[1]/div[2]/div[1]/div/div/form/div[1]/div[2]/div[2]/input");
-    public static By lastname = By.xpath("html/body/div[2]/div/div[1]/div[2]/div[1]/div/div/form/div[1]/div[2]/div[4]/input");
-    public static By phonenumber = By.xpath("html/body/div[2]/div/div[1]/div[2]/div[1]/div/div/form/div[1]/div[2]/div[6]/input");
-    public static By addressline1 = By.xpath("html/body/div[2]/div/div[1]/div[2]/div[1]/div/div/form/div[1]/div[2]/div[9]/input");
-    public static By emailaddress = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div[1]/div/div/form/div[1]/div[2]/div[7]/input");
+    public static By firstName = By.xpath("first-name-recipient");
+    public static By middleName = By.xpath("middle-name-recipient");
+    public static By lastMame = By.xpath("last-name-recipient");
+    public static By secondLastName = By.xpath("second-last-name-recipient");
+    public static By birthday = By.xpath("birthday-recipient");
+    public static By phonenumber = By.xpath("mobile-phone-recipient");
+    public static By addressline1 = By.xpath("address-1-recipient");
+    public static By addressline2 = By.xpath("address-2-recipient");
+    public static By emailaddress = By.xpath("email-recipient");
 
-    public static By month = By.xpath(".//*[@placeholder='"+ language.getMonth()+"']");
-    public static By day = By.xpath(".//*[@placeholder='"+ language.getDay()+"']");
-    public static By year = By.xpath(".//*[@placeholder='"+ language.getYear()+"']");
 
     public static By state = By.xpath(".//*[@placeholder='State']");
     public static By city = By.xpath(".//*[@placeholder='City']");
@@ -28,12 +29,12 @@ public class Send_RecipientPage {
     public static By continueButton = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[2]/button[2]");
 
     public static void completename() throws Exception {
-        Start.driver.findElement(firstname).sendKeys("Test Recipient Name");
+        Start.driver.findElement(firstName).sendKeys("Test Recipient Name");
         Thread.sleep(2000);
     }
 
     public static void completelastname() throws Exception {
-        Start.driver.findElement(lastname).sendKeys("Test Recipient Last Name");
+        Start.driver.findElement(lastMame).sendKeys("Test Recipient Last Name");
         Thread.sleep(1500);
     }
 
@@ -42,26 +43,7 @@ public class Send_RecipientPage {
         Thread.sleep(1500);
     }
 
-    public static void selectmonth() throws Exception {
-        Start.driver.findElement(month).sendKeys("01");
-        Start.driver.findElement(month).sendKeys(Keys.DOWN);
-        Start.driver.findElement(month).sendKeys(Keys.ENTER);
-        Thread.sleep(1000);
-    }
 
-    public static void selectday() throws Exception {
-        Start.driver.findElement(day).sendKeys("28");
-        Start.driver.findElement(day).sendKeys(Keys.DOWN);
-        Start.driver.findElement(day).sendKeys(Keys.ENTER);
-        Thread.sleep(1000);
-    }
-
-    public static void selectyear() throws Exception {
-        Start.driver.findElement(year).sendKeys("1998");
-        Start.driver.findElement(year).sendKeys(Keys.DOWN);
-        Start.driver.findElement(year).sendKeys(Keys.ENTER);
-        Thread.sleep(1000);
-    }
 
     public static void addadressline1() throws Exception {
         Start.driver.findElement(addressline1).sendKeys("4525 North Oracle Rd. ");
