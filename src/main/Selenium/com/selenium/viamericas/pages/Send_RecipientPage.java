@@ -12,6 +12,7 @@ import org.openqa.selenium.Keys;
 public class Send_RecipientPage {
     public static Utility language = new Utility();
     //<---------OBLIGATORY--------->
+    public static By addNewRecipientButton = By.id("add-new-recipient");
     public static By firstName = By.xpath("first-name-recipient");
     public static By middleName = By.xpath("middle-name-recipient");
     public static By lastMame = By.xpath("last-name-recipient");
@@ -27,6 +28,14 @@ public class Send_RecipientPage {
     public static By city = By.xpath(".//*[@placeholder='City']");
 
     public static By continueButton = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[2]/button[2]");
+
+
+
+    public static void clickAddRecipient() throws Exception {
+        if (Utility.isSomethingClickable(addNewRecipientButton)) {
+            Start.driver.findElement(addNewRecipientButton).click();
+        }
+    }
 
     public static void completename() throws Exception {
         Start.driver.findElement(firstName).sendKeys("Test Recipient Name");

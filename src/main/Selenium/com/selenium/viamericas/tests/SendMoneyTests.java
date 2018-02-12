@@ -26,17 +26,22 @@ public class SendMoneyTests {
     public void login() throws Exception {
         LoginPage.clicklogin();
         LoginPage.login(Utility.getProperty("test.acc"), Utility.getProperty("test.pass"));
+       // HomePage.Goto("sendMoneyNavbar");
 
     }
 
     @Test (enabled = true, priority = 1)
     public void fillDestinationInformation() throws Exception {
+        boolean flag = false;
         Thread.sleep(3000);
         HomePage.Goto("sendmoney");
         String randomCountry = Utility.getDestinationCountry();
         Send_DestinationPage.selectCountry(randomCountry);
-        Send_DestinationPage.howMoneyRecieved();
-        Send_DestinationPage.chooseBank(Utility.getRandomNumber());
+        flag = Send_DestinationPage.howMoneyRecieved();
+        if (flag){
+            Send_DestinationPage.chooseBank(Utility.getRandomNumber());
+        }
+
         Assert.assertNotNull(Send_DestinationPage.exchangerate);
         Send_DestinationPage.selectAmountToSend();
         Send_DestinationPage.goandcontinue();
@@ -46,20 +51,19 @@ public class SendMoneyTests {
 
     @Test (enabled = true, priority = 2)
     public void RecipientInformation() throws Exception {
+
+        Send_RecipientPage.clickAddRecipient();
         Send_RecipientPage.completename();
         Send_RecipientPage.completelastname();
         Send_RecipientPage.completephonenumber();
         Send_RecipientPage.addadressline1();
         Send_RecipientPage.emailaddress();
-        Send_RecipientPage.selectmonth();
-        Send_RecipientPage.selectday();
-        Send_RecipientPage.selectyear();
         Send_RecipientPage.selectstate();
         Send_RecipientPage.selectcity();
         Send_RecipientPage.continuebutton();
         //Assert.assertTrue(Start.driver.getCurrentUrl().contains("bankdeposit"));
     }
-    /*
+/*
 
 
     @Test (enabled = false, priority = 2)

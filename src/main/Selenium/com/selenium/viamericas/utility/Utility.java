@@ -155,9 +155,13 @@ public class Utility {
 
         Random rand = new Random();
         int  n = rand.nextInt(10) + 1;
-
         return n;
+    }
+    public static int  getRandomCountry(){
 
+        Random rand = new Random();
+        int  n = rand.nextInt(30) + 1;
+        return n;
     }
 
     public static void saveRecipient() {

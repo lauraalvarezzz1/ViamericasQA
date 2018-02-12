@@ -84,9 +84,6 @@ public class Coupons {
         Send_RecipientPage.completephonenumber();
         Send_RecipientPage.addadressline1();
         Send_RecipientPage.emailaddress();
-        Send_RecipientPage.selectmonth();
-        Send_RecipientPage.selectday();
-        Send_RecipientPage.selectyear();
         Send_RecipientPage.selectstate();
         Send_RecipientPage.selectcity();
         Send_RecipientPage.continuebutton();
@@ -128,9 +125,6 @@ public class Coupons {
         Send_RecipientPage.completephonenumber();
         Send_RecipientPage.addadressline1();
         Send_RecipientPage.emailaddress();
-        Send_RecipientPage.selectmonth();
-        Send_RecipientPage.selectday();
-        Send_RecipientPage.selectyear();
         Send_RecipientPage.selectstate();
         Send_RecipientPage.selectcity();
         Send_RecipientPage.continuebutton();
