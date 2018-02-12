@@ -67,6 +67,21 @@ var recipientsPage = function() {
 
       this.ifscCodeLI = element.all(by.css('dropdown-viamericas#india-ifsc-select-recipient-details ul.dropdown-viam-list li'));
       this.ifscCodeIndia = element(by.css('dropdown-viamericas#india-ifsc-select-recipient-details'));
+
+      //SEND MONEY FLOW PAGE
+      this.addnewrecipientButton_send = element(by.id('add-new-recipient'));
+      this.first_name_send = element(by.id('first-name-recipient'));
+      this.middle_name_optional_send = element(by.id('middle-name-recipient'));
+      this.last_name_send = element(by.id('last-name-recipient'));
+      this.secondlast_name_optional_send = element(by.id('second-last-name-recipient'));
+      this.mobile_phone_optional_send = element(by.id('mobile-phone-recipient'));
+      this.email_optional_send = element(by.id('email-recipient-details'));
+      this.address_line1_send = element(by.id('address-1-recipient'));
+      this.moreaddressinformation_send = element (by.id('address-2-recipient'));
+      this.dateofbirth_send = element(by.id('birthday-recipient'));
+      this.zipcode_send = element(by.id('zipcode-recipient'));
+      this.cpfbrazil_send = element(by.id('number-id-bra-recipient-details'));
+
 };
 
 module.exports = new recipientsPage();

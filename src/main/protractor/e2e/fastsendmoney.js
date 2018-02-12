@@ -6,11 +6,14 @@
 describe('Fast send money Testing - Viamericas Web App', function() {
 
     beforeAll(function() {
-        browser.get('https://test.govianex.com/#/fast-send/destination/');
+        browser.get('https://test.govianex.com/#/');
     });
 
     beforeEach(function() {
+        browser.ignoreSynchronization = true;
         homePage = require('../po/homePage');
+        loginPage = require('../po/loginPage');
+        myTransactionsPage = require('../po/mytransactionsPage');
         sendmoneyFlowPage = require('../po/sendMoneyFlowPage');
         recipientsPage = require('../po/recipientsPage');
         paymentPage = require('../po/paymentPage');
@@ -18,10 +21,27 @@ describe('Fast send money Testing - Viamericas Web App', function() {
     });
 
     it('should start out with an empty memory', function () {
+        homePage.loginHeader.click();
+        loginPage.userName.isPresent().then(function () {
+            loginPage.userName.sendKeys("testingviamericas@gmail.com");
+            loginPage.password.sendKeys("Viamericas123");
+            loginPage.loginButton.click();
+
+
+            browser.sleep(2000);
+
+            myTransactionsPage.newtransactionButton.isPresent().then(function(rs){
+                if(rs) {
+                    myTransactionsPage.newtransactionButton.click();
+                }else{
+                    console.log("Start in the send money flow");
+                }
+            });
+        });
 
         //<--------- SELECT COUNTRY/TRANSACTION INFORMATION PAGE ----------------->
        var selectcountry =
-           browser.sleep(5000);
+           sendmoneyFlowPage.country.element(by.css('i#dropdown-clear')).click();
             sendmoneyFlowPage.countryLI.count().then(function(countCountries) {
                 var countryselected = Math.floor((Math.random() * countCountries) + 1);
                 sendmoneyFlowPage.country.element(by.css('input#dropdown-input')).click();
@@ -37,7 +57,7 @@ describe('Fast send money Testing - Viamericas Web App', function() {
                 var selectcurrency =
                     sendmoneyFlowPage.currencyLI.count().then(function(countCurrencies) {
                         var ran = Math.floor((Math.random() * countCurrencies) + 1);
-                        sendmoneyFlowPage.currency.element(by.css('input#recipient-currency-select')).click();
+                        sendmoneyFlowPage.currency.element(by.css('input#dropdown-input')).click();
                         sendmoneyFlowPage.currency.element(by.css('ul.dropdown-viam-list li:nth-child('+ran+')')).click();
                     });
             }else{
@@ -46,15 +66,11 @@ describe('Fast send money Testing - Viamericas Web App', function() {
         });
 
         //<--------- SELECT CASH PICKUP OR BANK DEPOSIT/TRANSACTION INFORMATION PAGE ----------------->
-        sendmoneyFlowPage.cashpickupButton.isPresent().then(function(rs){
+        sendmoneyFlowPage.bankdepositButton.isPresent().then(function(rs){
             if(rs) {
-                var button = Math.floor((Math.random() * 2) + 1);
-                if(button==1){
-                    sendmoneyFlowPage.firstButton.click();
+                    sendmoneyFlowPage.bankdepositButton.click();
                 }else{
-                    sendmoneyFlowPage.secondButton.click();}
-            }else{
-                sendmoneyFlowPage.firstButton.click();
+                    sendmoneyFlowPage.cashpickupButton.click();
             }
          });
             //<--------- SELECT BANK OR REGIONAL NETWORK/TRANSACTION INFORMATION PAGE ----------------->
@@ -63,7 +79,7 @@ describe('Fast send money Testing - Viamericas Web App', function() {
                     var selectstate =
                         sendmoneyFlowPage.stateLI.count().then(function(countstates) {
                             var ran = Math.floor((Math.random() * countstates) + 1);
-                            sendmoneyFlowPage.state.element(by.css('input#states-select')).click();
+                            sendmoneyFlowPage.state.element(by.css('input#dropdown-input')).click();
                             sendmoneyFlowPage.state.element(by.css('ul.dropdown-viam-list li:nth-child('+ran+')')).click();
                             console.log("States available "+ ran);
                         });
@@ -72,7 +88,7 @@ describe('Fast send money Testing - Viamericas Web App', function() {
                     var selectcity =
                         sendmoneyFlowPage.cityLI.count().then(function(countcities) {
                             var ran = Math.floor((Math.random() * countcities) + 1);
-                            sendmoneyFlowPage.city.element(by.css('input#cities-select')).click();
+                            sendmoneyFlowPage.city.element(by.css('input#dropdown-input')).click();
                             sendmoneyFlowPage.city.element(by.css('ul.dropdown-viam-list li:nth-child('+ran+')')).click();
                             console.log("Cities available " +ran);
                         });
@@ -81,34 +97,40 @@ describe('Fast send money Testing - Viamericas Web App', function() {
                     var selectregionalnetwork =
                         sendmoneyFlowPage.regionalLI.count().then(function(countregional) {
                             var ran = Math.floor((Math.random() * countregional) + 1);
-                            sendmoneyFlowPage.regional.element(by.css('input#regional-networks-select')).click();
+                            sendmoneyFlowPage.regional.element(by.css('input#dropdown-input')).click();
                             sendmoneyFlowPage.regional.element(by.css('ul.dropdown-viam-list li:nth-child('+ran+')')).click();
                             console.log("Regional Networks available " +ran);
                         });
                 }else{
-                    sendmoneyFlowPage.firstbankintopfive.isPresent().then(function(rs){
-                        if(rs) {
-                            sendmoneyFlowPage.firstbankintopfive.click();
-                        }else{
-                            console.log("Select it automatically");
-                        }
-                    });
+                    var selectchooseabank =
+                        sendmoneyFlowPage.banksLI.count().then(function(countbanks) {
+                            var ran = Math.floor((Math.random() * countbanks) + 1);
+                            sendmoneyFlowPage.banks.element(by.css('input#dropdown-input')).click();
+                            sendmoneyFlowPage.banks.element(by.css('ul.dropdown-viam-list li:nth-child('+ran+')')).click();
+                            console.log("Banks available " +ran);
+                        });
                 }
             });
+
             sendmoneyFlowPage.amount.sendKeys(numbergenerator(1, 2000));
+            browser.sleep(2000);
+            sendmoneyFlowPage.continueButton.click();
             sendmoneyFlowPage.continueButton.click();
 
             //<--------- GO TO RECIPIENT PAGE PAGE ----------------->
-            expect(browser.getCurrentUrl()).toEqual('https://test.govianex.com/#/fast-send/recipient');
+            expect(browser.getCurrentUrl()).toEqual('https://test.govianex.com/#/sendmoney/recipient/');
+            browser.pause();
 
             //COMPLETE RECIPIENT PAGE
-            recipientsPage.first_name.sendKeys("Testing");
-            recipientsPage.middle_name_optional.sendKeys("Testing");
-            recipientsPage.last_name.sendKeys("Testing");
-            recipientsPage.secondlast_name_optional.sendKeys("Testing");
-            recipientsPage.mobile_phone_optional.sendKeys(numbergenerator(312000000, 312999999));
-            recipientsPage.email_optional.sendKeys("Testing"+numbergenerator(1,9999)+"@gmail.com");
-            recipientsPage.address_line1.sendKeys("Street 5 - Testing Address Line1");
+            recipientsPage.addnewrecipientButton_send.click();
+
+            recipientsPage.first_name_send.sendKeys("AbelardoT");
+            recipientsPage.middle_name_optional_send.sendKeys("Testing");
+            recipientsPage.last_name_send.sendKeys("Testing");
+            recipientsPage.secondlast_name_optional_send.sendKeys("Testing");
+            recipientsPage.mobile_phone_optional_send.sendKeys(numbergenerator(312000000, 312999999));
+            recipientsPage.email_optional_send.sendKeys("Testing"+numbergenerator(1,9999)+"@gmail.com");
+            recipientsPage.address_line1_send.sendKeys("Street 5 - Testing Address Line1");
 
             //<--------- SELECT STATE/RECIPIENT PAGE ----------------->
             var selectstateRecipient =
