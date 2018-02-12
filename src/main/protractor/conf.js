@@ -23,7 +23,7 @@ exports.config = {
     // protractor is called.
     //specs: ['e2e/recipients/recipients_createRecipient.js'],
     //specs: ['e2e/recipients_createRecipient.js'],
-    specs: ['e2e/fastsendmoney.js'],
+    specs: ['e2e/loginPage/login.js'],
     //specs: ['e2e/recipients_createRecipient.js'],
     //specs: ['e2e/recipients/recipients_createRecipient.js'],
     //specs: ['e2e/myAccount/payment/addPayment.js'],
@@ -43,15 +43,15 @@ exports.config = {
         isVerbose: true
     },
     onPrepare: function() {
-        global.EC = protractor.ExpectedConditions;
+        /*global.EC = protractor.ExpectedConditions;
         browser.manage().timeouts().setScriptTimeout(60000);
         browser.manage().timeouts().pageLoadTimeout(40000);
-        browser.manage().timeouts().implicitlyWait(25000);
-        /*        var jasmineReporters = require('jasmine-reporters');
+        browser.manage().timeouts().implicitlyWait(25000);*/
+        var jasmineReporters = require('jasmine-reporters');
                 jasmine.getEnv().addReporter(new jasmineReporters.JUnitXmlReporter({
                     consolidateAll: true,
                     savePath: 'testresults',
                     filePrefix: 'xmloutput'
-                }));*/
+                }));
     },
 };

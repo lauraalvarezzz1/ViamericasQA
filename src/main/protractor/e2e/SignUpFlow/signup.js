@@ -76,7 +76,7 @@ describe('Sign up testing Web App', function() {
                 }
 
                 signUpPage.zipcode.sendKeys("90001"); //Pending for send aleatory zip codes
-                var selectcity =>
+                var selectcity =
                     signUpPage.cityLI.count().then(function(countcities) {
                         var ran = Math.floor((Math.random() * countcities) + 1);
                         signUpPage.city.element(by.css('input#city-select')).click();
