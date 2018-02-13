@@ -48,7 +48,7 @@ describe('Fast send money Testing - Viamericas Web App', function() {
                 sendmoneyFlowPage.country.element(by.css('ul.dropdown-viam-list li:nth-child('+countryselected+')')).click();
 
         console.log(countryselected);
-            })
+
 
       //<--------- SELECT CURRENCY/TRANSACTION INFORMATION PAGE ----------------->
         sendmoneyFlowPage.currency.isDisplayed().then(function(rs){
@@ -115,84 +115,113 @@ describe('Fast send money Testing - Viamericas Web App', function() {
             sendmoneyFlowPage.amount.sendKeys(numbergenerator(1, 2000));
             browser.sleep(2000);
             sendmoneyFlowPage.continueButton.click();
+            browser.sleep(2000);
             sendmoneyFlowPage.continueButton.click();
+            browser.sleep(2000);
 
             //<--------- GO TO RECIPIENT PAGE PAGE ----------------->
             expect(browser.getCurrentUrl()).toEqual('https://test.govianex.com/#/sendmoney/recipient/');
-            browser.pause();
 
             //COMPLETE RECIPIENT PAGE
-            recipientsPage.addnewrecipientButton_send.click();
+            recipientsPage.addnewrecipientButton_send.isDisplayed().then(function(rs){
+                if(rs) {
+                    recipientsPage.addnewrecipientButton_send.click();
+                }else{
+                        console.log("Continue filling the form");
+                }
+            });
 
             recipientsPage.first_name_send.sendKeys("AbelardoT");
-            recipientsPage.middle_name_optional_send.sendKeys("Testing");
-            recipientsPage.last_name_send.sendKeys("Testing");
-            recipientsPage.secondlast_name_optional_send.sendKeys("Testing");
-            recipientsPage.mobile_phone_optional_send.sendKeys(numbergenerator(312000000, 312999999));
+            recipientsPage.middle_name_optional_send.sendKeys("DeJesus");
+            recipientsPage.last_name_send.sendKeys("ZuluagaT");
+            recipientsPage.secondlast_name_optional_send.sendKeys("RamirezT");
+            //recipientsPage.mobile_phone_optional_send.sendKeys(numbergenerator(312000000, 312999999));
             recipientsPage.email_optional_send.sendKeys("Testing"+numbergenerator(1,9999)+"@gmail.com");
             recipientsPage.address_line1_send.sendKeys("Street 5 - Testing Address Line1");
+            recipientsPage.moreaddressinformation_send.sendKeys("Apartment 301");
 
             //<--------- SELECT STATE/RECIPIENT PAGE ----------------->
             var selectstateRecipient =
-                sendmoneyFlowPage.stateLI.count().then(function(countstates) {
+                recipientsPage.statesendLI.count().then(function(countstates) {
                     var ran = Math.floor((Math.random() * countstates) + 1);
-                    sendmoneyFlowPage.state.element(by.css('input#states-select')).click();
-                    sendmoneyFlowPage.state.element(by.css('ul.dropdown-viam-list li:nth-child('+ran+')')).click();
+                    recipientsPage.statesend.element(by.css('input#dropdown-input')).click();
+                    recipientsPage.statesend.element(by.css('ul.dropdown-viam-list li:nth-child('+ran+')')).click();
                     console.log("States available "+ ran);
 
-                    if (countryselected== 32){
-                        recipientsPage.zipcode.sendKeys("33233");
-                    }else if(countryselected==5){
+                   if (countryselected== 5){
                         recipientsPage.cpfbrazil.sendKeys(numbergenerator(10000000000, 99999999999));
                     }else{
-                        console.log("Continue to payment options");
+                        console.log("Continue with the flow");
                         console.log(countryselected);
                     }
                 });
-            browser.sleep(2000);
 
             //<--------- SELECT CITY/RECIPIENT PAGE ----------------->
             var selectcityRecipient =
-                sendmoneyFlowPage.cityLI.count().then(function(countcities) {
+                recipientsPage.citysendLI.count().then(function(countcities) {
                     var ran = Math.floor((Math.random() * countcities) + 1);
-                    sendmoneyFlowPage.city.element(by.css('input#cities-select')).click();
-                    sendmoneyFlowPage.city.element(by.css('ul.dropdown-viam-list li:nth-child('+ran+')')).click();
+                    recipientsPage.citysend.element(by.css('input#dropdown-input')).click();
+                    recipientsPage.citysend.element(by.css('ul.dropdown-viam-list li:nth-child('+ran+')')).click();
                     console.log("Cities available " +ran);
-
-                    browser.sleep(2000);
                 });
 
-            sendmoneyFlowPage.continueButton.click();
+            //<--------- RECIPIENT BANK ACCOUNT PAGE ----------------->
 
-            //<--------- GO TO RECIPIENT BANK ACCOUNT PAGE OR PAYMENT OPTIONS----------------->
-                browser.getCurrentUrl().then(function(url) {
-                    if(url=="https://test.govianex.com/#/fast-send/bankdeposit"){
-                        recipientsPage.accountnumber.sendKeys(numbergenerator(10000000000, 99999999999));
+                recipientsPage.accountnickname_send.isDisplayed().then(function(rs){
+                    if(rs) {
+                        recipientsPage.accountnickname_send.sendKeys("Nickname testing");
+                        recipientsPage.accountnumber_send.sendKeys(numbergenerator(10000000000, 99999999999));
                         var selectaccounttype =
-                            recipientsPage.accounttypeLI.count().then(function(countaccounttype) {
+                            recipientsPage.accounttype_sendLI.count().then(function(countaccounttype) {
                                 var ran = Math.floor((Math.random() * countaccounttype) + 1);
-                                recipientsPage.accounttype.element(by.css('input#account-type-select')).click();
-                                recipientsPage.accounttype.element(by.css('ul.dropdown-viam-list li:nth-child('+ran+')')).click();
-                                browser.sleep(2000);
+                                recipientsPage.accounttype_send.element(by.css('input#dropdown-input')).click();
+                                recipientsPage.accounttype_send.element(by.css('ul.dropdown-viam-list li:nth-child('+ran+')')).click();
                             });
 
                         //IF THERE IS ANY OF THIS COUNTRIES:- Australia, Brazil, Canada, Hong Kong, India, Switzerland, United States
-                        if(countryselected== 2 || countryselected== 6 || countryselected== 17 || countryselected== 29 || countryselected== 31) {
-                            recipientsPage.aditionalfieldAUS_CA_HG_SW_UK.sendKeys(numbergenerator(000000000, 99999999999));
+                        if(countryselected== 2 || countryselected== 6 || countryselected== 16 || countryselected== 28 || countryselected== 30) {
+                            recipientsPage.aditionalfieldAUS_CA_HG_SW_UK_send.sendKeys(numbergenerator(000000000, 99999999999));
                         } else if(countryselected== 32){
                             recipientsPage.aditionalfieldUS.sendKeys("021000021");
-                        }else if(countryselected==18){
-                            recipientsPage.aditionalfieldIND.sendKeys("ABCD1234567");
-                        }else if(countryselected==5){
-                            recipientsPage.aditionalfieldBRA.sendKeys(numbergenerator(0000, 99999999999));
-                        }
+                        }else if(countryselected==17){
+                            var chooseanyifscoption =
+                                recipientsPage.chooseoptionindiasendLI.count().then(function(options) {
+                                    var ran = Math.floor((Math.random() * options) + 1);
+                                    recipientsPage.chooseoptionindiasend.element(by.css('input#dropdown-input')).click();
+                                    recipientsPage.chooseoptionindiasend.element(by.css('ul.dropdown-viam-list li:nth-child('+ran+')')).click();
+                                });
 
+                            recipientsPage.aditionalfield_sendIND.isDisplayed().then(function(rs){
+                                if(rs) {
+                                    recipientsPage.aditionalfield_sendIND.sendKeys("ABCD1234567");
+                                }else{
+                                    recipientsPage.stateindiasendLI.count().then(function(stateoptions) {
+                                        var ran = Math.floor((Math.random() * stateoptions) + 1);
+                                        recipientsPage.stateindiasend.element(by.css('input#dropdown-input')).click();
+                                        recipientsPage.stateindiasend.element(by.css('ul.dropdown-viam-list li:nth-child('+ran+')')).click();
+                                    });
+
+                                    recipientsPage.ifsccodeindiasendLI.count().then(function(options) {
+                                        var ran = Math.floor((Math.random() * options) + 1);
+                                        recipientsPage.ifsccodeindiasend.element(by.css('input#dropdown-input')).click();
+                                        recipientsPage.ifsccodeindiasend.element(by.css('ul.dropdown-viam-list li:nth-child('+ran+')')).click();
+                                    });
+                                }
+                            });
+
+                        }else if(countryselected==5){
+                            recipientsPage.aditionalfieldBRA_send.sendKeys(numbergenerator(0000, 99999999999));
+                        }
                     }else{
                         console.log("Go to Payment options");
-                    }});
+                    }
+                });
+                browser.sleep(5000);
+                recipientsPage.continueButtonRecipient.click();
+
+                browser.pause();
+            })
             });
-          sendmoneyFlowPage.continueButton.click();
-            browser.sleep(5000);
 
             var selectPaymentMethod =
                 paymentPage.paymentMethod.isDisplayed().then(function() {

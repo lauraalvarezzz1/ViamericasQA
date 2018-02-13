@@ -75,12 +75,39 @@ var recipientsPage = function() {
       this.last_name_send = element(by.id('last-name-recipient'));
       this.secondlast_name_optional_send = element(by.id('second-last-name-recipient'));
       this.mobile_phone_optional_send = element(by.id('mobile-phone-recipient'));
-      this.email_optional_send = element(by.id('email-recipient-details'));
+      this.email_optional_send = element(by.id('email-recipient'));
       this.address_line1_send = element(by.id('address-1-recipient'));
       this.moreaddressinformation_send = element (by.id('address-2-recipient'));
       this.dateofbirth_send = element(by.id('birthday-recipient'));
       this.zipcode_send = element(by.id('zipcode-recipient'));
-      this.cpfbrazil_send = element(by.id('number-id-bra-recipient-details'));
+      this.cpfbrazil_send = element(by.id('number-id-bra-recipient'));
+
+      this.statesendLI = element.all(by.css('dropdown-viamericas#state-select-recipient ul.dropdown-viam-list li'));
+      this.statesend = element(by.css('dropdown-viamericas#state-select-recipient'));
+
+      this.citysendLI = element.all(by.css('dropdown-viamericas#city-select-recipient ul.dropdown-viam-list li'));
+      this.citysend = element(by.css('dropdown-viamericas#city-select-recipient'));
+
+      this.accountnumber_send = element(by.id('account-number-recipient'));
+      this.accountnickname_send=element(by.id('account-nickname-recipient'));
+
+      this.accounttype_sendLI = element.all(by.css('dropdown-viamericas#account-type-select-recipient ul.dropdown-viam-list li'));
+      this.accounttype_send = element(by.css('dropdown-viamericas#account-type-select-recipient'));
+
+      this.aditionalfieldAUS_CA_HG_SW_UK_send = element(by.id('aux-code-other-recipient'));
+      this.aditionalfieldBRA_send = element(by.id('aux-code-bra-recipient'));
+
+      this.chooseoptionindiasendLI = element.all(by.css('dropdown-viamericas#india-extra-info-select-recipient ul.dropdown-viam-list li'));
+      this.chooseoptionindiasend = element(by.css('dropdown-viamericas#india-extra-info-select-recipient'));
+
+      this.stateindiasendLI = element.all(by.css('dropdown-viamericas#india-states-select-recipient ul.dropdown-viam-list li'));
+      this.stateindiasend = element(by.css('dropdown-viamericas#india-states-select-recipient'));
+
+      this.ifsccodeindiasendLI = element.all(by.css('dropdown-viamericas#india-ifsc-select-recipient ul.dropdown-viam-list li'));
+      this.ifsccodeindiasend = element(by.css('dropdown-viamericas#india-ifsc-select-recipient'));
+
+      this.aditionalfield_sendIND = element(by.id('aux-code-ind-recipient'));
+      this.continueButtonRecipient = element (by.id('continue-recipient'));
 
 };
 
