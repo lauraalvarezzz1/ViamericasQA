@@ -24,7 +24,11 @@ var sendMoneyFlowPage = function() {
     this.cashpickupButton = element(by.id('payment-mode-P-destination'));
     this.amount = element(by.id('amount'));
 
-    //Choose a different bank - Dropdown
+    //Choose a network - Dropdown
+    this.chooseanetworkLI = element.all(by.css('dropdown-viamericas#national-networks-select-destination ul.dropdown-viam-list li'));
+    this.chooseanetwork = element(by.css('dropdown-viamericas#national-networks-select-destination'));
+
+    //Choose a bank - Dropdown
     this.banksLI = element.all(by.css('dropdown-viamericas#banks-select-destination ul.dropdown-viam-list li'));
     this.banks = element(by.css('dropdown-viamericas#banks-select-destination'));
 
