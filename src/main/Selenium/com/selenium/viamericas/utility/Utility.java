@@ -146,15 +146,15 @@ public class Utility {
             return isPresent;
         }
         catch (Exception e) {
-            throw new RuntimeException("This is where you put the message");
+            throw new RuntimeException("No such element");
         }
 
     }
 
-    public static int  getRandomNumber(){
+    public static int  getRandomNumber(int number){
 
         Random rand = new Random();
-        int  n = rand.nextInt(10) + 1;
+        int  n = rand.nextInt(number) + 1;
         return n;
     }
     public static int  getRandomCountry(){

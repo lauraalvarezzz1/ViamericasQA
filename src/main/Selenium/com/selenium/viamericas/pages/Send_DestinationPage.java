@@ -88,19 +88,19 @@ public class Send_DestinationPage {
 
     public static void chooseBank(int banks) throws Exception {
         Thread.sleep(3000);
-        if (Utility.isSomethingClickable(bankInput)){
+        if (Utility.isSomethingClickable(bankInput)) {
             Start.driver.findElement(bankInput).click();
             Start.driver.findElement(bankInput).sendKeys(Keys.ARROW_DOWN);
             Start.driver.findElement(bankLI).sendKeys(Keys.ENTER);
             Thread.sleep(3000);
         }
-        if(Utility.isSomethingClickable(regionalNetworksInput)){
+        if (Utility.isSomethingClickable(regionalNetworksInput)) {
             Start.driver.findElement(regionalNetworksInput).click();
             Start.driver.findElement(regionalNetworksInput).sendKeys(Keys.ARROW_DOWN);
             Start.driver.findElement(regionalNetworksLI).sendKeys(Keys.ENTER);
             Thread.sleep(3000);
         }
-        if(Utility.isSomethingClickable(nationalNetworksInput)){
+        if (Utility.isSomethingClickable(nationalNetworksInput)) {
             Start.driver.findElement(nationalNetworksInput).click();
             Start.driver.findElement(nationalNetworksInput).sendKeys(Keys.ARROW_DOWN);
             Start.driver.findElement(nationalNetworksLI).sendKeys(Keys.ENTER);

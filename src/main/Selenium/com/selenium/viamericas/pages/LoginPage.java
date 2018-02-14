@@ -21,7 +21,6 @@ public class LoginPage {
         Start.driver.findElement(password).sendKeys(pass);
         Start.driver.findElement(loginLoginModal).click();
         Thread.sleep(5000);
-        Start.driver.findElement(logo).click();
     }
 
     public static void typeemail (String mail) throws Exception{

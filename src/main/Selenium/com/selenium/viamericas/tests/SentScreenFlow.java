@@ -8,7 +8,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import com.selenium.viamericas.utility.Start;
 
-public class SendMoneyFlow {
+public class SentScreenFlow {
 
         @BeforeClass
         public void start() throws Exception {
@@ -37,10 +37,7 @@ public class SendMoneyFlow {
 
         @Test (enabled = true, priority = 1)
         public void RecipientInformation() throws Exception {
-            Send_RecipientPage.completename();
-            Send_RecipientPage.completelastname();
-            Send_RecipientPage.completephonenumber();
-            Send_RecipientPage.addadressline1();
+
             Send_RecipientPage.emailaddress();
             //Send_RecipientPage.selectmonth();
             //Send_RecipientPage.selectday();
@@ -62,23 +59,16 @@ public class SendMoneyFlow {
 
         @Test (enabled = true, priority = 3)
         public void FundingPagewithBankAccount() throws Exception {
-            Send_FundingPage.selectaccount("cashpickup");
+            Send_FundingPage.selectaccount();
             Send_FundingPage.continuebutton();
-            Send_FundingPage.addbankholdername();
-            Send_FundingPage.addbanknickname();
-            Send_FundingPage.addroutingnumber();
-            Send_FundingPage.addnumber();
-            Send_FundingPage.selecttype();
             Send_FundingPage.continuebutton();
             //Assert.assertTrue(Start.driver.getCurrentUrl().contains("review"));
     }
 
        @Test (enabled = false, priority = 3)
        public void FundingPagewithCardAccount() throws Exception {
-            Send_FundingPage.selectaccount("creditdebitbutton");
+            Send_FundingPage.selectaccount();
             Send_FundingPage.continuebutton();
-            Send_FundingPage.addcardholdername();
-            Send_FundingPage.addcardnumber();
             Send_FundingPage.selectmonth();
             Send_FundingPage.selectyear();
             Send_FundingPage.addcvvcode();
@@ -88,7 +78,6 @@ public class SendMoneyFlow {
 
        @Test (enabled = true, priority = 4)
        public void ReviewPage() throws Exception {
-            Send_FundingPage.setClosepopup();
             Send_ReviewPage.sendmoneybutton();
             Assert.assertTrue(Start.driver.getCurrentUrl().contains("review"));
     }
