@@ -27,7 +27,7 @@ exports.config = {
     //specs: ['e2e/recipients_createRecipient.js'],
     //specs: ['e2e/recipients/recipients_createRecipient.js'],
     //specs: ['e2e/myAccount/payment/addPayment.js'],
-    //specs: ['e2e/staticPages/Locations.js'],
+    //specs: ['e2e/staticPages/Locations.js],
     //specs: ['e2e/SignUpFlow/signup.js'],
     //specs: ['e2e/fastsendmoney.js'],
     //specs: ['e2e/recipients/recipients_createBankAccount.js'],
@@ -47,11 +47,11 @@ exports.config = {
         browser.manage().timeouts().setScriptTimeout(60000);
         browser.manage().timeouts().pageLoadTimeout(40000);
         browser.manage().timeouts().implicitlyWait(25000);
-        /*        var jasmineReporters = require('jasmine-reporters');
+        var jasmineReporters = require('jasmine-reporters');
                 jasmine.getEnv().addReporter(new jasmineReporters.JUnitXmlReporter({
                     consolidateAll: true,
                     savePath: 'testresults',
                     filePrefix: 'xmloutput'
-                }));*/
+                }));
     },
 };

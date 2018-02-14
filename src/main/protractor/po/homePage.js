@@ -14,6 +14,7 @@ var homePage = function() {
     this.loginHeader = element(by.id('login-button-header'));
     this.customerServiceButton = element(by.id('contact-us-header'));
     this.myaccountheader = element (by.id('my-account-header'));
+    this.logoutheader = element (by.id('logout-header'));
 
     //Banner
     this.signUpBanner = element(by.id('sign-up-banner-home'));
