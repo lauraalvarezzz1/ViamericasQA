@@ -74,19 +74,13 @@ public class Coupons {
         String randomCountry = Utility.getDestinationCountry();
         Send_DestinationPage.selectCountry(randomCountry);
         Send_DestinationPage.howMoneyRecieved();
-        Send_DestinationPage.chooseBank(Utility.getRandomNumber());
+        Send_DestinationPage.chooseBank(Utility.getRandomNumber(10));
         Assert.assertNotNull(Send_DestinationPage.exchangerate);
-        Send_DestinationPage.selectamounttoSend();
+        Send_DestinationPage.selectAmountToSend();
         Send_DestinationPage.goandcontinue();
         Assert.assertTrue(Start.driver.getCurrentUrl().contains("recipient"));
-        Send_RecipientPage.completename();
-        Send_RecipientPage.completelastname();
-        Send_RecipientPage.completephonenumber();
-        Send_RecipientPage.addadressline1();
+
         Send_RecipientPage.emailaddress();
-        Send_RecipientPage.selectmonth();
-        Send_RecipientPage.selectday();
-        Send_RecipientPage.selectyear();
         Send_RecipientPage.selectstate();
         Send_RecipientPage.selectcity();
         Send_RecipientPage.continuebutton();
@@ -96,13 +90,8 @@ public class Coupons {
         Send_BankdepositPage.selectaccounttype();
         //Send_BankdepositPage.goandcontinue();
         Assert.assertTrue(Start.driver.getCurrentUrl().contains("fast-send/funding"));
-        Send_FundingPage.selectaccount("bankaccount");
+        Send_FundingPage.selectaccount();
         Send_FundingPage.continuebutton();
-        Send_FundingPage.addbankholdername();
-        Send_FundingPage.addbanknickname();
-        Send_FundingPage.addroutingnumber();
-        Send_FundingPage.addnumber();
-        Send_FundingPage.selecttype();
         //Send_FundingPage.continuebutton();
         Assert.assertTrue(Start.driver.getCurrentUrl().contains("account/pre-register"));
 
@@ -118,19 +107,13 @@ public class Coupons {
         String randomCountry = Utility.getDestinationCountry();
         Send_DestinationPage.selectCountry(randomCountry);
         Send_DestinationPage.howMoneyRecieved();
-        Send_DestinationPage.chooseBank(Utility.getRandomNumber());
+        Send_DestinationPage.chooseBank(Utility.getRandomNumber(10));
         Assert.assertNotNull(Send_DestinationPage.exchangerate);
-        Send_DestinationPage.selectamounttoSend();
+        Send_DestinationPage.selectAmountToSend();
         Send_DestinationPage.goandcontinue();
         Assert.assertTrue(Start.driver.getCurrentUrl().contains("recipient"));
-        Send_RecipientPage.completename();
-        Send_RecipientPage.completelastname();
-        Send_RecipientPage.completephonenumber();
-        Send_RecipientPage.addadressline1();
+
         Send_RecipientPage.emailaddress();
-        Send_RecipientPage.selectmonth();
-        Send_RecipientPage.selectday();
-        Send_RecipientPage.selectyear();
         Send_RecipientPage.selectstate();
         Send_RecipientPage.selectcity();
         Send_RecipientPage.continuebutton();
@@ -140,14 +123,8 @@ public class Coupons {
         Send_BankdepositPage.selectaccounttype();
         //Send_BankdepositPage.goandcontinue();
         Assert.assertTrue(Start.driver.getCurrentUrl().contains("funding"));
-        Send_FundingPage.selectaccount("bankaccount");
+        Send_FundingPage.selectaccount();
         Send_FundingPage.continuebutton();
-        Send_FundingPage.addbankholdername();
-        Send_FundingPage.addbanknickname();
-        Send_FundingPage.addroutingnumber();
-        Send_FundingPage.addnumber();
-        Send_FundingPage.selecttype();
-        Send_FundingPage.setClosepopup();
         Assert.assertTrue(Start.driver.getCurrentUrl().contains("review"));
         Send_ReviewPage.sendmoneybutton();
         Assert.assertTrue(Start.driver.getCurrentUrl().contains("confirmation"));

@@ -7,6 +7,7 @@ import java.util.Set;
 public class LoginPage {
 
     public static By email = By.id("username-login");
+    public static By logo = By.id("home-logo");
     public static By password = By.id("password-login");
     public static By loginButtonHeader = By.id("login-button-header");
     public static By loginLoginModal = By.id("login-login");
@@ -14,11 +15,12 @@ public class LoginPage {
     public static By forgotpasswordlink = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div[2]/div/form/div[5]/a");
     public static By logOutButton = By.xpath("/html/body/div[2]/div/div[1]/div[1]/header/div/ul/li[7]/a");
 
-    public static void login(String user, String pass){
+    public static void login(String user, String pass)throws Exception{
 
         Start.driver.findElement(email).sendKeys(user);
         Start.driver.findElement(password).sendKeys(pass);
         Start.driver.findElement(loginLoginModal).click();
+        Thread.sleep(5000);
     }
 
     public static void typeemail (String mail) throws Exception{

@@ -27,7 +27,7 @@ public class HomePage {
     //Buttons
     public static By getaQuoteButton = By.id("get-quote-desktop-home");
     public static By SignUpButtonBanner = By.id("sign-up-banner-home");
-    public static By SendMoneybuttonBanner = By.id("send-money-banner-home");
+    public static By SendMoneybuttonBanner = By.id("send-money-home");
 
     //intercom
     public static By intercomChat = By.cssSelector("intercom-launcher");
@@ -51,6 +51,9 @@ public class HomePage {
         Thread.sleep(5000);
         if(page.equals("sendmoney")){
             Start.driver.findElement(SendMoneybuttonBanner).click();
+
+        }else if(page.equals("sendMoneyNavbar")){
+        Start.driver.findElement(sendMoneylabel).click();
 
         }else if(page.equals("transaction")){
             Start.driver.findElement(transactionHistory).click();

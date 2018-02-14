@@ -91,10 +91,10 @@ public class Utility {
     public static String getDestinationCountry(){
         String countries[]= new String[31];
         countries[0]="ARGENTINA";
-        countries[1]="AUSTRALIA";
+        //countries[1]="AUSTRALIA";
         countries[2]="BANGLADESH";
         countries[3]="BOLIVIA";
-        countries[4]="BRAZIL";
+       // countries[4]="BRAZIL";
         countries[5]="CANADA";
         countries[6]="CHILE";
         countries[7]="COLOMBIA";
@@ -105,7 +105,7 @@ public class Utility {
         countries[12]="GUATEMALA";
         countries[13]="GUYANA";
         countries[14]="HONDURAS";
-        countries[15]="HONG KONG";
+        //countries[15]="HONG KONG";
         countries[16]="INDIA";
         countries[17]="INDONESIA";
         countries[18]="KOREA, SOUTH";
@@ -119,7 +119,7 @@ public class Utility {
         countries[26]="SPAIN";
         countries[27]="SWITZERLAND";
         countries[28]="TRINIDAD AND TOBAGO";
-        countries[29]="UNITED KINGDOM";
+        //countries[29]="UNITED KINGDOM";
         countries[30]="VIETNAM";
         int country = (int) (Math.random() * (31 - 1)) + 1;
         return countries[country];
@@ -146,18 +146,22 @@ public class Utility {
             return isPresent;
         }
         catch (Exception e) {
-            throw new RuntimeException("This is where you put the message");
+            throw new RuntimeException("No such element");
         }
 
     }
 
-    public static int  getRandomNumber(){
+    public static int  getRandomNumber(int number){
 
         Random rand = new Random();
-        int  n = rand.nextInt(10) + 1;
-
+        int  n = rand.nextInt(number) + 1;
         return n;
+    }
+    public static int  getRandomCountry(){
 
+        Random rand = new Random();
+        int  n = rand.nextInt(30) + 1;
+        return n;
     }
 
     public static void saveRecipient() {
