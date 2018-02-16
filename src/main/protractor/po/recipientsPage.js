@@ -15,6 +15,7 @@ var recipientsPage = function() {
       this.deleteRecipientButton = element(by.id('delete-recipients'));
       this.deleteAccountButton = element(by.id('delete_account-recipient-details'));
       this.updateRecipientButton = element (by.id('update-recipient-details'));
+      this.createrecipientButton = element (by.id('create-recipient-details'));
 
       //Recipient information page
       this.first_name = element(by.id('first-name-recipient-details'));

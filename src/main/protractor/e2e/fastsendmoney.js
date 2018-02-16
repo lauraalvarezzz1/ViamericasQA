@@ -18,6 +18,7 @@ describe('Fast send money Testing - Viamericas Web App', function () {
         recipientsPage = require('../po/recipientsPage');
         paymentPage = require('../po/paymentPage');
         signUpPage = require('../po/signupPage');
+        reviewPage = require('../po/reviewPage');
     });
 
     it('should start out with an empty memory', function () {
@@ -26,8 +27,6 @@ describe('Fast send money Testing - Viamericas Web App', function () {
             loginPage.userName.sendKeys("testingviamericas@gmail.com");
             loginPage.password.sendKeys("Viamericas123");
             loginPage.loginButton.click();
-
-
             browser.sleep(2000);
 
             myTransactionsPage.newtransactionButton.isPresent().then(function (rs) {
@@ -41,12 +40,11 @@ describe('Fast send money Testing - Viamericas Web App', function () {
 
         //<--------- SELECT COUNTRY/TRANSACTION INFORMATION PAGE ----------------->
         var selectcountry =
-
         sendmoneyFlowPage.country.element(by.css('i#dropdown-clear')).click();
         sendmoneyFlowPage.countryLI.count().then(function (countCountries) {
             var countryselected = Math.floor((Math.random() * countCountries) + 1);
             sendmoneyFlowPage.country.element(by.css('input#dropdown-input')).click();
-            sendmoneyFlowPage.country.element(by.css('ul.dropdown-viam-list li:nth-child(' + 10 + ')')).click();
+            sendmoneyFlowPage.country.element(by.css('ul.dropdown-viam-list li:nth-child(' + countryselected + ')')).click();
 
             console.log(countryselected);
 
@@ -119,12 +117,10 @@ describe('Fast send money Testing - Viamericas Web App', function () {
                                     sendmoneyFlowPage.regional.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
                                     console.log("Regional Networks available: " + ran);
                                 });
-
                         }
                     });
                 }
             });
-            //<--------- SELECT BANK OR REGIONAL NETWORK/TRANSACTION INFORMATION PAGE ----------------->
 
             sendmoneyFlowPage.amount.sendKeys(numbergenerator(1, 2000));
             browser.sleep(2000);
@@ -145,14 +141,14 @@ describe('Fast send money Testing - Viamericas Web App', function () {
                 }
             });
 
-            recipientsPage.first_name_send.sendKeys("AbelardoT");
-            recipientsPage.middle_name_optional_send.sendKeys("DeJesus");
-            recipientsPage.last_name_send.sendKeys("ZuluagaT");
-            recipientsPage.secondlast_name_optional_send.sendKeys("RamirezT");
+            recipientsPage.first_name_send.sendKeys("FirstName");
+            recipientsPage.middle_name_optional_send.sendKeys("MiddleName");
+            recipientsPage.last_name_send.sendKeys("LastName");
+            recipientsPage.secondlast_name_optional_send.sendKeys("SecondLastName");
             //recipientsPage.mobile_phone_optional_send.sendKeys(numbergenerator(312000000, 312999999));
             recipientsPage.email_optional_send.sendKeys("Testing" + numbergenerator(1, 9999) + "@gmail.com");
-            recipientsPage.address_line1_send.sendKeys("Street 5 - Testing Address Line1");
-            recipientsPage.moreaddressinformation_send.sendKeys("Apartment 301");
+            recipientsPage.address_line1_send.sendKeys("Street - Testing Address Line1");
+            recipientsPage.moreaddressinformation_send.sendKeys("More Address Information");
 
             //<--------- SELECT STATE/RECIPIENT PAGE ----------------->
             var selectstateRecipient =
@@ -163,7 +159,7 @@ describe('Fast send money Testing - Viamericas Web App', function () {
                     console.log("States available " + ran);
 
                     if (countryselected == 5) {
-                        recipientsPage.cpfbrazil.sendKeys(numbergenerator(10000000000, 99999999999));
+                        recipientsPage.cpfbrazil_send.sendKeys(numbergenerator(10000000000, 99999999999));
                     } else {
                         console.log("Continue with the flow");
                         console.log(countryselected);
@@ -232,21 +228,97 @@ describe('Fast send money Testing - Viamericas Web App', function () {
             });
             browser.sleep(5000);
             recipientsPage.continueButtonRecipient.click();
-
-            browser.pause();
         })
-    });
 
     var selectPaymentMethod =
-        paymentPage.paymentMethod.isDisplayed().then(function () {
-            var ranPayment = Math.floor((Math.random() * 3) + 1);
-            paymentPage.paymentMethod.element(by.xpath('/html/body/div[2]/div/div[1]/div[2]/div/div/div/div[1]/div[2]/div[1]/table/tbody/tr[' + ranPayment + ']/td[1]/div')).click();
+        paymentPage.savedbankaccount.isDisplayed().then(function (bankaccount) {
+           if (bankaccount){
+               var selectsavedbankaccount =
+                   paymentPage.savedbankaccountLI.count().then(function (countaccounts) {
+                       var ran = Math.floor((Math.random() * countaccounts) + 1);
+                       paymentPage.savedbankaccount.element(by.css('input#dropdown-input')).click();
+                       paymentPage.savedbankaccount.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
+                       console.log("Bank accounts created: " + ran);
 
-            browser.sleep(2000);
+                       paymentPage.continueButton_send.click();
+
+                   });
+           }else{
+               var cards = Math.floor((Math.random() * 2) + 1);
+               if(cards=1){
+                   paymentPage.debitcardcheckbox.click();
+                   paymentPage.savedcreditcards.isDisplayed().then(function (rs) {
+                       if (rs) {
+                           var selectsavedcreditcard =
+                               paymentPage.savedcreditcardsLI.count().then(function (countaccounts) {
+                                   var ran = Math.floor((Math.random() * countaccounts) + 1);
+                                   paymentPage.savedcreditcards.element(by.css('input#dropdown-input')).click();
+                                   paymentPage.savedcreditcards.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
+                               });
+                       } else {
+                           paymentPage.cardnickname.sendKeys("Testing Nickname");
+                           paymentPage.cardnumber.sendKeys("5405010000000090");
+                           paymentPage.cvv_send.sendKeys("789");
+
+                           var selectmonth =
+                               paymentPage.month_sendLI.count().then(function (count) {
+                                   var ran = Math.floor((Math.random() * count) + 1);
+                                   paymentPage.month_send.element(by.css('input#dropdown-input')).click();
+                                   paymentPage.month_send.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
+                               });
+
+                           var selectyear =
+                               paymentPage.year_sendLI.count().then(function (count) {
+                                   var ran = Math.floor((Math.random() * count) + 1);
+                                   paymentPage.year_send.element(by.css('input#dropdown-input')).click();
+                                   paymentPage.year_send.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
+                               });
+                       }
+                   });
+
+                   paymentPage.continueButton_send.click();
+
+               }else{
+                   paymentPage.creditcardcheckbox.click();
+                   paymentPage.savedcreditcards.isDisplayed().then(function (rs) {
+                       if (rs) {
+                           var selectsavedcreditcard =
+                               paymentPage.savedcreditcardsLI.count().then(function (countaccounts) {
+                                   var ran = Math.floor((Math.random() * countaccounts) + 1);
+                                   paymentPage.savedcreditcards.element(by.css('input#dropdown-input')).click();
+                                   paymentPage.savedcreditcards.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
+                               });
+                       } else {
+                           paymentPage.cardnickname.sendKeys("Testing Nickname");
+                           paymentPage.cardnumber.sendKeys("5405010000000090");
+                           paymentPage.cvv_send.sendKeys("789");
+
+                           var selectmonth =
+                               paymentPage.month_sendLI.count().then(function (count) {
+                                   var ran = Math.floor((Math.random() * count) + 1);
+                                   paymentPage.month_send.element(by.css('input#dropdown-input')).click();
+                                   paymentPage.month_send.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
+                               });
+
+                           var selectyear =
+                               paymentPage.year_sendLI.count().then(function (count) {
+                                   var ran = Math.floor((Math.random() * count) + 1);
+                                   paymentPage.year_send.element(by.css('input#dropdown-input')).click();
+                                   paymentPage.year_send.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
+                               });
+                       }
+                   });
+                   paymentPage.continueButton_send.click();
+               }
+           }
         });
 
+        reviewPage.secondsendMoneyButton.click();
+
+        browser.pause();
+
     //<--------- GO TO REVIEW PAGE ----------------->
-    browser.getCurrentUrl().then(function (url) {
+        /*browser.getCurrentUrl().then(function (url) {
         var d = new Date();
         if (url == "https://test.govianex.com/#/fast-send/funding/bank") {
             console.log("------------------BANK ACCOUNT-------------------");
@@ -353,8 +425,13 @@ describe('Fast send money Testing - Viamericas Web App', function () {
     signUpPage.createAccountButton.click();
     //expect(browser.getCurrentUrl()).toEqual('https://test.govianex.com/#/sendmoney/review');
 
-    browser.pause();
+    browser.pause();*/
+
+
 }, 120000);
+
+
+});
 
 numbergenerator = function (min, max) {
 

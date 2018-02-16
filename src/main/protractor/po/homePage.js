@@ -16,6 +16,11 @@ var homePage = function() {
     this.myaccountheader = element (by.id('my-account-header'));
     this.logoutheader = element (by.id('logout-header'));
 
+    //My account buttons
+    this.profilesettingsButton = element(by.id('profile-settings-account'));
+    this.recipientsButton = element(by.id('recipients-account'));
+    this.paymentsButton = element(by.id('payments-account'));
+
     //Banner
     this.signUpBanner = element(by.id('sign-up-banner-home'));
     this.sendmoneyBanner = element(by.id('send-money-2-banner-home'));

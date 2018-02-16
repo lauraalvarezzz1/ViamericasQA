@@ -38,6 +38,32 @@ var paymentPage = function() {
     this.createButton = element(by.id("create-card-account-payment-details"));
     this.backButton = element(by.id("card-go-back-payment-details"));
 
+    //SEND MONEY FLOW"));
+    this.addnewbankaccountButton = element(by.id("add-new-account-bank"));
+    this.savedbankaccountLI = element.all(by.css('dropdown-viamericas#saved-bank-select-bank ul.dropdown-viam-list li'));
+    this.savedbankaccount = element(by.css('dropdown-viamericas#saved-bank-select-bank'));
+
+    this.addnewcardButton = element(by.id("add-new-card"));
+    this.savedcreditcardsLI = element.all(by.css('dropdown-viamericas#saved-credit-select ul.dropdown-viam-list li'));
+    this.savedcreditcards = element(by.css('dropdown-viamericas#saved-credit-select'));
+
+    this.cardholdername = element(by.id('cardholder-name-card'));
+    this.cardnickname = element(by.id('card-nickname-card'));
+    this.cardnumber = element(by.id('card-number-card'));
+
+    this.month_sendLI = element.all(by.css('dropdown-viamericas#expiration-month-select-card ul.dropdown-viam-list li'));
+    this.month_send = element(by.css('dropdown-viamericas#expiration-month-select-card'));
+
+    this.year_sendLI = element.all(by.css('dropdown-viamericas#expiration-year-select-card ul.dropdown-viam-list li'));
+    this.year_send = element(by.css('dropdown-viamericas#expiration-year-select-card'));
+
+    this.cvv_send = element(by.id('cvv-code-card'));
+
+    this.bankaccountcheckbox = element(by.id("checkbox-funding-A-funding"));
+    this.debitcardcheckbox = element(by.id("checkbox-funding-D-funding"));
+    this.creditcardcheckbox = element(by.id("checkbox-funding-K-funding"));
+
+    this.continueButton_send = element(by.id("continue-funding"));
 };
 
 module.exports = new paymentPage();
