@@ -11,12 +11,12 @@ describe('Recipients Testing - Creating a new recipient', function () {
 
     beforeEach(function () {
         browser.ignoreSynchronization = true;
-        homePage = require('../../po/homePage');
-        recipientsPage = require('../../po/recipientsPage');
-        loginPage = require('../../po/loginPage');
+        homePage = require('../../../po/homePage');
+        recipientsPage = require('../../../po/recipientsPage');
+        loginPage = require('../../../po/loginPage');
     });
 
-    it('Log in', function () {
+    it('Create a new recipient', function () {
         homePage.loginHeader.click();
         loginPage.userName.isPresent().then(function () {
             loginPage.userName.sendKeys("testingviamericas@gmail.com");

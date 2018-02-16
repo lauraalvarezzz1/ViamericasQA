@@ -16,6 +16,10 @@ var recipientsPage = function() {
       this.deleteAccountButton = element(by.id('delete_account-recipient-details'));
       this.updateRecipientButton = element (by.id('update-recipient-details'));
       this.createrecipientButton = element (by.id('create-recipient-details'));
+      this.addbankaccount = element(by.id('add-account-recipient-details'));
+      this.sendmoneyButton = element(by.id('send-money-recipients'));
+      this.cancelButton = element(by.id("go-back-recipient-details"));
+      this.confirmButton = element(by.xpath("/html/body/div[4]/div[2]/button[1]"));
 
       //Recipient information page
       this.first_name = element(by.id('first-name-recipient-details'));
@@ -45,14 +49,15 @@ var recipientsPage = function() {
       this.chooseabankLI = element.all(by.css('dropdown-viamericas#banks-select-recipient-details ul.dropdown-viam-list li'));
       this.chooseabank = element(by.css('dropdown-viamericas#banks-select-recipient-details'));
 
-      this.closepopup = element(by.xpath("/html/body/div[3]/div[2]/span"));
+      this.closepopup = element(by.xpath("/html/body/div[4]/div[2]/button[1]"));
+      this.closepopuprecipient = element (by.xpath("/html/body/div[4]/div[2]/span"));
 
       //Recipient Bank Account page
       this.accountnumber = element(by.id('account-number-recipient-details'));
       this.accountnickname=element(by.id('holder-name-recipient-details'));
 
-      this.accounttypeLI = element.all(by.css('dropdown-viamericas#account-type-select ul.dropdown-viam-list li'));
-      this.accounttype = element(by.css('dropdown-viamericas#account-type-select'));
+      this.accounttypeLI = element.all(by.css('dropdown-viamericas#account-type-select-recipient-details ul.dropdown-viam-list li'));
+      this.accounttype = element(by.css('dropdown-viamericas#account-type-select-recipient-details'));
 
       //Auxiliary fields
       this.aditionalfieldAUS_CA_HG_SW_UK = element(by.id('aux-code-other-recipient-details'));

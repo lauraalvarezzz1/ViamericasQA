@@ -1,48 +1,51 @@
 /**
- * Created by lauraalvarez on 5/06/17.
+ * Created by lauraalvarez on 6/27/17.
  */
 
 
 describe('Recipients Testing - Removing the recipient', function () {
-    var deferred = protractor.promise.defer();
 
     beforeAll(function () {
-        browser.get('https://test.govianex.com/');
+        browser.get('https://test.govianex.com/#/');
     });
 
     beforeEach(function () {
-        homepage = require('../../../po/homePage');
-        recipientPage = require('../../../po/recipientsPage');
-        loginpage = require('../../../po/loginPage');
-    });
-
-    it('Log in', function () {
-        homepage.logInButtonXpath.click();
-        loginpage.userName.sendKeys("viamericas.testing@gmail.com");
-        loginpage.password.sendKeys("Viamericas123");
-        loginpage.loginButton.click();
-    });
-
-    it('Go to Recipients', function () {
         browser.ignoreSynchronization = true;
-        homepage.gomyaccount.isPresent().then(function () {
+        homePage = require('../../../po/homePage');
+        recipientPage = require('../../../po/recipientsPage');
+        loginPage = require('../../../po/loginPage');
+    });
+
+    it('Remove recipients and go to the send money flow', function () {
+        homePage.loginHeader.click();
+        loginPage.userName.isPresent().then(function () {
+            loginPage.userName.sendKeys("testingviamericas@gmail.com");
+            loginPage.password.sendKeys("Viamericas123");
+            loginPage.loginButton.click();
+
             browser.sleep(2000);
-            homepage.gomyaccount.click();
+
+            homePage.myaccountheader.isPresent().then(function () {
+                homePage.myaccountheader.click();
+            });
+            homePage.recipientsButton.click();
+
+            recipientPage.deleteRecipientButton.isPresent().then(function () {
+                recipientPage.deleteRecipientButton.click();
+                recipientPage.confirmButton.click();
+                browser.sleep(2000);
+                recipientPage.closepopuprecipient.click();
+            });
+
+            recipientPage.sendmoneyButton.isPresent().then(function () {
+                recipientPage.sendmoneyButton.click();
+            });
+
+            browser.sleep(2000);
+            expect(browser.getCurrentUrl()).toEqual('https://test.govianex.com/#/sendmoney/destination');
         });
-        homepage.gorecipients.click();
+
     });
-
-    it('Remove the complete recipient', function () {
-        recipientPage.editButton.isPresent().then(function () {
-            recipientPage.editButton.click();
-        });
-
-        recipientPage.deleteRecipientButton.click();
-        expect(browser.getCurrentUrl()).toEqual('https://test.govianex.com/#/settings/recipients');
-        browser.pause();
-    });
-
 
 });
-
 

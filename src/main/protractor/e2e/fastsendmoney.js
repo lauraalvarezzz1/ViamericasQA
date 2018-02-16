@@ -159,7 +159,7 @@ describe('Fast send money Testing - Viamericas Web App', function () {
                     console.log("States available " + ran);
 
                     if (countryselected == 5) {
-                        recipientsPage.cpfbrazil_send.sendKeys(numbergenerator(10000000000, 99999999999));
+                        recipientsPage.cpfbrazil_send.sendKeys("55555555555");
                     } else {
                         console.log("Continue with the flow");
                         console.log(countryselected);
