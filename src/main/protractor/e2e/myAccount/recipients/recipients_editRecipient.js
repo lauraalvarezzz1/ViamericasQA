@@ -3,23 +3,47 @@
  */
 
 
-describe('Recipients Testing - Creating a new recipient', function () {
+describe('Recipients Testing - Updating a recipient already created', function () {
 
     beforeAll(function () {
         browser.get('https://test.govianex.com/');
     });
 
     beforeEach(function () {
-        homepage = require('../../../po/homePage');
+        browser.ignoreSynchronization = true;
+        homePage = require('../../../po/homePage');
         recipientPage = require('../../../po/recipientsPage');
-        loginpage = require('../../../po/loginPage');
+        loginPage = require('../../../po/loginPage');
     });
 
-    it('Log in', function () {
-        homepage.logInButtonXpath.click();
-        loginpage.userName.sendKeys("viamericas.testing@gmail.com");
-        loginpage.password.sendKeys("Viamericas123");
-        loginpage.loginButton.click();
+    it('Updating a existing recipient', function () {
+        homePage.loginHeader.click();
+        loginPage.userName.isPresent().then(function () {
+            loginPage.userName.sendKeys("testingviamericas@gmail.com");
+            loginPage.password.sendKeys("Viamericas123");
+            loginPage.loginButton.click();
+
+            browser.sleep(2000);
+
+            homePage.myaccountheader.isPresent().then(function () {
+                homePage.myaccountheader.click();
+            });
+            homePage.recipientsButton.click();
+
+            recipientPage.deleteRecipientButton.isPresent().then(function () {
+                recipientPage.deleteRecipientButton.click();
+                recipientPage.confirmButton.click();
+                browser.sleep(2000);
+                recipientPage.closepopuprecipient.click();
+            });
+
+            recipientPage.sendmoneyButton.isPresent().then(function () {
+                recipientPage.sendmoneyButton.click();
+            });
+
+            browser.sleep(2000);
+            expect(browser.getCurrentUrl()).toEqual('https://test.govianex.com/#/sendmoney/destination');
+        });
     });
 
     it('Go to Recipients', function () {
