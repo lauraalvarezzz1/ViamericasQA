@@ -3,19 +3,17 @@
  */
 
 
-describe('Recipients Testing - Creating a new Payment Method with bank account', function() {
+describe('Recipients Testing - Creating a new credit card', function() {
 
-    beforeAll(function() {
-        browser.get('https://dev.govianex.com/');
-        browser.waitForAngular();
-
+    beforeAll(function () {
+        browser.get('https://test.govianex.com/');
     });
 
-    beforeEach(function() {
-       // browser.get('https://test.govianex.com/');
+    beforeEach(function () {
+        browser.ignoreSynchronization = true;
         homePage = require('../../../po/homePage');
+        paymentpage = require('../../../po/paymentPage');
         loginPage = require('../../../po/loginPage');
-        paymentPage = require('../../../po/paymentPage');
     });
 
 
@@ -24,6 +22,42 @@ describe('Recipients Testing - Creating a new Payment Method with bank account',
         loginPage.userName.sendKeys("laura.alvarez+11@talosdigital.com");
         loginPage.password.sendKeys("Laura123");
         loginPage.loginButton.click();
+
+        browser.sleep(5000);
+
+        homePage.myaccountheader.isPresent().then(function () {
+            homePage.myaccountheader.click();
+        });
+        homePage.paymentsButton.click();
+
+        paymentpage.addpaymentButton.isPresent().then(function () {
+            paymentpage.addpaymentButton.click();
+            paymentpage.creditDebitButton.click();
+        });
+
+        paymentpage.cardNickName.sendKeys("Testing Nickname");
+        paymentpage.cardNumber.sendKeys("5405010000000090");
+
+        var selectmonth =
+            paymentpage.monthLI.count().then(function (count) {
+                var month = Math.floor((Math.random() * count) + 1);
+                paymentpage.month.element(by.css('input#currency-select,#dropdown-input ')).click();
+                paymentpage.month.element(by.css('ul.dropdown-viam-list li:nth-child(' + month + ')')).click();
+            }, 2000);
+
+        var selectyear =
+            paymentpage.yearLI.count().then(function (count) {
+                var year = Math.floor((Math.random() * count) + 1);
+                paymentpage.year.element(by.css('input#currency-select,#dropdown-input ')).click();
+                paymentpage.year.element(by.css('ul.dropdown-viam-list li:nth-child(' + year + ')')).click();
+            }, 2000);
+
+
+        paymentpage.cvvNumber.sendKeys("789");
+        paymentpage.createButton.click();
+        paymentpage.okButton.click();
+
+    browser.pause();
 
     });
 
