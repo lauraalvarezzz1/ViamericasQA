@@ -20,6 +20,7 @@ var recipientsPage = function() {
       this.sendmoneyButton = element(by.id('send-money-recipients'));
       this.cancelButton = element(by.id("go-back-recipient-details"));
       this.confirmButton = element(by.xpath("/html/body/div[4]/div[2]/button[1]"));
+      this.editButton = element(by.id("edit-recipients"));
 
       //Recipient information page
       this.first_name = element(by.id('first-name-recipient-details'));
