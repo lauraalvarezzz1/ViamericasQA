@@ -6,7 +6,7 @@
 
 var feesandRatesPage = function() {
     this.bankDepositButton = element(by.id('select-payment-C-fees-rates'));
-    this.cashPickupButotn = element(by.id('select-payment-P-fees-rates'));
+    this.cashPickupButton = element(by.id('select-payment-P-fees-rates'));
     this.amount = element(by.id('amount-fees-rates'));
     this.receive = element(by.id('receive-amount-fees-rates'));
     this.countryLI = element.all(by.css('section#country-amount dropdown-viamericas#countries-select-fees-rates ul.dropdown-viam-list li'));

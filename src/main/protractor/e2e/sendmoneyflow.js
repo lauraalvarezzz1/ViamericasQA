@@ -40,13 +40,14 @@ describe('Fast send money Testing - Viamericas Web App', function () {
 
         //<--------- SELECT COUNTRY/TRANSACTION INFORMATION PAGE ----------------->
         var selectcountry =
-        sendmoneyFlowPage.country.element(by.css('i#dropdown-clear')).click();
+            sendmoneyFlowPage.country.element(by.css('i#dropdown-clear')).click();
         sendmoneyFlowPage.countryLI.count().then(function (countCountries) {
+            console.log("Destination - Countries available: " + countCountries);
             var countryselected = Math.floor((Math.random() * countCountries) + 1);
             sendmoneyFlowPage.country.element(by.css('input#dropdown-input')).click();
             sendmoneyFlowPage.country.element(by.css('ul.dropdown-viam-list li:nth-child(' + countryselected + ')')).click();
 
-            console.log(countryselected);
+            console.log("Destination - Country selected: " + countryselected);
 
 
             //<--------- SELECT CURRENCY/TRANSACTION INFORMATION PAGE ----------------->
@@ -65,62 +66,140 @@ describe('Fast send money Testing - Viamericas Web App', function () {
             });
 
             //<--------- SELECT CASH PICKUP OR BANK DEPOSIT/TRANSACTION INFORMATION PAGE ----------------->
-            sendmoneyFlowPage.bankdepositButton.isPresent().then(function (rs) {
-                if (rs) {
-                    sendmoneyFlowPage.bankdepositButton.click();
+            var bankdepositorcashpickup = Math.floor((Math.random() * 2) + 1);
+            if (bankdepositorcashpickup == 1) {
+                sendmoneyFlowPage.bankdepositButton.isPresent().then(function (rsb) {
+                    if (rsb) {
+                        sendmoneyFlowPage.bankdepositButton.click();
 
-                    var selectchooseabank =
-                        sendmoneyFlowPage.banksLI.count().then(function (countbanks) {
-                            var ran = Math.floor((Math.random() * countbanks) + 1);
-                            sendmoneyFlowPage.banks.element(by.css('input#dropdown-input')).click();
-                            sendmoneyFlowPage.banks.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
-                            console.log("Banks available: " + ran);
+                        var selectchooseabank =
+                            sendmoneyFlowPage.banksLI.count().then(function (countbanks) {
+                                console.log("Destination - Banks available: " + countbanks);
+                                var ran = Math.floor((Math.random() * countbanks) + 1);
+                                sendmoneyFlowPage.banks.element(by.css('input#dropdown-input')).click();
+                                sendmoneyFlowPage.banks.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
+                                console.log("Destination - Bank selected: " + ran);
+                            });
+                    } else {
+                        sendmoneyFlowPage.cashpickupButton.click();
+
+                        browser.sleep(2000);
+
+                        sendmoneyFlowPage.chooseanetwork.isPresent().then(function (network) {
+                            if (network) {
+                                console.log("Continue with national networks");
+                                var selectchooseabank =
+                                    sendmoneyFlowPage.chooseanetworkLI.count().then(function (countbanks) {
+                                        console.log("Destination - Banks available: " + countbanks);
+                                        var ran = Math.floor((Math.random() * countbanks) + 1);
+                                        sendmoneyFlowPage.chooseanetwork.element(by.css('input#dropdown-input')).click();
+                                        sendmoneyFlowPage.chooseanetwork.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
+                                        console.log("Destination - Bank selected: " + ran);
+                                    });
+
+                            } else {
+                                var selectstate =
+                                    sendmoneyFlowPage.stateLI.count().then(function (countstates) {
+                                        console.log("Destination - States available: " + countstates);
+                                        var ran = Math.floor((Math.random() * countstates) + 1);
+                                        sendmoneyFlowPage.state.element(by.css('input#dropdown-input')).click();
+                                        sendmoneyFlowPage.state.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
+                                        console.log("Destination - State selected: " + ran);
+                                    }, 2000);
+
+                                var selectcity =
+                                    sendmoneyFlowPage.cityLI.count().then(function (countcities) {
+                                        console.log("Destination - Cities available: " + countcities);
+                                        var ran = Math.floor((Math.random() * countcities) + 1);
+                                        sendmoneyFlowPage.city.element(by.css('input#dropdown-input')).click();
+                                        sendmoneyFlowPage.city.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
+                                        console.log("Destination - City selected: " + ran);
+                                    }, 2000);
+
+                                var selectregionalnetwork =
+                                    sendmoneyFlowPage.regionalLI.count().then(function (countregional) {
+                                        console.log("Destination - Regional Networks available: " + countregional);
+                                        if (countregional == 0) {
+                                            console.log("Continue with the amount");
+                                        } else {
+                                            var ran = Math.floor((Math.random() * countregional) + 1);
+                                            sendmoneyFlowPage.regional.element(by.css('input#dropdown-input')).click();
+                                            sendmoneyFlowPage.regional.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
+                                            console.log("Destination - Regional Network Selected: " + ran);
+                                        }
+                                    });
+                            }
                         });
+                    }
+                });
 
-                } else {
-                    sendmoneyFlowPage.cashpickupButton.click();
-                    browser.sleep(2000);
+            } else {
+                sendmoneyFlowPage.cashpickupButton.isPresent().then(function (rsc) {
+                    if (rsc) {
+                        sendmoneyFlowPage.cashpickupButton.click();
 
-                    sendmoneyFlowPage.chooseanetwork.isDisplayed().then(function (network) {
-                        if (network) {
-                            console.log("Continue with national networks");
-                            var selectchooseabank =
-                                sendmoneyFlowPage.chooseanetworkLI.count().then(function (countbanks) {
-                                    var ran = Math.floor((Math.random() * countbanks) + 1);
-                                    sendmoneyFlowPage.chooseanetwork.element(by.css('input#dropdown-input')).click();
-                                    sendmoneyFlowPage.chooseanetwork.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
-                                    console.log("Banks available: " + ran);
-                                });
+                        browser.sleep(2000);
 
-                        } else {
-                            var selectstate =
-                                sendmoneyFlowPage.stateLI.count().then(function (countstates) {
-                                    var ran = Math.floor((Math.random() * countstates) + 1);
-                                    sendmoneyFlowPage.state.element(by.css('input#dropdown-input')).click();
-                                    sendmoneyFlowPage.state.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
-                                    console.log("States available: " + ran);
-                                });
+                        sendmoneyFlowPage.chooseanetwork.isPresent().then(function (network) {
+                            if (network) {
+                                console.log("Continue with national networks");
+                                var selectchooseabank =
+                                    sendmoneyFlowPage.chooseanetworkLI.count().then(function (countbanks) {
+                                        console.log("Destination - Banks available: " + countbanks);
+                                        var ran = Math.floor((Math.random() * countbanks) + 1);
+                                        sendmoneyFlowPage.chooseanetwork.element(by.css('input#dropdown-input')).click();
+                                        sendmoneyFlowPage.chooseanetwork.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
+                                        console.log("Destination - Bank selected: " + ran);
+                                    });
 
-                            var selectcity =
-                                sendmoneyFlowPage.cityLI.count().then(function (countcities) {
-                                    var ran = Math.floor((Math.random() * countcities) + 1);
-                                    sendmoneyFlowPage.city.element(by.css('input#dropdown-input')).click();
-                                    sendmoneyFlowPage.city.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
-                                    console.log("Cities available: " + ran);
-                                });
+                            } else {
+                                var selectstate =
+                                    sendmoneyFlowPage.stateLI.count().then(function (countstates) {
+                                        console.log("Destination - States available: " + countstates);
+                                        var ran = Math.floor((Math.random() * countstates) + 1);
+                                        sendmoneyFlowPage.state.element(by.css('input#dropdown-input')).click();
+                                        sendmoneyFlowPage.state.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
+                                        console.log("Destination - State selected: " + ran);
+                                    }, 2000);
 
+                                var selectcity =
+                                    sendmoneyFlowPage.cityLI.count().then(function (countcities) {
+                                        console.log("Destination - Cities available: " + countcities);
+                                        var ran = Math.floor((Math.random() * countcities) + 1);
+                                        sendmoneyFlowPage.city.element(by.css('input#dropdown-input')).click();
+                                        sendmoneyFlowPage.city.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
+                                        console.log("Destination - City selected: " + ran);
+                                    }, 2000);
 
-                            var selectregionalnetwork =
-                                sendmoneyFlowPage.regionalLI.count().then(function (countregional) {
-                                    var ran = Math.floor((Math.random() * countregional) + 1);
-                                    sendmoneyFlowPage.regional.element(by.css('input#dropdown-input')).click();
-                                    sendmoneyFlowPage.regional.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
-                                    console.log("Regional Networks available: " + ran);
-                                });
-                        }
-                    });
-                }
-            });
+                                var selectregionalnetwork =
+                                    sendmoneyFlowPage.regionalLI.count().then(function (countregional) {
+                                        console.log("Destination - Regional Networks available: " + countregional);
+                                        if (countregional == 0) {
+                                            console.log("Continue with the amount");
+                                        } else {
+                                            var ran = Math.floor((Math.random() * countregional) + 1);
+                                            sendmoneyFlowPage.regional.element(by.css('input#dropdown-input')).click();
+                                            sendmoneyFlowPage.regional.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
+                                            console.log("Destination - Regional Network Selected: " + ran);
+                                        }
+                                    });
+                            }
+                        });
+                    } else {
+                        sendmoneyFlowPage.bankdepositButton.click();
+
+                        var selectchooseabank =
+                            sendmoneyFlowPage.banksLI.count().then(function (countbanks) {
+                                console.log("Destination - Banks available: " + countbanks);
+                                var ran = Math.floor((Math.random() * countbanks) + 1);
+                                sendmoneyFlowPage.banks.element(by.css('input#dropdown-input')).click();
+                                sendmoneyFlowPage.banks.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
+                                console.log("Destination - Bank selected: " + ran);
+                            });
+                    }
+                });
+
+            }
 
             sendmoneyFlowPage.amount.sendKeys(numbergenerator(1, 2000));
             browser.sleep(2000);
@@ -153,10 +232,11 @@ describe('Fast send money Testing - Viamericas Web App', function () {
             //<--------- SELECT STATE/RECIPIENT PAGE ----------------->
             var selectstateRecipient =
                 recipientsPage.statesendLI.count().then(function (countstates) {
+                    console.log("Recipients - States available: " + countstates);
                     var ran = Math.floor((Math.random() * countstates) + 1);
                     recipientsPage.statesend.element(by.css('input#dropdown-input')).click();
                     recipientsPage.statesend.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
-                    console.log("States available " + ran);
+                    console.log("Recipients - State selected: " + ran);
 
                     if (countryselected == 5) {
                         recipientsPage.cpfbrazil_send.sendKeys("55555555555");
@@ -169,10 +249,11 @@ describe('Fast send money Testing - Viamericas Web App', function () {
             //<--------- SELECT CITY/RECIPIENT PAGE ----------------->
             var selectcityRecipient =
                 recipientsPage.citysendLI.count().then(function (countcities) {
+                    console.log("Recipients - Cities available: " + countcities);
                     var ran = Math.floor((Math.random() * countcities) + 1);
                     recipientsPage.citysend.element(by.css('input#dropdown-input')).click();
                     recipientsPage.citysend.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
-                    console.log("Cities available " + ran);
+                    console.log("Recipients - City selected:  " + ran);
                 });
 
             //<--------- RECIPIENT BANK ACCOUNT PAGE ----------------->
@@ -199,6 +280,7 @@ describe('Fast send money Testing - Viamericas Web App', function () {
                                 var ran = Math.floor((Math.random() * options) + 1);
                                 recipientsPage.chooseoptionindiasend.element(by.css('input#dropdown-input')).click();
                                 recipientsPage.chooseoptionindiasend.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
+                                console.log("Recipients - Option Selected(INDIA):  " + ran);
                             });
 
                         recipientsPage.aditionalfield_sendIND.isDisplayed().then(function (rs) {
@@ -206,9 +288,11 @@ describe('Fast send money Testing - Viamericas Web App', function () {
                                 recipientsPage.aditionalfield_sendIND.sendKeys("ABCD1234567");
                             } else {
                                 recipientsPage.stateindiasendLI.count().then(function (stateoptions) {
+                                    console.log("Recipients - States available for INDIA:  " + stateoptions);
                                     var ran = Math.floor((Math.random() * stateoptions) + 1);
                                     recipientsPage.stateindiasend.element(by.css('input#dropdown-input')).click();
                                     recipientsPage.stateindiasend.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
+                                    console.log("Recipients - State selected for INDIA:  " + ran);
                                 });
 
                                 recipientsPage.ifsccodeindiasendLI.count().then(function (options) {
@@ -230,93 +314,93 @@ describe('Fast send money Testing - Viamericas Web App', function () {
             recipientsPage.continueButtonRecipient.click();
         })
 
-    var selectPaymentMethod =
-        paymentPage.savedbankaccount.isDisplayed().then(function (bankaccount) {
-           if (bankaccount){
-               var selectsavedbankaccount =
-                   paymentPage.savedbankaccountLI.count().then(function (countaccounts) {
-                       var ran = Math.floor((Math.random() * countaccounts) + 1);
-                       paymentPage.savedbankaccount.element(by.css('input#dropdown-input')).click();
-                       paymentPage.savedbankaccount.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
-                       console.log("Bank accounts created: " + ran);
+        var selectPaymentMethod =
+            paymentPage.savedbankaccount.isDisplayed().then(function (bankaccount) {
+                if (bankaccount) {
+                    var selectsavedbankaccount =
+                        paymentPage.savedbankaccountLI.count().then(function (countaccounts) {
+                            var ran = Math.floor((Math.random() * countaccounts) + 1);
+                            paymentPage.savedbankaccount.element(by.css('input#dropdown-input')).click();
+                            paymentPage.savedbankaccount.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
+                            console.log("Bank accounts created: " + ran);
 
-                       paymentPage.continueButton_send.click();
+                            paymentPage.continueButton_send.click();
 
-                   });
-           }else{
-               var cards = Math.floor((Math.random() * 2) + 1);
-               if(cards=1){
-                   paymentPage.debitcardcheckbox.click();
-                   paymentPage.savedcreditcards.isDisplayed().then(function (rs) {
-                       if (rs) {
-                           var selectsavedcreditcard =
-                               paymentPage.savedcreditcardsLI.count().then(function (countaccounts) {
-                                   var ran = Math.floor((Math.random() * countaccounts) + 1);
-                                   paymentPage.savedcreditcards.element(by.css('input#dropdown-input')).click();
-                                   paymentPage.savedcreditcards.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
-                               });
-                       } else {
-                           paymentPage.cardnickname.sendKeys("Testing Nickname");
-                           paymentPage.cardnumber.sendKeys("5405010000000090");
-                           paymentPage.cvv_send.sendKeys("789");
+                        });
+                } else {
+                    var cards = Math.floor((Math.random() * 2) + 1);
+                    if (cards = 1) {
+                        paymentPage.debitcardcheckbox.click();
+                        paymentPage.savedcreditcards.isDisplayed().then(function (rs) {
+                            if (rs) {
+                                var selectsavedcreditcard =
+                                    paymentPage.savedcreditcardsLI.count().then(function (countaccounts) {
+                                        var ran = Math.floor((Math.random() * countaccounts) + 1);
+                                        paymentPage.savedcreditcards.element(by.css('input#dropdown-input')).click();
+                                        paymentPage.savedcreditcards.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
+                                    });
+                            } else {
+                                paymentPage.cardnickname.sendKeys("Testing Nickname");
+                                paymentPage.cardnumber.sendKeys("5405010000000090");
+                                paymentPage.cvv_send.sendKeys("789");
 
-                           var selectmonth =
-                               paymentPage.month_sendLI.count().then(function (count) {
-                                   var ran = Math.floor((Math.random() * count) + 1);
-                                   paymentPage.month_send.element(by.css('input#dropdown-input')).click();
-                                   paymentPage.month_send.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
-                               });
+                                var selectmonth =
+                                    paymentPage.month_sendLI.count().then(function (count) {
+                                        var ran = Math.floor((Math.random() * count) + 1);
+                                        paymentPage.month_send.element(by.css('input#dropdown-input')).click();
+                                        paymentPage.month_send.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
+                                    });
 
-                           var selectyear =
-                               paymentPage.year_sendLI.count().then(function (count) {
-                                   var ran = Math.floor((Math.random() * count) + 1);
-                                   paymentPage.year_send.element(by.css('input#dropdown-input')).click();
-                                   paymentPage.year_send.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
-                               });
-                       }
-                   });
+                                var selectyear =
+                                    paymentPage.year_sendLI.count().then(function (count) {
+                                        var ran = Math.floor((Math.random() * count) + 1);
+                                        paymentPage.year_send.element(by.css('input#dropdown-input')).click();
+                                        paymentPage.year_send.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
+                                    });
+                            }
+                        });
 
-                   paymentPage.continueButton_send.click();
+                        paymentPage.continueButton_send.click();
 
-               }else{
-                   paymentPage.creditcardcheckbox.click();
-                   paymentPage.savedcreditcards.isDisplayed().then(function (rs) {
-                       if (rs) {
-                           var selectsavedcreditcard =
-                               paymentPage.savedcreditcardsLI.count().then(function (countaccounts) {
-                                   var ran = Math.floor((Math.random() * countaccounts) + 1);
-                                   paymentPage.savedcreditcards.element(by.css('input#dropdown-input')).click();
-                                   paymentPage.savedcreditcards.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
-                               });
-                       } else {
-                           paymentPage.cardnickname.sendKeys("Testing Nickname");
-                           paymentPage.cardnumber.sendKeys("5405010000000090");
-                           paymentPage.cvv_send.sendKeys("789");
+                    } else {
+                        paymentPage.creditcardcheckbox.click();
+                        paymentPage.savedcreditcards.isDisplayed().then(function (rs) {
+                            if (rs) {
+                                var selectsavedcreditcard =
+                                    paymentPage.savedcreditcardsLI.count().then(function (countaccounts) {
+                                        var ran = Math.floor((Math.random() * countaccounts) + 1);
+                                        paymentPage.savedcreditcards.element(by.css('input#dropdown-input')).click();
+                                        paymentPage.savedcreditcards.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
+                                    });
+                            } else {
+                                paymentPage.cardnickname.sendKeys("Testing Nickname");
+                                paymentPage.cardnumber.sendKeys("5405010000000090");
+                                paymentPage.cvv_send.sendKeys("789");
 
-                           var selectmonth =
-                               paymentPage.month_sendLI.count().then(function (count) {
-                                   var ran = Math.floor((Math.random() * count) + 1);
-                                   paymentPage.month_send.element(by.css('input#dropdown-input')).click();
-                                   paymentPage.month_send.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
-                               });
+                                var selectmonth =
+                                    paymentPage.month_sendLI.count().then(function (count) {
+                                        var ran = Math.floor((Math.random() * count) + 1);
+                                        paymentPage.month_send.element(by.css('input#dropdown-input')).click();
+                                        paymentPage.month_send.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
+                                    });
 
-                           var selectyear =
-                               paymentPage.year_sendLI.count().then(function (count) {
-                                   var ran = Math.floor((Math.random() * count) + 1);
-                                   paymentPage.year_send.element(by.css('input#dropdown-input')).click();
-                                   paymentPage.year_send.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
-                               });
-                       }
-                   });
-                   paymentPage.continueButton_send.click();
-               }
-           }
-        });
+                                var selectyear =
+                                    paymentPage.year_sendLI.count().then(function (count) {
+                                        var ran = Math.floor((Math.random() * count) + 1);
+                                        paymentPage.year_send.element(by.css('input#dropdown-input')).click();
+                                        paymentPage.year_send.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
+                                    });
+                            }
+                        });
+                        paymentPage.continueButton_send.click();
+                    }
+                }
+            });
 
         reviewPage.secondsendMoneyButton.click();
-        browser.sleep(3000);
+        browser.sleep(5000);
         expect(browser.getCurrentUrl()).toEqual('https://test.govianex.com/#/sendmoney/confirmation');
-}, 120000);
+    }, 120000);
 
 
 });

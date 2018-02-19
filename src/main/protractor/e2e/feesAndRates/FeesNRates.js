@@ -43,14 +43,14 @@ describe('Fees and Rates Testing - Viamericas Web App', function () {
                 if (rsb) {
                     feesAndRatesPage.bankDepositButton.click();
                 } else {
-                    feesAndRatesPage.cashPickupButotn.click();
+                    feesAndRatesPage.cashPickupButton.click();
                 }
             });
 
         } else {
-            feesAndRatesPage.cashPickupButotn.isPresent().then(function (rsc) {
+            feesAndRatesPage.cashPickupButton.isPresent().then(function (rsc) {
                 if (rsc) {
-                    feesAndRatesPage.cashPickupButotn.click();
+                    feesAndRatesPage.cashPickupButton.click();
                 } else {
                     feesAndRatesPage.bankDepositButton.click();
                 }
