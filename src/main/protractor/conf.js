@@ -23,16 +23,17 @@ exports.config = {
     // protractor is called.
     //specs: ['e2e/recipients/recipients_createRecipient.js'],
     //specs: ['e2e/recipients_createRecipient.js'],
-    //specs: ['e2e/fastsendmoney.js'],
+    //specs: ['e2e/sendmoneyflow.js'],
     //specs: ['e2e/myAccount/recipients/recipients_createRecipient.js'],
-    specs: ['e2e/myAccount/payment/payment_DeleteCards.js'],
+    //specs: ['e2e/myAccount/payment/payment_DeleteCards.js'],
     //specs: ['e2e/staticPages/Locations.js],
     //specs: ['e2e/SignUpFlow/signup.js'],
-    //specs: ['e2e/fastsendmoney.js'],
+    //specs: ['e2e/sendmoneyflow.js'],
     //specs: ['e2e/myAccount/recipients/recipients_deleteRecipient.js'],
     //specs: ['e2e/recipients/recipients_deleteAccount.js'],
     //specs: ['e2e/recipients/recipients_deleteRecipient.js'],
     //specs: ['e2e/myAccount/recipients/recipients_editRecipient.js'],
+    specs: ['e2e/feesAndRates/FeesNRates.js'],
 
 
     // Options to be passed to Jasmine.

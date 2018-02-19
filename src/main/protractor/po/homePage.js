@@ -34,10 +34,8 @@ var homePage = function() {
 
     //Buttons in the main home page
     this.feesandratesButton = element(by.id('get-quote-desktop-home'));
-
     this.signUpsecondsection = element(by.id('sign-up-home'));
     this.sendmoneysecondsection= element(by.id('send-money-home'));
-
     this.signUpthirdsection = element(by.id('sign-up-middle-home'));
     this.sendmoneythirdsection= element(by.id('send-money-middle-home'));
 
