@@ -22,6 +22,9 @@ var loginPage = function() {
       this.loginFacebook = element(by.id('facebook-login'));
       this.SignUpButton = element(by.id('sign-up-free-login'));
 
+      //Send Money Flow
+      this.loginButtoninsignup_send = element(by.id('log-in-sign-up'));
+
 };
 
 module.exports = new loginPage();

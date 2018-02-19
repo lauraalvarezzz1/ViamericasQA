@@ -3,22 +3,23 @@
  */
 
 
-describe('Fast send money Testing - Viamericas Web App', function () {
+describe('Send money Testing (Starting with Login) - Viamericas Web App', function () {
 
     beforeAll(function () {
         browser.get('https://test.govianex.com/#/');
     });
 
     beforeEach(function () {
+        browser.waitForAngular();
         browser.ignoreSynchronization = true;
-        homePage = require('../po/homePage');
-        loginPage = require('../po/loginPage');
-        myTransactionsPage = require('../po/mytransactionsPage');
-        sendmoneyFlowPage = require('../po/sendMoneyFlowPage');
-        recipientsPage = require('../po/recipientsPage');
-        paymentPage = require('../po/paymentPage');
-        signUpPage = require('../po/signupPage');
-        reviewPage = require('../po/reviewPage');
+        homePage = require('../../po/homePage');
+        loginPage = require('../../po/loginPage');
+        myTransactionsPage = require('../../po/mytransactionsPage');
+        sendmoneyFlowPage = require('../../po/sendMoneyFlowPage');
+        recipientsPage = require('../../po/recipientsPage');
+        paymentPage = require('../../po/paymentPage');
+        signUpPage = require('../../po/signupPage');
+        reviewPage = require('../../po/reviewPage');
     });
 
     it('should start out with an empty memory', function () {
