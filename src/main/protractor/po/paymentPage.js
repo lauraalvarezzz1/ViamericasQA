@@ -37,6 +37,9 @@ var paymentPage = function() {
     this.createButton = element(by.id("create-card-account-payment-details"));
     this.backButton = element(by.id("card-go-back-payment-details"));
     this.okButton = element(by.id("/html/body/div[4]/div[2]/span"));
+    this.deleteBanks = element(by.id("delete-bank-payments"));
+    this.deleteCards = element(by.id("delete-card-payments"));
+    this.confirmRemoveButton = element(by.xpath("/html/body/div[4]/div[2]/button[1]"));
 
     //SEND MONEY FLOW"));
     this.addnewbankaccountButton = element(by.id("add-new-account-bank"));
