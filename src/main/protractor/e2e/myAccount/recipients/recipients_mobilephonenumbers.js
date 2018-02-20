@@ -40,7 +40,7 @@ describe('Recipients Testing', function () {
                 var countryselected = Math.floor((Math.random() * countcountries) + 1);
                 recipientsPage.country.element(by.css('input#dropdown-input')).click();
                 recipientsPage.country.element(by.css('ul.dropdown-viam-list li:nth-child(' + countryselected + ')')).click();
-                console.log("Country selected: " + countryselected);
+                console.log("Recipients - Country selected: " + countryselected);
 
                 if (countryselected == 5) {
                     recipientsPage.cpfbrazil.sendKeys(numbergenerator(10000000000, 99999999999));
@@ -123,20 +123,20 @@ describe('Recipients Testing', function () {
 
         var selectstateRecipient =
             recipientsPage.stateLI.count().then(function (countstates) {
-                console.log("States available: " + countstates);
+                console.log("Recipients - States available: " + countstates);
                 var ran = Math.floor((Math.random() * countstates) + 1);
                 recipientsPage.state.element(by.css('input#dropdown-input')).click();
                 recipientsPage.state.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
-                console.log("State selected: " + ran);
+                console.log("Recipients - State selected: " + ran);
             });
 
         var selectcityRecipient =
             recipientsPage.cityLI.count().then(function (countcities) {
-                console.log("Cities available: " + countcities);
+                console.log("Recipients - Cities available: " + countcities);
                 var ran = Math.floor((Math.random() * countcities) + 1);
                 recipientsPage.city.element(by.css('input#dropdown-input')).click();
                 recipientsPage.city.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
-                console.log("City selected: " + ran);
+                console.log("Recipients - City selected: " + ran);
             });
 
         recipientsPage.createrecipientButton.click();

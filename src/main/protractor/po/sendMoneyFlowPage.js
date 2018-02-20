@@ -11,7 +11,6 @@
 var sendMoneyFlowPage = function() {
 
     //Country
-
     this.countryLI = element.all(by.css('dropdown-viamericas#country-select-destination ul.dropdown-viam-list li'));
     this.country = element(by.css('dropdown-viamericas#country-select-destination'));
 

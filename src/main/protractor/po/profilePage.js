@@ -26,7 +26,14 @@ var profilePage = function() {
 
     //Buttons
     this.updateButtonProfile = element(by.id("update-profile"));
+    this.accountupdatedpopup = element(by.xpath("/html/body/div[4]/div[2]/button[1]"));
     this.changepasswordProfile = element(by.id("change-password-profile"));
+    this.currentpassword = element(by.id("currentPassword"));
+    this.continuechangepasspopup = element(by.xpath("/html/body/div[4]/div[2]/button[1]"));
+
+    this.newpassword = element(by.id("new-password"));
+    this.newpasswordconfirm = element(by.id("new-password-confirm"));
+    this.updatedpopup = element (by.xpath("/html/body/div[4]/div[2]/span"))
 
 };
 
