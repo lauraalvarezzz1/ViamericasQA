@@ -21,7 +21,7 @@ describe('Fast send money Testing (Starting with send money button) - Viamericas
         reviewPage = require('../../po/reviewPage');
     });
 
-    it('should start out with an empty memory', function () {
+    it('should start in the send money moment', function () {
 
         //<--------- SELECT COUNTRY/TRANSACTION INFORMATION PAGE ----------------->
         var selectcountry =

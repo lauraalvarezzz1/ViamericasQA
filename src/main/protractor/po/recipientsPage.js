@@ -45,6 +45,7 @@ var recipientsPage = function () {
     this.IFSCIndiaLI = element.all(by.css('dropdown-viamericas#india-extra-info-select-recipient-details ul.dropdown-viam-list li'));
     this.statesIndiaLI = element.all(by.css('dropdown-viamericas#india-states-select-recipient-details ul.dropdown-viam-list li'));
     this.ifscCodeLI = element.all(by.css('dropdown-viamericas#india-ifsc-select-recipient-details ul.dropdown-viam-list li'));
+    this.dialCodeLI = element.all(by.css('dropdown-viamericas#country-code-select-recipient-details ul.dropdown-viam-list li'));
 
     //Dropdown
     this.country = element(by.css('dropdown-viamericas#country-select-recipient-details'));
@@ -55,6 +56,7 @@ var recipientsPage = function () {
     this.accounttype = element(by.css('dropdown-viamericas#account-type-select-recipient-details'));
     this.IFSCIndia = element(by.css('dropdown-viamericas#india-extra-info-select-recipient-details'));
     this.statesIndia = element(by.css('dropdown-viamericas#india-states-select-recipient-details'));
+    this.dialCode = element(by.css('dropdown-viamericas#country-code-select-recipient-details'));
 
     //Recipient Bank Account page
     this.accountnumber = element(by.id('account-number-recipient-details'));

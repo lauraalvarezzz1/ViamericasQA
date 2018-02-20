@@ -4,7 +4,7 @@
 
 'use strict';
 
-var paymentPage = function() {
+var paymentPage = function () {
 
     //payment method
     this.addpaymentButton = element(by.id('add-new-payment-payments'));

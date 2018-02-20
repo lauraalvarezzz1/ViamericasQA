@@ -48,7 +48,6 @@ describe('Recipients Testing - Updating a recipient already created', function (
                 recipientPage.email_optional.sendKeys("recipient@gmail.com");
                 recipientPage.moreaddressinformation.clear();
                 recipientPage.moreaddressinformation.sendKeys("moreaddressinformation testing");
-
                 recipientPage.updateRecipientButton.click();
             });
             browser.sleep(2000);

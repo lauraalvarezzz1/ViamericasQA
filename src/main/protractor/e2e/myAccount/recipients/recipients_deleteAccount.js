@@ -31,15 +31,15 @@ describe('Recipients Testing - Removing the recipient bank account', function ()
             homePage.recipientsButton.click();
 
             recipientPage.editButton.isPresent().then(function () {
-                    recipientPage.editButton.click();
+                recipientPage.editButton.click();
             });
 
             recipientPage.deleteAccountButton.isPresent().then(function (rs) {
-                if(rs){
+                if (rs) {
                     recipientPage.deleteAccountButton.click();
                     browser.sleep(2000);
                     recipientPage.closepopup.click();
-                }else{
+                } else {
                     console.log("Doesn't have recipient bank accounts")
                 }
                 browser.sleep(2000);
