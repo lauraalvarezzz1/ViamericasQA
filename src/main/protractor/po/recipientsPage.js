@@ -58,9 +58,9 @@ var recipientsPage = function () {
     this.statesIndia = element(by.css('dropdown-viamericas#india-states-select-recipient-details'));
     this.dialCode = element(by.css('dropdown-viamericas#country-code-select-recipient-details'));
 
-    //Recipient Bank Account page
+    //Recipient Bank Account page in My Account
     this.accountnumber = element(by.id('account-number-recipient-details'));
-    this.accountnickname = element(by.id('holder-name-recipient-details'));
+    this.accountnickname = element(by.id('holder-name-recipient-details')); //Its tha name of the recipient.
 
     //Auxiliary fields
     this.ifscCodeIndia = element(by.css('dropdown-viamericas#india-ifsc-select-recipient-details'));
