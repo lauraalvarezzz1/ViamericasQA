@@ -2,7 +2,6 @@ package com.selenium.viamericas.subpages;
 
 import com.selenium.viamericas.utility.Start;
 import com.selenium.viamericas.utility.Utility;
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
