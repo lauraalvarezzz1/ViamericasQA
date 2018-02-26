@@ -35,7 +35,8 @@ exports.config = {
     //specs: ['e2e/myAccount/recipients/recipients_editRecipient.js'],
     //specs: ['e2e/feesAndRates/FeesNRates.js'],
     //specs: ['e2e/loginPage/login.js'],
-    specs: ['e2e/myAccount/profileSettings/profile_changePassword.js'],
+    //specs: ['e2e/myAccount/profileSettings/profile_changePassword.js'],
+    specs: ['e2e/staticPages/footer.js'],
 
 
     // Options to be passed to Jasmine.
