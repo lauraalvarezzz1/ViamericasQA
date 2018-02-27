@@ -9,21 +9,38 @@
 'use strict';
 
 var homePage = function() {
-    //Login Form
-    this.sendMoneyButton = element(by.linkText('Send Money'));
-    this.feesAndRatesButton = element(by.linkText('Fees and Rates'));
-    this.howItWorksButton = element(by.linkText('How it Works'));
-    this.locationsButton = element(by.linkText('Locations'));
-    this.signUpButton = element(by.buttonText('Sign up For Free'));
-    this.logInButton = element(by.partialButtonText('Log In'));
-    this.signUpButtonXpath = element(by.xpath('/html/body/div[2]/div/div[1]/div[1]/header/div/ul/li[3]/button[1]'));
-    this.logInButtonXpath = element(by.xpath('/html/body/div[2]/div/div[1]/div[1]/header/div/ul/li[3]/button[2]'));
-    this.customerServiceButton = element(by.xpath('/html/body/div[2]/div/div[1]/div[1]/header/div/ul/li[2]/a'));
+    //Header
+    this.signUpHeader = element(by.id('sign-up-header'));
+    this.loginHeader = element(by.id('login-button-header'));
+    this.customerServiceButton = element(by.id('contact-us-header'));
+    this.myaccountheader = element (by.id('my-account-header'));
+    this.logoutheader = element (by.id('logout-header'));
 
-    //Logged in
-    this.gomyaccount = element(by.xpath('/html/body/div[2]/div/div[1]/div[1]/header/div/ul/li[4]/a'));
-    this.gorecipients = element(by.xpath('/html/body/div[2]/div/div[1]/div[2]/div/div[1]/div/div[1]/ul/li[2]/a'));
-    this.goToPayments = element(by.xpath('/html/body/div[2]/div/div[1]/div[2]/div/div[1]/div/div[1]/ul/li[3]/a'));
+    //Banner
+    this.signUpBanner = element(by.id('sign-up-banner-home'));
+    this.sendmoneyBanner = element(by.id('send-money-2-banner-home'));
+
+    //Nav Bar
+    this.sendmoneyNav = element(by.id('send-money-button-nav-bar'));
+    this.feesandratesNav = element(by.id('get-a-quote-button-nav-bar'));
+    this.howitworksNav = element(by.id('how-it-works-button-nav-bar'));
+    this.locationsNav = element(by.id('locations-button-nav-bar'));
+    this.mytransactionsNav = element(by.id('transaction-history-button-nav-bar'));
+
+    //Buttons in the main home page
+    this.feesandratesButton = element(by.id('get-quote-desktop-home'));
+
+    this.signUpsecondsection = element(by.id('sign-up-home'));
+    this.sendmoneysecondsection= element(by.id('send-money-home'));
+
+    this.signUpthirdsection = element(by.id('sign-up-middle-home'));
+    this.sendmoneythirdsection= element(by.id('send-money-middle-home'));
+
+    //Download vianex app links
+    this.applelogo = element(by.id('app-store-home'));
+    this.applelogo = element(by.id('play-store-home'));
+
 };
 
 module.exports = new homePage();
+

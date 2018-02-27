@@ -25,25 +25,7 @@ public class TransactionHistory {
         Start.driver.quit();
     }
 
-    @Test(enabled = true, priority = 0)
-    public void verifytitle(){
-        Assert.assertNotNull(TransactionHistoryPage.title);
-    }
 
-    @Test(enabled = true, priority = 1)
-    public void verify(){
-        Assert.assertNotNull(TransactionHistoryPage.repeattransactionbutton);
-    }
-
-    @Test(enabled = true, priority = 2)
-    public void verifywrongemail(){
-        Assert.assertNotNull(TransactionHistoryPage.historylabel);
-    }
-
-    @Test(enabled = true, priority = 3)
-    public void verifywrongpassword(){
-        Assert.assertNotNull(TransactionHistoryPage.pendinglabel);
-    }
 
 
 

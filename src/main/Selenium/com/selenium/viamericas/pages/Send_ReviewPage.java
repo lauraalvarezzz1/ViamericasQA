@@ -21,10 +21,12 @@ public class Send_ReviewPage {
     public static By pencilbefore = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[11]/div[1]/div[1]/div/div[2]/i[1]");
     public static By updateamount = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[11]/div[1]/div[1]/div/div[2]/input");
     public static By pencilafter = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[11]/div[1]/div[1]/div/div[2]/i[2]");
+    public static By finishTransactionButton = By.id("finish-transaction-review");
+
 
     public static void sendmoneybutton() throws Exception {
         Thread.sleep(5000);
-        Start.driver.findElement(SendmoneyButton).click();
+        Start.driver.findElement(finishTransactionButton).click();
         Thread.sleep(5000);
 
     }

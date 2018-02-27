@@ -9,10 +9,19 @@
 'use strict';
 
 var loginPage = function() {
-      //Fees and Rates
-      this.loginButton = element(by.partialButtonText('Log In'));
-      this.userName = element(by.id('username'));
-      this.password = element(by.id('password'));
+
+      //Login section
+      this.loginHeader = element(by.id('login-button-header'));
+      this.userName = element(by.id('username-login'));
+      this.password = element(by.id('password-login'));
+      this.loginButton = element(by.id('login-login'));
+
+      //Additional things
+      this.eyeicon = element(by.id('show-password-login'));
+      this.forgotPassword = element(by.id('forgot-password-login'));
+      this.loginFacebook = element(by.id('facebook-login'));
+      this.SignUpButton = element(by.id('sign-up-free-login'));
+
 };
 
 module.exports = new loginPage();

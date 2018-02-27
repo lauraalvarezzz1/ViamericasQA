@@ -1,6 +1,7 @@
 package com.selenium.viamericas.pages;
 
-import com.selenium.viamericas.utility.DataGenerators;
+
+import java.util.Calendar;
 
 import com.selenium.viamericas.utility.Start;
 import com.selenium.viamericas.utility.Utility;
@@ -10,99 +11,92 @@ import org.openqa.selenium.Keys;
 public class Send_FundingPage {
     public static Utility language = new Utility();
 
-    public static By bankaccountbutton = By.xpath("html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[1]/div[1]/div/div");
-    public static By creditaccountbutton = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[1]/div[2]/div/div");
-    public static By continueButton = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[2]/button[2]");
-    public static By backButton = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[2]/button[1]");
+
+    //Radio Buttons
+    public static By bankAccountRadiobutton = By.id("checkbox-funding-A-funding");
+    public static By creditRadioButton = By.id("checkbox-funding-D-funding");
+    public static By debitRadioButton = By.id("checkbox-funding-K-funding");
+
+    public static By continueButton = By.id("continue-funding");
+    public static By backButton = By.id("back-funding");
 
     //<--------BANK ACCOUNT BUTTON--------->
-    public static By accountholdername = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[2]/input");
-    public static By accountnickname = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[3]/input");
-    public static By routingname = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[4]/input");
-    public static By accountnumber = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[5]/input");
-    public static By accounttype = By.xpath(".//*[@placeholder='"+ language.getaccountType()+"']");
+    //Inputs
+    public static By savedBankAccountsInput = By.cssSelector("section#saved-accounts dropdown-viamericas#saved-bank-select-bank input#dropdown-input");
+    public static By monthExpirationDateInput = By.cssSelector("section#credit-card-extra-info dropdown-viamericas#expiration-month-select-card input#dropdown-input");
+    public static By yearExpirationDateInput = By.cssSelector("section#credit-card-extra-info dropdown-viamericas#expiration-year-select-card input#dropdown-input");
+
+    // LI
+    public static By savedBankAccountsLI = By.cssSelector("section#saved-accounts dropdown-viamericas#saved-bank-select-bank li#dropdown-list");
+    public static By monthExpirationDateLI = By.cssSelector("section#credit-card-extra-info dropdown-viamericas#expiration-month-select-card li#dropdown-list");
+    public static By yearExpirationDateLI = By.cssSelector("section#credit-card-extra-info dropdown-viamericas#expiration-year-select-card li#dropdown-list");
+
 
     //<--------CREDIT/DEBIT BUTTON----------->
-    public static By cardholdername = By.xpath("html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[3]/input");
-    public static By cardnickname = By.xpath("html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[4]/input");
-    public static By cardnumber = By.xpath("html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[5]/input");
-    public static By monthdropdown = By.xpath(".//*[@placeholder='"+ language.getMonth()+"']");
-    public static By yeardropdown = By.xpath(".//*[@placeholder='"+ language.getYear()+"']");
-    public static By CVVcode = By.xpath("html/body/div[2]/div/div[1]/div[2]/div/div/div/form/div[1]/div[2]/div[7]/input");
-    public static By closepopup = By.xpath("/html/body/div[3]/div[2]/button[1]");
-    public static By cardtype = By.xpath(".//*[@placeholder='Card Type'");
+    public static By cardholdername = By.xpath("cardholder-name-card");
+    public static By cardnickname = By.xpath("card-nickname-card");
+    public static By cardnumber = By.xpath("card-number-card");
+    public static By CVVcode = By.xpath("cvv-code-card");
 
-    public static void selectaccount(String selectaccountoption) throws Exception {
-        Thread.sleep(5000);
-        if (selectaccountoption.equalsIgnoreCase("bankaccount")) {
-            Start.driver.findElement(bankaccountbutton).click();
-        } else if (selectaccountoption.equalsIgnoreCase("creditdebitbutton")) {
-            Start.driver.findElement(creditaccountbutton).click();
+    public static boolean selectaccount() throws Exception {
+
+        Thread.sleep(3000);
+        if (Utility.isSomethingClickable(savedBankAccountsInput)) {
+            Thread.sleep(3000);
+            return true;
+        } else
+            return false;
+    }
+
+    //Bank account
+    public static void selectSavedBankAccount() throws Exception {
+        Thread.sleep(3000);
+        if (Utility.isSomethingClickable(savedBankAccountsInput)) {
+            Start.driver.findElement(savedBankAccountsInput).click();
+            Start.driver.findElement(savedBankAccountsInput).sendKeys(Keys.ARROW_DOWN);
+            Start.driver.findElement(savedBankAccountsLI).sendKeys(Keys.ENTER);
+            Thread.sleep(3000);
         }
     }
 
-    //Bank Account
-    public static void addbankholdername() throws Exception {
-        Thread.sleep(3000);
-        Start.driver.findElement(accountholdername).sendKeys("Test Funding");
-    }
-
-    public static void addbanknickname() throws Exception {
-        Thread.sleep(3000);
-        Start.driver.findElement(accountnickname).sendKeys("Test funding");
-    }
-
-    public static void addroutingnumber() throws Exception {
-        Thread.sleep(3000);
-        Start.driver.findElement(routingname).sendKeys("021000021");
-    }
-
-    public static void addnumber() throws Exception {
-        Thread.sleep(3000);
-        Start.driver.findElement(accountnumber).sendKeys(DataGenerators.generateAccountnumber());
-    }
-
-    public static void selecttype() throws Exception {
-        Start.driver.findElement(accounttype).sendKeys("SAVING");
-        Start.driver.findElement(accounttype).sendKeys(Keys.DOWN);
-        Start.driver.findElement(accounttype).sendKeys(Keys.ENTER);
-        Thread.sleep(1000);
-    }
 
     //Credit/Debit
-    public static void selectcreditordebit() throws Exception {
-        Start.driver.findElement(cardtype).sendKeys("DEBIT CARD");
-        Start.driver.findElement(cardtype).sendKeys(Keys.DOWN);
-        Start.driver.findElement(cardtype).sendKeys(Keys.ENTER);
+    public static void selectCreditCard() throws Exception {
+        Start.driver.findElement(creditRadioButton).click();
+        Thread.sleep(1000);
+
+    }
+
+    public static void selectDebitCard() throws Exception {
+        Start.driver.findElement(debitRadioButton).click();
         Thread.sleep(1000);
     }
 
-    public static void addcardholdername() throws Exception {
-        Thread.sleep(3000);
-        Start.driver.findElement(cardholdername).sendKeys("JAYDEN ADRIAN TEST");
+    public static void cardHolderName() throws Exception {
+        //Thread.sleep(3000);
+        //Start.driver.findElement(cardholdername).sendKeys("JAYDEN ADRIAN TEST");
     }
 
-    public static void addcardnickname() throws Exception {
+    public static void cardHickName() throws Exception {
         Thread.sleep(3000);
-        Start.driver.findElement(cardnickname).sendKeys("JAYDEN ADRIAN TEST");
+        Start.driver.findElement(cardnickname).sendKeys("Card NickName");
     }
 
-    public static void addcardnumber() throws Exception {
+    public static void cardNumber() throws Exception {
         Thread.sleep(3000);
-        Start.driver.findElement(cardnumber).sendKeys("4716402875575");
+        Start.driver.findElement(cardnumber).sendKeys("5405010000000090");
     }
 
     public static void selectmonth() throws Exception {
-        Start.driver.findElement(monthdropdown).sendKeys("01");
-        Start.driver.findElement(monthdropdown).sendKeys(Keys.DOWN);
-        Start.driver.findElement(monthdropdown).sendKeys(Keys.ENTER);
+        int year = Calendar.getInstance().get(Calendar.YEAR);
+
+        // Start.driver.findElement(monthExpirationDateInput).sendKeys(year);
+
         Thread.sleep(1000);
     }
 
     public static void selectyear() throws Exception {
-        Start.driver.findElement(yeardropdown).sendKeys("2018");
-        Start.driver.findElement(yeardropdown).sendKeys(Keys.DOWN);
-        Start.driver.findElement(yeardropdown).sendKeys(Keys.ENTER);
+
         Thread.sleep(1000);
     }
 
@@ -117,10 +111,5 @@ public class Send_FundingPage {
 
     }
 
-    public static void setClosepopup() throws Exception {
-        Thread.sleep(4000);
-        Start.driver.findElement(closepopup).click();
-
-    }
 }
 
