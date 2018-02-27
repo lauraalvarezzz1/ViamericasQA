@@ -24,8 +24,8 @@ var staticPages = function() {
 
     //Compliance
     this.compliancelink = element(by.id('compliance-footer'));
-    this.stateComLI = element.all(by.css('dropdown-viamericas#state ul.dropdown-viam-list li'));
-    this.stateCom = element(by.css('dropdown-viamericas#state'));
+    this.stateComLI = element.all(by.css('dropdown-viamericas#state-compliance ul.dropdown-viam-list li'));
+    this.stateCom = element(by.css('dropdown-viamericas#state-compliance'));
 
     //File Complaint
     this.fileacomplaintlink = element(by.id('file-a-complaint-footer'));
@@ -39,7 +39,8 @@ var staticPages = function() {
     this.careerslink = element(by.id('careers-footer'));
     this.newslink = element(by.id('news-footer'));
     this.faqslink = element(by.id('faq-footer'));
-    this.pplink = element(by.id('privacy-policy-footer'));
+    this.faqslink = element(by.id('faq-footer'));
+    this.contactusfooter = element(by.id('contact-us-footer'));
     this.tclink = element(by.id('terms-and-conditions-footer'));
 };
 
