@@ -8,13 +8,18 @@
 
 'use strict';
 
-var homePage = function() {
+var homePage = function () {
     //Header
     this.signUpHeader = element(by.id('sign-up-header'));
     this.loginHeader = element(by.id('login-button-header'));
     this.customerServiceButton = element(by.id('contact-us-header'));
-    this.myaccountheader = element (by.id('my-account-header'));
-    this.logoutheader = element (by.id('logout-header'));
+    this.myaccountheader = element(by.id('my-account-header'));
+    this.logoutheader = element(by.id('logout-header'));
+
+    //My account buttons
+    this.profilesettingsButton = element(by.id('profile-settings-account'));
+    this.recipientsButton = element(by.id('recipients-account'));
+    this.paymentsButton = element(by.id('payments-account'));
 
     //Banner
     this.signUpBanner = element(by.id('sign-up-banner-home'));
@@ -29,12 +34,10 @@ var homePage = function() {
 
     //Buttons in the main home page
     this.feesandratesButton = element(by.id('get-quote-desktop-home'));
-
     this.signUpsecondsection = element(by.id('sign-up-home'));
-    this.sendmoneysecondsection= element(by.id('send-money-home'));
-
+    this.sendmoneysecondsection = element(by.xpath('//*[@id="send-steps"]/div/div[2]/a[2]'));
     this.signUpthirdsection = element(by.id('sign-up-middle-home'));
-    this.sendmoneythirdsection= element(by.id('send-money-middle-home'));
+    this.sendmoneythirdsection = element(by.id('send-money-middle-home'));
 
     //Download vianex app links
     this.applelogo = element(by.id('app-store-home'));

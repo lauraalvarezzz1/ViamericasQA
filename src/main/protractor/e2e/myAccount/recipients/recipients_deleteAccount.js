@@ -6,48 +6,51 @@
 describe('Recipients Testing - Removing the recipient bank account', function () {
 
     beforeAll(function () {
-        browser.get('https://govianex.com/');
+        browser.get('https://test.govianex.com/#/');
     });
 
     beforeEach(function () {
-        homepage = require('../../../po/homePage');
-        recipientPage = require('../../../po/recipientsPage');
-        loginpage = require('../../../po/loginPage');
-    });
-
-    it('Log in', function () {
-        homepage.logInButtonXpath.click();
-        loginpage.userName.sendKeys("viamericas.testing@gmail.com");
-        loginpage.password.sendKeys("Viamericas123");
-        loginpage.loginButton.click();
-    });
-
-    it('Go to Recipients', function () {
         browser.ignoreSynchronization = true;
-        homepage.gomyaccount.isPresent().then(function () {
+        homePage = require('../../../po/homePage');
+        recipientPage = require('../../../po/recipientsPage');
+        loginPage = require('../../../po/loginPage');
+    });
+
+    it('Remove recipient bank accounts and go recipient list', function () {
+        homePage.loginHeader.click();
+        loginPage.userName.isPresent().then(function () {
+            loginPage.userName.sendKeys("testingviamericas@gmail.com");
+            loginPage.password.sendKeys("Viamericas123");
+            loginPage.loginButton.click();
+
+            browser.sleep(6000);
+
+            homePage.myaccountheader.isPresent().then(function () {
+                homePage.myaccountheader.click();
+            });
+            homePage.recipientsButton.click();
+
+            recipientPage.editButton.isPresent().then(function () {
+                recipientPage.editButton.click();
+            });
+
+            recipientPage.deleteAccountButton.isPresent().then(function (rs) {
+                if (rs) {
+                    recipientPage.deleteAccountButton.click();
+                    browser.sleep(2000);
+                    recipientPage.closepopup.click();
+                } else {
+                    console.log("Doesn't have recipient bank accounts")
+                }
+                browser.sleep(2000);
+                recipientPage.cancelButton.click();
+            });
             browser.sleep(2000);
-            homepage.gomyaccount.click();
+            expect(browser.getCurrentUrl()).toEqual('https://test.govianex.com/#/account/recipients');
         });
-        homepage.gorecipients.click();
+
     });
 
-
-    it('Go to recipient information', function () {
-        recipientPage.editButton.isPresent().then(function () {
-            recipientPage.editButton.click();
-        });
-    });
-
-    it('Remove the recipient bank account', function () {
-        recipientPage.deleteAccountButton.isPresent().then(function (account) {
-            if (account) {
-                recipientPage.deleteAccountButton.click();
-            } else {
-                console.log("The recipient already select doesn't have bank accounts created");
-                browser.pause();
-            }
-        });
-    });
 });
 
 

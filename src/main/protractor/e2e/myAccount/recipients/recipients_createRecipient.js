@@ -6,105 +6,87 @@
 describe('Recipients Testing - Creating a new recipient', function () {
 
     beforeAll(function () {
-        browser.get('https://govianex.com/');
+        browser.get('https://test.govianex.com/#/');
     });
 
     beforeEach(function () {
-        homepage = require('../../../po/homePage');
-        recipientPage = require('../../../po/recipientsPage');
-        loginpage = require('../../../po/loginPage');
-    });
-
-    it('Log in', function () {
-        homepage.logInButtonXpath.click();
-        loginpage.userName.sendKeys("viamericas.testing@gmail.com");
-        loginpage.password.sendKeys("Viamericas123");
-        loginpage.loginButton.click();
-    });
-
-    it('Go to Recipients', function () {
         browser.ignoreSynchronization = true;
-        homepage.gomyaccount.isPresent().then(function () {
-            browser.sleep(2000);
-            homepage.gomyaccount.click();
-        });
-        homepage.gorecipients.click();
+        homePage = require('../../../po/homePage');
+        recipientsPage = require('../../../po/recipientsPage');
+        loginPage = require('../../../po/loginPage');
     });
-    it('Go to create a new Recipient', function () {
-        recipientPage.createButton.isPresent().then(function () {
-            recipientPage.createButton.click();
 
+    it('Create a new recipient', function () {
+        homePage.loginHeader.click();
+        loginPage.userName.isPresent().then(function () {
+            loginPage.userName.sendKeys("testingviamericas@gmail.com");
+            loginPage.password.sendKeys("Viamericas123");
+            loginPage.loginButton.click();
+
+            browser.sleep(5000);
+
+            homePage.myaccountheader.isPresent().then(function () {
+                homePage.myaccountheader.click();
+            });
+            homePage.recipientsButton.click();
         });
+        recipientsPage.addnewrecipientButton.click();
+        recipientsPage.first_name.sendKeys("FirstName");
+        recipientsPage.middle_name_optional.sendKeys("MiddleName");
+        recipientsPage.last_name.sendKeys("LastName");
+        recipientsPage.secondlast_name_optional.sendKeys("SecondLast");
+        recipientsPage.dateofbirth.sendKeys("2000/01/30")
+        recipientsPage.address_line1.sendKeys("Street 5 - Testing Address Line1");
 
-        //Complete the fields
-        recipientPage.first_name.sendKeys("Testing");
-        recipientPage.middle_name_optional.sendKeys("Testing");
-        recipientPage.last_name.sendKeys("Testing");
-        recipientPage.secondlast_name_optional.sendKeys("Testing");
-        recipientPage.mobile_phone_optional.sendKeys(numbergenerator(312000000, 312999999));
-        recipientPage.email_optional.sendKeys("Testing" + numbergenerator(1, 9999) + "@gmail.com");
-        recipientPage.address_line1.sendKeys("Street 5 - Testing Address Line1");
+        var selectcountryRecipient =
+            recipientsPage.countryLI.count().then(function (countcountries) {
+                console.log("Recipients - Countries available: " + countcountries);
+                var countryselected = Math.floor((Math.random() * countcountries) + 1);
+                recipientsPage.country.element(by.css('input#dropdown-input')).click();
+                recipientsPage.country.element(by.css('ul.dropdown-viam-list li:nth-child(' + countryselected + ')')).click();
+                console.log("Country selected: " + countryselected);
 
-        recipientPage.month.sendKeys(numbergenerator(0, 1));
-        if (recipientPage.month >= 1) {
-            recipientPage.month.sendKeys(numbergenerator(0, 2));
-        } else {
-            recipientPage.month.sendKeys(numbergenerator(1, 9));
-        }
+                if (countryselected == 5) {
+                    recipientsPage.cpfbrazil.sendKeys(numbergenerator(10000000000, 99999999999));
+                } else {
+                    console.log("Continue with the flow");
+                }
 
-        recipientPage.year.sendKeys(numbergenerator(1900, 1998));
-
-        if (recipientPage.month >= 02) {
-            recipientPage.day.sendKeys(numbergenerator(0, 2));
-            if (recipientPage.day >= 0 || Day >= 1) {
-                recipientPage.day.sendKeys(numbergenerator(1, 9));
-            } else {
-                recipientPage.day.sendKeys(numbergenerator(0, 8));
-            }
-        } else {
-            recipientPage.day.sendKeys(numbergenerator(0, 3));
-            if (recipientPage.month == 04 || recipientPage.month == 06 || recipientPage.month == 09 || recipientPage.month == 11 && recipientPage.day == 3) {
-                recipientPage.day.sendKeys(numbergenerator(0, 0));
-            } else {
-                recipientPage.day.sendKeys(numbergenerator(1, 9));
-            }
-        }
-
-        var selectcountry =
-            recipientPage.countryLI.count().then(function (countCountries) {
-                var ran = Math.floor((Math.random() * countCountries) + 1);
-                recipientPage.country.element(by.css('input#country-select,#dropdown-input')).click();
-                recipientPage.country.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
-                if (ran == 32) {
-                    recipientPage.zipcode.sendKeys("33233");
+                if (countryselected == 8) {
+                    recipientsPage.mobile_phone_optional.sendKeys("3117223344");
+                } else if (countryselected == 9) {
+                    recipientsPage.mobile_phone_optional.sendKeys("5720 0097");
+                } else if (countryselected == 11) {
+                    recipientsPage.mobile_phone_optional.sendKeys("093 900 1046");
+                } else {
+                    console.log("Continue without mobile phone number")
                 }
             });
 
-        var selectstate =
-            recipientPage.stateLI.count().then(function (countstates) {
+        var selectstateRecipient =
+            recipientsPage.stateLI.count().then(function (countstates) {
+                console.log("Recipients - States available " + countstates);
                 var ran = Math.floor((Math.random() * countstates) + 1);
-                recipientPage.state.element(by.css('input#state-select,#dropdown-input ')).click();
-                recipientPage.state.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
-            }, 3000);
+                recipientsPage.state.element(by.css('input#dropdown-input')).click();
+                recipientsPage.state.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
+                console.log("State selected:  " + ran);
+            });
 
-        var selectcity =
-            recipientPage.cityLI.count().then(function (countcities) {
+        var selectcityRecipient =
+            recipientsPage.cityLI.count().then(function (countcities) {
+                console.log("Cities available: " + countcities);
                 var ran = Math.floor((Math.random() * countcities) + 1);
-                recipientPage.city.element(by.css('input#city-select,#dropdown-input')).click();
-                recipientPage.city.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
-            }, 2000);
+                recipientsPage.city.element(by.css('input#dropdown-input')).click();
+                recipientsPage.city.element(by.css('ul.dropdown-viam-list li:nth-child(' + ran + ')')).click();
+                console.log("City selected: " + ran);
+            });
+
+        recipientsPage.createrecipientButton.click();
+        browser.sleep(3000);
+
+        expect(browser.getCurrentUrl()).toEqual('https://test.govianex.com/#/account/recipients');
 
     });
-
-    it('Click on create recipient and close popup', function () {
-        recipientPage.createRecipientButton.isPresent().then(function () {
-            recipientPage.createRecipientButton.click();
-        });
-
-        browser.pause();
-    });
-
-
 });
 
 numbergenerator = function (min, max) {

@@ -17,15 +17,15 @@ var contactUs = function() {
 
 var staticPages = function() {
     //About us form
-    this.aboutuslink = element(by.xpath('about-us-footer'));
+    this.aboutuslink = element(by.id('about-us-footer'));
     this.unoRanked = element(by.xpath('//*[@id="yui_3_16_0_ym19_1_1485211113917_117706"]/p[1]/a'));
     this.InternationalFinanceCorporation = element(by.xpath('//*[@id="yui_3_16_0_ym19_1_1485211113917_117706"]/p[2]/a[1]'));
     this.april = element(by.xpath('//*[@id="yui_3_16_0_ym19_1_1485211113917_117706"]/p[2]/a[2]'));
 
     //Compliance
     this.compliancelink = element(by.id('compliance-footer'));
-    this.stateComLI = element.all(by.css('dropdown-viamericas#state ul.dropdown-viam-list li'));
-    this.stateCom = element(by.css('dropdown-viamericas#state'));
+    this.stateComLI = element.all(by.css('dropdown-viamericas#state-compliance ul.dropdown-viam-list li'));
+    this.stateCom = element(by.css('dropdown-viamericas#state-compliance'));
 
     //File Complaint
     this.fileacomplaintlink = element(by.id('file-a-complaint-footer'));
@@ -36,10 +36,11 @@ var staticPages = function() {
 
     //Leadership - Careers - News - FAQ - TC - PP
     this.leadershiplink = element(by.id('leadership-footer'));
-    this.leadershiplink = element(by.id('careers-footer'));
+    this.careerslink = element(by.id('careers-footer'));
     this.newslink = element(by.id('news-footer'));
     this.faqslink = element(by.id('faq-footer'));
-    this.pplink = element(by.id('privacy-policy-footer'));
+    this.faqslink = element(by.id('faq-footer'));
+    this.contactusfooter = element(by.id('contact-us-footer'));
     this.tclink = element(by.id('terms-and-conditions-footer'));
 };
 
