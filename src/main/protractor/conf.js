@@ -12,15 +12,22 @@ exports.config = {
 
     // Capabilities to be passed to the webdriver instance.
     capabilities: {
-        'browserName': 'chrome',
+        browserName: 'chrome',
+        //browserName: 'firefox',
+
+        /*chromeOptions: {
+            args: ['--headless', '--window-size=1200,1000', '--disable-gpu']
+        }
+
+        /*'moz:firefoxOptions': {
+            args: [ "--headless" ]
+        }*/
 
     },
 
     // Framework to use. Jasmine is recommended.
     framework: 'jasmine2',
 
-    // Spec patterns are relative to the current working directory when
-    // protractor is called.
     //specs: ['e2e/recipients/recipients_createRecipient.js'],
     //specs: ['e2e/recipients_createRecipient.js'],
     //specs: ['e2e/sendMoneyFlow/fastsendmoneyflow.js'],
@@ -36,7 +43,7 @@ exports.config = {
     //specs: ['e2e/feesAndRates/FeesNRates.js'],
     //specs: ['e2e/loginPage/login.js'],
     //specs: ['e2e/myAccount/profileSettings/profile_changePassword.js'],
-    specs: ['e2e/staticPages/footer.js'],
+    specs: ['e2e/staticPages/compliance.js'],
 
 
     // Options to be passed to Jasmine.
@@ -45,16 +52,16 @@ exports.config = {
         defaultTimeoutInterval: 60000,
         isVerbose: true
     },
-    onPrepare: function() {
+    onPrepare: function () {
         global.EC = protractor.ExpectedConditions;
         browser.manage().timeouts().setScriptTimeout(60000);
         browser.manage().timeouts().pageLoadTimeout(40000);
         browser.manage().timeouts().implicitlyWait(25000);
         var jasmineReporters = require('jasmine-reporters');
-                jasmine.getEnv().addReporter(new jasmineReporters.JUnitXmlReporter({
-                    consolidateAll: true,
-                    savePath: 'testresults',
-                    filePrefix: 'xmloutput'
-                }));
+        jasmine.getEnv().addReporter(new jasmineReporters.JUnitXmlReporter({
+            consolidateAll: true,
+            savePath: 'testresults',
+            filePrefix: 'xmloutput'
+        }));
     },
 };

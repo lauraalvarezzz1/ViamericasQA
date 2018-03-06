@@ -6,7 +6,7 @@
 describe('Fast send money Testing (Starting with send money button) - Viamericas Web App', function () {
 
     beforeAll(function () {
-        browser.get('https://test.govianex.com/#/fast-send/destination/');
+        browser.get('https://test.govianex.com/#!/fast-send/destination/');
     });
 
     beforeEach(function () {
