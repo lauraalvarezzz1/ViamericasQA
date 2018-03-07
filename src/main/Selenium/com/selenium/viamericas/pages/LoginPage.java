@@ -1,8 +1,10 @@
 package com.selenium.viamericas.pages;
+
 import org.openqa.selenium.By;
 import com.selenium.viamericas.utility.Start;
-import java.util.Iterator;
-import java.util.Set;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginPage {
 
@@ -15,7 +17,7 @@ public class LoginPage {
     public static By forgotpasswordlink = By.xpath("/html/body/div[2]/div/div[1]/div[2]/div/div/div[2]/div/form/div[5]/a");
     public static By logOutButton = By.xpath("/html/body/div[2]/div/div[1]/div[1]/header/div/ul/li[7]/a");
 
-    public static void login(String user, String pass)throws Exception{
+    public static void login(String user, String pass) throws Exception {
 
         Start.driver.findElement(email).sendKeys(user);
         Start.driver.findElement(password).sendKeys(pass);
@@ -23,43 +25,43 @@ public class LoginPage {
         Thread.sleep(5000);
     }
 
-    public static void typeemail (String mail) throws Exception{
+    public static void typeemail(String mail) throws Exception {
         Thread.sleep(5000);
         Start.driver.switchTo().activeElement();
         Start.driver.findElement(email).sendKeys(mail);
 
     }
 
-    public static void typepassword (String p) throws Exception{
+    public static void typepassword(String p) throws Exception {
         Thread.sleep(5000);
         Start.driver.switchTo().activeElement();
         Start.driver.findElement(password).sendKeys(p);
     }
 
-    public static void clicklogin () throws Exception{
-        Thread.sleep(2000);
+    public static void clicklogin() throws Exception {
+
+        WebDriverWait wait = new WebDriverWait(Start.driver, 5);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(loginButtonHeader));
         Start.driver.findElement(loginButtonHeader).click();
         Thread.sleep(2000);
     }
 
-    public static void clearfields(){
+    public static void clearfields() {
         Start.driver.switchTo().activeElement();
         Start.driver.findElement(email).clear();
         Start.driver.findElement(password).clear();
     }
-    public static boolean isLoggedIn()
-    {
-        try
-        {
+
+    public static boolean isLoggedIn() {
+        try {
             Start.driver.findElement(logOutButton).click();
             return true;
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             return false;
         }
     }
-    public static void clickforgotpassword(){
+
+    public static void clickforgotpassword() {
         Start.driver.findElement(forgotpasswordlink).click();
     }
 }

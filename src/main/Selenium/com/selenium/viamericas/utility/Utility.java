@@ -3,6 +3,9 @@ package com.selenium.viamericas.utility;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import java.time.LocalDateTime;
+
+import java.util.Calendar;
 import java.util.prefs.*;
 import java.io.IOException;
 import java.io.InputStream;
@@ -89,39 +92,39 @@ public class Utility {
     }
 
     public static String getDestinationCountry(){
-        String countries[]= new String[31];
-        countries[0]="ARGENTINA";
+        String countries[]= new String[23];
+        //countries[0]="ARGENTINA";
         //countries[1]="AUSTRALIA";
-        countries[2]="BANGLADESH";
-        countries[3]="BOLIVIA";
+        countries[1]="BANGLADESH";
+        countries[2]="BOLIVIA";
        // countries[4]="BRAZIL";
-        countries[5]="CANADA";
-        countries[6]="CHILE";
-        countries[7]="COLOMBIA";
-        countries[8]="COSTA RICA";
-        countries[9]="DOMINICAN REPUBLIC";
-        countries[10]="ECUADOR";
-        countries[11]="EL SALVADOR";
-        countries[12]="GUATEMALA";
-        countries[13]="GUYANA";
-        countries[14]="HONDURAS";
+        countries[3]="CANADA";
+        //countries[4]="CHILE";
+        countries[4]="COLOMBIA";
+        countries[5]="COSTA RICA";
+        countries[6]="DOMINICAN REPUBLIC";
+        countries[7]="ECUADOR";
+        countries[8]="EL SALVADOR";
+        countries[9]="GUATEMALA";
+        countries[10]="GUYANA";
+        countries[11]="HONDURAS";
         //countries[15]="HONG KONG";
-        countries[16]="INDIA";
-        countries[17]="INDONESIA";
-        countries[18]="KOREA, SOUTH";
-        countries[19]="MALAYSIA";
-        countries[20]="MEXICO";
-        countries[21]="NEPAL";
-        countries[22]="NEW ZEALAND";
-        countries[23]="NICARAGUA";
-        countries[24]="PERU";
-        countries[25]="PHILIPPINES";
-        countries[26]="SPAIN";
-        countries[27]="SWITZERLAND";
-        countries[28]="TRINIDAD AND TOBAGO";
+        //countries[16]="INDIA";
+        countries[12]="INDONESIA";
+        countries[13]="KOREA, SOUTH";
+        countries[14]="MALAYSIA";
+        countries[15]="MEXICO";
+        countries[16]="NEPAL";
+        countries[17]="NEW ZEALAND";
+        countries[18]="NICARAGUA";
+        countries[19]="PERU";
+        countries[20]="PHILIPPINES";
+        countries[21]="SPAIN";
+        countries[22]="SWITZERLAND";
+        //countries[24]="TRINIDAD AND TOBAGO";
         //countries[29]="UNITED KINGDOM";
-        countries[30]="VIETNAM";
-        int country = (int) (Math.random() * (31 - 1)) + 1;
+        //countries[25]="VIETNAM";
+        int country = (int) (Math.random() * (22 - 1)) + 1;
         return countries[country];
     }
 
@@ -151,6 +154,18 @@ public class Utility {
 
     }
 
+
+    public static int  getMonthExpirationDate(){
+        LocalDateTime now = LocalDateTime.now();
+        int month = now.getMonthValue();
+        return month;
+    }
+    public static int  getYearExpirationDate(){
+        LocalDateTime now = LocalDateTime.now();
+        int year = now.getYear();
+        return year;
+
+    }
     public static int  getRandomNumber(int number){
 
         Random rand = new Random();

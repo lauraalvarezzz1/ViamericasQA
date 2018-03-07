@@ -6,15 +6,15 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.Dimension;
 
 import java.util.Collections;
 import java.util.concurrent.TimeUnit;
 
 
-public class Start
-{
+public class Start {
     final static Logger logger = Logger.getLogger(Start.class);
     public static WebDriver driver;
     String currentServer;
@@ -24,42 +24,43 @@ public class Start
      *
      * @param Server String with the server ( dev | qa )
      */
-    public static void initiate(String Server)
-    {
+    public static void initiate(String Server) {
 
         String s = System.getProperty("use.driver");
 
-        if (!Server.isEmpty() && s == null)
-        {
+        if (!Server.isEmpty() && s == null) {
 
 			/*
 			Comment or uncomment when testing individual methods with ChromeDriver or PhantomJS
-			 */
 
+*/
             ChromeOptions chromeOptions = new ChromeOptions();
             chromeOptions.addArguments("--ignore-certificate-errors");
             String chromedriverversion = Utility.getProperty("chromedriver.version");
             ChromeDriverManager.getInstance().version(chromedriverversion).arch64().setup();
             driver = new ChromeDriver();
-
-/*            DesiredCapabilities desiredCapabilities = DesiredCapabilities.phantomjs();
+/*
+            DesiredCapabilities desiredCapabilities = DesiredCapabilities.phantomjs();
             desiredCapabilities.setCapability("phantomjs.cli.args", Collections.singletonList("--ignore-ssl-errors=true"));
             String phantomjsversion = Utility.getProperty("phantomjs.version");
             PhantomJsDriverManager.getInstance().version(phantomjsversion).arch64().setup();
-            driver = new PhantomJSDriver(desiredCapabilities);*/
-
-            switch (Server)
-            {
+            driver = new PhantomJSDriver(desiredCapabilities);
+*/
+            switch (Server) {
                 case "dev":
                     System.setProperty("current.server", Utility.getProperty("server.dev"));
                     driver.navigate().to(Utility.getProperty("server.dev"));
+                    driver.manage().window().maximize();
                     break;
                 case "test":
                     System.setProperty("current.server", Utility.getProperty("server.test"));
+                    //driver.manage().window().setSize(new Dimension(400,400));
+                    driver.manage().window().maximize();
                     driver.navigate().to(Utility.getProperty("server.test"));
                     break;
                 case "stage":
                     System.setProperty("current.server", Utility.getProperty("server.stage"));
+                    driver.manage().window().maximize();
                     driver.navigate().to(Utility.getProperty("server.stage"));
                     break;
             }
@@ -68,14 +69,10 @@ public class Start
             driver.manage().timeouts().pageLoadTimeout(25000, TimeUnit.MILLISECONDS);
 
 
-        }
-        else
-        {
-            try
-            {
+        } else {
+            try {
                 String connectTo;
-                switch (System.getProperty("end.server"))
-                {
+                switch (System.getProperty("end.server")) {
                     case "dev":
                         System.setProperty("current.server", Utility.getProperty("server.dev"));
                         connectTo = Utility.getProperty("server.dev");
@@ -92,8 +89,7 @@ public class Start
                         connectTo = Utility.getProperty("server.dev");
                 }
 
-                switch (System.getProperty("use.driver"))
-                {
+                switch (System.getProperty("use.driver")) {
                     case "chrome":
                         ChromeOptions chromeOptions = new ChromeOptions();
                         chromeOptions.addArguments("--ignore-certificate-errors");
@@ -104,10 +100,10 @@ public class Start
                                 arch64().
                                 setup();
                         driver = new ChromeDriver(chromeOptions);
-                        driver.manage().window().maximize();
                         driver.navigate().to(connectTo);
                         driver.manage().timeouts().implicitlyWait(20000, TimeUnit.MILLISECONDS);
                         driver.manage().timeouts().pageLoadTimeout(25000, TimeUnit.MILLISECONDS);
+                        driver.manage().window().setSize(new Dimension(400,400));
                         break;
                     case "phantomjs":
                         String phantomjsversion = Utility.getProperty("phantomjs.version");
@@ -134,14 +130,13 @@ public class Start
                                 arch64().
                                 setup();
                         driver = new PhantomJSDriver(desiredCapabilities2);
-                        driver.manage().window().maximize();
                         driver.navigate().to(connectTo);
                         driver.manage().timeouts().implicitlyWait(20000, TimeUnit.MILLISECONDS);
                         driver.manage().timeouts().pageLoadTimeout(25000, TimeUnit.MILLISECONDS);
+                        driver.manage().window().setSize(new Dimension(1400,1000));
+
                 }
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 logger.error(e.getMessage());
             }
         }
