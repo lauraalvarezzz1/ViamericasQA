@@ -127,6 +127,9 @@ public class HomePage {
         }else if(pag.equalsIgnoreCase("termsandconditions")){
             Thread.sleep(2000);
             Start.driver.findElement(termsandConditions).click();
+        }else if(pag.equalsIgnoreCase("myAccount")){
+            Thread.sleep(2000);
+            Start.driver.findElement(myaccountlabel).click();
         }
     }
 

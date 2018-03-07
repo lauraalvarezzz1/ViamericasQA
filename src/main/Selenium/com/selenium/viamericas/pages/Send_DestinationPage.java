@@ -29,7 +29,7 @@ public class Send_DestinationPage {
     public static By countryInput = By.cssSelector("section#country-reception dropdown-viamericas#country-select-destination input#dropdown-input");
     public static By currencyInput = By.cssSelector("section#country-reception dropdown-viamericas#recipient-currency-select-destination input#dropdown-input");
     public static By stateInput = By.cssSelector("section#choose-other-location dropdown-viamericas#states-select-destination input#dropdown-input");
-    public static By cityInput = By.cssSelector("section#choose-other-location dropdown-viamericas#cities-select-destination input#dropdown-input");
+    public static By cityInput =  By.cssSelector("section#choose-other-location dropdown-viamericas#cities-select-destination input#dropdown-input");
     public static By bankInput = By.cssSelector("section#select-bank dropdown-viamericas#banks-select-destination input#dropdown-input");
     public static By regionalNetworksInput = By.cssSelector("section#choose-other-location dropdown-viamericas#regional-networks-select-destination input#dropdown-input");
     public static By nationalNetworksInput = By.cssSelector("section#select-pickup dropdown-viamericas#national-networks-select-destination input#dropdown-input");
@@ -41,24 +41,24 @@ public class Send_DestinationPage {
     public static By cityLI = By.cssSelector("section#choose-other-location dropdown-viamericas#cities-select-destination li#dropdown-list");
     public static By regionalNetworksLI = By.cssSelector("section#choose-other-location dropdown-viamericas#regional-networks-select-destination li#dropdown-list");
     public static By nationalNetworksLI = By.cssSelector("section#select-pickup dropdown-viamericas#national-networks-select-destination li#dropdown-list");
+    public static By currencyLI = By.cssSelector("section#country-reception dropdown-viamericas#recipient-currency-select-destination li#dropdown-list");
 
 
     public static void selectCountry(String country) throws Exception {
         Thread.sleep(3000);
         Start.driver.findElement(countryDestinations).click();
-        Thread.sleep(3000);
         Start.driver.findElement(countryInput).clear();
         Start.driver.findElement(countryInput).sendKeys(country);
-        //Start.driver.findElement(countryInput).sendKeys("Guatemala");
+        //Start.driver.findElement(countryInput).sendKeys("Dominican Republic");
         Start.driver.findElement(countryInput).sendKeys(Keys.ARROW_DOWN);
         Start.driver.findElement(countryInput).sendKeys(Keys.ENTER);
         Thread.sleep(3000);
 
         if (Utility.isSomethingDisplayed(currencyInput)) {
             Start.driver.findElement(currencyInput).click();
-            Start.driver.findElement(currencyInput).sendKeys("DOLLAR");
-            Start.driver.findElement(currencyInput).sendKeys(Keys.TAB);
-            Start.driver.findElement(currencyInput).sendKeys(Keys.TAB);
+            Start.driver.findElement(currencyInput).sendKeys(Keys.ARROW_DOWN);
+            Start.driver.findElement(currencyLI).sendKeys(Keys.ENTER);
+
         }
     }
 
@@ -76,17 +76,19 @@ public class Send_DestinationPage {
                 Start.driver.findElement(stateLI).sendKeys(Keys.ENTER);
                 Thread.sleep(3000);
                 if (Utility.isSomethingClickable(cityInput)) {
+                    Thread.sleep(4000);
                     Start.driver.findElement(cityInput).click();
                     Start.driver.findElement(cityInput).sendKeys(Keys.ARROW_DOWN);
                     Start.driver.findElement(cityLI).sendKeys(Keys.ENTER);
                     return false;
                 }
             }
+            return false;
         }
         return true;
     }
 
-    public static void chooseBank(int banks) throws Exception {
+    public static void chooseBank() throws Exception {
         Thread.sleep(3000);
         if (Utility.isSomethingClickable(bankInput)) {
             Start.driver.findElement(bankInput).click();
@@ -94,13 +96,13 @@ public class Send_DestinationPage {
             Start.driver.findElement(bankLI).sendKeys(Keys.ENTER);
             Thread.sleep(3000);
         }
-        if (Utility.isSomethingClickable(regionalNetworksInput)) {
+         else if (Utility.isSomethingClickable(regionalNetworksInput)) {
             Start.driver.findElement(regionalNetworksInput).click();
             Start.driver.findElement(regionalNetworksInput).sendKeys(Keys.ARROW_DOWN);
             Start.driver.findElement(regionalNetworksLI).sendKeys(Keys.ENTER);
             Thread.sleep(3000);
         }
-        if (Utility.isSomethingClickable(nationalNetworksInput)) {
+        else if (Utility.isSomethingClickable(nationalNetworksInput)) {
             Start.driver.findElement(nationalNetworksInput).click();
             Start.driver.findElement(nationalNetworksInput).sendKeys(Keys.ARROW_DOWN);
             Start.driver.findElement(nationalNetworksLI).sendKeys(Keys.ENTER);
@@ -125,7 +127,7 @@ public class Send_DestinationPage {
         Thread.sleep(3000);
     }
 
-    public static void selectamounttoSendGuest() throws Exception {
+    public static void selectamounttoSendGuesst() throws Exception {
         Thread.sleep(3000);
         Start.driver.findElement(sendAmountLocalCurrency).sendKeys("500");
     }

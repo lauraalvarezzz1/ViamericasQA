@@ -3,9 +3,8 @@ package com.selenium.viamericas.tests;
 
 import com.selenium.viamericas.pages.HomePage;
 import com.selenium.viamericas.pages.LoginPage;
-import com.selenium.viamericas.pages.MyAccount;
+import com.selenium.viamericas.pages.MyAccountPage;
 import com.selenium.viamericas.subpages.ProfileSettingsPage;
-import com.selenium.viamericas.subpages.RecipientsPage;
 import com.selenium.viamericas.utility.Start;
 import com.selenium.viamericas.utility.Utility;
 import org.testng.Assert;
@@ -13,11 +12,10 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import javax.rmi.CORBA.Util;
 import java.util.Random;
 
 
-public class ProfileSettings {
+public class My_AccountTests {
 
     @BeforeClass
     public void start() throws Exception {
@@ -33,22 +31,26 @@ public class ProfileSettings {
 
     @Test(enabled = true, priority = 0)
     public void gotoMyaccount() throws Exception {
-        MyAccount.goMyAccountlabel();
-        System.out.println(RecipientsPage.editRecipientButton);
-        Utility.saveRecipient();
-        System.out.println(RecipientsPage.editRecipientButton);
-        Assert.assertTrue(Start.driver.getCurrentUrl().contains("profile"));
+        HomePage.Goto("myAccount");
     }
 
     @Test(enabled = true, priority = 1)
-    public void Cleardropdowns() throws Exception {
-        ProfileSettingsPage.cleandropdowns();
+    public void addNewRecipient() throws Exception {
+        MyAccountPage.clickRecipients();
+        MyAccountPage.addNewRecipientRecipient();
+        MyAccountPage.enterFirstNameRecipient();
+        MyAccountPage.enterLastNameRecipient();
+        MyAccountPage.enterMiddleNameRecipient();
+        MyAccountPage.enterSecondLastNameRecipient();
+        MyAccountPage.selectCountryRecipient();
+        MyAccountPage.selectStateRecipient();
+        MyAccountPage.selectCityRecipient();
         Assert.assertTrue(Start.driver.getCurrentUrl().contains("profile"));
     }
 
     @Test(enabled = true, priority = 2)
     public void EditProfileSettings() throws Exception {
-        MyAccount.goMyAccountlabel();
+        //MyAccountPage.goMyAccountlabel();
         ProfileSettingsPage.cleandropdowns();
 
         ProfileSettingsPage.changethefisrtname();

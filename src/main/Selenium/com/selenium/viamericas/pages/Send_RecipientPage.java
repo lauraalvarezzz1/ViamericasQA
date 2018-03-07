@@ -38,9 +38,6 @@ public class Send_RecipientPage {
     public static By accountTypeLI = By.cssSelector("section#info-account dropdown-viamericas#account-type-select-recipient li#dropdown-list");
 
 
-
-
-
     public static void clickAddRecipient() throws Exception {
         if (Utility.isSomethingDisplayed(addNewRecipientButton)) {
             Start.driver.findElement(addNewRecipientButton).click();
@@ -49,7 +46,7 @@ public class Send_RecipientPage {
 
     public static void firstName() throws Exception {
         Start.driver.findElement(firstName).sendKeys("Test Recipient Name");
-        Thread.sleep(2000);
+        Thread.sleep(1500);
     }
 
     public static void lastName() throws Exception {
@@ -66,29 +63,27 @@ public class Send_RecipientPage {
     }
     public static void address() throws Exception {
         Start.driver.findElement(address).sendKeys("4525 North Oracle Rd. ");
-        Thread.sleep(2000);
+        Thread.sleep(1500);
     }
     public static void moreAdress() throws Exception {
         Start.driver.findElement(moreAddress).sendKeys("4525 North Oracle Rd. ");
-        Thread.sleep(2000);
+        Thread.sleep(1500);
     }
     public static void selectstate() throws Exception {
-        Thread.sleep(3000);
         if (Utility.isSomethingClickable(stateInput)){
             Start.driver.findElement(stateInput).click();
             Start.driver.findElement(stateInput).sendKeys(Keys.ARROW_DOWN);
             Start.driver.findElement(stateLI).sendKeys(Keys.ENTER);
-            Thread.sleep(3000);
+            Thread.sleep(1500);
         }
     }
 
     public static void selectcity() throws Exception {
-        Thread.sleep(3000);
         if (Utility.isSomethingClickable(cityInput)){
             Start.driver.findElement(cityInput).click();
             Start.driver.findElement(cityInput).sendKeys(Keys.ARROW_DOWN);
             Start.driver.findElement(cityLI).sendKeys(Keys.ENTER);
-            Thread.sleep(3000);
+            Thread.sleep(1500);
         }
     }
 
@@ -107,7 +102,7 @@ public class Send_RecipientPage {
     }
     public static void emailaddress() throws Exception {
         Start.driver.findElement(emailaddress).sendKeys("recipient+"+ DataGenerators.generateemails()+"@talosdigital.com");
-        Thread.sleep(2000);
+        Thread.sleep(1500);
     }
     public static void addBirthday() throws Exception {
         Start.driver.findElement(birthday).sendKeys("1999/12/26");
@@ -123,23 +118,14 @@ public class Send_RecipientPage {
         Thread.sleep(1500);
     }
     public static void accountType() throws Exception {
-        Thread.sleep(3000);
-      /*  if (Utility.isSomethingClickable(accountTypeInput)){
-            Start.driver.findElement(accountTypeInput).click();
-            Start.driver.findElement(accountTypeInput).sendKeys(Keys.ARROW_DOWN);
-            Start.driver.findElement(accountTypeLI).sendKeys(Keys.ENTER);
-            Thread.sleep(3000);
-        }*/
         Start.driver.findElement(accountTypeInput).sendKeys("Savings Account");
-
+        Thread.sleep(1500);
 
     }
 
-
-
     public static void continuebutton() throws Exception {
         Start.driver.findElement(continueButton).click();
-        Thread.sleep(4000);
+        Thread.sleep(3000);
 
     }
 }

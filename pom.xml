@@ -20,9 +20,9 @@
             <slf4j.version>1.7.25</slf4j.version>
             <selenium.api.version>3.8.1</selenium.api.version>
             <selenium.java.version>3.8.1</selenium.java.version>
-            <webdrivermanager.version>1.6.2</webdrivermanager.version>
+            <webdrivermanager.version>2.1.0</webdrivermanager.version>
             <selenium.chrome.driver.version>3.8.1</selenium.chrome.driver.version>
-            <phantomjs.ghost.version>1.4.1</phantomjs.ghost.version>
+            <phantomjs.ghost.version>1.4.4</phantomjs.ghost.version>
             <testng.version>6.11</testng.version>
             <commons-io.version>2.5</commons-io.version>
             <commons-codec.version>1.9</commons-codec.version>
@@ -88,6 +88,12 @@
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
             <version>${webdrivermanager.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/info.cukes/cucumber-java -->
+        <dependency>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>1.2.5</version>
         </dependency>
     </dependencies>
 
