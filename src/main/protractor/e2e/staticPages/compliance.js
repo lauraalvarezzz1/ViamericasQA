@@ -6,7 +6,7 @@ describe('Compliance information', function () {
     jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000000;
 
     beforeAll(function () {
-        browser.get('https://test.govianex.com/#/');
+        browser.get('https://test.govianex.com/#!/');
     });
     beforeEach(function () {
         footerPages = require('../../po/staticPages/footerPages');

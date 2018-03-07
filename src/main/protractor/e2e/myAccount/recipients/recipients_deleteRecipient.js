@@ -6,7 +6,7 @@
 describe('Recipients Testing - Removing the recipient', function () {
 
     beforeAll(function () {
-        browser.get('https://test.govianex.com/#/');
+        browser.get('https://test.govianex.com/#!/');
     });
 
     beforeEach(function () {
@@ -17,11 +17,13 @@ describe('Recipients Testing - Removing the recipient', function () {
     });
 
     it('Remove recipients and go to the send money flow', function () {
-        homePage.loginHeader.click();
+       /* homePage.loginHeader.click();
         loginPage.userName.isPresent().then(function () {
             loginPage.userName.sendKeys("testingviamericas@gmail.com");
             loginPage.password.sendKeys("Viamericas123");
             loginPage.loginButton.click();
+
+        });*/
 
             browser.sleep(2000);
 
@@ -42,9 +44,7 @@ describe('Recipients Testing - Removing the recipient', function () {
             });
 
             browser.sleep(2000);
-            expect(browser.getCurrentUrl()).toEqual('https://test.govianex.com/#/sendmoney/destination');
-        });
-
+            expect(browser.getCurrentUrl()).toEqual('https://test.govianex.com/#!/sendmoney/destination');
     });
 
 });

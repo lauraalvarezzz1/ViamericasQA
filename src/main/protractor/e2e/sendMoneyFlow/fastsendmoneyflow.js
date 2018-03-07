@@ -186,11 +186,11 @@ describe('Fast send money Testing (Starting with send money button) - Viamericas
                 }
 
                 sendmoneyFlowPage.amount.sendKeys(numbergenerator(1, 2000));
-                browser.sleep(2000);
+                browser.sleep(5000);
                 sendmoneyFlowPage.continueButton.click();
-                browser.sleep(2000);
+                browser.sleep(5000);
                 sendmoneyFlowPage.continueButton.click();
-                browser.sleep(2000);
+                browser.sleep(5000);
 
 
                 loginPage.loginButtoninsignup_send.click();

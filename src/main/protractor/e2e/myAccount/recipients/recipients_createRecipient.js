@@ -6,7 +6,7 @@
 describe('Recipients Testing - Creating a new recipient', function () {
 
     beforeAll(function () {
-        browser.get('https://test.govianex.com/#/');
+        browser.get('https://test.govianex.com/#!/');
     });
 
     beforeEach(function () {
@@ -84,7 +84,7 @@ describe('Recipients Testing - Creating a new recipient', function () {
         recipientsPage.createrecipientButton.click();
         browser.sleep(3000);
 
-        expect(browser.getCurrentUrl()).toEqual('https://test.govianex.com/#/account/recipients');
+        expect(browser.getCurrentUrl()).toEqual('https://test.govianex.com/#!/account/recipients');
 
     });
 });

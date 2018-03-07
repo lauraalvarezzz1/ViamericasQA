@@ -17,7 +17,7 @@ exports.config = {
 
         /*chromeOptions: {
             args: ['--headless', '--window-size=1200,1000', '--disable-gpu']
-        }
+        }*/
 
         /*'moz:firefoxOptions': {
             args: [ "--headless" ]
@@ -28,7 +28,12 @@ exports.config = {
     // Framework to use. Jasmine is recommended.
     framework: 'jasmine2',
 
-    //specs: ['e2e/recipients/recipients_createRecipient.js'],
+    specs: ['e2e/myAccount/recipients/recipients_createRecipient.js',
+        'e2e/myAccount/recipients/recipients_mobilephonenumbers.js',
+        'e2e/myAccount/recipients/recipients_editRecipient.js',
+        'e2e/myAccount/recipients/recipients_createBankAccount.js',
+        'e2e/myAccount/recipients/recipients_deleteRecipients.js',
+        'e2e/myAccount/recipients/recipients_deleteAccount.js'],
     //specs: ['e2e/recipients_createRecipient.js'],
     //specs: ['e2e/sendMoneyFlow/fastsendmoneyflow.js'],
     //specs: ['e2e/myAccount/recipients/recipients_createRecipient.js'],
@@ -43,7 +48,7 @@ exports.config = {
     //specs: ['e2e/feesAndRates/FeesNRates.js'],
     //specs: ['e2e/loginPage/login.js'],
     //specs: ['e2e/myAccount/profileSettings/profile_changePassword.js'],
-    specs: ['e2e/staticPages/compliance.js'],
+    //specs: ['e2e/staticPages/compliance.js'],
 
 
     // Options to be passed to Jasmine.
