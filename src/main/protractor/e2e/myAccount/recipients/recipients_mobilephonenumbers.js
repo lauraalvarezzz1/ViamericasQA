@@ -5,7 +5,7 @@
 describe('Recipients Testing', function () {
 
     beforeAll(function () {
-        browser.get('https://test.govianex.com/#/');
+        browser.get('https://test.govianex.com/#!/');
     });
 
     beforeEach(function () {
@@ -16,19 +16,19 @@ describe('Recipients Testing', function () {
     });
 
     it('Mobile phone numbers depending on Countries - Creating a new recipient', function () {
-        homePage.loginHeader.click();
+       /* homePage.loginHeader.click();
         loginPage.userName.isPresent().then(function () {
             loginPage.userName.sendKeys("testingviamericas@gmail.com");
             loginPage.password.sendKeys("Viamericas123");
             loginPage.loginButton.click();
+        });*/
 
-            browser.sleep(5000);
-
+        browser.sleep(5000);
             homePage.myaccountheader.isPresent().then(function () {
                 homePage.myaccountheader.click();
             });
             homePage.recipientsButton.click();
-        });
+
         recipientsPage.addnewrecipientButton.click();
         recipientsPage.first_name.sendKeys("Testing");
         recipientsPage.last_name.sendKeys("Number");
@@ -142,7 +142,7 @@ describe('Recipients Testing', function () {
         recipientsPage.createrecipientButton.click();
         browser.sleep(3000);
 
-        expect(browser.getCurrentUrl()).toEqual('https://test.govianex.com/#/account/recipients');
+        expect(browser.getCurrentUrl()).toEqual('https://test.govianex.com/#!/account/recipients');
 
     });
 

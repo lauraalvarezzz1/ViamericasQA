@@ -17,12 +17,12 @@ describe('Recipients Testing - Updating a recipient already created', function (
     });
 
     it('Updating a existing recipient', function () {
-        homePage.loginHeader.click();
+       /* homePage.loginHeader.click();
         loginPage.userName.isPresent().then(function () {
             loginPage.userName.sendKeys("testingviamericas@gmail.com");
             loginPage.password.sendKeys("Viamericas123");
             loginPage.loginButton.click();
-
+        });*/
             browser.sleep(2000);
 
             homePage.myaccountheader.isPresent().then(function () {
@@ -41,6 +41,7 @@ describe('Recipients Testing - Updating a recipient already created', function (
                 recipientPage.last_name.sendKeys("LastName");
                 recipientPage.secondlast_name_optional.clear();
                 recipientPage.secondlast_name_optional.sendKeys("SecondLast");
+                recipientPage.dateofbirth.clear();
                 recipientPage.dateofbirth.sendKeys("2000/01/30")
                 recipientPage.address_line1.clear();
                 recipientPage.address_line1.sendKeys("Street 5 - Updating Address Line1");
@@ -51,8 +52,8 @@ describe('Recipients Testing - Updating a recipient already created', function (
                 recipientPage.updateRecipientButton.click();
             });
             browser.sleep(2000);
-            expect(browser.getCurrentUrl()).toEqual('https://test.govianex.com/#/account/recipients');
-        });
+            expect(browser.getCurrentUrl()).toEqual('https://test.govianex.com/#!/account/recipients');
+
     });
 
 });

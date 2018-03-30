@@ -6,7 +6,7 @@
 describe('Recipients Testing - Removing the recipient bank account', function () {
 
     beforeAll(function () {
-        browser.get('https://test.govianex.com/#/');
+        browser.get('https://test.govianex.com/#!/');
     });
 
     beforeEach(function () {
@@ -17,12 +17,12 @@ describe('Recipients Testing - Removing the recipient bank account', function ()
     });
 
     it('Remove recipient bank accounts and go recipient list', function () {
-        homePage.loginHeader.click();
+       /* homePage.loginHeader.click();
         loginPage.userName.isPresent().then(function () {
             loginPage.userName.sendKeys("testingviamericas@gmail.com");
             loginPage.password.sendKeys("Viamericas123");
             loginPage.loginButton.click();
-
+        });*/
             browser.sleep(6000);
 
             homePage.myaccountheader.isPresent().then(function () {
@@ -46,8 +46,8 @@ describe('Recipients Testing - Removing the recipient bank account', function ()
                 recipientPage.cancelButton.click();
             });
             browser.sleep(2000);
-            expect(browser.getCurrentUrl()).toEqual('https://test.govianex.com/#/account/recipients');
-        });
+            expect(browser.getCurrentUrl()).toEqual('https://test.govianex.com/#!/account/recipients');
+
 
     });
 

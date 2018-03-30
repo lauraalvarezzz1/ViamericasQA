@@ -16,11 +16,11 @@ describe('Recipients Testing - Creating a new recipient with bank account', func
     });
 
     it('Create a new recipient bank account', function () {
-        homePage.loginHeader.click();
+       /* homePage.loginHeader.click();
         loginPage.userName.isPresent().then(function () {
             loginPage.userName.sendKeys("testingviamericas@gmail.com");
             loginPage.password.sendKeys("Viamericas123");
-            loginPage.loginButton.click();
+            loginPage.loginButton.click();*/
 
             browser.sleep(5000);
 
@@ -94,7 +94,7 @@ describe('Recipients Testing - Creating a new recipient with bank account', func
                     });
                 }
             });
-        });
+        //});
         recipientPage.addbankaccount.isPresent().then(function () {
             recipientPage.addbankaccount.click();
         });
